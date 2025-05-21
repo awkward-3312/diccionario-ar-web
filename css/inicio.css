@@ -28,33 +28,84 @@ body {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.85);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 20px 40px;
   z-index: 1000;
   backdrop-filter: blur(10px);
+  flex-wrap: wrap;
 }
 
 .logo {
-  height: 72px;
-  max-height: 80px;
-  object-fit: contain;
+  width: 340px;
+  height: auto;
+  animation: logoFloat 3s ease-in-out infinite;
 }
 
-nav {
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.nav-central {
+  flex: 1;
   display: flex;
-  gap: 25px;
+  justify-content: center;
 }
 
-nav a {
+.menu-principal {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-principal a {
+  position: relative;
   text-decoration: none;
   color: #ffffff;
   font-weight: 600;
+  letter-spacing: 0.5px;
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #00ffd0;
+.menu-principal a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #00FFD0;
+  transition: width 0.3s ease;
+}
+
+.menu-principal a:hover {
+  color: #00FFD0;
+}
+
+.menu-principal a:hover::after {
+  width: 100%;
+}
+
+.btn-login {
+  padding: 8px 16px;
+  border: 1px solid #00FFD0;
+  border-radius: 8px;
+  background: transparent;
+  color: #00FFD0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #00FFD0;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0, 255, 208, 0.5);
 }
 
 /* === HERO SECTION === */
@@ -72,9 +123,10 @@ nav a:hover {
 .hero h1 {
   font-size: 3rem;
   font-weight: bold;
-  color: #00ffd0;
+  color: #00FFD0;
   margin-bottom: 20px;
   line-height: 1.3;
+  text-shadow: 0 0 15px rgba(0, 255, 208, 0.5);
 }
 
 .hero p {
@@ -106,13 +158,47 @@ nav a:hover {
 .btn-primario:hover {
   background-color: #1af5c5;
   transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 255, 208, 0.4);
+}
+
+/* === SECCIÓN PLATAFORMA === */
+.seccion-plataforma {
+  padding: 100px 20px;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: left;
+  color: #e0fdfb;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out 0.5s forwards;
+}
+
+.seccion-plataforma h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  color: #00FFD0;
+  text-align: center;
+}
+
+.seccion-plataforma p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 footer {
   text-align: center;
-  padding: 30px 20px 40px;
+  padding: 40px 20px 60px;
   color: #888;
   font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 /* === ONDA DECORATIVA === */
@@ -127,4 +213,25 @@ body::after {
   clip-path: ellipse(70% 100% at 50% 100%);
   pointer-events: none;
   z-index: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .menu-principal {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .nav-central {
+    width: 100%;
+    justify-content: center;
+  }
+  .logo {
+    width: 200px;
+  }
+  .btn-login {
+    margin-top: 10px;
+  }
 }
