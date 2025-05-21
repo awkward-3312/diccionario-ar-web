@@ -3,39 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diccionario - AR</title>
-  <link rel="icon" type="image/png" href="favicon-ar.png" />
-  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="css/estilos.css" />
+  <title>Inicio – Diccionario AR</title>
+  <link rel="stylesheet" href="css/inicio.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="encabezado">
-    <div class="logo">Diccionario AR/RA</div>
+    <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo" />
     <nav>
       <a href="#">Plataforma</a>
       <a href="#">Diccionario</a>
       <a href="#">Contacto</a>
+      <a href="admin.html">Iniciar sesión</a>
     </nav>
-    <button onclick="window.location.href='admin.html'" class="btn-secundario">Iniciar sesión</button>
-  </header>
+  </header>  
 
   <main class="hero">
-    <h1>Bienvenido</h1>
+    <h1><span>Una herramienta<br>de realidad aumentada...</span></h1>
     <p>
-      Esta herramienta te permite consultar, agregar y gestionar términos usados en asuntos regulatorios.
-      Diseñada especialmente para profesionales de traducción, revisión técnica y registros sanitarios.
+      Construida para facilitar la comprensión de términos<br>
+      regulatorios complejos, dirigida a profesionales y estudiantes.
     </p>
     <div class="botones">
-      <button class="btn-primario" onclick="window.location.href='index.html'">Ir al Diccionario</button>
-      <button class="btn-secundario" onclick="window.location.href='agregar.html'">Agregar Término</button>
+      <button onclick="window.location.href='index.html'" class="btn-primario">
+        Explorar diccionario
+      </button>
     </div>
   </main>
 
   <footer>
-    © 2025 Diccionario AR · Hecho con 💚 para el área regulatoria
+    © 2025 Diccionario AR · Hecho con 💚 para el área regulatoria por EBEA
   </footer>
-
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
   <script src="js/inicio.js"></script>
 </body>

@@ -1,59 +1,23 @@
 /* === FUENTES === */
-@font-face {
-  font-family: 'MiddleOfApril';
-  src: url('../fonts/Middle-of-April.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../fonts/Nunito-BoldItalic.ttf') format('truetype');
-  font-style: italic;
-  font-weight: 700;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 /* === RESET Y BASE === */
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
-}
-
-html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    url('../img/FONDOOO.jpeg') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  animation: parallax 60s linear infinite, fadeIn 0.5s ease-in-out;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #020202, #0a0a0a);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-body.light-mode {
-  background:
-    linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.95)),
-    url('../img/fondo-claro.png') no-repeat center center fixed;
-  background-size: cover;
-  color: #111;
-}
-
-@keyframes parallax {
-  0% { background-position: center center; }
-  50% { background-position: center top; }
-  100% { background-position: center center; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* === ENCABEZADO === */
@@ -62,19 +26,19 @@ body.light-mode {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(30, 30, 30, 0.9);
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
   z-index: 1000;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
-  font-family: 'MiddleOfApril', cursive;
-  font-size: 2.2rem;
-  color: #70d6ff;
+  height: 72px;
+  max-height: 80px;
+  object-fit: contain;
 }
 
 nav {
@@ -83,127 +47,84 @@ nav {
 }
 
 nav a {
-  color: white;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
   text-decoration: none;
-  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #3ae374;
+  color: #00ffd0;
 }
 
 /* === HERO SECTION === */
 .hero {
-  margin-top: 120px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  color: white;
-  padding: 40px 20px;
-  animation: fadeIn 1s ease-in-out;
+  padding: 160px 20px 60px;
+  position: relative;
 }
 
 .hero h1 {
-  font-family: 'MiddleOfApril', cursive;
-  font-size: 4rem;
-  color: #3ae374;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00ffd0;
+  margin-bottom: 20px;
+  line-height: 1.3;
 }
 
 .hero p {
-  font-family: 'Nunito', sans-serif;
   font-size: 1.2rem;
   max-width: 700px;
-  margin: 0 auto 30px auto;
+  color: #dddddd;
+  margin-bottom: 30px;
   line-height: 1.6;
-  color: #f1f1f1;
 }
 
 .botones {
-  margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
 .btn-primario {
-  background-color: #3ae374;
-  color: black;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.btn-secundario {
-  background-color: #1877f2;
+  background-color: #00e6b8;
   color: white;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 12px;
+  font-weight: 600;
   border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 1rem;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 255, 208, 0.2);
 }
 
-.btn-primario:hover,
-.btn-secundario:hover {
+.btn-primario:hover {
+  background-color: #1af5c5;
   transform: scale(1.05);
 }
 
 footer {
-  margin-top: 80px;
   text-align: center;
-  font-size: 0.85rem;
-  color: #aaa;
-  padding-bottom: 40px;
+  padding: 30px 20px 40px;
+  color: #888;
+  font-size: 0.9rem;
 }
 
-/* === TOGGLE MODO CLARO/OSCURO === */
-#toggle-modo {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 30px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(to right, #1877f2, #ff5c39);
-  cursor: pointer;
-  transition: background 0.3s ease;
-  overflow: hidden;
-  z-index: 1001;
-}
-
-#toggle-modo::before {
-  content: '🌙';
+/* === ONDA DECORATIVA === */
+body::after {
+  content: "";
   position: absolute;
-  width: 26px;
-  height: 26px;
-  top: 2px;
-  left: 2px;
-  background: white;
-  border-radius: 50%;
-  font-size: 14px;
-  text-align: center;
-  line-height: 26px;
-  transition: transform 0.3s ease;
-}
-
-body.light-mode #toggle-modo::before {
-  content: '☀️';
-  transform: translateX(30px);
-}
-
-@media (max-width: 600px) {
-  .hero h1 { font-size: 3rem; }
-  nav { flex-direction: column; gap: 10px; align-items: center; }
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background: radial-gradient(ellipse at bottom, rgba(0,255,208,0.1), rgba(0,255,208,0.2));
+  clip-path: ellipse(70% 100% at 50% 100%);
+  pointer-events: none;
+  z-index: 0;
 }
