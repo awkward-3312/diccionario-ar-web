@@ -1,0 +1,2989 @@
+{
+  "AUTOCLAVE": {
+    "traduccion": "Autoclave",
+    "pronunciacion": "ˈɔː.tə.kleɪv",
+    "categoria": "Sustantivo",
+    "definicion": "Es un equipo que se usa para esterilizar materiales, instrumentos y productos mediante vapor de agua a alta presión y temperatura. Su objetivo es eliminar microorganismos y asegurar la esterilidad de los productos farmacéuticos, evitando contaminaciones.",
+    "sinonimos": [
+      "sterilizer",
+      "sanitizer"
+    ]
+  },
+  "AGAR PLATE READER": {
+    "traduccion": "Lector de placas de agar",
+    "pronunciacion": "ˈeɪ.ɡɑr pleɪt ˈriː.dər",
+    "categoria": "Sustantivo",
+    "definicion": "Se usa en laboratorios para evaluar la eficacia de antibióticos, la presencia de bacterias en productos farmacéuticos o la calidad microbiológica en la fabricación de medicamentos.",
+    "sinonimos": [
+      "Colony Counter",
+      "Automated Plate Reader",
+      "Petri Dish Scanner"
+    ]
+  },
+  "LECTOR DE PLACAS DE AGAR": {
+    "traduccion": "Agar Plate Reader",
+    "pronunciacion": "ˈeɪ.ɡɑr pleɪt ˈriː.dər",
+    "categoria": "Sustantivo",
+    "definicion": "Se usa en laboratorios para evaluar la eficacia de antibióticos, la presencia de bacterias en productos farmacéuticos o la calidad microbiológica en la fabricación de medicamentos.",
+    "sinonimos": [
+      "Colony Counter",
+      "Automated Plate Reader",
+      "Petri Dish Scanner"
+    ]
+  },
+  "ABSORBANCE": {
+    "traduccion": "Absorbancia",
+    "pronunciacion": "əbˈzɔːrbəns",
+    "categoria": "Sustantivo",
+    "definicion": "Cantidad de luz que una muestra retiene al pasar a través de ella, medida con un aparato llamado espectrofotómetro. Esto está relacionado con la cantidad de una sustancia presente en la muestra. La absorbancia se usa para saber cuánto de una sustancia hay en un líquido o solución.",
+    "sinonimos": [
+      "Optical density",
+      "light absorption",
+      "extinction"
+    ]
+  },
+  "ABSORBANCIA": {
+    "traduccion": "Absorbance",
+    "pronunciacion": "əbˈzɔːrbəns",
+    "categoria": "Sustantivo",
+    "definicion": "Cantidad de luz que una muestra retiene al pasar a través de ella, medida con un aparato llamado espectrofotómetro. Esto está relacionado con la cantidad de una sustancia presente en la muestra. La absorbancia se usa para saber cuánto de una sustancia hay en un líquido o solución.",
+    "sinonimos": [
+      "Optical density",
+      "light absorption",
+      "extinction"
+    ]
+  },
+  "ACCEPTANCE CRITERIA": {
+    "traduccion": "Criterios de aceptación",
+    "pronunciacion": "əkˈsɛptəns kraɪˈtɪriə",
+    "categoria": "Sustantivo",
+    "definicion": "Requisitos o estándares que deben cumplirse para que un producto, proceso o resultado sea aceptado.",
+    "sinonimos": [
+      "Approval standards",
+      "evaluation benchmarks",
+      "compliance requirements"
+    ]
+  },
+  "CRITERIOS DE ACEPTACIÓN": {
+    "traduccion": "Acceptance Criteria",
+    "pronunciacion": "əkˈsɛptəns kraɪˈtɪriə",
+    "categoria": "Sustantivo",
+    "definicion": "Requisitos o estándares que deben cumplirse para que un producto, proceso o resultado sea aceptado.",
+    "sinonimos": [
+      "Approval standards",
+      "evaluation benchmarks",
+      "compliance requirements"
+    ]
+  },
+  "ACCEPTANCE TEST": {
+    "traduccion": "Prueba de Aceptación",
+    "pronunciacion": "əkˈsɛptəns tɛst",
+    "categoria": "Sustantivo",
+    "definicion": "Evaluación o prueba realizada para verificar que un producto, equipo o proceso cumple con las especificaciones o estándares acordados antes de su aceptación o uso.",
+    "sinonimos": []
+  },
+  "PRUEBA DE ACEPTACIÓN": {
+    "traduccion": "Acceptance Test",
+    "pronunciacion": "əkˈsɛptəns tɛst",
+    "categoria": "Sustantivo",
+    "definicion": "Evaluación o prueba realizada para verificar que un producto, equipo o proceso cumple con las especificaciones o estándares acordados antes de su aceptación o uso.",
+    "sinonimos": []
+  },
+  "ACIDOTIC DYSPNOEA": {
+    "traduccion": "Disnea ácida",
+    "pronunciacion": "ˌæsɪˈdɒtɪk dɪsˈpniːə",
+    "categoria": "Sustantivo",
+    "definicion": "La \"disnea ácida\" se refiere a la dificultad respiratoria provocada por la acumulación de ácidos en el cuerpo, a menudo debido a trastornos metabólicos como la acidosis.",
+    "sinonimos": [
+      "Acidotic breathing",
+      "acid-induced dyspnoea"
+    ]
+  },
+  "DISNEA ÁCIDA": {
+    "traduccion": "Acidotic dyspnoea",
+    "pronunciacion": "ˌæsɪˈdɒtɪk dɪsˈpniːə",
+    "categoria": "Sustantivo",
+    "definicion": "La \"disnea ácida\" se refiere a la dificultad respiratoria provocada por la acumulación de ácidos en el cuerpo, a menudo debido a trastornos metabólicos como la acidosis.",
+    "sinonimos": [
+      "Acidotic breathing",
+      "acid-induced dyspnoea"
+    ]
+  },
+  "AIRTIGHT": {
+    "traduccion": "Hermético",
+    "pronunciacion": "ˈɛrˌtaɪt",
+    "categoria": "Adjetivo",
+    "definicion": "Un envase hermético es aquel que impide el paso de aire. Es crucial en la fabricación y almacenamiento de medicamentos, ya que previene la degradación de los productos debido a la exposición al oxígeno o a la humedad.",
+    "sinonimos": [
+      "Sealed",
+      "airtight",
+      "closed"
+    ]
+  },
+  "HERMÉTICO": {
+    "traduccion": "Airtight",
+    "pronunciacion": "ˈɛrˌtaɪt",
+    "categoria": "Adjetivo",
+    "definicion": "Un envase hermético es aquel que impide el paso de aire. Es crucial en la fabricación y almacenamiento de medicamentos, ya que previene la degradación de los productos debido a la exposición al oxígeno o a la humedad.",
+    "sinonimos": [
+      "Sealed",
+      "airtight",
+      "closed"
+    ]
+  },
+  "ALIQUOT": {
+    "traduccion": "Alicuota",
+    "pronunciacion": "ˈæliˌkwɒt",
+    "categoria": "Sustantivo",
+    "definicion": "Una porción representativa tomada de una muestra más grande, utilizada para análisis sin alterar la composición de la muestra original.",
+    "sinonimos": [
+      "Sample portion",
+      "measured fraction",
+      "subsample"
+    ]
+  },
+  "ALICUOTA": {
+    "traduccion": "Aliquot",
+    "pronunciacion": "ˈæliˌkwɒt",
+    "categoria": "Sustantivo",
+    "definicion": "Una porción representativa tomada de una muestra más grande, utilizada para análisis sin alterar la composición de la muestra original.",
+    "sinonimos": [
+      "Sample portion",
+      "measured fraction",
+      "subsample"
+    ]
+  },
+  "AMPOULES": {
+    "traduccion": "Ampollas",
+    "pronunciacion": "ˈæmpjuːlz",
+    "categoria": "Sustantivo",
+    "definicion": "Las ampollas son pequeños frascos de vidrio sellados que contienen sustancias líquidas, generalmente medicamentos o reactivos. Se utilizan en laboratorios o medicina. Para extraer su contenido, las ampollas se rompen, lo que permite acceder al líquido dentro.",
+    "sinonimos": [
+      "Ampoules",
+      "Vials"
+    ]
+  },
+  "AMPOLLAS": {
+    "traduccion": "Ampoules",
+    "pronunciacion": "ˈæmpjuːlz",
+    "categoria": "Sustantivo",
+    "definicion": "Las ampollas son pequeños frascos de vidrio sellados que contienen sustancias líquidas, generalmente medicamentos o reactivos. Se utilizan en laboratorios o medicina. Para extraer su contenido, las ampollas se rompen, lo que permite acceder al líquido dentro.",
+    "sinonimos": [
+      "Ampoules",
+      "Vials"
+    ]
+  },
+  "ANALYTICAL BALANCE": {
+    "traduccion": "Balanza analítica",
+    "pronunciacion": "ˌænəˈlɪtɪkəl ˈbæləns",
+    "categoria": "Sustantivo",
+    "definicion": "Instrumento de alta precisión utilizado para medir masas muy pequeñas con una alta exactitud, comúnmente usado en laboratorios.",
+    "sinonimos": [
+      "Precision scale",
+      "microbalance",
+      "laboratory balance"
+    ]
+  },
+  "BALANZA ANALÍTICA": {
+    "traduccion": "Analytical Balance",
+    "pronunciacion": "ˌænəˈlɪtɪkəl ˈbæləns",
+    "categoria": "Sustantivo",
+    "definicion": "Instrumento de alta precisión utilizado para medir masas muy pequeñas con una alta exactitud, comúnmente usado en laboratorios.",
+    "sinonimos": [
+      "Precision scale",
+      "microbalance",
+      "laboratory balance"
+    ]
+  },
+  "ANTIOXIDANT": {
+    "traduccion": "Antioxidante",
+    "pronunciacion": "ˌæntiˈɒksɪdənt",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia que previene o retrasa la oxidación de otras sustancias, protegiendo los productos de daños causados por el oxígeno.",
+    "sinonimos": [
+      "Preservative",
+      "free radical inhibitor",
+      "stabilizer"
+    ]
+  },
+  "ANTIOXIDANTE": {
+    "traduccion": "Antioxidant",
+    "pronunciacion": "ˌæntiˈɒksɪdənt",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia que previene o retrasa la oxidación de otras sustancias, protegiendo los productos de daños causados por el oxígeno.",
+    "sinonimos": [
+      "Preservative",
+      "free radical inhibitor",
+      "stabilizer"
+    ]
+  },
+  "ANHYDROUS": {
+    "traduccion": "Anhidro",
+    "pronunciacion": "Adjetivo.",
+    "categoria": "En farmacología, \"anhidro\" hace referencia a una sustancia que no contiene agua por ejemplo, se puede usar para describir una forma anhidra de un medicamento que ha sido deshidratado o libre de agua",
+    "definicion": "Synonyms: Dehydrated, water-free, without water.",
+    "sinonimos": []
+  },
+  "ANHIDRO": {
+    "traduccion": "Anhydrous",
+    "pronunciacion": "Adjetivo.",
+    "categoria": "En farmacología, \"anhidro\" hace referencia a una sustancia que no contiene agua por ejemplo, se puede usar para describir una forma anhidra de un medicamento que ha sido deshidratado o libre de agua",
+    "definicion": "Synonyms: Dehydrated, water-free, without water.",
+    "sinonimos": []
+  },
+  "APPARATUS": {
+    "traduccion": "Aparato",
+    "pronunciacion": "æpˈærətəs",
+    "categoria": "Sustantivo",
+    "definicion": "Conjunto de instrumentos o equipos utilizados en un experimento o proceso técnico. En un laboratorio, el aparato incluye herramientas como matraces, tubos de ensayo, pipetas, entre otros.",
+    "sinonimos": [
+      "Equipment",
+      "device",
+      "instrument"
+    ]
+  },
+  "APARATO": {
+    "traduccion": "Apparatus",
+    "pronunciacion": "æpˈærətəs",
+    "categoria": "Sustantivo",
+    "definicion": "Conjunto de instrumentos o equipos utilizados en un experimento o proceso técnico. En un laboratorio, el aparato incluye herramientas como matraces, tubos de ensayo, pipetas, entre otros.",
+    "sinonimos": [
+      "Equipment",
+      "device",
+      "instrument"
+    ]
+  },
+  "BACTERIOSTASIS": {
+    "traduccion": "Bacteriostático",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El bacteriostático se refiere a la inhibición del crecimiento bacteriano sin matar a las bacterias este efecto es importante en microbiología y en la formulación de antibióticos, ya que puede ayudar a controlar infecciones al evitar que las bacterias se multipliquen, permitiendo que el sistema inmunológico elimine las bacterias presentes",
+    "definicion": "Synonyms: Bacteriostasis, Bacteriostatic.",
+    "sinonimos": []
+  },
+  "BACTERIOSTÁTICO": {
+    "traduccion": "Bacteriostasis",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El bacteriostático se refiere a la inhibición del crecimiento bacteriano sin matar a las bacterias este efecto es importante en microbiología y en la formulación de antibióticos, ya que puede ayudar a controlar infecciones al evitar que las bacterias se multipliquen, permitiendo que el sistema inmunológico elimine las bacterias presentes",
+    "definicion": "Synonyms: Bacteriostasis, Bacteriostatic.",
+    "sinonimos": []
+  },
+  "BATCH NUMBER": {
+    "traduccion": "Número de lote",
+    "pronunciacion": "bæʧ ˈnʌmbər",
+    "categoria": "Sustantivo",
+    "definicion": "Identificador único asignado a un lote de producción o fabricación de un producto, utilizado para rastrear su origen, proceso de fabricación y control de calidad.",
+    "sinonimos": [
+      "Lot number",
+      "production code",
+      "manufacturing ID"
+    ]
+  },
+  "NÚMERO DE LOTE": {
+    "traduccion": "Lot Number",
+    "pronunciacion": "lɒt ˈnʌmbər",
+    "categoria": "Sustantivo",
+    "definicion": "Número asignado a una cantidad específica de un producto que se produce bajo condiciones uniformes, utilizado para su identificación y seguimiento a lo largo de la cadena de suministro.",
+    "sinonimos": [
+      "Batch code",
+      "production number",
+      "identification code"
+    ]
+  },
+  "BEAKER": {
+    "traduccion": "Vaso de precipitados / Beaker",
+    "pronunciacion": "ˈbiːkər",
+    "categoria": "Sustantivo",
+    "definicion": "El vaso de precipitados es un recipiente cilíndrico utilizado en laboratorios para contener, mezclar o calentar líquidos y soluciones. Es uno de los instrumentos básicos en el análisis de muestras farmacéuticas.",
+    "sinonimos": [
+      "Laboratory beaker",
+      "container"
+    ]
+  },
+  "VASO DE PRECIPITADOS / BEAKER": {
+    "traduccion": "Beaker",
+    "pronunciacion": "ˈbiːkər",
+    "categoria": "Sustantivo",
+    "definicion": "El vaso de precipitados es un recipiente cilíndrico utilizado en laboratorios para contener, mezclar o calentar líquidos y soluciones. Es uno de los instrumentos básicos en el análisis de muestras farmacéuticas.",
+    "sinonimos": [
+      "Laboratory beaker",
+      "container"
+    ]
+  },
+  "BIAS": {
+    "traduccion": "Sesgo",
+    "pronunciacion": "baɪəs",
+    "categoria": "Sustantivo",
+    "definicion": "Desviación sistemática de los resultados de un análisis respecto al valor verdadero o de referencia, que puede afectar la exactitud del método.",
+    "sinonimos": [
+      "Systematic error",
+      "deviation",
+      "prejudice"
+    ]
+  },
+  "SESGO": {
+    "traduccion": "Bias",
+    "pronunciacion": "baɪəs",
+    "categoria": "Sustantivo",
+    "definicion": "Desviación sistemática de los resultados de un análisis respecto al valor verdadero o de referencia, que puede afectar la exactitud del método.",
+    "sinonimos": [
+      "Systematic error",
+      "deviation",
+      "prejudice"
+    ]
+  },
+  "BPC (BRITISH PHARMACOPOEIA COMMISSION)": {
+    "traduccion": "Comisión de la Farmacopea Británica",
+    "pronunciacion": "ˈbiː piː ˈsiː",
+    "categoria": "Sustantivo",
+    "definicion": "Organismo responsable de establecer los estándares de calidad, pureza y fuerza para los medicamentos en el Reino Unido, similar a la USP (Farmacopea de los Estados Unidos).",
+    "sinonimos": []
+  },
+  "COMISIÓN DE LA FARMACOPEA BRITÁNICA": {
+    "traduccion": "BPC (British Pharmacopoeia Commission)",
+    "pronunciacion": "ˈbiː piː ˈsiː",
+    "categoria": "Sustantivo",
+    "definicion": "Organismo responsable de establecer los estándares de calidad, pureza y fuerza para los medicamentos en el Reino Unido, similar a la USP (Farmacopea de los Estados Unidos).",
+    "sinonimos": []
+  },
+  "BUFFER": {
+    "traduccion": "Buffer",
+    "pronunciacion": "ˈbʌfər",
+    "categoria": "Sustantivo",
+    "definicion": "Un buffer es una solución que resiste cambios en su pH cuando se le añade un ácido o una base. En los análisis químicos y farmacéuticos, se utiliza para mantener condiciones constantes en las pruebas, como en la preparación de soluciones o en la formulación de medicamentos.",
+    "sinonimos": [
+      "pH stabilizer",
+      "pH control solution"
+    ]
+  },
+  "BUFFER SOLUTION": {
+    "traduccion": "Solución amortiguadora",
+    "pronunciacion": "ˈbʌfər səˈluːʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Solución que mantiene un pH constante cuando se le agregan pequeñas cantidades de ácido o base. Se utiliza para estabilizar el pH en experimentos químicos y biológicos.",
+    "sinonimos": [
+      "pH stabilizer",
+      "buffer system",
+      "pH regulator"
+    ]
+  },
+  "SOLUCIÓN AMORTIGUADORA": {
+    "traduccion": "Buffer Solution",
+    "pronunciacion": "ˈbʌfər səˈluːʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Solución que mantiene un pH constante cuando se le agregan pequeñas cantidades de ácido o base. Se utiliza para estabilizar el pH en experimentos químicos y biológicos.",
+    "sinonimos": [
+      "pH stabilizer",
+      "buffer system",
+      "pH regulator"
+    ]
+  },
+  "BULK": {
+    "traduccion": "A granel",
+    "pronunciacion": "bʌlk",
+    "categoria": "Sustantivo",
+    "definicion": "En la industria farmacéutica, \"granel\" hace referencia a los ingredientes activos o productos farmacéuticos en su forma no envasada, antes de ser procesados, dosificados o empaquetados en su forma final.",
+    "sinonimos": [
+      "Mass",
+      "unprocessed form",
+      "raw material"
+    ]
+  },
+  "A GRANEL": {
+    "traduccion": "Bulk",
+    "pronunciacion": "bʌlk",
+    "categoria": "Sustantivo",
+    "definicion": "En la industria farmacéutica, \"granel\" hace referencia a los ingredientes activos o productos farmacéuticos en su forma no envasada, antes de ser procesados, dosificados o empaquetados en su forma final.",
+    "sinonimos": [
+      "Mass",
+      "unprocessed form",
+      "raw material"
+    ]
+  },
+  "BRACKETING": {
+    "traduccion": "Bloqueo o Enmarcado",
+    "pronunciacion": "ˈbrækɪtɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "En términos simples, en microbiología y análisis de medicamentos, bracketing es una estrategia para verificar si un análisis es válido en diferentes niveles. En lugar de probar cada punto intermedio, solo se analizan los valores más altos y bajos, asegurando que todo el rango esté cubierto.",
+    "sinonimos": [
+      "En este contexto",
+      "\"bracketing\" no tiene sinónimos comunes exactos",
+      "pero puede ser considerado como parte de los términos \"range testing\" o \"boundary testing\" en ciertos contextos"
+    ]
+  },
+  "BLOQUEO O ENMARCADO": {
+    "traduccion": "Bracketing",
+    "pronunciacion": "ˈbrækɪtɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "En términos simples, en microbiología y análisis de medicamentos, bracketing es una estrategia para verificar si un análisis es válido en diferentes niveles. En lugar de probar cada punto intermedio, solo se analizan los valores más altos y bajos, asegurando que todo el rango esté cubierto.",
+    "sinonimos": [
+      "En este contexto",
+      "\"bracketing\" no tiene sinónimos comunes exactos",
+      "pero puede ser considerado como parte de los términos \"range testing\" o \"boundary testing\" en ciertos contextos"
+    ]
+  },
+  "BILAYER": {
+    "traduccion": "Bicapa",
+    "pronunciacion": "ˈbaɪˌleɪər",
+    "categoria": "Sustantivo / adjetivo",
+    "definicion": "En farmacología, bicapa se refiere a una tableta o cápsula con dos capas que liberan ingredientes activos en momentos diferentes o en distintas regiones del tracto digestivo. Se utiliza en formulaciones de liberación prolongada o diferenciada, permitiendo una mejor absorción y eficacia del medicamento.",
+    "sinonimos": [
+      "Double-layer",
+      "two-layer tablet"
+    ]
+  },
+  "BICAPA": {
+    "traduccion": "Bilayer",
+    "pronunciacion": "ˈbaɪˌleɪər",
+    "categoria": "Sustantivo / adjetivo",
+    "definicion": "En farmacología, bicapa se refiere a una tableta o cápsula con dos capas que liberan ingredientes activos en momentos diferentes o en distintas regiones del tracto digestivo. Se utiliza en formulaciones de liberación prolongada o diferenciada, permitiendo una mejor absorción y eficacia del medicamento.",
+    "sinonimos": [
+      "Double-layer",
+      "two-layer tablet"
+    ]
+  },
+  "BIREFRINGENCE": {
+    "traduccion": "Birrefringencia",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "La birrefringencia es el fenómeno óptico en el que un material divide una onda luminosa en dos componentes con diferentes velocidades, lo que resulta en una doble imagen en los análisis farmacéuticos, la birrefringencia se utiliza para caracterizar la estructura y la calidad de cristales y sustancias en medicamentos, especialmente en el estudio de sus propiedades ópticas",
+    "definicion": "Synonyms: Double refraction.",
+    "sinonimos": []
+  },
+  "BIRREFRINGENCIA": {
+    "traduccion": "Birefringence",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "La birrefringencia es el fenómeno óptico en el que un material divide una onda luminosa en dos componentes con diferentes velocidades, lo que resulta en una doble imagen en los análisis farmacéuticos, la birrefringencia se utiliza para caracterizar la estructura y la calidad de cristales y sustancias en medicamentos, especialmente en el estudio de sus propiedades ópticas",
+    "definicion": "Synonyms: Double refraction.",
+    "sinonimos": []
+  },
+  "BROTH": {
+    "traduccion": "Caldo",
+    "pronunciacion": "brɒθ",
+    "categoria": "Sustantivo",
+    "definicion": "El caldo es un medio líquido utilizado para cultivar microorganismos en el laboratorio. Se utiliza en microbiología para pruebas de esterilidad y pruebas microbiológicas de medicamentos.",
+    "sinonimos": [
+      "Medium",
+      "liquid culture"
+    ]
+  },
+  "CALDO": {
+    "traduccion": "Broth",
+    "pronunciacion": "brɒθ",
+    "categoria": "Sustantivo",
+    "definicion": "El caldo es un medio líquido utilizado para cultivar microorganismos en el laboratorio. Se utiliza en microbiología para pruebas de esterilidad y pruebas microbiológicas de medicamentos.",
+    "sinonimos": [
+      "Medium",
+      "liquid culture"
+    ]
+  },
+  "CALIBRATION": {
+    "traduccion": "Calibración",
+    "pronunciacion": "kælɪˈbreɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "El proceso de ajustar y verificar la precisión de un instrumento mediante la comparación con un estándar conocido para asegurar que mide correctamente.",
+    "sinonimos": [
+      "Adjustment",
+      "standardization",
+      "tuning"
+    ]
+  },
+  "CALIBRACIÓN": {
+    "traduccion": "Calibration",
+    "pronunciacion": "kælɪˈbreɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "El proceso de ajustar y verificar la precisión de un instrumento mediante la comparación con un estándar conocido para asegurar que mide correctamente.",
+    "sinonimos": [
+      "Adjustment",
+      "standardization",
+      "tuning"
+    ]
+  },
+  "CALIBRATION CURVE": {
+    "traduccion": "Curva de calibración",
+    "pronunciacion": "kælɪˈbreɪʃən kɜːrv",
+    "categoria": "Sustantivo",
+    "definicion": "Gráfico utilizado en análisis cuantitativos para correlacionar la respuesta de un instrumento con la concentración conocida de una sustancia.",
+    "sinonimos": [
+      "Standard curve",
+      "calibration graph",
+      "reference plot"
+    ]
+  },
+  "CURVA DE CALIBRACIÓN": {
+    "traduccion": "Calibration Curve",
+    "pronunciacion": "kælɪˈbreɪʃən kɜːrv",
+    "categoria": "Sustantivo",
+    "definicion": "Gráfico utilizado en análisis cuantitativos para correlacionar la respuesta de un instrumento con la concentración conocida de una sustancia.",
+    "sinonimos": [
+      "Standard curve",
+      "calibration graph",
+      "reference plot"
+    ]
+  },
+  "CARRYOVER": {
+    "traduccion": "Arrastre",
+    "pronunciacion": "ˈkæriˌoʊvər",
+    "categoria": "Sustantivo",
+    "definicion": "El fenómeno por el cual una pequeña cantidad de una sustancia de una muestra anterior se transfiere a una muestra posterior, afectando los resultados.",
+    "sinonimos": [
+      "Residual transfer",
+      "cross-contamination",
+      "leftover"
+    ]
+  },
+  "ARRASTRE": {
+    "traduccion": "Carryover",
+    "pronunciacion": "ˈkæriˌoʊvər",
+    "categoria": "Sustantivo",
+    "definicion": "El fenómeno por el cual una pequeña cantidad de una sustancia de una muestra anterior se transfiere a una muestra posterior, afectando los resultados.",
+    "sinonimos": [
+      "Residual transfer",
+      "cross-contamination",
+      "leftover"
+    ]
+  },
+  "CENTRIFUGE MACHINE": {
+    "traduccion": "Centrífuga",
+    "pronunciacion": "ˈsɛntrɪfjuːdʒ məˈʃiːn",
+    "categoria": "Sustantivo",
+    "definicion": "Equipo utilizado para separar componentes de una mezcla mediante la rotación rápida, aprovechando la fuerza centrífuga para separar las partículas por densidad.",
+    "sinonimos": [
+      "Centrifuge",
+      "spinning machine",
+      "separator"
+    ]
+  },
+  "CENTRÍFUGA": {
+    "traduccion": "Centrifuge Machine",
+    "pronunciacion": "ˈsɛntrɪfjuːdʒ məˈʃiːn",
+    "categoria": "Sustantivo",
+    "definicion": "Equipo utilizado para separar componentes de una mezcla mediante la rotación rápida, aprovechando la fuerza centrífuga para separar las partículas por densidad.",
+    "sinonimos": [
+      "Centrifuge",
+      "spinning machine",
+      "separator"
+    ]
+  },
+  "COLORCON MAKE": {
+    "traduccion": "Colorcon Make",
+    "pronunciacion": "kəˈlɔːrkən meɪk",
+    "categoria": "Sustantivo",
+    "definicion": "Colorcon es una marca conocida en la industria farmacéutica que produce excipientes, como recubrimientos para tabletas y cápsulas.",
+    "sinonimos": [
+      "Colorcon products",
+      "Colorcon excipients"
+    ]
+  },
+  "COLONY FORMING UNIT (CFU)": {
+    "traduccion": "Unidad formadora de colonias (UFC)",
+    "pronunciacion": "kɒləni ˈfɔːrmɪŋ ˈjuːnɪt",
+    "categoria": "Sustantivo",
+    "definicion": "Unidad utilizada para estimar el número de microorganismos viables en una muestra. Un CFU representa una célula o grupo de células que puede formar una colonia.",
+    "sinonimos": []
+  },
+  "UNIDAD FORMADORA DE COLONIAS (UFC)": {
+    "traduccion": "Colony Forming Unit (CFU)",
+    "pronunciacion": "kɒləni ˈfɔːrmɪŋ ˈjuːnɪt",
+    "categoria": "Sustantivo",
+    "definicion": "Unidad utilizada para estimar el número de microorganismos viables en una muestra. Un CFU representa una célula o grupo de células que puede formar una colonia.",
+    "sinonimos": []
+  },
+  "COLUMN PACKING SIZE": {
+    "traduccion": "Tamaño del empaque de la columna",
+    "pronunciacion": "ˈkɒləm ˈpækɪŋ saɪz",
+    "categoria": "Sustantivo",
+    "definicion": "Se refiere al volumen o tamaño de la columna cromatográfica en la que se realiza la separación de compuestos.",
+    "sinonimos": [
+      "Particle size",
+      "packing material size",
+      "column granularity"
+    ]
+  },
+  "TAMAÑO DEL EMPAQUE DE LA COLUMNA": {
+    "traduccion": "Column Packing Size",
+    "pronunciacion": "ˈkɒləm ˈpækɪŋ saɪz",
+    "categoria": "Sustantivo",
+    "definicion": "Se refiere al volumen o tamaño de la columna cromatográfica en la que se realiza la separación de compuestos.",
+    "sinonimos": [
+      "Particle size",
+      "packing material size",
+      "column granularity"
+    ]
+  },
+  "CONICAL FLASK": {
+    "traduccion": "Matraz cónico",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Un matraz cónico es un frasco de laboratorio de base plana y cuello estrecho con una forma cónica se utiliza para mezclar soluciones, calentar líquidos o como recipiente para reacciones químicas en laboratorio",
+    "definicion": "Synonyms: Conical flask, Erlenmeyer flask.",
+    "sinonimos": []
+  },
+  "MATRAZ CÓNICO": {
+    "traduccion": "Conical Flask",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Un matraz cónico es un frasco de laboratorio de base plana y cuello estrecho con una forma cónica se utiliza para mezclar soluciones, calentar líquidos o como recipiente para reacciones químicas en laboratorio",
+    "definicion": "Synonyms: Conical flask, Erlenmeyer flask.",
+    "sinonimos": []
+  },
+  "CORE TABLET": {
+    "traduccion": "Tableta núcleo",
+    "pronunciacion": "kɔːr ˈtæblət",
+    "categoria": "Sustantivo",
+    "definicion": "El núcleo de una tableta es la parte central que contiene el principio activo, a menudo recubierto por una capa externa para controlar la liberación del medicamento o mejorar su estabilidad.",
+    "sinonimos": [
+      "Tablet core",
+      "base tablet",
+      "compressed core"
+    ]
+  },
+  "TABLETA NÚCLEO": {
+    "traduccion": "Core Tablet",
+    "pronunciacion": "kɔːr ˈtæblət",
+    "categoria": "Sustantivo",
+    "definicion": "El núcleo de una tableta es la parte central que contiene el principio activo, a menudo recubierto por una capa externa para controlar la liberación del medicamento o mejorar su estabilidad.",
+    "sinonimos": [
+      "Tablet core",
+      "base tablet",
+      "compressed core"
+    ]
+  },
+  "CULTURES": {
+    "traduccion": "Cultivos",
+    "pronunciacion": "ˈkʌl.tʃərz",
+    "categoria": "Sustantivo",
+    "definicion": "Los cultivos son el crecimiento de microorganismos en un medio adecuado bajo condiciones controladas. Se utilizan en microbiología para estudiar las características de bacterias, hongos o virus, así como para pruebas de sensibilidad antimicrobiana y producción de biomoléculas.",
+    "sinonimos": [
+      "Cultures",
+      "Microbial cultures"
+    ]
+  },
+  "CULTIVOS": {
+    "traduccion": "Cultures",
+    "pronunciacion": "ˈkʌl.tʃərz",
+    "categoria": "Sustantivo",
+    "definicion": "Los cultivos son el crecimiento de microorganismos en un medio adecuado bajo condiciones controladas. Se utilizan en microbiología para estudiar las características de bacterias, hongos o virus, así como para pruebas de sensibilidad antimicrobiana y producción de biomoléculas.",
+    "sinonimos": [
+      "Cultures",
+      "Microbial cultures"
+    ]
+  },
+  "DECREASING NORMALITY STRENGTH": {
+    "traduccion": "Disminución de la normalidad",
+    "pronunciacion": "dɪˈkriːsɪŋ nɔːˈmælɪti strɛŋθ",
+    "categoria": "Expresión",
+    "definicion": "Proceso de reducir la concentración de una solución normal.",
+    "sinonimos": [
+      "Dilution",
+      "lowering concentration",
+      "reducing normality"
+    ]
+  },
+  "DISMINUCIÓN DE LA NORMALIDAD": {
+    "traduccion": "Decreasing Normality Strength",
+    "pronunciacion": "dɪˈkriːsɪŋ nɔːˈmælɪti strɛŋθ",
+    "categoria": "Expresión",
+    "definicion": "Proceso de reducir la concentración de una solución normal.",
+    "sinonimos": [
+      "Dilution",
+      "lowering concentration",
+      "reducing normality"
+    ]
+  },
+  "DEEMED": {
+    "traduccion": "Considerado",
+    "pronunciacion": "diːmd",
+    "categoria": "Verbo (pasado de \"deem\")",
+    "definicion": "Significa ser considerado o evaluado de una manera específica según ciertas normas o juicios. En el contexto científico, se usa para describir cómo se considera la calidad de una muestra, un procedimiento o un resultado en función de ciertos criterios.",
+    "sinonimos": [
+      "Deemed",
+      "Regarded",
+      "Considered"
+    ]
+  },
+  "CONSIDERADO": {
+    "traduccion": "Deemed",
+    "pronunciacion": "diːmd",
+    "categoria": "Verbo (pasado de \"deem\")",
+    "definicion": "Significa ser considerado o evaluado de una manera específica según ciertas normas o juicios. En el contexto científico, se usa para describir cómo se considera la calidad de una muestra, un procedimiento o un resultado en función de ciertos criterios.",
+    "sinonimos": [
+      "Deemed",
+      "Regarded",
+      "Considered"
+    ]
+  },
+  "DEVIATIONS": {
+    "traduccion": "Desviaciones",
+    "pronunciacion": "ˌdiːvɪˈeɪʃənz",
+    "categoria": "Sustantivo",
+    "definicion": "Desviaciones son las diferencias entre los resultados observados y los valores esperados o establecidos. En control de calidad, las desviaciones pueden indicar problemas en el proceso o en los resultados.",
+    "sinonimos": [
+      "Variations",
+      "discrepancies",
+      "divergences"
+    ]
+  },
+  "DESVIACIONES": {
+    "traduccion": "Deviations",
+    "pronunciacion": "ˌdiːvɪˈeɪʃənz",
+    "categoria": "Sustantivo",
+    "definicion": "Desviaciones son las diferencias entre los resultados observados y los valores esperados o establecidos. En control de calidad, las desviaciones pueden indicar problemas en el proceso o en los resultados.",
+    "sinonimos": [
+      "Variations",
+      "discrepancies",
+      "divergences"
+    ]
+  },
+  "DGM (DIRECTOR GENERAL DE MEDICAMENTOS)": {
+    "traduccion": "Director General de Medicamentos",
+    "pronunciacion": "diː dʒiː ɛm",
+    "categoria": "Sustantivo",
+    "definicion": "Cargo o entidad responsable de la supervisión y regulación de los productos farmacéuticos, medicamentos y su distribución dentro de un país o región.",
+    "sinonimos": []
+  },
+  "DIRECTOR GENERAL DE MEDICAMENTOS": {
+    "traduccion": "DGM (Director General de Medicamentos)",
+    "pronunciacion": "diː dʒiː ɛm",
+    "categoria": "Sustantivo",
+    "definicion": "Cargo o entidad responsable de la supervisión y regulación de los productos farmacéuticos, medicamentos y su distribución dentro de un país o región.",
+    "sinonimos": []
+  },
+  "DOSAGE FORM": {
+    "traduccion": "Forma farmacéutica",
+    "pronunciacion": "ˈdəʊsɪdʒ fɔːrm",
+    "categoria": "Sustantivo",
+    "definicion": "Forma en que se presenta un medicamento, como tabletas, cápsulas, soluciones, entre otros.",
+    "sinonimos": [
+      "Drug form",
+      "pharmaceutical form",
+      "medication type"
+    ]
+  },
+  "FORMA FARMACÉUTICA": {
+    "traduccion": "Dosage Form",
+    "pronunciacion": "ˈdəʊsɪdʒ fɔːrm",
+    "categoria": "Sustantivo",
+    "definicion": "Forma en que se presenta un medicamento, como tabletas, cápsulas, soluciones, entre otros.",
+    "sinonimos": [
+      "Drug form",
+      "pharmaceutical form",
+      "medication type"
+    ]
+  },
+  "DIHYDROGEN ORTHOPHOSPHATE": {
+    "traduccion": "Fosfato de dihidrógeno",
+    "pronunciacion": "El fosfato de dihidrógeno es un anión derivado del ácido fosfórico. Su fórmula química es H₂PO₄⁻ y se utiliza en la preparación de soluciones tampón en experimentos de laboratorio, especialmente en análisis químico y microbiológico.",
+    "categoria": "Synonyms: dihydrogen phosphate",
+    "definicion": "Diluent\nDiluyente\n[dɪˈluːənt]\nSustantivo.",
+    "sinonimos": []
+  },
+  "FOSFATO DE DIHIDRÓGENO": {
+    "traduccion": "Dihydrogen orthophosphate",
+    "pronunciacion": "El fosfato de dihidrógeno es un anión derivado del ácido fosfórico. Su fórmula química es H₂PO₄⁻ y se utiliza en la preparación de soluciones tampón en experimentos de laboratorio, especialmente en análisis químico y microbiológico.",
+    "categoria": "Synonyms: dihydrogen phosphate",
+    "definicion": "Diluent\nDiluyente\n[dɪˈluːənt]\nSustantivo.",
+    "sinonimos": []
+  },
+  "ENTERIC QUOTED": {
+    "traduccion": "Cotizado entérico",
+    "pronunciacion": "ˈɛntɛrɪk ˈkwoʊtɪd",
+    "categoria": "Adjetivo",
+    "definicion": "En farmacología, \"enteric\" se refiere a la capa protectora que recubre ciertos medicamentos, diseñada para protegerlos del ácido gástrico. \"Enteric quoted\" puede referirse a una especificación o estándar relacionado con la formulación de medicamentos entéricos.",
+    "sinonimos": [
+      "Enteric-coated",
+      "enteric formulation"
+    ]
+  },
+  "COTIZADO ENTÉRICO": {
+    "traduccion": "Enteric quoted",
+    "pronunciacion": "ˈɛntɛrɪk ˈkwoʊtɪd",
+    "categoria": "Adjetivo",
+    "definicion": "En farmacología, \"enteric\" se refiere a la capa protectora que recubre ciertos medicamentos, diseñada para protegerlos del ácido gástrico. \"Enteric quoted\" puede referirse a una especificación o estándar relacionado con la formulación de medicamentos entéricos.",
+    "sinonimos": [
+      "Enteric-coated",
+      "enteric formulation"
+    ]
+  },
+  "EXTENDED RELEASE": {
+    "traduccion": "Liberación prolongada",
+    "pronunciacion": "ɪkˈstɛndɪd rɪˈliːs",
+    "categoria": "Sustantivo / adjetivo",
+    "definicion": "Los medicamentos de liberación prolongada están formulados para liberar el principio activo de manera gradual a lo largo del tiempo, lo que permite una administración menos frecuente. Se utilizan en tratamientos a largo plazo, como en medicamentos para el dolor, la hipertensión o trastornos neurológicos.",
+    "sinonimos": [
+      "Sustained release",
+      "controlled release",
+      "prolonged release"
+    ]
+  },
+  "LIBERACIÓN PROLONGADA": {
+    "traduccion": "Extended release",
+    "pronunciacion": "ɪkˈstɛndɪd rɪˈliːs",
+    "categoria": "Sustantivo / adjetivo",
+    "definicion": "Los medicamentos de liberación prolongada están formulados para liberar el principio activo de manera gradual a lo largo del tiempo, lo que permite una administración menos frecuente. Se utilizan en tratamientos a largo plazo, como en medicamentos para el dolor, la hipertensión o trastornos neurológicos.",
+    "sinonimos": [
+      "Sustained release",
+      "controlled release",
+      "prolonged release"
+    ]
+  },
+  "FDA (FOOD AND DRUG ADMINISTRATION)": {
+    "traduccion": "Administración de Alimentos y Medicamentos",
+    "pronunciacion": "ˈɛf diː ˈeɪ",
+    "categoria": "Sustantivo",
+    "definicion": "Agencia gubernamental de Estados Unidos encargada de la regulación y supervisión de alimentos, medicamentos, dispositivos médicos y otros productos relacionados con la salud.",
+    "sinonimos": []
+  },
+  "ADMINISTRACIÓN DE ALIMENTOS Y MEDICAMENTOS": {
+    "traduccion": "FDA (Food and Drug Administration)",
+    "pronunciacion": "ˈɛf diː ˈeɪ",
+    "categoria": "Sustantivo",
+    "definicion": "Agencia gubernamental de Estados Unidos encargada de la regulación y supervisión de alimentos, medicamentos, dispositivos médicos y otros productos relacionados con la salud.",
+    "sinonimos": []
+  },
+  "FORCED DEGRADATION": {
+    "traduccion": "Degradación forzada",
+    "pronunciacion": "ˈfɔːrst ˌdɛɡrəˈdeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Pruebas diseñadas para evaluar la estabilidad de un producto bajo condiciones extremas, como calor, luz, humedad o agentes oxidantes.",
+    "sinonimos": [
+      "Stress testing",
+      "accelerated degradation",
+      "stability testing"
+    ]
+  },
+  "DEGRADACIÓN FORZADA": {
+    "traduccion": "Forced Degradation",
+    "pronunciacion": "ˈfɔːrst ˌdɛɡrəˈdeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Pruebas diseñadas para evaluar la estabilidad de un producto bajo condiciones extremas, como calor, luz, humedad o agentes oxidantes.",
+    "sinonimos": [
+      "Stress testing",
+      "accelerated degradation",
+      "stability testing"
+    ]
+  },
+  "FLUID BED DRYER": {
+    "traduccion": "Secador de lecho fluidizado",
+    "pronunciacion": "ˈfluːɪd bɛd ˈdraɪər",
+    "categoria": "Sustantivo",
+    "definicion": "Un secador de lecho fluidizado es un equipo empleado en la industria farmacéutica para la eliminación de humedad en productos en polvo o gránulos. Se usa en la producción de comprimidos, cápsulas y otros productos sólidos farmacéuticos.",
+    "sinonimos": [
+      "Fluidized bed dryer",
+      "air bed dryer",
+      "fluid bed processor"
+    ]
+  },
+  "SECADOR DE LECHO FLUIDIZADO": {
+    "traduccion": "Fluid bed dryer",
+    "pronunciacion": "ˈfluːɪd bɛd ˈdraɪər",
+    "categoria": "Sustantivo",
+    "definicion": "Un secador de lecho fluidizado es un equipo empleado en la industria farmacéutica para la eliminación de humedad en productos en polvo o gránulos. Se usa en la producción de comprimidos, cápsulas y otros productos sólidos farmacéuticos.",
+    "sinonimos": [
+      "Fluidized bed dryer",
+      "air bed dryer",
+      "fluid bed processor"
+    ]
+  },
+  "FUNGISTASIS": {
+    "traduccion": "Fungistático",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El fungistático es la propiedad de una sustancia que inhibe el crecimiento de hongos, sin necesariamente matarlos se usa en microbiología para describir la acción de ciertos medicamentos antifúngicos que detienen la proliferación de hongos, pero no necesariamente eliminan los organismos",
+    "definicion": "Synonyms: Fungistasis, Antifungal inhibition.",
+    "sinonimos": []
+  },
+  "FUNGISTÁTICO": {
+    "traduccion": "Fungistasis",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El fungistático es la propiedad de una sustancia que inhibe el crecimiento de hongos, sin necesariamente matarlos se usa en microbiología para describir la acción de ciertos medicamentos antifúngicos que detienen la proliferación de hongos, pero no necesariamente eliminan los organismos",
+    "definicion": "Synonyms: Fungistasis, Antifungal inhibition.",
+    "sinonimos": []
+  },
+  "FREEZE-DRYING": {
+    "traduccion": "Liofilización",
+    "pronunciacion": "ˈfriːz ˈdraɪɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de deshidratación en el que el agua se elimina de una sustancia congelada mediante sublimación, utilizado para conservar productos biológicos o farmacéuticos.",
+    "sinonimos": [
+      "Lyophilization",
+      "sublimation drying",
+      "cryodesiccation"
+    ]
+  },
+  "LIOFILIZACIÓN": {
+    "traduccion": "Freeze-Drying",
+    "pronunciacion": "ˈfriːz ˈdraɪɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de deshidratación en el que el agua se elimina de una sustancia congelada mediante sublimación, utilizado para conservar productos biológicos o farmacéuticos.",
+    "sinonimos": [
+      "Lyophilization",
+      "sublimation drying",
+      "cryodesiccation"
+    ]
+  },
+  "GARMENTS": {
+    "traduccion": "Prendas de vestir",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Las prendas de vestir son ropa o equipos de protección utilizados en un laboratorio o ambiente controlado para proteger al personal de posibles contaminantes pueden incluir batas, guantes y mascarillas",
+    "definicion": "Synonyms: Garments, Clothing.",
+    "sinonimos": []
+  },
+  "PRENDAS DE VESTIR": {
+    "traduccion": "Garments",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Las prendas de vestir son ropa o equipos de protección utilizados en un laboratorio o ambiente controlado para proteger al personal de posibles contaminantes pueden incluir batas, guantes y mascarillas",
+    "definicion": "Synonyms: Garments, Clothing.",
+    "sinonimos": []
+  },
+  "GLASS ELECTRODE": {
+    "traduccion": "Electrodo de vidrio",
+    "pronunciacion": "ˈɡlæs ɪˈlɛktroʊd",
+    "categoria": "Sustantivo",
+    "definicion": "El electrodo de vidrio se utiliza en mediciones de pH. En los laboratorios farmacéuticos, se emplea para determinar la acidez o basicidad de las soluciones y es esencial en la validación de ciertos procesos de producción de medicamentos.",
+    "sinonimos": [
+      "pH electrode",
+      "glass pH probe"
+    ]
+  },
+  "ELECTRODO DE VIDRIO": {
+    "traduccion": "Glass electrode",
+    "pronunciacion": "ˈɡlæs ɪˈlɛktroʊd",
+    "categoria": "Sustantivo",
+    "definicion": "El electrodo de vidrio se utiliza en mediciones de pH. En los laboratorios farmacéuticos, se emplea para determinar la acidez o basicidad de las soluciones y es esencial en la validación de ciertos procesos de producción de medicamentos.",
+    "sinonimos": [
+      "pH electrode",
+      "glass pH probe"
+    ]
+  },
+  "GRANULATION": {
+    "traduccion": "Granulación",
+    "pronunciacion": "ˌɡrænjʊˈleɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso en la fabricación de tabletas y otros productos farmacéuticos en el que se forman pequeños gránulos a partir de una mezcla de ingredientes.",
+    "sinonimos": [
+      "Particle formation",
+      "agglomeration",
+      "granule preparation"
+    ]
+  },
+  "GRANULACIÓN": {
+    "traduccion": "Granulation",
+    "pronunciacion": "ˌɡrænjʊˈleɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso en la fabricación de tabletas y otros productos farmacéuticos en el que se forman pequeños gránulos a partir de una mezcla de ingredientes.",
+    "sinonimos": [
+      "Particle formation",
+      "agglomeration",
+      "granule preparation"
+    ]
+  },
+  "HAZARD ANALYSIS": {
+    "traduccion": "Análisis de peligros",
+    "pronunciacion": "ˈhæzərd əˈnælɪsɪs",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de identificar, evaluar y controlar los riesgos que pueden afectar la seguridad de los productos, especialmente en la industria alimentaria o farmacéutica.",
+    "sinonimos": [
+      "Risk assessment",
+      "danger evaluation",
+      "safety analysis"
+    ]
+  },
+  "ANÁLISIS DE PELIGROS": {
+    "traduccion": "Hazard Analysis",
+    "pronunciacion": "ˈhæzərd əˈnælɪsɪs",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de identificar, evaluar y controlar los riesgos que pueden afectar la seguridad de los productos, especialmente en la industria alimentaria o farmacéutica.",
+    "sinonimos": [
+      "Risk assessment",
+      "danger evaluation",
+      "safety analysis"
+    ]
+  },
+  "HEREIN": {
+    "traduccion": "En este documento",
+    "pronunciacion": "ˈhɪərɪn",
+    "categoria": "Adverbio",
+    "definicion": "\"Herein\" es un término formal utilizado en documentos técnicos, contratos y protocolos de investigación para referirse a algo dentro del mismo texto o documento. En la documentación de ensayos, se refiere a las especificaciones mencionadas en el mismo.",
+    "sinonimos": [
+      "In this document",
+      "in this context"
+    ]
+  },
+  "EN ESTE DOCUMENTO": {
+    "traduccion": "Herein",
+    "pronunciacion": "ˈhɪərɪn",
+    "categoria": "Adverbio",
+    "definicion": "\"Herein\" es un término formal utilizado en documentos técnicos, contratos y protocolos de investigación para referirse a algo dentro del mismo texto o documento. En la documentación de ensayos, se refiere a las especificaciones mencionadas en el mismo.",
+    "sinonimos": [
+      "In this document",
+      "in this context"
+    ]
+  },
+  "HOMOLOGATION": {
+    "traduccion": "Homologación",
+    "pronunciacion": "həˌmɒləˈɡeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de validación y aprobación de un producto, equipo o proceso para asegurar que cumple con los estándares y normativas establecidas, especialmente en el contexto de medicamentos o dispositivos médicos.",
+    "sinonimos": [
+      "Standardization",
+      "certification",
+      "approval"
+    ]
+  },
+  "HOMOLOGACIÓN": {
+    "traduccion": "Homologation",
+    "pronunciacion": "həˌmɒləˈɡeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de validación y aprobación de un producto, equipo o proceso para asegurar que cumple con los estándares y normativas establecidas, especialmente en el contexto de medicamentos o dispositivos médicos.",
+    "sinonimos": [
+      "Standardization",
+      "certification",
+      "approval"
+    ]
+  },
+  "HPLC (HIGH-PERFORMANCE LIQUID CHROMATOGRAPHY)": {
+    "traduccion": "Cromatografía líquida de alta resolución",
+    "pronunciacion": "ˈhaɪ ˈpɜːrfɔːrməns ˈlɪkwɪd krəˈmætəɡrəfi",
+    "categoria": "Sustantivo",
+    "definicion": "Técnica analítica utilizada para separar, identificar y cuantificar componentes en una mezcla líquida.",
+    "sinonimos": []
+  },
+  "CROMATOGRAFÍA LÍQUIDA DE ALTA RESOLUCIÓN": {
+    "traduccion": "HPLC (High-Performance Liquid Chromatography)",
+    "pronunciacion": "ˈhaɪ ˈpɜːrfɔːrməns ˈlɪkwɪd krəˈmætəɡrəfi",
+    "categoria": "Sustantivo",
+    "definicion": "Técnica analítica utilizada para separar, identificar y cuantificar componentes en una mezcla líquida.",
+    "sinonimos": []
+  },
+  "IMPELLER LOAD": {
+    "traduccion": "Carga del impulsor",
+    "pronunciacion": "Sustantivo",
+    "categoria": "En la industria farmacéutica, la carga del impulsor debe ser controlada para garantizar que el proceso de mezcla se realice de manera eficiente, asegurando una distribución uniforme de los ingredientes activos y excipientes en la formulación",
+    "definicion": "Synonyms: Impeller load capacity, agitator load.",
+    "sinonimos": []
+  },
+  "CARGA DEL IMPULSOR": {
+    "traduccion": "Impeller load",
+    "pronunciacion": "Sustantivo",
+    "categoria": "En la industria farmacéutica, la carga del impulsor debe ser controlada para garantizar que el proceso de mezcla se realice de manera eficiente, asegurando una distribución uniforme de los ingredientes activos y excipientes en la formulación",
+    "definicion": "Synonyms: Impeller load capacity, agitator load.",
+    "sinonimos": []
+  },
+  "IMPURITY": {
+    "traduccion": "Impureza",
+    "pronunciacion": "ɪmˈpjʊərɪti",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia no deseada que está presente en un producto o material, afectando su calidad o pureza.",
+    "sinonimos": [
+      "Contaminant",
+      "foreign substance",
+      "adulterant"
+    ]
+  },
+  "IMPUREZA": {
+    "traduccion": "Impurity",
+    "pronunciacion": "ɪmˈpjʊərɪti",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia no deseada que está presente en un producto o material, afectando su calidad o pureza.",
+    "sinonimos": [
+      "Contaminant",
+      "foreign substance",
+      "adulterant"
+    ]
+  },
+  "INCREASING NORMALITY STRENGTH": {
+    "traduccion": "Aumento de la normalidad",
+    "pronunciacion": "ɪnˈkriːsɪŋ nɔːˈmælɪti strɛŋθ",
+    "categoria": "Expresión",
+    "definicion": "Proceso de incrementar la concentración de una solución normal en términos de equivalentes de soluto por litro de solución.",
+    "sinonimos": [
+      "Concentration increase",
+      "strengthening normality",
+      "enhancing solution"
+    ]
+  },
+  "AUMENTO DE LA NORMALIDAD": {
+    "traduccion": "Increasing Normality Strength",
+    "pronunciacion": "ɪnˈkriːsɪŋ nɔːˈmælɪti strɛŋθ",
+    "categoria": "Expresión",
+    "definicion": "Proceso de incrementar la concentración de una solución normal en términos de equivalentes de soluto por litro de solución.",
+    "sinonimos": [
+      "Concentration increase",
+      "strengthening normality",
+      "enhancing solution"
+    ]
+  },
+  "ISOTHERMAL": {
+    "traduccion": "Isotérmico",
+    "pronunciacion": "ˌaɪsəʊˈθɜːrməl",
+    "categoria": "Adjetivo",
+    "definicion": "Proceso que ocurre a una temperatura constante. Se utiliza en contextos como la ingeniería y la química para describir reacciones o procesos que no experimentan cambios de temperatura.",
+    "sinonimos": [
+      "Constant temperature",
+      "uniform temperature",
+      "thermal stability"
+    ]
+  },
+  "ISOTÉRMICO": {
+    "traduccion": "Isothermal",
+    "pronunciacion": "ˌaɪsəʊˈθɜːrməl",
+    "categoria": "Adjetivo",
+    "definicion": "Proceso que ocurre a una temperatura constante. Se utiliza en contextos como la ingeniería y la química para describir reacciones o procesos que no experimentan cambios de temperatura.",
+    "sinonimos": [
+      "Constant temperature",
+      "uniform temperature",
+      "thermal stability"
+    ]
+  },
+  "LABEL CLAIM": {
+    "traduccion": "Contenido declarado",
+    "pronunciacion": "ˈleɪbl kleɪm",
+    "categoria": "Sustantivo",
+    "definicion": "La \"declaración en la etiqueta\" se refiere a las afirmaciones sobre el producto que aparecen en su etiqueta, como la concentración de los ingredientes activos, el uso recomendado, o la estabilidad del producto. Las autoridades regulatorias requieren que estas declaraciones sean verificadas por pruebas de calidad.",
+    "sinonimos": [
+      "Label statement",
+      "product claim"
+    ]
+  },
+  "CONTENIDO DECLARADO": {
+    "traduccion": "Label claim",
+    "pronunciacion": "ˈleɪbl kleɪm",
+    "categoria": "Sustantivo",
+    "definicion": "La \"declaración en la etiqueta\" se refiere a las afirmaciones sobre el producto que aparecen en su etiqueta, como la concentración de los ingredientes activos, el uso recomendado, o la estabilidad del producto. Las autoridades regulatorias requieren que estas declaraciones sean verificadas por pruebas de calidad.",
+    "sinonimos": [
+      "Label statement",
+      "product claim"
+    ]
+  },
+  "LAMINAR AIR FLOW": {
+    "traduccion": "Flujo laminar de aire",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El flujo laminar de aire es un tipo de circulación del aire que se mueve en líneas paralelas y constantes, sin turbulencia este flujo se utiliza en cabinas de flujo laminar para mantener un ambiente estéril y evitar la contaminación durante los experimentos microbiológicos",
+    "definicion": "Synonyms: Laminar air flow, Laminar flow.",
+    "sinonimos": []
+  },
+  "FLUJO LAMINAR DE AIRE": {
+    "traduccion": "Laminar Air Flow",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El flujo laminar de aire es un tipo de circulación del aire que se mueve en líneas paralelas y constantes, sin turbulencia este flujo se utiliza en cabinas de flujo laminar para mantener un ambiente estéril y evitar la contaminación durante los experimentos microbiológicos",
+    "definicion": "Synonyms: Laminar air flow, Laminar flow.",
+    "sinonimos": []
+  },
+  "LINEARITY": {
+    "traduccion": "Linealidad",
+    "pronunciacion": "lɪˈnɛəˌrɪti",
+    "categoria": "Sustantivo",
+    "definicion": "Capacidad de un sistema analítico para producir resultados directamente proporcionales a la concentración del analito en todo el rango de medición.",
+    "sinonimos": [
+      "Proportionality",
+      "straight-line relationship",
+      "uniformity"
+    ]
+  },
+  "LINEALIDAD": {
+    "traduccion": "Linearity",
+    "pronunciacion": "lɪˈnɛəˌrɪti",
+    "categoria": "Sustantivo",
+    "definicion": "Capacidad de un sistema analítico para producir resultados directamente proporcionales a la concentración del analito en todo el rango de medición.",
+    "sinonimos": [
+      "Proportionality",
+      "straight-line relationship",
+      "uniformity"
+    ]
+  },
+  "LOD (LIMIT OF DETECTION)": {
+    "traduccion": "Límite de detección",
+    "pronunciacion": "lɪmɪt ʌv dɪˈtɛkʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La concentración más baja de un analito que puede ser detectada de manera confiable por un método analítico, pero no necesariamente cuantificada con precisión.",
+    "sinonimos": []
+  },
+  "LÍMITE DE DETECCIÓN": {
+    "traduccion": "LOD (Limit of Detection)",
+    "pronunciacion": "lɪmɪt ʌv dɪˈtɛkʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La concentración más baja de un analito que puede ser detectada de manera confiable por un método analítico, pero no necesariamente cuantificada con precisión.",
+    "sinonimos": []
+  },
+  "LOQ (LIMIT OF QUANTIFICATION)": {
+    "traduccion": "Límite de cuantificación",
+    "pronunciacion": "lɪmɪt ʌv kwɒntɪfɪˈkeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La concentración más baja de un analito que puede ser cuantificada con precisión y exactitud por un método analítico.",
+    "sinonimos": []
+  },
+  "LÍMITE DE CUANTIFICACIÓN": {
+    "traduccion": "LOQ (Limit of Quantification)",
+    "pronunciacion": "lɪmɪt ʌv kwɒntɪfɪˈkeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La concentración más baja de un analito que puede ser cuantificada con precisión y exactitud por un método analítico.",
+    "sinonimos": []
+  },
+  "LOT NUMBER": {
+    "traduccion": "Número de lote",
+    "pronunciacion": "lɒt ˈnʌmbər",
+    "categoria": "Sustantivo",
+    "definicion": "Número asignado a una cantidad específica de un producto que se produce bajo condiciones uniformes, utilizado para su identificación y seguimiento a lo largo de la cadena de suministro.",
+    "sinonimos": [
+      "Batch code",
+      "production number",
+      "identification code"
+    ]
+  },
+  "MANIFOLD": {
+    "traduccion": "Múltiple / Manifold",
+    "pronunciacion": "ˈmæn.ɪ.foʊld",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología, un manifold es un dispositivo que permite distribuir o dirigir varios flujos de gas o líquido a múltiples lugares. En laboratorios microbiológicos, los manifolds se utilizan para inocular varias placas de Petri simultáneamente o para realizar filtraciones múltiples en análisis microbiológicos.",
+    "sinonimos": [
+      "Manifold",
+      "Distributor",
+      "Splitter"
+    ]
+  },
+  "MÚLTIPLE / MANIFOLD": {
+    "traduccion": "Manifold",
+    "pronunciacion": "ˈmæn.ɪ.foʊld",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología, un manifold es un dispositivo que permite distribuir o dirigir varios flujos de gas o líquido a múltiples lugares. En laboratorios microbiológicos, los manifolds se utilizan para inocular varias placas de Petri simultáneamente o para realizar filtraciones múltiples en análisis microbiológicos.",
+    "sinonimos": [
+      "Manifold",
+      "Distributor",
+      "Splitter"
+    ]
+  },
+  "MAJOR PEAK": {
+    "traduccion": "Pico principal",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "En el análisis cromatográfico, el \"pico principal\" se refiere a la señal más prominente en un cromatograma que indica la presencia de un compuesto en una muestra este pico es importante para identificar y cuantificar la sustancia en los ensayos",
+    "definicion": "Synonyms: Primary peak, dominant peak.",
+    "sinonimos": []
+  },
+  "PICO PRINCIPAL": {
+    "traduccion": "Major peak",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "En el análisis cromatográfico, el \"pico principal\" se refiere a la señal más prominente en un cromatograma que indica la presencia de un compuesto en una muestra este pico es importante para identificar y cuantificar la sustancia en los ensayos",
+    "definicion": "Synonyms: Primary peak, dominant peak.",
+    "sinonimos": []
+  },
+  "MEDIA": {
+    "traduccion": "Medio",
+    "pronunciacion": "ˈmiːdiəm",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología, el medio es una sustancia utilizada para cultivar microorganismos en un ambiente controlado. Puede ser sólido o líquido y está formulado para proporcionar los nutrientes necesarios para el crecimiento de bacterias, hongos u otros organismos.",
+    "sinonimos": [
+      "Medium",
+      "Culture medium"
+    ]
+  },
+  "MEDIO": {
+    "traduccion": "Media",
+    "pronunciacion": "ˈmiːdiəm",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología, el medio es una sustancia utilizada para cultivar microorganismos en un ambiente controlado. Puede ser sólido o líquido y está formulado para proporcionar los nutrientes necesarios para el crecimiento de bacterias, hongos u otros organismos.",
+    "sinonimos": [
+      "Medium",
+      "Culture medium"
+    ]
+  },
+  "METHOD ROBUSTNESS": {
+    "traduccion": "Robustez del método",
+    "pronunciacion": "ˈmɛθəd roʊˈbʌstnəs",
+    "categoria": "Sustantivo",
+    "definicion": "La capacidad de un método analítico para resistir pequeñas variaciones en las condiciones experimentales sin afectar significativamente los resultados.",
+    "sinonimos": []
+  },
+  "ROBUSTEZ DEL MÉTODO": {
+    "traduccion": "Method Robustness",
+    "pronunciacion": "ˈmɛθəd roʊˈbʌstnəs",
+    "categoria": "Sustantivo",
+    "definicion": "La capacidad de un método analítico para resistir pequeñas variaciones en las condiciones experimentales sin afectar significativamente los resultados.",
+    "sinonimos": []
+  },
+  "MICROBIAL LIMITS": {
+    "traduccion": "Límites microbianos",
+    "pronunciacion": "ˈmaɪkrəʊbiəl ˈlɪmɪts",
+    "categoria": "Sustantivo",
+    "definicion": "Valores establecidos que definen la cantidad máxima de microorganismos permitidos en un producto para asegurar su seguridad y calidad.",
+    "sinonimos": [
+      "Microbial thresholds",
+      "microbial contamination limits",
+      "allowable microbial levels"
+    ]
+  },
+  "LÍMITES MICROBIANOS": {
+    "traduccion": "Microbial Limits",
+    "pronunciacion": "ˈmaɪkrəʊbiəl ˈlɪmɪts",
+    "categoria": "Sustantivo",
+    "definicion": "Valores establecidos que definen la cantidad máxima de microorganismos permitidos en un producto para asegurar su seguridad y calidad.",
+    "sinonimos": [
+      "Microbial thresholds",
+      "microbial contamination limits",
+      "allowable microbial levels"
+    ]
+  },
+  "MICROBIAL TESTING": {
+    "traduccion": "Pruebas microbiológicas",
+    "pronunciacion": "ˈmaɪkrəʊbiəl ˈtɛstɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de evaluar la presencia y cantidad de microorganismos en una muestra, utilizado para asegurar que los productos sean seguros para su uso.",
+    "sinonimos": [
+      "Microbial analysis",
+      "microbial examination",
+      "microbiological testing"
+    ]
+  },
+  "PRUEBAS MICROBIOLÓGICAS": {
+    "traduccion": "Microbial Testing",
+    "pronunciacion": "ˈmaɪkrəʊbiəl ˈtɛstɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de evaluar la presencia y cantidad de microorganismos en una muestra, utilizado para asegurar que los productos sean seguros para su uso.",
+    "sinonimos": [
+      "Microbial analysis",
+      "microbial examination",
+      "microbiological testing"
+    ]
+  },
+  "MILKY WHITE": {
+    "traduccion": "Blanco Lechoso",
+    "pronunciacion": "ˈmɪlki waɪt",
+    "categoria": "Adjetivo",
+    "definicion": "Descripción de un color blanco opaco o turbio que tiene una apariencia similar a la leche.",
+    "sinonimos": []
+  },
+  "BLANCO LECHOSO": {
+    "traduccion": "Milky White",
+    "pronunciacion": "ˈmɪlki waɪt",
+    "categoria": "Adjetivo",
+    "definicion": "Descripción de un color blanco opaco o turbio que tiene una apariencia similar a la leche.",
+    "sinonimos": []
+  },
+  "MULTIMILL": {
+    "traduccion": "Multimill",
+    "pronunciacion": "ˈmʌltɪˌmɪl",
+    "categoria": "Sustantivo",
+    "definicion": "Un Multimill es un tipo de molino utilizado en la industria farmacéutica para triturar y pulverizar ingredientes activos y excipientes en partículas finas.",
+    "sinonimos": [
+      "Multi-purpose mill",
+      "universal mill",
+      "granulator mill"
+    ]
+  },
+  "NO LESS THAN (NLT)": {
+    "traduccion": "No menos de",
+    "pronunciacion": "noʊ lɛs ðæn",
+    "categoria": "Expresión",
+    "definicion": "Término utilizado en especificaciones y procedimientos para indicar que la cantidad o valor debe ser igual o superior a una cifra mínima establecida.",
+    "sinonimos": []
+  },
+  "NO MENOS DE": {
+    "traduccion": "No Less Than (NLT)",
+    "pronunciacion": "noʊ lɛs ðæn",
+    "categoria": "Expresión",
+    "definicion": "Término utilizado en especificaciones y procedimientos para indicar que la cantidad o valor debe ser igual o superior a una cifra mínima establecida.",
+    "sinonimos": []
+  },
+  "NO MORE THAN (NMT)": {
+    "traduccion": "No más de",
+    "pronunciacion": "noʊ mɔːr ðæn",
+    "categoria": "Expresión",
+    "definicion": "Término utilizado en especificaciones y procedimientos para indicar que la cantidad o valor no debe superar un límite máximo establecido.",
+    "sinonimos": []
+  },
+  "NO MÁS DE": {
+    "traduccion": "No More Than (NMT)",
+    "pronunciacion": "noʊ mɔːr ðæn",
+    "categoria": "Expresión",
+    "definicion": "Término utilizado en especificaciones y procedimientos para indicar que la cantidad o valor no debe superar un límite máximo establecido.",
+    "sinonimos": []
+  },
+  "OUTER CLOTHING": {
+    "traduccion": "Ropa exterior",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "La ropa exterior se refiere a la vestimenta que cubre la parte externa del cuerpo, generalmente usada como protección contra contaminantes o elementos del ambiente en laboratorios, se utiliza para evitar que los microorganismos o sustancias químicas entren en contacto con la ropa personal",
+    "definicion": "Synonyms: Outer clothing, Protective clothing.",
+    "sinonimos": []
+  },
+  "ROPA EXTERIOR": {
+    "traduccion": "Outer Clothing",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "La ropa exterior se refiere a la vestimenta que cubre la parte externa del cuerpo, generalmente usada como protección contra contaminantes o elementos del ambiente en laboratorios, se utiliza para evitar que los microorganismos o sustancias químicas entren en contacto con la ropa personal",
+    "definicion": "Synonyms: Outer clothing, Protective clothing.",
+    "sinonimos": []
+  },
+  "PADDLE": {
+    "traduccion": "Paleta",
+    "pronunciacion": "ˈpædəl",
+    "categoria": "Sustantivo",
+    "definicion": "Parte de un dispositivo utilizado en pruebas de disolución, que agita el medio de disolución en un recipiente para asegurar una disolución uniforme del producto.",
+    "sinonimos": [
+      "Stirrer",
+      "agitator",
+      "mixing blade"
+    ]
+  },
+  "PALETA": {
+    "traduccion": "Paddle",
+    "pronunciacion": "ˈpædəl",
+    "categoria": "Sustantivo",
+    "definicion": "Parte de un dispositivo utilizado en pruebas de disolución, que agita el medio de disolución en un recipiente para asegurar una disolución uniforme del producto.",
+    "sinonimos": [
+      "Stirrer",
+      "agitator",
+      "mixing blade"
+    ]
+  },
+  "PADDLE ASSEMBLY": {
+    "traduccion": "Conjunto de palas",
+    "pronunciacion": "ˈpædəl əˈsɛmbli",
+    "categoria": "Sustantivo",
+    "definicion": "Dispositivo utilizado en pruebas de disolución, compuesto por una pala que gira en un recipiente para agitar el medio de disolución.",
+    "sinonimos": [
+      "Stirring assembly",
+      "agitator unit",
+      "mixing setup"
+    ]
+  },
+  "CONJUNTO DE PALAS": {
+    "traduccion": "Paddle Assembly",
+    "pronunciacion": "ˈpædəl əˈsɛmbli",
+    "categoria": "Sustantivo",
+    "definicion": "Dispositivo utilizado en pruebas de disolución, compuesto por una pala que gira en un recipiente para agitar el medio de disolución.",
+    "sinonimos": [
+      "Stirring assembly",
+      "agitator unit",
+      "mixing setup"
+    ]
+  },
+  "PANCREATIC DIGEST OF CASEIN": {
+    "traduccion": "Digestión pancreática de la caseína",
+    "pronunciacion": "ˈpæŋkrɪætɪk dɪˈdʒɛst ʌv kəˈsiːn",
+    "categoria": "Sustantivo",
+    "definicion": "La digestión pancreática de la caseína es un proceso en el cual las enzimas del páncreas descomponen la proteína caseína, que se encuentra en la leche, en fragmentos más pequeños llamados péptidos. Este proceso se utiliza para crear medios de cultivo nutritivos en microbiología, favoreciendo el crecimiento de microorganismos.",
+    "sinonimos": [
+      "Pancreatic Digest of Casein"
+    ]
+  },
+  "DIGESTIÓN PANCREÁTICA DE LA CASEÍNA": {
+    "traduccion": "Pancreatic Digest of Casein",
+    "pronunciacion": "ˈpæŋkrɪætɪk dɪˈdʒɛst ʌv kəˈsiːn",
+    "categoria": "Sustantivo",
+    "definicion": "La digestión pancreática de la caseína es un proceso en el cual las enzimas del páncreas descomponen la proteína caseína, que se encuentra en la leche, en fragmentos más pequeños llamados péptidos. Este proceso se utiliza para crear medios de cultivo nutritivos en microbiología, favoreciendo el crecimiento de microorganismos.",
+    "sinonimos": [
+      "Pancreatic Digest of Casein"
+    ]
+  },
+  "PARTICULATE MATTER": {
+    "traduccion": "Materia particulada",
+    "pronunciacion": "ˈpɑːrtɪkjʊlət ˈmætər",
+    "categoria": "Sustantivo",
+    "definicion": "La materia particulada se refiere a las pequeñas partículas suspendidas en un líquido o gas. En la industria farmacéutica, se monitorean las partículas en los medicamentos inyectables o en los procesos de fabricación para asegurar que estén libres de contaminantes.",
+    "sinonimos": [
+      "Particulates",
+      "fine particles",
+      "dust"
+    ]
+  },
+  "MATERIA PARTICULADA": {
+    "traduccion": "Particulate matter",
+    "pronunciacion": "ˈpɑːrtɪkjʊlət ˈmætər",
+    "categoria": "Sustantivo",
+    "definicion": "La materia particulada se refiere a las pequeñas partículas suspendidas en un líquido o gas. En la industria farmacéutica, se monitorean las partículas en los medicamentos inyectables o en los procesos de fabricación para asegurar que estén libres de contaminantes.",
+    "sinonimos": [
+      "Particulates",
+      "fine particles",
+      "dust"
+    ]
+  },
+  "PEAK RESPONSE": {
+    "traduccion": "Respuesta del pico",
+    "pronunciacion": "piːk rɪˈspɒns",
+    "categoria": "Sustantivo",
+    "definicion": "En cromatografía o análisis espectroscópico, es la señal máxima obtenida en el detector correspondiente a la concentración del analito en una muestra.",
+    "sinonimos": [
+      "Maximum signal",
+      "peak intensity",
+      "highest response"
+    ]
+  },
+  "RESPUESTA DEL PICO": {
+    "traduccion": "Peak Response",
+    "pronunciacion": "piːk rɪˈspɒns",
+    "categoria": "Sustantivo",
+    "definicion": "En cromatografía o análisis espectroscópico, es la señal máxima obtenida en el detector correspondiente a la concentración del analito en una muestra.",
+    "sinonimos": [
+      "Maximum signal",
+      "peak intensity",
+      "highest response"
+    ]
+  },
+  "PEPTIC DIGEST OF SOYA-BEAN MEAL": {
+    "traduccion": "Digestión péptica de la harina de soja",
+    "pronunciacion": "ˈpɛptɪk dɪˈdʒɛst ʌv ˈsɔɪə ˈbiːn miːl",
+    "categoria": "Sustantivo",
+    "definicion": "La digestión péptica de la harina de soja se refiere a un proceso en el que las proteínas de la harina de soja se descomponen en péptidos más pequeños mediante la acción de enzimas pépticas. Este proceso se utiliza para preparar medios nutritivos en microbiología, promoviendo el crecimiento de microorganismos en cultivos.",
+    "sinonimos": [
+      "Peptic Digest of Soya-bean Meal"
+    ]
+  },
+  "DIGESTIÓN PÉPTICA DE LA HARINA DE SOJA": {
+    "traduccion": "Peptic Digest of Soya-bean Meal",
+    "pronunciacion": "ˈpɛptɪk dɪˈdʒɛst ʌv ˈsɔɪə ˈbiːn miːl",
+    "categoria": "Sustantivo",
+    "definicion": "La digestión péptica de la harina de soja se refiere a un proceso en el que las proteínas de la harina de soja se descomponen en péptidos más pequeños mediante la acción de enzimas pépticas. Este proceso se utiliza para preparar medios nutritivos en microbiología, promoviendo el crecimiento de microorganismos en cultivos.",
+    "sinonimos": [
+      "Peptic Digest of Soya-bean Meal"
+    ]
+  },
+  "PEPTONE": {
+    "traduccion": "Peptona",
+    "pronunciacion": "ˈpɛptəʊn",
+    "categoria": "Sustantivo",
+    "definicion": "Mezcla de péptidos derivados de proteínas que se utiliza como fuente de nutrientes en medios de cultivo microbiológicos.",
+    "sinonimos": [
+      "Protein extract",
+      "nitrogen source",
+      "amino acid mixture"
+    ]
+  },
+  "PEPTONA": {
+    "traduccion": "Peptone",
+    "pronunciacion": "ˈpɛptəʊn",
+    "categoria": "Sustantivo",
+    "definicion": "Mezcla de péptidos derivados de proteínas que se utiliza como fuente de nutrientes en medios de cultivo microbiológicos.",
+    "sinonimos": [
+      "Protein extract",
+      "nitrogen source",
+      "amino acid mixture"
+    ]
+  },
+  "PEPTONE SOLUTION": {
+    "traduccion": "Solución de peptona",
+    "pronunciacion": "ˈpɛp.toʊn səˈluː.ʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La solución de peptona es un medio nutritivo utilizado en microbiología que contiene peptonas, productos de la digestión de proteínas esenciales para el crecimiento de microorganismos. Se emplea para nutrir bacterias en cultivos microbiológicos.",
+    "sinonimos": [
+      "Peptone solution",
+      "Peptone broth"
+    ]
+  },
+  "SOLUCIÓN DE PEPTONA": {
+    "traduccion": "Peptone solution",
+    "pronunciacion": "ˈpɛp.toʊn səˈluː.ʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La solución de peptona es un medio nutritivo utilizado en microbiología que contiene peptonas, productos de la digestión de proteínas esenciales para el crecimiento de microorganismos. Se emplea para nutrir bacterias en cultivos microbiológicos.",
+    "sinonimos": [
+      "Peptone solution",
+      "Peptone broth"
+    ]
+  },
+  "PILOT BATCH": {
+    "traduccion": "Lote piloto",
+    "pronunciacion": "ˈpaɪlət bæʧ",
+    "categoria": "Sustantivo",
+    "definicion": "Lote de producción pequeño utilizado para probar y ajustar un proceso de fabricación antes de la producción a gran escala.",
+    "sinonimos": [
+      "Test batch",
+      "trial batch",
+      "experimental batch"
+    ]
+  },
+  "LOTE PILOTO": {
+    "traduccion": "Pilot Batch",
+    "pronunciacion": "ˈpaɪlət bæʧ",
+    "categoria": "Sustantivo",
+    "definicion": "Lote de producción pequeño utilizado para probar y ajustar un proceso de fabricación antes de la producción a gran escala.",
+    "sinonimos": [
+      "Test batch",
+      "trial batch",
+      "experimental batch"
+    ]
+  },
+  "PIPETTE": {
+    "traduccion": "Pipeta",
+    "pronunciacion": "pɪˈpɛt",
+    "categoria": "Sustantivo",
+    "definicion": "Instrumento de laboratorio utilizado para medir y transferir pequeños volúmenes de líquidos de manera precisa.",
+    "sinonimos": [
+      "Liquid transfer device",
+      "dispenser",
+      "micro-pipette"
+    ]
+  },
+  "PIPETA": {
+    "traduccion": "Pipette",
+    "pronunciacion": "pɪˈpɛt",
+    "categoria": "Sustantivo",
+    "definicion": "Instrumento de laboratorio utilizado para medir y transferir pequeños volúmenes de líquidos de manera precisa.",
+    "sinonimos": [
+      "Liquid transfer device",
+      "dispenser",
+      "micro-pipette"
+    ]
+  },
+  "PLACEBO SPIKE WITH WORKING STANDARD": {
+    "traduccion": "Spike de placebo con patrón de trabajo",
+    "pronunciacion": "pləˈsiːboʊ spaɪk wɪð ˈwɜrkɪŋ ˈstændərd",
+    "categoria": "Sustantivo",
+    "definicion": "Es un procedimiento en el que se añade una cantidad conocida de un estándar de trabajo a una muestra de placebo. Se utiliza para verificar si un método de análisis puede detectar correctamente el principio activo en presencia de excipientes o placebo, asegurando que el análisis sea preciso.",
+    "sinonimos": [
+      "Placebo spike",
+      "standard spike"
+    ]
+  },
+  "SPIKE DE PLACEBO CON PATRÓN DE TRABAJO": {
+    "traduccion": "Placebo spike with working standard",
+    "pronunciacion": "pləˈsiːboʊ spaɪk wɪð ˈwɜrkɪŋ ˈstændərd",
+    "categoria": "Sustantivo",
+    "definicion": "Es un procedimiento en el que se añade una cantidad conocida de un estándar de trabajo a una muestra de placebo. Se utiliza para verificar si un método de análisis puede detectar correctamente el principio activo en presencia de excipientes o placebo, asegurando que el análisis sea preciso.",
+    "sinonimos": [
+      "Placebo spike",
+      "standard spike"
+    ]
+  },
+  "PLATINUM CRUCIBLE": {
+    "traduccion": "Crisol de platino",
+    "pronunciacion": "ˈplætɪnəm ˈkruːsɪbəl",
+    "categoria": "Sustantivo",
+    "definicion": "Un crisol de platino es un recipiente hecho de platino que se utiliza en procesos de alta temperatura, como la fusión de metales o la incineración de muestras. Se utiliza frecuentemente en análisis gravimétricos de sustancias farmacéuticas.",
+    "sinonimos": [
+      "Platinum vessel",
+      "platinum container"
+    ]
+  },
+  "CRISOL DE PLATINO": {
+    "traduccion": "Platinum crucible",
+    "pronunciacion": "ˈplætɪnəm ˈkruːsɪbəl",
+    "categoria": "Sustantivo",
+    "definicion": "Un crisol de platino es un recipiente hecho de platino que se utiliza en procesos de alta temperatura, como la fusión de metales o la incineración de muestras. Se utiliza frecuentemente en análisis gravimétricos de sustancias farmacéuticas.",
+    "sinonimos": [
+      "Platinum vessel",
+      "platinum container"
+    ]
+  },
+  "PLY SHIPPER": {
+    "traduccion": "Embalaje de múltiples capas",
+    "pronunciacion": "plaɪ ˈʃɪpər",
+    "categoria": "Sustantivo",
+    "definicion": "Un ply shipper es un tipo de embalaje que utiliza múltiples capas de material para asegurar la protección del contenido durante el envío. En la industria farmacéutica, se emplea para transportar productos sensibles como medicamentos, garantizando que no se deterioren durante el almacenamiento y distribución.",
+    "sinonimos": [
+      "Multi-layer packaging",
+      "layered shipping box"
+    ]
+  },
+  "EMBALAJE DE MÚLTIPLES CAPAS": {
+    "traduccion": "Ply shipper",
+    "pronunciacion": "plaɪ ˈʃɪpər",
+    "categoria": "Sustantivo",
+    "definicion": "Un ply shipper es un tipo de embalaje que utiliza múltiples capas de material para asegurar la protección del contenido durante el envío. En la industria farmacéutica, se emplea para transportar productos sensibles como medicamentos, garantizando que no se deterioren durante el almacenamiento y distribución.",
+    "sinonimos": [
+      "Multi-layer packaging",
+      "layered shipping box"
+    ]
+  },
+  "POLYMERIC IMPURITIES": {
+    "traduccion": "Impurezas poliméricas",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Las impurezas poliméricas son impurezas originadas por polímeros no deseados en una formulación en la industria farmacéutica, estas impurezas pueden comprometer la eficacia y seguridad de un medicamento, por lo que se analizan durante los procesos de validación y control de calidad",
+    "definicion": "Synonyms: Polymer contaminants, polymer impurities.",
+    "sinonimos": []
+  },
+  "IMPUREZAS POLIMÉRICAS": {
+    "traduccion": "Polymeric impurities",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Las impurezas poliméricas son impurezas originadas por polímeros no deseados en una formulación en la industria farmacéutica, estas impurezas pueden comprometer la eficacia y seguridad de un medicamento, por lo que se analizan durante los procesos de validación y control de calidad",
+    "definicion": "Synonyms: Polymer contaminants, polymer impurities.",
+    "sinonimos": []
+  },
+  "POTASSIUM CLAVULANATE": {
+    "traduccion": "Clavulanato de potasio",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Es un inhibidor de betalactamasas utilizado en combinación con antibióticos como la amoxicilina en el contexto de formulaciones de medicamentos, se utiliza para mejorar la eficacia de los antibióticos frente a bacterias resistentes",
+    "definicion": "Synonyms: Potassium clavulanate.",
+    "sinonimos": []
+  },
+  "CLAVULANATO DE POTASIO": {
+    "traduccion": "Potassium Clavulanate",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "Es un inhibidor de betalactamasas utilizado en combinación con antibióticos como la amoxicilina en el contexto de formulaciones de medicamentos, se utiliza para mejorar la eficacia de los antibióticos frente a bacterias resistentes",
+    "definicion": "Synonyms: Potassium clavulanate.",
+    "sinonimos": []
+  },
+  "PORE SIZE": {
+    "traduccion": "Tamaño de poro",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El tamaño de poro se refiere a las dimensiones de los poros en un material, como un filtro o una membrana en microbiología, el tamaño de poro es crucial para la filtración de microorganismos, ya que determina qué tan grandes o pequeños pueden ser los microorganismos que pasan a través del material",
+    "definicion": "Synonyms: Pore size, Porosity.",
+    "sinonimos": []
+  },
+  "TAMAÑO DE PORO": {
+    "traduccion": "Pore Size",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El tamaño de poro se refiere a las dimensiones de los poros en un material, como un filtro o una membrana en microbiología, el tamaño de poro es crucial para la filtración de microorganismos, ya que determina qué tan grandes o pequeños pueden ser los microorganismos que pasan a través del material",
+    "definicion": "Synonyms: Pore size, Porosity.",
+    "sinonimos": []
+  },
+  "PYRUVATE RATIO": {
+    "traduccion": "Relación de piruvato",
+    "pronunciacion": "ˈpaɪruːveɪt ˈreɪʃioʊ",
+    "categoria": "Sustantivo",
+    "definicion": "En pruebas de laboratorio y estudios metabólicos, esta relación se utiliza para evaluar la función metabólica, el equilibrio ácido-base y las condiciones de salud, como la presencia de acidosis o disfunciones en el metabolismo celular.",
+    "sinonimos": [
+      "Pyruvate to lactate ratio",
+      "pyruvate concentration ratio"
+    ]
+  },
+  "RELACIÓN DE PIRUVATO": {
+    "traduccion": "Pyruvate ratio",
+    "pronunciacion": "ˈpaɪruːveɪt ˈreɪʃioʊ",
+    "categoria": "Sustantivo",
+    "definicion": "En pruebas de laboratorio y estudios metabólicos, esta relación se utiliza para evaluar la función metabólica, el equilibrio ácido-base y las condiciones de salud, como la presencia de acidosis o disfunciones en el metabolismo celular.",
+    "sinonimos": [
+      "Pyruvate to lactate ratio",
+      "pyruvate concentration ratio"
+    ]
+  },
+  "QA PERSONNEL": {
+    "traduccion": "Personal de Garantía de la Calidad",
+    "pronunciacion": "ˈkjuː eɪ pərˈsɒnəl",
+    "categoria": "Sustantivo",
+    "definicion": "Personal encargado de garantizar que los productos o procesos cumplan con los estándares de calidad establecidos. El personal de QA (Quality Assurance) supervisa la implementación de procedimientos y controles para asegurar que los productos sean seguros, eficaces y de alta calidad.",
+    "sinonimos": []
+  },
+  "PERSONAL DE GARANTÍA DE LA CALIDAD": {
+    "traduccion": "QA Personnel",
+    "pronunciacion": "ˈkjuː eɪ pərˈsɒnəl",
+    "categoria": "Sustantivo",
+    "definicion": "Personal encargado de garantizar que los productos o procesos cumplan con los estándares de calidad establecidos. El personal de QA (Quality Assurance) supervisa la implementación de procedimientos y controles para asegurar que los productos sean seguros, eficaces y de alta calidad.",
+    "sinonimos": []
+  },
+  "QS (QUANTITY SUFFICIENT)": {
+    "traduccion": "Cantidad suficiente",
+    "pronunciacion": "kwɒntɪti səˈfɪʃənt",
+    "categoria": "Expresión",
+    "definicion": "Indicación de que se debe agregar una cantidad adecuada de un componente para completar una formulación o proceso, sin especificar una cantidad exacta.",
+    "sinonimos": []
+  },
+  "CANTIDAD SUFICIENTE": {
+    "traduccion": "QS (Quantity Sufficient)",
+    "pronunciacion": "kwɒntɪti səˈfɪʃənt",
+    "categoria": "Expresión",
+    "definicion": "Indicación de que se debe agregar una cantidad adecuada de un componente para completar una formulación o proceso, sin especificar una cantidad exacta.",
+    "sinonimos": []
+  },
+  "QUALITY ASSURANCE (QA)": {
+    "traduccion": "Garantía de Calidad",
+    "pronunciacion": "ˈkwɒləti əˈʃʊərəns",
+    "categoria": "Sustantivo",
+    "definicion": "Conjunto de actividades y procedimientos organizacionales que aseguran que los productos y servicios cumplen con los estándares de calidad establecidos.",
+    "sinonimos": []
+  },
+  "GARANTÍA DE CALIDAD": {
+    "traduccion": "Quality Assurance (QA)",
+    "pronunciacion": "ˈkwɒləti əˈʃʊərəns",
+    "categoria": "Sustantivo",
+    "definicion": "Conjunto de actividades y procedimientos organizacionales que aseguran que los productos y servicios cumplen con los estándares de calidad establecidos.",
+    "sinonimos": []
+  },
+  "QUALITY CONTROL (QC)": {
+    "traduccion": "Control de Calidad",
+    "pronunciacion": "ˈkwɒləti kənˈtrəʊl",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso para verificar que los productos y servicios cumplen con los requisitos de calidad definidos, mediante pruebas y análisis.",
+    "sinonimos": []
+  },
+  "CONTROL DE CALIDAD": {
+    "traduccion": "Quality Control (QC)",
+    "pronunciacion": "ˈkwɒləti kənˈtrəʊl",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso para verificar que los productos y servicios cumplen con los requisitos de calidad definidos, mediante pruebas y análisis.",
+    "sinonimos": []
+  },
+  "RATIO": {
+    "traduccion": "Proporción",
+    "pronunciacion": "ˈreɪʃi.oʊ] / [ˈreɪʃoʊ",
+    "categoria": "Sustantivo",
+    "definicion": "En química y farmacología, \"ratio\" hace referencia a la relación entre dos cantidades. Se usa para describir las concentraciones relativas de dos sustancias en una mezcla o para expresar la relación entre la dosis de un medicamento y su efectividad.",
+    "sinonimos": [
+      "Proportion",
+      "fraction",
+      "relationship"
+    ]
+  },
+  "PROPORCIÓN": {
+    "traduccion": "Ratio",
+    "pronunciacion": "ˈreɪʃi.oʊ] / [ˈreɪʃoʊ",
+    "categoria": "Sustantivo",
+    "definicion": "En química y farmacología, \"ratio\" hace referencia a la relación entre dos cantidades. Se usa para describir las concentraciones relativas de dos sustancias en una mezcla o para expresar la relación entre la dosis de un medicamento y su efectividad.",
+    "sinonimos": [
+      "Proportion",
+      "fraction",
+      "relationship"
+    ]
+  },
+  "REAGENT": {
+    "traduccion": "Reactivo",
+    "pronunciacion": "ˈriːeɪdʒənt",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia utilizada en un experimento químico para provocar una reacción o para detectar la presencia de otra sustancia.",
+    "sinonimos": [
+      "Chemical substance",
+      "testing chemical",
+      "analytical reagent"
+    ]
+  },
+  "REACTIVO": {
+    "traduccion": "Reagent",
+    "pronunciacion": "ˈriːeɪdʒənt",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia utilizada en un experimento químico para provocar una reacción o para detectar la presencia de otra sustancia.",
+    "sinonimos": [
+      "Chemical substance",
+      "testing chemical",
+      "analytical reagent"
+    ]
+  },
+  "REGRESSION EQUATION": {
+    "traduccion": "Ecuación de regresión",
+    "pronunciacion": "rɪˈɡrɛʃən ɪˈkweɪʒən",
+    "categoria": "Sustantivo",
+    "definicion": "Fórmula matemática que describe la relación entre dos o más variables, utilizada para predecir valores o analizar tendencias en un conjunto de datos.",
+    "sinonimos": [
+      "Statistical model",
+      "fit equation",
+      "line of best fit"
+    ]
+  },
+  "ECUACIÓN DE REGRESIÓN": {
+    "traduccion": "Regression Equation",
+    "pronunciacion": "rɪˈɡrɛʃən ɪˈkweɪʒən",
+    "categoria": "Sustantivo",
+    "definicion": "Fórmula matemática que describe la relación entre dos o más variables, utilizada para predecir valores o analizar tendencias en un conjunto de datos.",
+    "sinonimos": [
+      "Statistical model",
+      "fit equation",
+      "line of best fit"
+    ]
+  },
+  "REPEATABILITY": {
+    "traduccion": "Repetibilidad",
+    "pronunciacion": "rɪˌpiːtəˈbɪləti",
+    "categoria": "Sustantivo",
+    "definicion": "La capacidad de un método o instrumento para obtener resultados consistentes cuando se repite el mismo análisis bajo las mismas condiciones.",
+    "sinonimos": [
+      "Consistency",
+      "reproducibility",
+      "precision"
+    ]
+  },
+  "REPETIBILIDAD": {
+    "traduccion": "Repeatability",
+    "pronunciacion": "rɪˌpiːtəˈbɪləti",
+    "categoria": "Sustantivo",
+    "definicion": "La capacidad de un método o instrumento para obtener resultados consistentes cuando se repite el mismo análisis bajo las mismas condiciones.",
+    "sinonimos": [
+      "Consistency",
+      "reproducibility",
+      "precision"
+    ]
+  },
+  "RETENTION TIME": {
+    "traduccion": "Tiempo de retención",
+    "pronunciacion": "rɪˈtɛnʃən taɪm",
+    "categoria": "Sustantivo",
+    "definicion": "En cromatografía, el tiempo que tarda un compuesto en pasar a través de la columna desde que se inyecta hasta que se detecta. Este parámetro es utilizado para identificar y cuantificar los componentes de una mezcla.",
+    "sinonimos": [
+      "Elution time",
+      "time of retention",
+      "separation time"
+    ]
+  },
+  "TIEMPO DE RETENCIÓN": {
+    "traduccion": "Retention Time",
+    "pronunciacion": "rɪˈtɛnʃən taɪm",
+    "categoria": "Sustantivo",
+    "definicion": "En cromatografía, el tiempo que tarda un compuesto en pasar a través de la columna desde que se inyecta hasta que se detecta. Este parámetro es utilizado para identificar y cuantificar los componentes de una mezcla.",
+    "sinonimos": [
+      "Elution time",
+      "time of retention",
+      "separation time"
+    ]
+  },
+  "REVALIDATION": {
+    "traduccion": "Revalidación",
+    "pronunciacion": "ˌriːˌvælɪˈdeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de volver a verificar y confirmar que un sistema, proceso o equipo sigue cumpliendo con los requisitos y estándares establecidos, después de una modificación o un período de tiempo.",
+    "sinonimos": [
+      "Re-assessment",
+      "requalification",
+      "re-certification"
+    ]
+  },
+  "REVALIDACIÓN": {
+    "traduccion": "Revalidation",
+    "pronunciacion": "ˌriːˌvælɪˈdeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de volver a verificar y confirmar que un sistema, proceso o equipo sigue cumpliendo con los requisitos y estándares establecidos, después de una modificación o un período de tiempo.",
+    "sinonimos": [
+      "Re-assessment",
+      "requalification",
+      "re-certification"
+    ]
+  },
+  "RSD (RELATIVE STANDARD DEVIATION)": {
+    "traduccion": "Desviación estándar relativa",
+    "pronunciacion": "rɛlətɪv ˈstændərd dɪˈveɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Medida estadística utilizada para evaluar la variabilidad de un conjunto de datos en relación con su media, expresada como un porcentaje. Es útil para comparar la precisión de diferentes métodos de análisis.",
+    "sinonimos": []
+  },
+  "DESVIACIÓN ESTÁNDAR RELATIVA": {
+    "traduccion": "RSD (Relative Standard Deviation)",
+    "pronunciacion": "rɛlətɪv ˈstændərd dɪˈveɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Medida estadística utilizada para evaluar la variabilidad de un conjunto de datos en relación con su media, expresada como un porcentaje. Es útil para comparar la precisión de diferentes métodos de análisis.",
+    "sinonimos": []
+  },
+  "REPLICATES": {
+    "traduccion": "Replicados",
+    "pronunciacion": "ˈrɛplɪkeɪts",
+    "categoria": "Sustantivo",
+    "definicion": "Mediciones repetidas de una misma muestra en un experimento. Se utilizan para garantizar que los resultados sean consistentes y precisos. En microbiología, son esenciales para comprobar la confiabilidad de los resultados.",
+    "sinonimos": [
+      "Repeated measurements",
+      "duplicate tests",
+      "trial repetitions"
+    ]
+  },
+  "REPLICADOS": {
+    "traduccion": "Replicates",
+    "pronunciacion": "ˈrɛplɪkeɪts",
+    "categoria": "Sustantivo",
+    "definicion": "Mediciones repetidas de una misma muestra en un experimento. Se utilizan para garantizar que los resultados sean consistentes y precisos. En microbiología, son esenciales para comprobar la confiabilidad de los resultados.",
+    "sinonimos": [
+      "Repeated measurements",
+      "duplicate tests",
+      "trial repetitions"
+    ]
+  },
+  "RINSED": {
+    "traduccion": "Enjuagado",
+    "pronunciacion": "rɪnst",
+    "categoria": "Adjetivo / verbo (pasado de \"rinse\")",
+    "definicion": "Se refiere al proceso de lavar o aclarar algo con un líquido, generalmente agua. En microbiología, este término se usa cuando se lavan frascos, tubos o material de laboratorio para eliminar cualquier sustancia contaminante antes de realizar un análisis.",
+    "sinonimos": [
+      "Rinsed",
+      "Washed"
+    ]
+  },
+  "ENJUAGADO": {
+    "traduccion": "Rinsed",
+    "pronunciacion": "rɪnst",
+    "categoria": "Adjetivo / verbo (pasado de \"rinse\")",
+    "definicion": "Se refiere al proceso de lavar o aclarar algo con un líquido, generalmente agua. En microbiología, este término se usa cuando se lavan frascos, tubos o material de laboratorio para eliminar cualquier sustancia contaminante antes de realizar un análisis.",
+    "sinonimos": [
+      "Rinsed",
+      "Washed"
+    ]
+  },
+  "ROBUSTNESS": {
+    "traduccion": "Robustez",
+    "pronunciacion": "roʊˈbʌstnəs",
+    "categoria": "Sustantivo",
+    "definicion": "Se refiere a la capacidad de un método o proceso para seguir siendo válido y preciso a pesar de pequeñas variaciones en las condiciones operativas. Es importante en la validación de métodos analíticos para asegurar que los resultados sean consistentes bajo diversas condiciones.",
+    "sinonimos": [
+      "Robustness",
+      "Resilience"
+    ]
+  },
+  "ROBUSTEZ": {
+    "traduccion": "Robustness",
+    "pronunciacion": "roʊˈbʌstnəs",
+    "categoria": "Sustantivo",
+    "definicion": "Se refiere a la capacidad de un método o proceso para seguir siendo válido y preciso a pesar de pequeñas variaciones en las condiciones operativas. Es importante en la validación de métodos analíticos para asegurar que los resultados sean consistentes bajo diversas condiciones.",
+    "sinonimos": [
+      "Robustness",
+      "Resilience"
+    ]
+  },
+  "SABOURED": {
+    "traduccion": "Saboreado",
+    "pronunciacion": "ˈseɪvərd",
+    "categoria": "Adjetivo/verbo (pasado de \"savour\")",
+    "definicion": "\"Saboured\" o \"saboreado\" hace referencia a la adición de saborizantes en medicamentos o productos farmacéuticos para mejorar su aceptabilidad, especialmente en formulaciones líquidas o masticables.",
+    "sinonimos": [
+      "Flavored",
+      "taste-enhanced"
+    ]
+  },
+  "SABOREADO": {
+    "traduccion": "Saboured",
+    "pronunciacion": "ˈseɪvərd",
+    "categoria": "Adjetivo/verbo (pasado de \"savour\")",
+    "definicion": "\"Saboured\" o \"saboreado\" hace referencia a la adición de saborizantes en medicamentos o productos farmacéuticos para mejorar su aceptabilidad, especialmente en formulaciones líquidas o masticables.",
+    "sinonimos": [
+      "Flavored",
+      "taste-enhanced"
+    ]
+  },
+  "SAMPLING": {
+    "traduccion": "Muestreo",
+    "pronunciacion": "ˈsɑːmplɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "El proceso de seleccionar una parte representativa de una muestra para realizar un análisis o prueba.",
+    "sinonimos": [
+      "Sample collection",
+      "specimen gathering",
+      "sample extraction"
+    ]
+  },
+  "MUESTREO": {
+    "traduccion": "Sampling",
+    "pronunciacion": "ˈsɑːmplɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "El proceso de seleccionar una parte representativa de una muestra para realizar un análisis o prueba.",
+    "sinonimos": [
+      "Sample collection",
+      "specimen gathering",
+      "sample extraction"
+    ]
+  },
+  "SEGMENTATION": {
+    "traduccion": "Segmentación",
+    "pronunciacion": "ˌsɛɡmɛnˈteɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de dividir un mercado, producto o población en segmentos más pequeños y homogéneos para enfocar estrategias específicas o análisis más detallados.",
+    "sinonimos": [
+      "Division",
+      "categorization",
+      "partitioning"
+    ]
+  },
+  "SEGMENTACIÓN": {
+    "traduccion": "Segmentation",
+    "pronunciacion": "ˌsɛɡmɛnˈteɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Proceso de dividir un mercado, producto o población en segmentos más pequeños y homogéneos para enfocar estrategias específicas o análisis más detallados.",
+    "sinonimos": [
+      "Division",
+      "categorization",
+      "partitioning"
+    ]
+  },
+  "SIEVING": {
+    "traduccion": "Tamizado",
+    "pronunciacion": "ˈsɪvɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "El tamizado es el proceso de utilizar un tamiz o malla para separar partículas de diferentes tamaños. Este procedimiento es común en la fabricación de medicamentos para asegurar la uniformidad de los ingredientes y eliminar impurezas o partículas no deseadas.",
+    "sinonimos": [
+      "Screening",
+      "filtering",
+      "sifting"
+    ]
+  },
+  "TAMIZADO": {
+    "traduccion": "Sieving",
+    "pronunciacion": "ˈsɪvɪŋ",
+    "categoria": "Sustantivo",
+    "definicion": "El tamizado es el proceso de utilizar un tamiz o malla para separar partículas de diferentes tamaños. Este procedimiento es común en la fabricación de medicamentos para asegurar la uniformidad de los ingredientes y eliminar impurezas o partículas no deseadas.",
+    "sinonimos": [
+      "Screening",
+      "filtering",
+      "sifting"
+    ]
+  },
+  "SIFT": {
+    "traduccion": "Tamizar",
+    "pronunciacion": "Verbo",
+    "categoria": "Tamizar se refiere al proceso de pasar un polvo o sustancia a través de un tamiz o malla para separar las partículas más finas o eliminar impurezas este proceso es común en la industria farmacéutica durante la formulación y producción de medicamentos, asegurando que los ingredientes activos y excipientes sean uniformes y libres de contaminantes",
+    "definicion": "Synonyms: Screen, strain, sift.",
+    "sinonimos": []
+  },
+  "TAMIZAR": {
+    "traduccion": "Sift",
+    "pronunciacion": "Verbo",
+    "categoria": "Tamizar se refiere al proceso de pasar un polvo o sustancia a través de un tamiz o malla para separar las partículas más finas o eliminar impurezas este proceso es común en la industria farmacéutica durante la formulación y producción de medicamentos, asegurando que los ingredientes activos y excipientes sean uniformes y libres de contaminantes",
+    "definicion": "Synonyms: Screen, strain, sift.",
+    "sinonimos": []
+  },
+  "SINK CONDITIONS": {
+    "traduccion": "Condiciones de sumidero",
+    "pronunciacion": "sɪŋk kənˈdɪʃənz",
+    "categoria": "Sustantivo",
+    "definicion": "Condiciones experimentales en las que la concentración del analito en el medio de disolución es suficientemente baja para evitar la saturación.",
+    "sinonimos": []
+  },
+  "CONDICIONES DE SUMIDERO": {
+    "traduccion": "Sink Conditions",
+    "pronunciacion": "sɪŋk kənˈdɪʃənz",
+    "categoria": "Sustantivo",
+    "definicion": "Condiciones experimentales en las que la concentración del analito en el medio de disolución es suficientemente baja para evitar la saturación.",
+    "sinonimos": []
+  },
+  "SLANT": {
+    "traduccion": "Inclinación",
+    "pronunciacion": "slænt",
+    "categoria": "Sustantivo/verbo",
+    "definicion": "En microbiología, un slant es un medio de cultivo sólido que se ha vertido en un tubo y luego se ha dejado inclinado para crear una mayor superficie de exposición para el crecimiento de microorganismos. Este método es común en la preparación de cultivos bacterianos.",
+    "sinonimos": [
+      "Inclined culture",
+      "slanted medium"
+    ]
+  },
+  "INCLINACIÓN": {
+    "traduccion": "Slant",
+    "pronunciacion": "slænt",
+    "categoria": "Sustantivo/verbo",
+    "definicion": "En microbiología, un slant es un medio de cultivo sólido que se ha vertido en un tubo y luego se ha dejado inclinado para crear una mayor superficie de exposición para el crecimiento de microorganismos. Este método es común en la preparación de cultivos bacterianos.",
+    "sinonimos": [
+      "Inclined culture",
+      "slanted medium"
+    ]
+  },
+  "SONICATE": {
+    "traduccion": "Sonicar",
+    "pronunciacion": "ˈsɒnɪkeɪt",
+    "categoria": "Verbo",
+    "definicion": "Exponer una muestra a ultrasonido, generalmente para acelerar procesos como la disolución o la limpieza.",
+    "sinonimos": [
+      "Ultrasonic treatment",
+      "ultrasonic cleaning",
+      "sound treatment"
+    ]
+  },
+  "SONICAR": {
+    "traduccion": "Sonicate",
+    "pronunciacion": "ˈsɒnɪkeɪt",
+    "categoria": "Verbo",
+    "definicion": "Exponer una muestra a ultrasonido, generalmente para acelerar procesos como la disolución o la limpieza.",
+    "sinonimos": [
+      "Ultrasonic treatment",
+      "ultrasonic cleaning",
+      "sound treatment"
+    ]
+  },
+  "SOP (STANDARD OPERATING PROCEDURE)": {
+    "traduccion": "Procedimiento operativo estándar",
+    "pronunciacion": "ˈstændərd ˈɑpəreɪtɪŋ prəˈsɛdʊr",
+    "categoria": "Sustantivo",
+    "definicion": "Documento que describe de manera detallada los pasos, métodos y protocolos a seguir para realizar una tarea o proceso de manera consistente y conforme a las normativas.",
+    "sinonimos": []
+  },
+  "PROCEDIMIENTO OPERATIVO ESTÁNDAR": {
+    "traduccion": "SOP (Standard Operating Procedure)",
+    "pronunciacion": "ˈstændərd ˈɑpəreɪtɪŋ prəˈsɛdʊr",
+    "categoria": "Sustantivo",
+    "definicion": "Documento que describe de manera detallada los pasos, métodos y protocolos a seguir para realizar una tarea o proceso de manera consistente y conforme a las normativas.",
+    "sinonimos": []
+  },
+  "SPECIFICITY": {
+    "traduccion": "Especificidad",
+    "pronunciacion": "spəˈsɪfɪsɪti",
+    "categoria": "Sustantivo",
+    "definicion": "La capacidad de un método analítico para medir únicamente el analito de interés sin interferencias de otras sustancias.",
+    "sinonimos": [
+      "Selectivity",
+      "precision",
+      "uniqueness"
+    ]
+  },
+  "ESPECIFICIDAD": {
+    "traduccion": "Specificity",
+    "pronunciacion": "spəˈsɪfɪsɪti",
+    "categoria": "Sustantivo",
+    "definicion": "La capacidad de un método analítico para medir únicamente el analito de interés sin interferencias de otras sustancias.",
+    "sinonimos": [
+      "Selectivity",
+      "precision",
+      "uniqueness"
+    ]
+  },
+  "SPIKE": {
+    "traduccion": "Pico",
+    "pronunciacion": "spaɪk",
+    "categoria": "Sustantivo",
+    "definicion": "En el contexto farmacéutico, \"pico\" se refiere a una rápida elevación o aumento abrupto de la concentración de una sustancia o compuesto en una muestra o durante un proceso. Este término se utiliza en el análisis de muestras, pruebas de validación y en la monitorización de parámetros para indicar un aumento repentino o extremo de un componente en particular, como un fármaco o contaminante.",
+    "sinonimos": [
+      "Surge",
+      "spike",
+      "sharp increase",
+      "peak"
+    ]
+  },
+  "PICO": {
+    "traduccion": "Spike",
+    "pronunciacion": "spaɪk",
+    "categoria": "Sustantivo",
+    "definicion": "En el contexto farmacéutico, \"pico\" se refiere a una rápida elevación o aumento abrupto de la concentración de una sustancia o compuesto en una muestra o durante un proceso. Este término se utiliza en el análisis de muestras, pruebas de validación y en la monitorización de parámetros para indicar un aumento repentino o extremo de un componente en particular, como un fármaco o contaminante.",
+    "sinonimos": [
+      "Surge",
+      "spike",
+      "sharp increase",
+      "peak"
+    ]
+  },
+  "SONICATION": {
+    "traduccion": "Sonicación",
+    "pronunciacion": "ˌsoʊnɪˈkeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La sonicación es un proceso que utiliza ondas ultrasónicas para agitar o disolver partículas en un líquido. Es comúnmente usado para la disolución de muestras, la limpieza de instrumentos de laboratorio y la homogeneización de soluciones.",
+    "sinonimos": [
+      "Ultrasonication",
+      "ultrasonic treatment"
+    ]
+  },
+  "SONICACIÓN": {
+    "traduccion": "Sonication",
+    "pronunciacion": "ˌsoʊnɪˈkeɪʃən",
+    "categoria": "Sustantivo",
+    "definicion": "La sonicación es un proceso que utiliza ondas ultrasónicas para agitar o disolver partículas en un líquido. Es comúnmente usado para la disolución de muestras, la limpieza de instrumentos de laboratorio y la homogeneización de soluciones.",
+    "sinonimos": [
+      "Ultrasonication",
+      "ultrasonic treatment"
+    ]
+  },
+  "STERILE BUFFER SODIUM CHLORIDE PEPTONE SOLUTION": {
+    "traduccion": "Solución amortiguadora estéril de cloruro de sodio y peptonas",
+    "pronunciacion": "ˈstɛrɪl ˈbʌfər ˈsəʊdɪəm klɔːraɪd pɛpˈtoʊn səˈluːʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Solución estéril que contiene cloruro de sodio y peptonas, utilizada en microbiología y otras aplicaciones científicas como medio para cultivar microorganismos o mantener su viabilidad.",
+    "sinonimos": []
+  },
+  "SOLUCIÓN AMORTIGUADORA ESTÉRIL DE CLORURO DE SODIO Y PEPTONAS": {
+    "traduccion": "Sterile Buffer Sodium Chloride Peptone Solution",
+    "pronunciacion": "ˈstɛrɪl ˈbʌfər ˈsəʊdɪəm klɔːraɪd pɛpˈtoʊn səˈluːʃən",
+    "categoria": "Sustantivo",
+    "definicion": "Solución estéril que contiene cloruro de sodio y peptonas, utilizada en microbiología y otras aplicaciones científicas como medio para cultivar microorganismos o mantener su viabilidad.",
+    "sinonimos": []
+  },
+  "STRENGTH": {
+    "traduccion": "Potencia / Concentración",
+    "pronunciacion": "strɛŋθ] o [strɛŋkθ",
+    "categoria": "Sustantivo",
+    "definicion": "\"Strength\" se refiere a la cantidad de principio activo presente en una formulación farmacéutica. Aunque en algunos contextos se traduce como \"concentración\", el término está más relacionado con la potencia del medicamento en términos de su eficacia terapéutica.",
+    "sinonimos": [
+      "Potency",
+      "concentration",
+      "active ingredient amount"
+    ]
+  },
+  "POTENCIA / CONCENTRACIÓN": {
+    "traduccion": "Strength",
+    "pronunciacion": "strɛŋθ] o [strɛŋkθ",
+    "categoria": "Sustantivo",
+    "definicion": "\"Strength\" se refiere a la cantidad de principio activo presente en una formulación farmacéutica. Aunque en algunos contextos se traduce como \"concentración\", el término está más relacionado con la potencia del medicamento en términos de su eficacia terapéutica.",
+    "sinonimos": [
+      "Potency",
+      "concentration",
+      "active ingredient amount"
+    ]
+  },
+  "SLURRY": {
+    "traduccion": "Lechada",
+    "pronunciacion": "ˈslʌri",
+    "categoria": "Sustantivo",
+    "definicion": "La lechada es una mezcla semilíquida de sólidos suspendidos en un líquido, comúnmente agua. En los procesos farmacéuticos, se usa para disolver ingredientes activos o formar una suspensión que luego será procesada.",
+    "sinonimos": [
+      "Suspension",
+      "paste",
+      "mixture"
+    ]
+  },
+  "LECHADA": {
+    "traduccion": "Slurry",
+    "pronunciacion": "ˈslʌri",
+    "categoria": "Sustantivo",
+    "definicion": "La lechada es una mezcla semilíquida de sólidos suspendidos en un líquido, comúnmente agua. En los procesos farmacéuticos, se usa para disolver ingredientes activos o formar una suspensión que luego será procesada.",
+    "sinonimos": [
+      "Suspension",
+      "paste",
+      "mixture"
+    ]
+  },
+  "STOCK": {
+    "traduccion": "Stock / Existencias / Reserva",
+    "pronunciacion": "stɑːk",
+    "categoria": "Sustantivo",
+    "definicion": "En análisis de medicamentos y microbiología, el stock se refiere a una solución o sustancia concentrada utilizada para preparar soluciones de menor concentración. Se mantiene a concentraciones conocidas y se diluye según sea necesario para realizar experimentos o análisis.",
+    "sinonimos": [
+      "Stock solution",
+      "Concentrated solution"
+    ]
+  },
+  "STOCK / EXISTENCIAS / RESERVA": {
+    "traduccion": "Stock",
+    "pronunciacion": "stɑːk",
+    "categoria": "Sustantivo",
+    "definicion": "En análisis de medicamentos y microbiología, el stock se refiere a una solución o sustancia concentrada utilizada para preparar soluciones de menor concentración. Se mantiene a concentraciones conocidas y se diluye según sea necesario para realizar experimentos o análisis.",
+    "sinonimos": [
+      "Stock solution",
+      "Concentrated solution"
+    ]
+  },
+  "SYSTEM SUITABILITY": {
+    "traduccion": "Idoneidad del sistema",
+    "pronunciacion": "ˈsɪstəm suːtəˈbɪləti",
+    "categoria": "Sustantivo",
+    "definicion": "Conjunto de pruebas para garantizar que el sistema analítico funcione correctamente antes de iniciar el análisis de muestras.",
+    "sinonimos": [
+      "System performance",
+      "system validation",
+      "method suitability"
+    ]
+  },
+  "IDONEIDAD DEL SISTEMA": {
+    "traduccion": "System Suitability",
+    "pronunciacion": "ˈsɪstəm suːtəˈbɪləti",
+    "categoria": "Sustantivo",
+    "definicion": "Conjunto de pruebas para garantizar que el sistema analítico funcione correctamente antes de iniciar el análisis de muestras.",
+    "sinonimos": [
+      "System performance",
+      "system validation",
+      "method suitability"
+    ]
+  },
+  "SLOPE": {
+    "traduccion": "Pendiente",
+    "pronunciacion": "sloʊp",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología y análisis de medicamentos, la pendiente indica cuánto cambia una variable respecto a otra. En un gráfico de calibración, muestra cómo varía la respuesta (por ejemplo, la señal) según la concentración de una sustancia. Si la pendiente es alta, la medición es más sensible.",
+    "sinonimos": [
+      "\"Gradient\"",
+      "\"Inclination\"",
+      "\"Rise\" (en contextos gráficos o matemáticos)"
+    ]
+  },
+  "PENDIENTE": {
+    "traduccion": "Slope",
+    "pronunciacion": "sloʊp",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología y análisis de medicamentos, la pendiente indica cuánto cambia una variable respecto a otra. En un gráfico de calibración, muestra cómo varía la respuesta (por ejemplo, la señal) según la concentración de una sustancia. Si la pendiente es alta, la medición es más sensible.",
+    "sinonimos": [
+      "\"Gradient\"",
+      "\"Inclination\"",
+      "\"Rise\" (en contextos gráficos o matemáticos)"
+    ]
+  },
+  "STARCH": {
+    "traduccion": "Almidón",
+    "pronunciacion": "stɑːrtʃ",
+    "categoria": "Sustantivo",
+    "definicion": "En la industria farmacéutica, se utiliza como excipiente en la formulación de medicamentos. Su función principal es actuar como aglutinante, espesante o desintegrante en la fabricación de tabletas y cápsulas, lo que ayuda en la cohesión de los ingredientes activos y facilita la disolución del medicamento en el cuerpo.",
+    "sinonimos": [
+      "Starch",
+      "amylum"
+    ]
+  },
+  "ALMIDÓN": {
+    "traduccion": "Starch",
+    "pronunciacion": "stɑːrtʃ",
+    "categoria": "Sustantivo",
+    "definicion": "En la industria farmacéutica, se utiliza como excipiente en la formulación de medicamentos. Su función principal es actuar como aglutinante, espesante o desintegrante en la fabricación de tabletas y cápsulas, lo que ayuda en la cohesión de los ingredientes activos y facilita la disolución del medicamento en el cuerpo.",
+    "sinonimos": [
+      "Starch",
+      "amylum"
+    ]
+  },
+  "STERILITY TEST": {
+    "traduccion": "Prueba de esterilidad",
+    "pronunciacion": "stəˈrɪlɪti tɛst",
+    "categoria": "Sustantivo",
+    "definicion": "La prueba de esterilidad se utiliza para determinar si un producto farmacéutico, dispositivo médico o una muestra microbiológica está libre de organismos vivos. Es una prueba esencial en la fabricación de medicamentos y productos médicos.",
+    "sinonimos": [
+      "Sterility test",
+      "Sterility assay"
+    ]
+  },
+  "PRUEBA DE ESTERILIDAD": {
+    "traduccion": "Sterility test",
+    "pronunciacion": "stəˈrɪlɪti tɛst",
+    "categoria": "Sustantivo",
+    "definicion": "La prueba de esterilidad se utiliza para determinar si un producto farmacéutico, dispositivo médico o una muestra microbiológica está libre de organismos vivos. Es una prueba esencial en la fabricación de medicamentos y productos médicos.",
+    "sinonimos": [
+      "Sterility test",
+      "Sterility assay"
+    ]
+  },
+  "SUPERNATANT": {
+    "traduccion": "Supernatante",
+    "pronunciacion": "ˌsuːpərˈneɪtənt] / [ˌsjuːpərˈneɪtənt",
+    "categoria": "Sustantivo",
+    "definicion": "El supernatante es el líquido claro que queda por encima de los sedimentos después de un proceso de centrifugación o decantación. En las pruebas de laboratorio, el supernatante se utiliza para analizar los compuestos disueltos, dejando los sólidos o partículas en el fondo.",
+    "sinonimos": [
+      "Overlying liquid",
+      "clear liquid",
+      "upper phase"
+    ]
+  },
+  "SUPERNATANTE": {
+    "traduccion": "Supernatant",
+    "pronunciacion": "ˌsuːpərˈneɪtənt] / [ˌsjuːpərˈneɪtənt",
+    "categoria": "Sustantivo",
+    "definicion": "El supernatante es el líquido claro que queda por encima de los sedimentos después de un proceso de centrifugación o decantación. En las pruebas de laboratorio, el supernatante se utiliza para analizar los compuestos disueltos, dejando los sólidos o partículas en el fondo.",
+    "sinonimos": [
+      "Overlying liquid",
+      "clear liquid",
+      "upper phase"
+    ]
+  },
+  "SWIRL": {
+    "traduccion": "Agitar",
+    "pronunciacion": "swɜːrl",
+    "categoria": "Verbo",
+    "definicion": "En el contexto de la preparación de muestras o mezclas, \"swirl\" hace referencia al movimiento de agitar suavemente un líquido o una solución para mezclar los componentes sin causar burbujas o espuma. Es común en procesos de disolución o cuando se combinan reactivos.",
+    "sinonimos": [
+      "Stir",
+      "mix",
+      "rotate"
+    ]
+  },
+  "AGITAR": {
+    "traduccion": "Swirl",
+    "pronunciacion": "swɜːrl",
+    "categoria": "Verbo",
+    "definicion": "En el contexto de la preparación de muestras o mezclas, \"swirl\" hace referencia al movimiento de agitar suavemente un líquido o una solución para mezclar los componentes sin causar burbujas o espuma. Es común en procesos de disolución o cuando se combinan reactivos.",
+    "sinonimos": [
+      "Stir",
+      "mix",
+      "rotate"
+    ]
+  },
+  "SYRINGE": {
+    "traduccion": "Jeringa",
+    "pronunciacion": "sɪˈrɪndʒ",
+    "categoria": "Sustantivo",
+    "definicion": "Una jeringa es un dispositivo utilizado para inyectar o extraer líquidos en el cuerpo o de este. En el contexto farmacéutico, las jeringas se utilizan para administrar medicamentos inyectables y son fundamentales para las pruebas de dosificación y administración de fármacos.",
+    "sinonimos": [
+      "Injector",
+      "needle",
+      "hypodermic syringe"
+    ]
+  },
+  "JERINGA": {
+    "traduccion": "Syringe",
+    "pronunciacion": "sɪˈrɪndʒ",
+    "categoria": "Sustantivo",
+    "definicion": "Una jeringa es un dispositivo utilizado para inyectar o extraer líquidos en el cuerpo o de este. En el contexto farmacéutico, las jeringas se utilizan para administrar medicamentos inyectables y son fundamentales para las pruebas de dosificación y administración de fármacos.",
+    "sinonimos": [
+      "Injector",
+      "needle",
+      "hypodermic syringe"
+    ]
+  },
+  "TASTE MASKING AGENT": {
+    "traduccion": "Agente enmascarador de sabor",
+    "pronunciacion": "teɪst ˈmɑːskɪŋ ˈeɪdʒənt",
+    "categoria": "Sustantivo",
+    "definicion": "Un agente enmascarador de sabor es una sustancia añadida a los medicamentos para ocultar o reducir el sabor desagradable de los ingredientes activos. Se usa principalmente en formulaciones líquidas, masticables o de disolución rápida, especialmente en medicamentos pediátricos y suplementos nutricionales.",
+    "sinonimos": [
+      "Flavor masking agent",
+      "taste suppressor",
+      "palatability enhancer"
+    ]
+  },
+  "AGENTE ENMASCARADOR DE SABOR": {
+    "traduccion": "Taste masking agent",
+    "pronunciacion": "teɪst ˈmɑːskɪŋ ˈeɪdʒənt",
+    "categoria": "Sustantivo",
+    "definicion": "Un agente enmascarador de sabor es una sustancia añadida a los medicamentos para ocultar o reducir el sabor desagradable de los ingredientes activos. Se usa principalmente en formulaciones líquidas, masticables o de disolución rápida, especialmente en medicamentos pediátricos y suplementos nutricionales.",
+    "sinonimos": [
+      "Flavor masking agent",
+      "taste suppressor",
+      "palatability enhancer"
+    ]
+  },
+  "TALC": {
+    "traduccion": "Talco",
+    "pronunciacion": "tælk",
+    "categoria": "Sustantivo",
+    "definicion": "Mineral utilizado en la industria farmacéutica como excipiente en la formulación de tabletas y cápsulas, debido a sus propiedades de lubricación y como agente antiadherente.",
+    "sinonimos": []
+  },
+  "TALCO": {
+    "traduccion": "Talc",
+    "pronunciacion": "tælk",
+    "categoria": "Sustantivo",
+    "definicion": "Mineral utilizado en la industria farmacéutica como excipiente en la formulación de tabletas y cápsulas, debido a sus propiedades de lubricación y como agente antiadherente.",
+    "sinonimos": []
+  },
+  "THEORETICAL PLATES": {
+    "traduccion": "Platos Teóricos",
+    "pronunciacion": "θɪəˈɔːrɪkəl pleɪts",
+    "categoria": "Sustantivo",
+    "definicion": "Concepto utilizado en cromatografía para describir la eficiencia de una columna. Un plato teórico representa una etapa idealizada de separación, y más platos teóricos indican una mejor separación de los componentes de una mezcla.",
+    "sinonimos": [
+      "Separation stages",
+      "efficiency stages"
+    ]
+  },
+  "PLATOS TEÓRICOS": {
+    "traduccion": "Theoretical plates",
+    "pronunciacion": "θɪəˈɔːrɪkəl pleɪts",
+    "categoria": "Sustantivo",
+    "definicion": "Concepto utilizado en cromatografía para describir la eficiencia de una columna. Un plato teórico representa una etapa idealizada de separación, y más platos teóricos indican una mejor separación de los componentes de una mezcla.",
+    "sinonimos": [
+      "Separation stages",
+      "efficiency stages"
+    ]
+  },
+  "TAILING FACTOR": {
+    "traduccion": "Factor de arrastre o factor de cola",
+    "pronunciacion": "ˈteɪlɪŋ ˈfæktər",
+    "categoria": "Sustantivo",
+    "definicion": "En cromatografía, el tailing factor mide qué tan simétrico es un pico en el cromatograma. Si el valor es bajo, el pico es simétrico; si es alto, el pico tiene una \"cola\" larga, lo que puede indicar problemas con la columna o la muestra.",
+    "sinonimos": [
+      "\"Peak tailing factor\"",
+      "\"Asymmetry factor\"",
+      "\"Peak asymmetry\""
+    ]
+  },
+  "FACTOR DE ARRASTRE O FACTOR DE COLA": {
+    "traduccion": "Tailing Factor",
+    "pronunciacion": "ˈteɪlɪŋ ˈfæktər",
+    "categoria": "Sustantivo",
+    "definicion": "En cromatografía, el tailing factor mide qué tan simétrico es un pico en el cromatograma. Si el valor es bajo, el pico es simétrico; si es alto, el pico tiene una \"cola\" larga, lo que puede indicar problemas con la columna o la muestra.",
+    "sinonimos": [
+      "\"Peak tailing factor\"",
+      "\"Asymmetry factor\"",
+      "\"Peak asymmetry\""
+    ]
+  },
+  "THIN LAYER CHROMATOGRAPHY (TLC)": {
+    "traduccion": "Cromatografía en capa fina",
+    "pronunciacion": "θɪn leɪər krəˈmætəɡrəfi",
+    "categoria": "Sustantivo",
+    "definicion": "Técnica analítica utilizada para separar y analizar los componentes de una mezcla utilizando una capa delgada de material adsorbente sobre una placa.",
+    "sinonimos": []
+  },
+  "CROMATOGRAFÍA EN CAPA FINA": {
+    "traduccion": "Thin Layer Chromatography (TLC)",
+    "pronunciacion": "θɪn leɪər krəˈmætəɡrəfi",
+    "categoria": "Sustantivo",
+    "definicion": "Técnica analítica utilizada para separar y analizar los componentes de una mezcla utilizando una capa delgada de material adsorbente sobre una placa.",
+    "sinonimos": []
+  },
+  "TISHCON VALIDATED PROCEDURE": {
+    "traduccion": "Procedimiento validado por Tishcon",
+    "pronunciacion": "tɪʃˈkɒn ˈvælɪdeɪtɪd prəˈsiːdʊr",
+    "categoria": "Sustantivo",
+    "definicion": "Procedimiento aprobado y validado por Tishcon (probablemente una empresa o entidad), en el que se asegura que las prácticas y resultados cumplen con los estándares específicos de la industria.",
+    "sinonimos": []
+  },
+  "PROCEDIMIENTO VALIDADO POR TISHCON": {
+    "traduccion": "Tishcon Validated Procedure",
+    "pronunciacion": "tɪʃˈkɒn ˈvælɪdeɪtɪd prəˈsiːdʊr",
+    "categoria": "Sustantivo",
+    "definicion": "Procedimiento aprobado y validado por Tishcon (probablemente una empresa o entidad), en el que se asegura que las prácticas y resultados cumplen con los estándares específicos de la industria.",
+    "sinonimos": []
+  },
+  "TISSUES": {
+    "traduccion": "Tejidos",
+    "pronunciacion": "ˈtɪʃ.uːz",
+    "categoria": "Sustantivo",
+    "definicion": "Los tejidos son grupos de células que realizan una función específica en un organismo multicelular. En microbiología y medicina, el estudio de los tejidos es crucial para comprender enfermedades, infecciones o procesos biológicos, como el crecimiento celular o la respuesta inmune.",
+    "sinonimos": [
+      "Tissues",
+      "Cellular tissue"
+    ]
+  },
+  "TEJIDOS": {
+    "traduccion": "Tissues",
+    "pronunciacion": "ˈtɪʃ.uːz",
+    "categoria": "Sustantivo",
+    "definicion": "Los tejidos son grupos de células que realizan una función específica en un organismo multicelular. En microbiología y medicina, el estudio de los tejidos es crucial para comprender enfermedades, infecciones o procesos biológicos, como el crecimiento celular o la respuesta inmune.",
+    "sinonimos": [
+      "Tissues",
+      "Cellular tissue"
+    ]
+  },
+  "TITRATION ENDPOINT": {
+    "traduccion": "Punto final de titulación",
+    "pronunciacion": "taɪˈtreɪʃən ˈɛndˌpɔɪnt",
+    "categoria": "Sustantivo",
+    "definicion": "Momento en el que una reacción química se considera completa durante una titulación, generalmente indicado por un cambio de color o medición de pH.",
+    "sinonimos": [
+      "End point",
+      "equivalence point",
+      "reaction completion"
+    ]
+  },
+  "PUNTO FINAL DE TITULACIÓN": {
+    "traduccion": "Titration Endpoint",
+    "pronunciacion": "taɪˈtreɪʃən ˈɛndˌpɔɪnt",
+    "categoria": "Sustantivo",
+    "definicion": "Momento en el que una reacción química se considera completa durante una titulación, generalmente indicado por un cambio de color o medición de pH.",
+    "sinonimos": [
+      "End point",
+      "equivalence point",
+      "reaction completion"
+    ]
+  },
+  "TITRATE": {
+    "traduccion": "Titular",
+    "pronunciacion": "Verbo.",
+    "categoria": "La titulación es un método de análisis cuantitativo en el que se añade una solución de concentración conocida a una solución cuya concentración se desea determinar este procedimiento es esencial para determinar la concentración exacta de un reactivo en ensayos farmacéuticos",
+    "definicion": "Synonyms: Measure, determine, quantify.",
+    "sinonimos": []
+  },
+  "TITULAR": {
+    "traduccion": "Titrate",
+    "pronunciacion": "Verbo.",
+    "categoria": "La titulación es un método de análisis cuantitativo en el que se añade una solución de concentración conocida a una solución cuya concentración se desea determinar este procedimiento es esencial para determinar la concentración exacta de un reactivo en ensayos farmacéuticos",
+    "definicion": "Synonyms: Measure, determine, quantify.",
+    "sinonimos": []
+  },
+  "TNTC (TOO NUMEROUS TO COUNT)": {
+    "traduccion": "Demasiado numerosos para contar",
+    "pronunciacion": "tuː ˈnjuːmərəs tə kaʊnt",
+    "categoria": "Expresión",
+    "definicion": "Término utilizado para indicar que la cantidad de microorganismos o partículas en una muestra es tan alta que no se puede contar con precisión.",
+    "sinonimos": []
+  },
+  "DEMASIADO NUMEROSOS PARA CONTAR": {
+    "traduccion": "TNTC (Too Numerous To Count)",
+    "pronunciacion": "tuː ˈnjuːmərəs tə kaʊnt",
+    "categoria": "Expresión",
+    "definicion": "Término utilizado para indicar que la cantidad de microorganismos o partículas en una muestra es tan alta que no se puede contar con precisión.",
+    "sinonimos": []
+  },
+  "TOTAL AEROBIC MICROBIAL COUNT (TAMC)": {
+    "traduccion": "Recuento total de microorganismos aeróbicos",
+    "pronunciacion": "ˈtoʊtl eɪˈroʊbɪk maɪˈkroʊbiəl kaʊnt",
+    "categoria": "Sustantivo",
+    "definicion": "Método utilizado para contar la cantidad total de microorganismos que pueden crecer en condiciones aeróbicas en una muestra, generalmente para evaluar la calidad microbiológica de un producto.",
+    "sinonimos": []
+  },
+  "RECUENTO TOTAL DE MICROORGANISMOS AERÓBICOS": {
+    "traduccion": "Total Aerobic Microbial Count (TAMC)",
+    "pronunciacion": "ˈtoʊtl eɪˈroʊbɪk maɪˈkroʊbiəl kaʊnt",
+    "categoria": "Sustantivo",
+    "definicion": "Método utilizado para contar la cantidad total de microorganismos que pueden crecer en condiciones aeróbicas en una muestra, generalmente para evaluar la calidad microbiológica de un producto.",
+    "sinonimos": []
+  },
+  "TOTAL YEASTS AND MOLDS COUNT (TYMC)": {
+    "traduccion": "Recuento total de levaduras y mohos",
+    "pronunciacion": "ˈtoʊtl jiːsts ənd moʊldz kaʊnt",
+    "categoria": "Sustantivo",
+    "definicion": "Método para contar la cantidad total de levaduras y mohos presentes en una muestra, utilizado para evaluar la seguridad microbiológica de productos farmacéuticos y alimentos.",
+    "sinonimos": []
+  },
+  "RECUENTO TOTAL DE LEVADURAS Y MOHOS": {
+    "traduccion": "Total Yeasts and Molds Count (TYMC)",
+    "pronunciacion": "ˈtoʊtl jiːsts ənd moʊldz kaʊnt",
+    "categoria": "Sustantivo",
+    "definicion": "Método para contar la cantidad total de levaduras y mohos presentes en una muestra, utilizado para evaluar la seguridad microbiológica de productos farmacéuticos y alimentos.",
+    "sinonimos": []
+  },
+  "TRANSLUCENT COLOR": {
+    "traduccion": "Color Trasclúcido",
+    "pronunciacion": "trænsˈluːsənt ˈkʌlər",
+    "categoria": "Sustantivo",
+    "definicion": "Color que permite el paso de luz, pero no es completamente transparente. Se utiliza para describir materiales o líquidos que tienen una apariencia suave y no completamente clara.",
+    "sinonimos": []
+  },
+  "COLOR TRASCLÚCIDO": {
+    "traduccion": "Translucent Color",
+    "pronunciacion": "trænsˈluːsənt ˈkʌlər",
+    "categoria": "Sustantivo",
+    "definicion": "Color que permite el paso de luz, pero no es completamente transparente. Se utiliza para describir materiales o líquidos que tienen una apariencia suave y no completamente clara.",
+    "sinonimos": []
+  },
+  "TRIPLE SUGAR IRON AGAR (TSI AGAR)": {
+    "traduccion": "Agar hierro con azúcares triples",
+    "pronunciacion": "ˈtrɪpl ˈsʌɡər aɪərn ˈæɡɑːr",
+    "categoria": "Sustantivo",
+    "definicion": "Medio de cultivo utilizado en microbiología para identificar bacterias basándose en su capacidad para fermentar azúcares y producir ácido o gas.",
+    "sinonimos": []
+  },
+  "AGAR HIERRO CON AZÚCARES TRIPLES": {
+    "traduccion": "Triple Sugar Iron Agar (TSI Agar)",
+    "pronunciacion": "ˈtrɪpl ˈsʌɡər aɪərn ˈæɡɑːr",
+    "categoria": "Sustantivo",
+    "definicion": "Medio de cultivo utilizado en microbiología para identificar bacterias basándose en su capacidad para fermentar azúcares y producir ácido o gas.",
+    "sinonimos": []
+  },
+  "TRUENESS": {
+    "traduccion": "Veracidad",
+    "pronunciacion": "ˈtruːnɪs",
+    "categoria": "Sustantivo",
+    "definicion": "La proximidad de los resultados de una medición a su valor verdadero o de referencia. Se refiere a la exactitud del método.",
+    "sinonimos": [
+      "Accuracy",
+      "correctness",
+      "closeness to true value"
+    ]
+  },
+  "VERACIDAD": {
+    "traduccion": "Trueness",
+    "pronunciacion": "ˈtruːnɪs",
+    "categoria": "Sustantivo",
+    "definicion": "La proximidad de los resultados de una medición a su valor verdadero o de referencia. Se refiere a la exactitud del método.",
+    "sinonimos": [
+      "Accuracy",
+      "correctness",
+      "closeness to true value"
+    ]
+  },
+  "TURBIDITY": {
+    "traduccion": "Turbidez",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "La turbidez se refiere a la opacidad o a la presencia de partículas suspendidas en una solución, lo que reduce su claridad en el contexto de análisis de medicamentos o sustancias, la turbidez se utiliza para medir la concentración de partículas no disueltas en las pruebas de estabilidad de medicamentos, la turbidez puede indicar la presencia de impurezas o descomposición",
+    "definicion": "Synonyms: Cloudiness, opaqueness, haziness.",
+    "sinonimos": []
+  },
+  "TURBIDEZ": {
+    "traduccion": "Turbidity",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "La turbidez se refiere a la opacidad o a la presencia de partículas suspendidas en una solución, lo que reduce su claridad en el contexto de análisis de medicamentos o sustancias, la turbidez se utiliza para medir la concentración de partículas no disueltas en las pruebas de estabilidad de medicamentos, la turbidez puede indicar la presencia de impurezas o descomposición",
+    "definicion": "Synonyms: Cloudiness, opaqueness, haziness.",
+    "sinonimos": []
+  },
+  "ULTRASONIC BATH": {
+    "traduccion": "Baño ultrasónico",
+    "pronunciacion": "ʌltrəˈsɒnɪk bæθ",
+    "categoria": "Sustantivo",
+    "definicion": "Equipo utilizado para limpiar objetos mediante ondas ultrasónicas, a menudo usado en laboratorios para limpiar frascos, utensilios o componentes de equipos.",
+    "sinonimos": [
+      "Ultrasonic cleaner",
+      "ultrasonic washer",
+      "sound bath"
+    ]
+  },
+  "BAÑO ULTRASÓNICO": {
+    "traduccion": "Ultrasonic Bath",
+    "pronunciacion": "ʌltrəˈsɒnɪk bæθ",
+    "categoria": "Sustantivo",
+    "definicion": "Equipo utilizado para limpiar objetos mediante ondas ultrasónicas, a menudo usado en laboratorios para limpiar frascos, utensilios o componentes de equipos.",
+    "sinonimos": [
+      "Ultrasonic cleaner",
+      "ultrasonic washer",
+      "sound bath"
+    ]
+  },
+  "UNITED STATED PHARMACOPEIA USP": {
+    "traduccion": "Farmacopea de los Estados Unidos",
+    "pronunciacion": "juː ɛs piː",
+    "categoria": "Sustantivo",
+    "definicion": "Organización y conjunto de normas que establecen los requisitos de calidad, pureza, fuerza y consistencia para los productos farmacéuticos y sus ingredientes.",
+    "sinonimos": []
+  },
+  "FARMACOPEA DE LOS ESTADOS UNIDOS": {
+    "traduccion": "United Stated Pharmacopeia USP",
+    "pronunciacion": "juː ɛs piː",
+    "categoria": "Sustantivo",
+    "definicion": "Organización y conjunto de normas que establecen los requisitos de calidad, pureza, fuerza y consistencia para los productos farmacéuticos y sus ingredientes.",
+    "sinonimos": []
+  },
+  "UV SPECTROPHOTOMETRIC": {
+    "traduccion": "Espectrofotométrico UV",
+    "pronunciacion": "ˈjuː viː ˌspɛktrəfəʊˈtɪmɛtrɪk",
+    "categoria": "Adjetivo",
+    "definicion": "Relacionado con el uso de la espectrofotometría en el rango de longitudes de onda ultravioleta (UV) para medir la absorbancia de una muestra.",
+    "sinonimos": []
+  },
+  "ESPECTROFOTOMÉTRICO UV": {
+    "traduccion": "UV Spectrophotometric",
+    "pronunciacion": "ˈjuː viː ˌspɛktrəfəʊˈtɪmɛtrɪk",
+    "categoria": "Adjetivo",
+    "definicion": "Relacionado con el uso de la espectrofotometría en el rango de longitudes de onda ultravioleta (UV) para medir la absorbancia de una muestra.",
+    "sinonimos": []
+  },
+  "VACUUM": {
+    "traduccion": "Vacío",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El vacío se refiere a un espacio sin aire o con una presión extremadamente baja en microbiología, se utiliza para evitar la contaminación en entornos controlados o para realizar técnicas como la filtración al vacío, que permite separar microorganismos o partículas de una solución o gas",
+    "definicion": "Synonyms: Vacuum, Partial vacuum.",
+    "sinonimos": []
+  },
+  "VACÍO": {
+    "traduccion": "Vacuum",
+    "pronunciacion": "Sustantivo.",
+    "categoria": "El vacío se refiere a un espacio sin aire o con una presión extremadamente baja en microbiología, se utiliza para evitar la contaminación en entornos controlados o para realizar técnicas como la filtración al vacío, que permite separar microorganismos o partículas de una solución o gas",
+    "definicion": "Synonyms: Vacuum, Partial vacuum.",
+    "sinonimos": []
+  },
+  "VERNIER CALIPER": {
+    "traduccion": "Calibrador Vernier",
+    "pronunciacion": "ˈvɜːnɪər ˈkælɪpər",
+    "categoria": "Sustantivo",
+    "definicion": "Un calibrador Vernier es una herramienta de medición precisa utilizada para determinar el diámetro, la longitud o las dimensiones de objetos pequeños con gran exactitud.",
+    "sinonimos": [
+      "Vernier scale",
+      "precision caliper",
+      "sliding caliper"
+    ]
+  },
+  "CALIBRADOR VERNIER": {
+    "traduccion": "Vernier Caliper",
+    "pronunciacion": "ˈvɜːnɪər ˈkælɪpər",
+    "categoria": "Sustantivo",
+    "definicion": "Un calibrador Vernier es una herramienta de medición precisa utilizada para determinar el diámetro, la longitud o las dimensiones de objetos pequeños con gran exactitud.",
+    "sinonimos": [
+      "Vernier scale",
+      "precision caliper",
+      "sliding caliper"
+    ]
+  },
+  "VIBRATORY SIFTER": {
+    "traduccion": "Tamiz vibratorio",
+    "pronunciacion": "ˈvaɪbrəˌtɔːri ˈsɪftər",
+    "categoria": "Sustantivo",
+    "definicion": "Un tamiz vibratorio es un equipo utilizado en la industria farmacéutica para la clasificación y separación de partículas de diferentes tamaños en polvos o gránulos. Funciona mediante vibraciones controladas que permiten que las partículas más pequeñas pasen a través de una malla, mientras que las más grandes quedan retenidas.",
+    "sinonimos": [
+      "Vibrating sieve",
+      "vibrating screen",
+      "oscillating sifter"
+    ]
+  },
+  "TAMIZ VIBRATORIO": {
+    "traduccion": "Vibratory sifter",
+    "pronunciacion": "ˈvaɪbrəˌtɔːri ˈsɪftər",
+    "categoria": "Sustantivo",
+    "definicion": "Un tamiz vibratorio es un equipo utilizado en la industria farmacéutica para la clasificación y separación de partículas de diferentes tamaños en polvos o gránulos. Funciona mediante vibraciones controladas que permiten que las partículas más pequeñas pasen a través de una malla, mientras que las más grandes quedan retenidas.",
+    "sinonimos": [
+      "Vibrating sieve",
+      "vibrating screen",
+      "oscillating sifter"
+    ]
+  },
+  "VOLUMETRIC FLASK": {
+    "traduccion": "Matraz volumétrico",
+    "pronunciacion": "vɒljuˈmɛtrɪk flæsk",
+    "categoria": "Sustantivo",
+    "definicion": "Frasco de vidrio de forma cónica con una marca de nivel en su cuello, utilizado para preparar soluciones con una precisión volumétrica específica.",
+    "sinonimos": [
+      "Measuring flask",
+      "graduated flask",
+      "precision flask"
+    ]
+  },
+  "MATRAZ VOLUMÉTRICO": {
+    "traduccion": "Volumetric Flask",
+    "pronunciacion": "vɒljuˈmɛtrɪk flæsk",
+    "categoria": "Sustantivo",
+    "definicion": "Frasco de vidrio de forma cónica con una marca de nivel en su cuello, utilizado para preparar soluciones con una precisión volumétrica específica.",
+    "sinonimos": [
+      "Measuring flask",
+      "graduated flask",
+      "precision flask"
+    ]
+  },
+  "WORKING STANDARD": {
+    "traduccion": "Estándar de trabajo",
+    "pronunciacion": "ˈwɜːrkɪŋ ˈstændərd",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia o solución de concentración conocida que se utiliza en el laboratorio para calibrar equipos y verificar la exactitud de los métodos analíticos.",
+    "sinonimos": [
+      "Reference standard",
+      "test standard",
+      "calibration standard"
+    ]
+  },
+  "ESTÁNDAR DE TRABAJO": {
+    "traduccion": "Working Standard",
+    "pronunciacion": "ˈwɜːrkɪŋ ˈstændərd",
+    "categoria": "Sustantivo",
+    "definicion": "Sustancia o solución de concentración conocida que se utiliza en el laboratorio para calibrar equipos y verificar la exactitud de los métodos analíticos.",
+    "sinonimos": [
+      "Reference standard",
+      "test standard",
+      "calibration standard"
+    ]
+  },
+  "YEAST": {
+    "traduccion": "Levadura",
+    "pronunciacion": "jiːst",
+    "categoria": "Sustantivo",
+    "definicion": "La levadura es un hongo unicelular que se utiliza en microbiología para estudiar procesos como la fermentación, el metabolismo y otros aspectos biológicos. Además, tiene aplicaciones industriales importantes, como en la producción de pan, cerveza y otras bebidas alcohólicas.",
+    "sinonimos": [
+      "Yeast",
+      "Saccharomyces (género de levaduras)"
+    ]
+  },
+  "LEVADURA": {
+    "traduccion": "Yeast",
+    "pronunciacion": "jiːst",
+    "categoria": "Sustantivo",
+    "definicion": "La levadura es un hongo unicelular que se utiliza en microbiología para estudiar procesos como la fermentación, el metabolismo y otros aspectos biológicos. Además, tiene aplicaciones industriales importantes, como en la producción de pan, cerveza y otras bebidas alcohólicas.",
+    "sinonimos": [
+      "Yeast",
+      "Saccharomyces (género de levaduras)"
+    ]
+  },
+  "YELLOW SLANT": {
+    "traduccion": "Inclinación amarilla",
+    "pronunciacion": "ˈjɛloʊ slænt",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología, es un medio de cultivo utilizado en pruebas de identificación bacteriana, donde el color amarillo indica la fermentación de azúcares.",
+    "sinonimos": [
+      "Yellow agar slant",
+      "yellow culture slope",
+      "yellow medium"
+    ]
+  },
+  "INCLINACIÓN AMARILLA": {
+    "traduccion": "Yellow Slant",
+    "pronunciacion": "ˈjɛloʊ slænt",
+    "categoria": "Sustantivo",
+    "definicion": "En microbiología, es un medio de cultivo utilizado en pruebas de identificación bacteriana, donde el color amarillo indica la fermentación de azúcares.",
+    "sinonimos": [
+      "Yellow agar slant",
+      "yellow culture slope",
+      "yellow medium"
+    ]
+  },
+  "YIELD": {
+    "traduccion": "Rendimiento",
+    "pronunciacion": "jiːld",
+    "categoria": "Sustantivo",
+    "definicion": "La cantidad de producto obtenido en un proceso, generalmente expresado como porcentaje en relación con la cantidad esperada o teórica.",
+    "sinonimos": [
+      "Output",
+      "production",
+      "yield amount"
+    ]
+  },
+  "RENDIMIENTO": {
+    "traduccion": "Yield",
+    "pronunciacion": "jiːld",
+    "categoria": "Sustantivo",
+    "definicion": "La cantidad de producto obtenido en un proceso, generalmente expresado como porcentaje en relación con la cantidad esperada o teórica.",
+    "sinonimos": [
+      "Output",
+      "production",
+      "yield amount"
+    ]
+  },
+  "AMV": {
+    "traduccion": "",
+    "pronunciacion": "",
+    "categoria": "Abreviatura",
+    "definicion": "Validación del Método Analítico",
+    "sinonimos": []
+  },
+  "USP": {
+    "traduccion": "",
+    "pronunciacion": "",
+    "categoria": "Abreviatura",
+    "definicion": "Farmacopea de los Estados Unidos",
+    "sinonimos": []
+  },
+  "BP": {
+    "traduccion": "",
+    "pronunciacion": "",
+    "categoria": "Abreviatura",
+    "definicion": "Farmacopea Británica",
+    "sinonimos": []
+  },
+  "RSD": {
+    "traduccion": "",
+    "pronunciacion": "",
+    "categoria": "Abreviatura",
+    "definicion": "Desviación estándar relativa",
+    "sinonimos": []
+  },
+  "GMP": {
+    "traduccion": "",
+    "pronunciacion": "",
+    "categoria": "Abreviatura",
+    "definicion": "Buenas Prácticas de Manufactura",
+    "sinonimos": []
+  }
+}

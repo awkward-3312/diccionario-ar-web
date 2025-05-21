@@ -1,0 +1,241 @@
+/* === FUENTES === */
+@font-face {
+  font-family: 'MiddleOfApril';
+  src: url('../fonts/Middle-of-April.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('../fonts/Nunito-BoldItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* === RESET Y BASE === */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('../img/FONDOOO.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  animation: parallax 60s linear infinite, fadeIn 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body.light-mode {
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.95)),
+    url('../img/fondo-claro.png') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #111;
+}
+
+@keyframes parallax {
+  0% { background-position: center center; }
+  50% { background-position: center top; }
+  100% { background-position: center center; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes colores {
+  0% { color: #70d6ff; }
+  50% { color: #3ae374; }
+  100% { color: #ff5c39; }
+}
+
+h1 span {
+  animation: colores 5s infinite ease-in-out alternate;
+  display: inline-block;
+  font-family: 'MiddleOfApril', cursive;
+  font-size: 3.5rem;
+}
+
+
+@keyframes colores {
+  0%   { color: #70d6ff; }
+  50%  { color: #3ae374; }
+  100% { color: #ff5c39; }
+}
+
+.subtitulo {
+  font-family: 'Nunito', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.85;
+}
+
+/* === BARRA DE BÚSQUEDA === */
+.busqueda {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.busqueda input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid #3ae374;
+  background-color: #5e5e5e;
+  color: #111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .busqueda input {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+/* === BOTONES GLOBALES === */
+button {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  background-color: #007bff;
+  color: black;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3ae374;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* === CONTENEDOR === */
+.ventana {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: center;
+}
+
+body.light-mode .ventana {
+  background-color: rgba(255,255,255,0.95);
+  color: #111;
+}
+
+/* === RESULTADO === */
+#resultado {
+  margin-top: 20px;
+  background-color: #292929;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: left;
+  white-space: pre-line;
+  font-size: 15px;
+  line-height: 1.6;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+body.light-mode #resultado {
+  background-color: #f2f2f2;
+  color: #111;
+}
+
+.titulo-resultado {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #3ae374;
+  margin-bottom: 10px;
+}
+
+.titulo-resultado strong {
+  color: #3ae374;
+  font-weight: bold;
+}
+
+.pronunciacion {
+  color: #70d6ff;
+}
+body.light-mode .pronunciacion {
+  color: #002855;
+}
+
+.traduccion,
+.sinonimos {
+  font-style: italic;
+}
+
+.sinonimos span {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 4px 10px;
+  border-radius: 16px;
+  background-color: #444;
+  font-style: italic;
+}
+body.light-mode .sinonimos span {
+  background-color: #ddd;
+}
+
+/* === TOGGLE MODO CLARO/OSCURO === */
+#toggle-modo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 30px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(to right, #1877f2, #ff5c39);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+#toggle-modo::before {
+  content: '🌙';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 2px;
+  left: 2px;
+  background: white;
+  border-radius: 50%;
+  font-size: 14px;
+  text-align: center;
+  line-height: 26px;
+  transition: transform 0.3s ease;
+}
+
+body.light-mode #toggle-modo::before {
+  content: '☀️';
+  transform: translateX(30px);
+}
