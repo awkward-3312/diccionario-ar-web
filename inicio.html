@@ -3,44 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio - Diccionario AR</title>
-  <link rel="icon" href="favicon-ar.png" type="image/png" />
-  <link rel="stylesheet" href="css/inicio.css" />
-  <script src="js/inicio.js" defer></script>
+  <title>Diccionario - AR</title>
+  <link rel="icon" type="image/png" href="favicon-ar.png" />
+  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
-  <div class="navbar">
+  <header class="encabezado">
     <div class="logo">Diccionario AR/RA</div>
-    <div class="menu">
+    <nav>
       <a href="#">Plataforma</a>
-      <a href="index.html">Diccionario</a>
+      <a href="#">Diccionario</a>
       <a href="#">Contacto</a>
-    </div>
-    <div class="login">
-      <a href="admin.html">Iniciar sesión</a>
-    </div>
-  </div>
+    </nav>
+    <button onclick="window.location.href='admin.html'" class="btn-secundario">Iniciar sesión</button>
+  </header>
 
-  <div class="hero">
-    <h1>Diccionario AR</h1>
+  <main class="hero">
+    <h1>Bienvenido</h1>
     <p>
-      Una herramienta interactiva construida para facilitar la consulta de
-      términos técnicos, abreviaturas y formas farmacéuticas utilizadas en
-      documentos regulatorios.<br /><br />
-      Esta plataforma fue diseñada con tecnologías web modernas para ser
-      accesible, funcional y compatible con dispositivos móviles. Está pensada
-      especialmente para profesionales de asuntos regulatorios, traducción
-      técnica, farmacovigilancia y estudiantes del área de salud y
-      farmacia.<br /><br />
-      Con opción de búsqueda avanzada, almacenamiento offline y más.
+      Esta herramienta te permite consultar, agregar y gestionar términos usados en asuntos regulatorios.
+      Diseñada especialmente para profesionales de traducción, revisión técnica y registros sanitarios.
     </p>
-    <button class="boton-principal" onclick="location.href='index.html'">
-      Explorar Diccionario
-    </button>
-  </div>
+    <div class="botones">
+      <button class="btn-primario" onclick="window.location.href='index.html'">Ir al Diccionario</button>
+      <button class="btn-secundario" onclick="window.location.href='agregar.html'">Agregar Término</button>
+    </div>
+  </main>
 
   <footer>
-    Proyecto desarrollado con fines educativos y profesionales | EBEA 2025
+    © 2025 Diccionario AR · Hecho con 💚 para el área regulatoria
   </footer>
+
+  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
+
+  <script src="js/inicio.js"></script>
 </body>
 </html>

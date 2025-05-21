@@ -1,17 +1,10 @@
+function toggleModo() {
+  const esClaro = document.body.classList.toggle("light-mode");
+  localStorage.setItem("modoClaro", esClaro ? "1" : "0");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Inicio cargado correctamente ✨");
-  
-    // Desplazamiento suave si agregas secciones con anclas
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  
-    // Aquí podrías añadir animaciones o efectos en el futuro
-  });
-  
+  if (localStorage.getItem("modoClaro") === "1") {
+    document.body.classList.add("light-mode");
+  }
+});
