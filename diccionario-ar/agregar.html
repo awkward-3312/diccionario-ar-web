@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Término - Diccionario AR</title>
+    <link rel="icon" type="image/png" href="favicon-ar.png">
+    <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/agregar.css">
+    <script src="js/agregar.js" defer></script>
+  </head>  
+<body>
+  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
+
+  <div class="formulario">
+    <h2><span class="azul">AGREGAR</span> <span class="rojo">TÉRMINO</span></h2>
+
+    <form id="formulario">
+      <select id="tipo" required onchange="mostrarCampos()">
+        <option value="">Seleccione tipo</option>
+        <option value="abreviatura">Abreviatura</option>
+        <option value="termino">Término</option>
+        <option value="forma">Forma farmacéutica</option>
+      </select>
+
+      <input type="text" id="termino" placeholder="Agregar palabra" required>
+      <input type="text" id="traduccion" placeholder="Traducción" style="display:none">
+      <input type="text" id="pronunciacion" placeholder="Pronunciación" style="display:none">
+      <input type="text" id="categoria" placeholder="Categoría" style="display:none">
+      <textarea id="definicion" placeholder="Definición" style="display:none"></textarea>
+      <input type="text" id="sinonimos" placeholder="Sinónimos (separados por coma)" style="display:none">
+
+      <div id="loader"><span></span><span></span><span></span></div>
+
+      <button type="submit">Guardar</button>
+      <button type="button" onclick="window.location.href='index.html'">Cancelar</button>
+    </form>
+
+    <p id="mensaje" style="text-align:center; margin-top:10px;"></p>
+  </div>
+
+  <div id="popupMsg" style="display:none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #3ae374; color: black; padding: 12px 24px; border-radius: 10px; font-weight: bold; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+    ✅ Término agregado correctamente
+  </div>
+
+  <!-- Barra inferior en modo móvil -->
+  <div class="barra-inferior">
+    <button onclick="window.location.href='index.html'">🏠 Inicio</button>
+    <button onclick="window.location.href='admin.html'">🔒 Admin</button>
+  </div>
+
+  <script src="js/agregar.js"></script>
+  <script>
+    function toggleModo() {
+      const esClaro = document.body.classList.toggle("light-mode");
+      localStorage.setItem("modoClaro", esClaro ? "1" : "0");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("modoClaro") === "1") {
+        document.body.classList.add("light-mode");
+      }
+    });
+  </script>
+</body>
+</html>
