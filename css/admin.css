@@ -334,16 +334,34 @@ body.light-mode .input-group input {
 
 .mostrar-toggle {
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 12px;
-  background: none;
+  background-color: #3ae374;
+  color: black;
   border: none;
-  color: #3ae374;
   font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 8px;
   cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
+.mostrar-toggle:hover {
+  background-color: #2ed573;
+}
+
+body.light-mode .mostrar-toggle {
+  background-color: #1877f2;
+  color: white;
+}
+
+body.light-mode .mostrar-toggle:hover {
+  background-color: #479dff;
+}
+
 
 body.light-mode .mostrar-toggle {
   color: #1877f2;
