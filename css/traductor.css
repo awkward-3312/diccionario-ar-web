@@ -1,70 +1,69 @@
 .ventana {
-    max-width: 700px;
-    width: 90%;
-    margin-top: 80px;
-  }
-  
-  textarea {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 10px;
-    background-color: #2a2a2a;
-    color: white;
-    border: none;
-    resize: vertical;
-    min-height: 150px;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  body.light-mode textarea {
-    background-color: #e8e8e8;
-    color: #111;
-  }
-  
-  select {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: #2a2a2a;
-    color: white;
-    border: none;
-  }
-  
-  body.light-mode select {
-    background-color: #e8e8e8;
-    color: #111;
-  }
-  
-  #resultadoTraduccion {
-    background-color: #292929;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 12px;
-    font-size: 16px;
-    color: white;
-    text-align: left;
-    white-space: pre-line;
-  }
-  
-  body.light-mode #resultadoTraduccion {
-    background-color: #f2f2f2;
-    color: #111;
-  }
-  
-  #loader {
-    margin-top: 10px;
-    font-style: italic;
-    color: #70d6ff;
-    display: none;
-  }
-  
-  .volver {
-    color: #3ae374;
-    text-decoration: underline;
-    display: inline-block;
-    margin-top: 20px;
-  }
-  
+  max-width: 700px;
+  width: 90%;
+  margin-top: 80px;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  resize: vertical;
+  min-height: 150px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body.light-mode textarea {
+  background-color: #e8e8e8;
+  color: #111;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+}
+
+body.light-mode select {
+  background-color: #e8e8e8;
+  color: #111;
+}
+
+#resultadoTraduccion {
+  background-color: #292929;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: white;
+  text-align: left;
+  white-space: pre-line;
+}
+
+body.light-mode #resultadoTraduccion {
+  background-color: #f2f2f2;
+  color: #111;
+}
+
+#loader {
+  margin-top: 10px;
+  font-style: italic;
+  color: #70d6ff;
+  display: none;
+}
+
+.volver {
+  color: #3ae374;
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 20px;
+}

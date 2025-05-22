@@ -31,3 +31,4 @@ curl_close($ch);
 
 http_response_code($httpcode);
 echo $response;
+?>
