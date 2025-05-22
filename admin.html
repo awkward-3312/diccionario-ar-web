@@ -74,13 +74,22 @@
     function toggleModo() {
       const esClaro = document.body.classList.toggle("light-mode");
       localStorage.setItem("modoClaro", esClaro ? "1" : "0");
+      actualizarLogo();
     }
-
+  
+    function actualizarLogo() {
+      const logo = document.getElementById("logoImg");
+      if (!logo) return;
+      const esClaro = document.body.classList.contains("light-mode");
+      logo.src = esClaro ? "img/logo-ar-light.png" : "img/logo-ar-dark.png";
+    }
+  
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
       }
+      actualizarLogo();
     });
-  </script>
+  </script>  
 </body>
 </html>
