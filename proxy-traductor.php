@@ -1,5 +1,4 @@
 <?php
-// === Manejo de CORS para JS ===
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
   header('Access-Control-Allow-Origin: *');
   header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -10,10 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-// Leer el cuerpo de la petición
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Validar parámetros
 if (!isset($data['q']) || !isset($data['target'])) {
   http_response_code(400);
   echo json_encode(["error" => "Parámetros incompletos."]);
@@ -27,8 +24,9 @@ $body = json_encode([
   "format" => "text"
 ]);
 
-// Configurar cURL
-$ch = curl_init("https://translate.argosopentech.com/translate");
+$url = "https://translate.argosopentech.com/translate";
+
+$ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   'Content-Type: application/json',
@@ -36,23 +34,22 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 ]);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 
-// Ejecutar la petición
 $response = curl_exec($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$error = curl_error($ch);
+$curlError = curl_error($ch);
 curl_close($ch);
 
-// Manejo de error en cURL
+// 🧱 Manejo de error de red
 if ($response === false || empty($response)) {
   http_response_code(502);
   echo json_encode([
-    "error" => "❌ Error al contactar el servidor de traducción.",
-    "detalle" => $error
+    "error" => "❌ Fallo en la conexión al servidor de traducción.",
+    "detalle" => $curlError ?: "Respuesta vacía"
   ]);
   exit;
 }
 
-// Enviar respuesta JSON
+// ✅ Devolver respuesta de traducción
 http_response_code($httpcode);
 echo $response;
 ?>
