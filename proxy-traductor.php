@@ -25,7 +25,6 @@ $body = json_encode([
   "format" => "text"
 ]);
 
-// ✅ Usamos un servidor que SÍ funciona sin clave
 $ch = curl_init("https://translate.argosopentech.com/translate");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -35,8 +34,24 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 
 $response = curl_exec($ch);
+
+// Manejo de error de red en curl
+if (curl_errno($ch)) {
+  http_response_code(500);
+  echo json_encode(["error" => "Error al contactar el servidor de traducción."]);
+  curl_close($ch);
+  exit;
+}
+
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
+
+// Verificar si la respuesta no vino vacía
+if (empty($response)) {
+  http_response_code(502);
+  echo json_encode(["error" => "Respuesta vacía del servidor de traducción."]);
+  exit;
+}
 
 http_response_code($httpcode);
 echo $response;
