@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="css/admin.css" />
 </head>
 <body>
+  <!-- Botón modo claro/oscuro -->
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
+  <!-- Logo con cambio automático por modo -->
   <div id="logo-admin">
     <img src="img/Logo AR.png" alt="Logo AR" id="logoImg">
   </div>
-  
-  <h1><span class="azul">PANEL</span> <span class="rojo">ADMIN</span></h1>
-  
+
   <!-- LOGIN: tarjeta moderna -->
   <div class="login-card" id="loginPanel">
     <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo-login" />
@@ -71,32 +71,35 @@
     <div id="paginacion" style="text-align:center; margin-top:20px;"></div>
   </div>
 
+  <!-- Botón fijo para sugerencias -->
   <button id="btnSugerencias" class="btn-fijo-sugerencias" style="display:none;" onclick="window.location.href='revisar-sugerencias.html'">
     📬 Ver sugerencias
   </button>
 
+  <!-- JS principal -->
   <script src="js/admin.js"></script>
 
+  <!-- Modo claro/oscuro y cambio de logo -->
   <script>
     function toggleModo() {
       const esClaro = document.body.classList.toggle("light-mode");
       localStorage.setItem("modoClaro", esClaro ? "1" : "0");
       actualizarLogo();
     }
-  
+
     function actualizarLogo() {
       const logo = document.getElementById("logoImg");
       if (!logo) return;
       const esClaro = document.body.classList.contains("light-mode");
-      logo.src = esClaro ? "img/logo-ar-light.png" : "img/logo-ar-dark.png";
+      logo.src = esClaro ? "img/Logo AR light-mode.png" : "img/Logo AR.png";
     }
-  
+
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
       }
       actualizarLogo();
     });
-  </script>  
+  </script>
 </body>
 </html>
