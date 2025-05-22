@@ -22,9 +22,12 @@ function toggleModo() {
     resultado.textContent = "";
   
     try {
-      const res = await fetch("https://libretranslate.com/translate", {
+      const res = await fetch("https://translate.astian.org/translate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         body: JSON.stringify({
           q: texto,
           source: "auto",
