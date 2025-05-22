@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto – Diccionario AR</title>
+  <link rel="stylesheet" href="css/contacto.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="encabezado">
+    <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo" />
+    <nav class="menu-principal">
+      <a href="inicio.html">Inicio</a>
+      <a href="index.html">Diccionario</a>
+      <a href="contacto.html" class="activo">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="contenedor-contacto">
+    <h1>Contacto</h1>
+    <p>¿Tienes dudas, sugerencias o deseas reportar un error? Rellena el siguiente formulario y nos pondremos en contacto contigo.</p>
+
+    <form class="formulario-contacto">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+      <button type="submit" class="btn-enviar">Enviar mensaje</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Diccionario AR – Todos los derechos reservados</p>
+  </footer>
+
+  <script src="js/contacto.js"></script>
+</body>
+</html>

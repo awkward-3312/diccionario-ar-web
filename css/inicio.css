@@ -1,3 +1,15 @@
+/* === VARIABLES DE COLOR === */
+:root {
+  --color-fondo-top: #0f1115;
+  --color-fondo-bottom: #1a1c22;
+  --color-primario: #1877f2;
+  --color-secundario: #ff5c39;
+  --color-texto-principal: #ffffff;
+  --color-subtexto: #dddddd;
+  --color-onda: rgba(24,119,242,0.1);
+  --color-onda-secundaria: rgba(255,92,57,0.2);
+}
+
 /* === FUENTES === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
@@ -11,13 +23,47 @@
 
 body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #020202, #0a0a0a);
-  color: #ffffff;
+  background: linear-gradient(to bottom, var(--color-fondo-top), var(--color-fondo-bottom));
+  color: var(--color-texto-principal);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+}
+
+/* === FONDO MOLECULAR ANIMADO === */
+.fondo-molecular {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fondo-molecular .mol {
+  position: absolute;
+  opacity: 0.08;
+  animation: flotar 25s linear infinite alternate;
+  max-width: 120px;
+}
+
+.mol1 { top: 10%; left: 5%; animation-delay: 0s; }
+.mol2 { top: 30%; left: 85%; animation-delay: 3s; }
+.mol3 { top: 60%; left: 15%; animation-delay: 6s; }
+.mol4 { top: 70%; left: 60%; animation-delay: 9s; }
+.mol5 { top: 15%; left: 35%; animation-delay: 2s; }
+.mol6 { top: 50%; left: 75%; animation-delay: 5s; }
+.mol7 { top: 25%; left: 55%; animation-delay: 8s; }
+.mol8 { top: 80%; left: 30%; animation-delay: 11s; }
+
+@keyframes flotar {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
 /* === ENCABEZADO === */
@@ -37,18 +83,14 @@ body {
 }
 
 .logo {
-  width: 340px;
+  width: 200px;
   height: auto;
   animation: logoFloat 3s ease-in-out infinite;
 }
 
 @keyframes logoFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .nav-central {
@@ -67,7 +109,7 @@ body {
 .menu-principal a {
   position: relative;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--color-texto-principal);
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
@@ -80,12 +122,12 @@ body {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #00FFD0;
+  background-color: var(--color-primario);
   transition: width 0.3s ease;
 }
 
 .menu-principal a:hover {
-  color: #00FFD0;
+  color: var(--color-primario);
 }
 
 .menu-principal a:hover::after {
@@ -94,18 +136,18 @@ body {
 
 .btn-login {
   padding: 8px 16px;
-  border: 1px solid #00FFD0;
+  border: 1px solid var(--color-primario);
   border-radius: 8px;
   background: transparent;
-  color: #00FFD0;
+  color: var(--color-primario);
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-  background-color: #00FFD0;
-  color: #000;
-  box-shadow: 0 0 10px rgba(0, 255, 208, 0.5);
+  background-color: var(--color-primario);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(24, 119, 242, 0.5);
 }
 
 /* === HERO SECTION === */
@@ -116,23 +158,23 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 160px 20px 60px;
+  padding: 220px 20px 60px;
   position: relative;
 }
 
 .hero h1 {
   font-size: 3rem;
   font-weight: bold;
-  color: #00FFD0;
+  color: var(--color-primario);
   margin-bottom: 20px;
   line-height: 1.3;
-  text-shadow: 0 0 15px rgba(0, 255, 208, 0.5);
+  text-shadow: 0 0 15px rgba(24, 119, 242, 0.5);
 }
 
 .hero p {
   font-size: 1.2rem;
   max-width: 700px;
-  color: #dddddd;
+  color: var(--color-subtexto);
   margin-bottom: 30px;
   line-height: 1.6;
 }
@@ -143,7 +185,7 @@ body {
 }
 
 .btn-primario {
-  background-color: #00e6b8;
+  background-color: var(--color-primario);
   color: white;
   font-weight: 600;
   border: none;
@@ -152,13 +194,13 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 255, 208, 0.2);
+  box-shadow: 0 4px 10px rgba(24, 119, 242, 0.2);
 }
 
 .btn-primario:hover {
-  background-color: #1af5c5;
+  background-color: var(--color-secundario);
   transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0, 255, 208, 0.4);
+  box-shadow: 0 0 10px rgba(255, 92, 57, 0.4);
 }
 
 /* === SECCIÓN PLATAFORMA === */
@@ -176,7 +218,7 @@ body {
 .seccion-plataforma h2 {
   font-size: 2.4rem;
   margin-bottom: 20px;
-  color: #00FFD0;
+  color: var(--color-primario);
   text-align: center;
 }
 
@@ -209,7 +251,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 160px;
-  background: radial-gradient(ellipse at bottom, rgba(0,255,208,0.1), rgba(0,255,208,0.2));
+  background: radial-gradient(ellipse at bottom, var(--color-onda), var(--color-onda-secundaria));
   clip-path: ellipse(70% 100% at 50% 100%);
   pointer-events: none;
   z-index: 0;
@@ -229,9 +271,70 @@ body::after {
     justify-content: center;
   }
   .logo {
-    width: 200px;
+    width: 100px;
   }
   .btn-login {
     margin-top: 10px;
   }
+}
+
+/* BOT LAUNCHER */
+
+.bot-launcher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.bot-launcher .main-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+
+.bot-launcher .main-btn:hover {
+  background-color: var(--color-secundario);
+}
+
+.bot-launcher .action-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bot-launcher.active .action-list {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.bot-launcher .action {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bot-launcher .action:hover {
+  background-color: #333;
 }

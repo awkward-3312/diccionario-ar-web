@@ -59,8 +59,8 @@ body.light-mode {
 }
 
 @keyframes colores {
-  0% { color: #70d6ff; }
-  50% { color: #3ae374; }
+  0%   { color: #70d6ff; }
+  50%  { color: #3ae374; }
   100% { color: #ff5c39; }
 }
 
@@ -69,13 +69,6 @@ h1 span {
   display: inline-block;
   font-family: 'MiddleOfApril', cursive;
   font-size: 3.5rem;
-}
-
-
-@keyframes colores {
-  0%   { color: #70d6ff; }
-  50%  { color: #3ae374; }
-  100% { color: #ff5c39; }
 }
 
 .subtitulo {
@@ -115,20 +108,19 @@ body.dark-mode .busqueda input {
 button {
   font-family: 'Segoe UI', sans-serif;
   font-weight: 600;
-  background-color: #007bff;
-  color: black;
+  background-color: #1877f2;
+  color: white;
+  border: none;
   border-radius: 8px;
   padding: 10px 16px;
-  font-size: 14px;
-  border: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 0.9rem;
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-  background-color: #3ae374;
-  color: black;
+  background-color: #125ecc;
   transform: scale(1.05);
 }
 
