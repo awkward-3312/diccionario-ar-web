@@ -22,16 +22,49 @@
   padding: 0;
 }
 
+
+/* === AJUSTES CROSS-BROWSER PARA INICIO === */
 body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, var(--color-fondo-top), var(--color-fondo-bottom));
-  color: var(--color-texto-principal);
+  background: linear-gradient(to bottom, #0f1115, #1a1c22);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
+/* Ajustes adicionales */
+.hero h1, .hero p, .btn-primario {
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.fondo-molecular .mol {
+  opacity: 0.1;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Onda decorativa más uniforme */
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background: radial-gradient(ellipse at bottom, rgba(24,119,242,0.1), rgba(255,92,57,0.2));
+  clip-path: ellipse(70% 100% at 50% 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 
 /* === FONDO MOLECULAR ANIMADO === */
 .fondo-molecular {
