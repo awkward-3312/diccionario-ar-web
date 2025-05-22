@@ -1,4 +1,12 @@
 <?php
+// === CORS HEADERS NECESARIOS PARA POST desde JS ===
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+  header('Access-Control-Allow-Origin: *');
+  header('Access-Control-Allow-Methods: POST, OPTIONS');
+  header('Access-Control-Allow-Headers: Content-Type');
+  exit(0);
+}
+
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
@@ -17,7 +25,7 @@ $body = json_encode([
   "format" => "text"
 ]);
 
-// ✅ Nuevo endpoint sin API key
+// ✅ Usamos un servidor que SÍ funciona sin clave
 $ch = curl_init("https://translate.argosopentech.com/translate");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
