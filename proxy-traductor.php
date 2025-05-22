@@ -17,7 +17,8 @@ $body = json_encode([
   "format" => "text"
 ]);
 
-$ch = curl_init("https://libretranslate.de/translate");
+// ✅ Nuevo endpoint sin API key
+$ch = curl_init("https://translate.argosopentech.com/translate");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   'Content-Type: application/json',
