@@ -1,3 +1,4 @@
+
 /* === VARIABLES DE COLOR === */
 :root {
   --color-fondo-top: #0f1115;
@@ -60,11 +61,34 @@ body {
 .mol7 { top: 25%; left: 55%; animation: flotar-2 30s ease-in-out infinite reverse; }
 .mol8 { top: 80%; left: 30%; animation: flotar-3 36s ease-in-out infinite; }
 
+@keyframes flotar-1 {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+  50%  { transform: translate(-20px, -30px) rotate(5deg); opacity: 0.12; }
+  100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+}
 
-@keyframes flotar {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(15deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+@keyframes flotar-2 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(25px, -15px) rotate(-8deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes flotar-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-15px, 20px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes flotar-4 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(10px, -20px) rotate(12deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes flotar-5 {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-10px, 10px); }
+  100% { transform: translate(0, 0); }
 }
 
 /* === ENCABEZADO === */
@@ -161,6 +185,16 @@ body {
   text-align: center;
   padding: 220px 20px 60px;
   position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInHero 1.2s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInHero {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero h1 {
@@ -204,38 +238,7 @@ body {
   box-shadow: 0 0 10px rgba(255, 92, 57, 0.4);
 }
 
-/* === SECCIÓN PLATAFORMA === */
-.seccion-plataforma {
-  padding: 100px 20px;
-  max-width: 850px;
-  margin: 0 auto;
-  text-align: left;
-  color: #e0fdfb;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 1.2s ease-out 0.5s forwards;
-}
-
-.seccion-plataforma h2 {
-  font-size: 2.4rem;
-  margin-bottom: 20px;
-  color: var(--color-primario);
-  text-align: center;
-}
-
-.seccion-plataforma p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* === FOOTER Y ONDA === */
 footer {
   text-align: center;
   padding: 40px 20px 60px;
@@ -244,7 +247,6 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* === ONDA DECORATIVA === */
 body::after {
   content: "";
   position: absolute;
@@ -260,27 +262,33 @@ body::after {
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-  .menu-principal {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .nav-central {
-    width: 100%;
-    justify-content: center;
-  }
-  .logo {
-    width: 100px;
-  }
-  .btn-login {
-    margin-top: 10px;
-  }
+  .hero h1 { font-size: 2.2rem; }
+  .menu-principal { flex-direction: column; gap: 12px; }
+  .nav-central { width: 100%; justify-content: center; }
+  .logo { width: 100px; }
+  .btn-login { margin-top: 10px; }
 }
 
-/* BOT LAUNCHER */
+/* === TRANSICIÓN DE PÁGINA === */
+body.fade-in {
+  opacity: 0;
+  animation: bodyFadeIn 0.6s ease forwards;
+}
 
+body.fade-out {
+  opacity: 1;
+  animation: bodyFadeOut 0.4s ease forwards;
+}
+
+@keyframes bodyFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes bodyFadeOut {
+  to { opacity: 0; }
+}
+
+/* === BOT FLOTANTE === */
 .bot-launcher {
   position: fixed;
   bottom: 20px;
@@ -313,14 +321,14 @@ body::after {
   margin-bottom: 10px;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .bot-launcher.active .action-list {
   opacity: 1;
   pointer-events: all;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .bot-launcher .action {
@@ -338,78 +346,4 @@ body::after {
 
 .bot-launcher .action:hover {
   background-color: #333;
-}
-
-/* === FLUJO MOLECULAR VARIADO === */
-@keyframes flotar-1 {
-  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
-  50%  { transform: translate(-20px, -30px) rotate(5deg); opacity: 0.12; }
-  100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
-}
-
-@keyframes flotar-2 {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  50%  { transform: translate(25px, -15px) rotate(-8deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-@keyframes flotar-3 {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(-15px, 20px) scale(1.1); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes flotar-4 {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  50%  { transform: translate(10px, -20px) rotate(12deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-@keyframes flotar-5 {
-  0%   { transform: translate(0, 0); }
-  50%  { transform: translate(-10px, 10px); }
-  100% { transform: translate(0, 0); }
-}
-
-/* === Hero con fade === */
-.hero {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInHero 1.2s ease-out 0.5s forwards;
-}
-
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* === Transición entre páginas === */
-body.fade-in {
-  opacity: 0;
-  animation: bodyFadeIn 0.6s ease forwards;
-}
-
-body.fade-out {
-  opacity: 1;
-  animation: bodyFadeOut 0.4s ease forwards;
-}
-
-@keyframes bodyFadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes bodyFadeOut {
-  to { opacity: 0; }
-}
-
-/* === Mejor animación bot launcher === */
-.bot-launcher .action-list {
-  transform: translateY(20px) scale(0.95);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.bot-launcher.active .action-list {
-  transform: translateY(0) scale(1);
 }
