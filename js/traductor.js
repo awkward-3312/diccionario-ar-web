@@ -21,28 +21,48 @@ function toggleModo() {
     loader.style.display = "block";
     resultado.textContent = "";
   
-    try {
-      const res = await fetch("https://translate.astian.org/translate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          q: texto,
-          source: "auto",
-          target: idioma,
-          format: "text"
-        })
-      });
+    const body = JSON.stringify({
+      q: texto,
+      source: "auto",
+      target: idioma,
+      format: "text"
+    });
   
-      const data = await res.json();
-      resultado.textContent = data.translatedText || "⚠️ No se pudo traducir.";
-    } catch (err) {
-      resultado.textContent = "❌ Error al traducir.";
-      console.error(err);
-    } finally {
-      loader.style.display = "none";
+    const headers = {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    };
+  
+    const endpoints = [
+      "https://translate.astian.org/translate",
+      "https://libretranslate.de/translate"
+    ];
+  
+    let traducido = false;
+  
+    for (const url of endpoints) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers,
+          body
+        });
+  
+        if (res.ok) {
+          const data = await res.json();
+          resultado.textContent = data.translatedText || "⚠️ Traducción vacía.";
+          traducido = true;
+          break;
+        }
+      } catch (err) {
+        console.warn("Error con:", url, err);
+      }
     }
+  
+    if (!traducido) {
+      resultado.textContent = "❌ Error al traducir. Intenta más tarde.";
+    }
+  
+    loader.style.display = "none";
   }
   
