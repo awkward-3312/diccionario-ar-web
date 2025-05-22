@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin - Diccionario AR</title>
-    <link rel="icon" type="image/png" href="favicon-ar.png">
-    <link rel="stylesheet" href="css/admin.css">
-  </head>  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin - Diccionario AR</title>
+  <link rel="icon" href="favicon-ar.png" type="image/png" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
-  <h1><span class="azul">PANEL</span> <span class="rojo">ADMIN</span></h1>
-
-  <div class="login" id="loginPanel">
+  <!-- LOGIN estilo tarjeta moderna -->
+  <div class="login-card" id="loginPanel">
+    <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo-login" />
     <form onsubmit="verificarClave(); return false;">
-      <input type="password" id="clave" placeholder="Ingrese la contraseña" aria-label="Contraseña">
-      <button type="button" class="mostrar-toggle" onclick="toggleMostrar()">MOSTRAR</button>
-      <button type="submit">Ingresar</button>
-      <button type="button" onclick="window.location.href='index.html'" style="background-color: #777;">Volver al inicio</button>
+      <div class="input-group">
+        <input type="text" value="administrador" readonly aria-label="Usuario" />
+      </div>
+      <div class="input-group">
+        <input type="password" id="clave" placeholder="Ingrese la contraseña" aria-label="Contraseña" />
+        <button type="button" class="mostrar-toggle" onclick="toggleMostrar()">MOSTRAR</button>
+      </div>
+      <button type="submit" class="btn-primary">Ingresar</button>
+      <div class="botones-regreso">
+        <button type="button" onclick="window.location.href='inicio.html'" class="btn-secundario">Regresar a Inicio</button>
+        <button type="button" onclick="window.location.href='index.html'" class="btn-secundario">Regresar a Diccionario</button>
+      </div>
     </form>
   </div>
 
-  <div class="contenedor" id="adminPanel" style="max-width: 100%; display: none;">
+  <!-- CONTENEDOR DEL PANEL (se muestra solo al validar contraseña) -->
+  <h1 style="display: none;"><span class="azul">PANEL</span> <span class="rojo">ADMIN</span></h1>
+
+  <div class="contenedor" id="adminPanel" style="display: none;">
     <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
       <button id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none; background-color:#e74c3c;">Cerrar sesión</button>
       <button onclick="window.location.href='index.html'">Volver al inicio</button>
     </div>
 
-    <input type="text" id="buscador" placeholder="Buscar por término..." onkeyup="filtrarTabla()" aria-label="Buscar término">
+    <input type="text" id="buscador" placeholder="Buscar por término..." onkeyup="filtrarTabla()" aria-label="Buscar término" />
 
     <div style="overflow-x: auto;">
       <table id="tablaTerminos">
@@ -46,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td colspan='10'>Cargando términos...</td></tr>
+          <tr><td colspan="10">Cargando términos...</td></tr>
         </tbody>
       </table>
     </div>
@@ -54,7 +65,9 @@
     <div id="paginacion" style="text-align:center; margin-top:20px;"></div>
   </div>
 
-  <button id="btnSugerencias" class="btn-fijo-sugerencias" style="display:none;" onclick="window.location.href='revisar-sugerencias.html'">📬 Ver sugerencias</button>
+  <button id="btnSugerencias" class="btn-fijo-sugerencias" style="display:none;" onclick="window.location.href='revisar-sugerencias.html'">
+    📬 Ver sugerencias
+  </button>
 
   <script src="js/admin.js"></script>
   <script>
