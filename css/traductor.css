@@ -67,3 +67,44 @@ body.light-mode #resultadoTraduccion {
   display: inline-block;
   margin-top: 20px;
 }
+
+button {
+  margin-top: 10px;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 8px;
+  border: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 8px;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+#btnCopiar {
+  background-color: #3ae374;
+  color: #000;
+}
+
+#btnCopiar:hover {
+  background-color: #28c662;
+}
+
+body.light-mode button {
+  background-color: #ddd;
+  color: #000;
+}
+
+body.light-mode #btnCopiar {
+  background-color: #7dfca3;
+  color: #000;
+}
+
+body.light-mode #btnCopiar:hover {
+  background-color: #61e689;
+}

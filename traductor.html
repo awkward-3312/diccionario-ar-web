@@ -15,7 +15,7 @@
   <div class="ventana">
     <h1><span>🌐 Traductor</span></h1>
     <p class="subtitulo">Traduce párrafos grandes fácilmente</p>
-
+  
     <textarea id="textoOriginal" placeholder="Escribe o pega el texto a traducir..."></textarea>
     <select id="idiomaDestino">
       <option value="es">Español</option>
@@ -25,12 +25,17 @@
       <option value="it">Italiano</option>
       <option value="pt">Portugués</option>
     </select>
+  
     <button onclick="traducirTexto()">Traducir</button>
+  
+    <!-- ✅ NUEVOS BOTONES AQUÍ -->
+    <button onclick="copiarTraduccion()" id="btnCopiar" style="display: none;">📋 Copiar traducción</button>
+    <button onclick="limpiarCampos()" style="background-color: #444;">🧹 Limpiar</button>
+  
     <div id="loader">Traduciendo...</div>
     <div id="resultadoTraduccion"></div>
-
+  
     <br>
     <a href="index.html" class="volver">← Volver al diccionario</a>
   </div>
-</body>
-</html>
+  
