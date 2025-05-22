@@ -1,35 +1,55 @@
-<?php
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-
-$data = json_decode(file_get_contents("php://input"), true);
-
-if (!isset($data['q']) || !isset($data['target'])) {
-  http_response_code(400);
-  echo json_encode(["error" => "Parámetros incompletos"]);
-  exit;
+function toggleModo() {
+  const isClaro = document.body.classList.toggle("light-mode");
+  localStorage.setItem("modoClaro", isClaro ? "1" : "0");
 }
 
-$body = json_encode([
-  "q" => $data['q'],
-  "source" => "auto",
-  "target" => $data['target'],
-  "format" => "text"
-]);
+if (localStorage.getItem("modoClaro") === "1") {
+  document.body.classList.add("light-mode");
+}
 
-// ✅ Nuevo servidor gratuito y funcional
-$ch = curl_init("https://translate.argosopentech.com/translate");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  'Content-Type: application/json',
-  'Accept: application/json'
-]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+async function traducirTexto() {
+  const texto = document.getElementById("textoOriginal").value.trim();
+  const idioma = document.getElementById("idiomaDestino").value;
+  const resultado = document.getElementById("resultadoTraduccion");
+  const loader = document.getElementById("loader");
 
-$response = curl_exec($ch);
-$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
+  if (!texto) {
+    resultado.textContent = "⚠️ Por favor ingresa un texto.";
+    return;
+  }
 
-http_response_code($httpcode);
-echo $response;
-?>
+  loader.style.display = "block";
+  resultado.textContent = "";
+
+  const body = JSON.stringify({
+    q: texto,
+    target: idioma
+  });
+
+  const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  };
+
+  try {
+    const res = await fetch("https://www.diccionario-ar.com/proxy-traductor.php", {
+      method: "POST",
+      headers,
+      body
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      resultado.textContent = data.translatedText || "⚠️ Traducción vacía.";
+    } else {
+      resultado.textContent = "❌ Error al traducir. Intenta más tarde.";
+    }
+  } catch (err) {
+    resultado.textContent = "❌ Error de red. Verifica la conexión.";
+    console.error(err);
+  } finally {
+    loader.style.display = "none";
+  }
+}
+
+console.log("✅ traductor.js cargado correctamente");
