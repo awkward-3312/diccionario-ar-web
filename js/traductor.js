@@ -27,7 +27,6 @@ async function traducirTexto() {
   const body = JSON.stringify({
     q: texto,
     target: idioma
-    // source: "auto" se usa por defecto desde el backend
   });
 
   const headers = {
