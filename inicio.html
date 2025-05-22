@@ -6,50 +6,35 @@
   <title>Inicio – Diccionario AR</title>
   <link rel="stylesheet" href="css/inicio.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="fondo-molecular">
-    <img src="img/mol-perfect1.png" class="mol mol1" alt="" />
-    <img src="img/mol-perfect2.png" class="mol mol2" alt="" />
-    <img src="img/mol-perfect3.png" class="mol mol3" alt="" />
-    <img src="img/mol-perfect4.png" class="mol mol4" alt="" />
-    <img src="img/mol-perfect5.png" class="mol mol5" alt="" />
-    <img src="img/mol-perfect6.png" class="mol mol6" alt="" />
-    <img src="img/mol-perfect7.png" class="mol mol7" alt="" />
-    <img src="img/mol-perfect8.png" class="mol mol8" alt="" />
-  </div>
-
-  <div class="bot-launcher" id="botLauncher">
-    <div class="action-list">
-      <div class="action" onclick="alert('Iniciando chat en vivo...')"><i class="fas fa-comments"></i> Live Chat</div>
-      <div class="action" onclick="window.location.href='contacto.html'"><i class="fas fa-envelope"></i> Contacto</div>
-      <div class="action" onclick="window.location.href='index.html'"><i class="fas fa-book"></i> Diccionario</div>
-    </div>
-    <button class="main-btn" onclick="document.getElementById('botLauncher').classList.toggle('active')">
-      <i class="fas fa-robot"></i>
-    </button>
+    <img src="img/mol-perfect1.png" class="mol mol1" alt="molécula" />
+    <img src="img/mol-perfect2.png" class="mol mol2" alt="molécula" />
+    <img src="img/mol-perfect3.png" class="mol mol3" alt="molécula" />
+    <img src="img/mol-perfect4.png" class="mol mol4" alt="molécula" />
+    <img src="img/mol-perfect5.png" class="mol mol5" alt="molécula" />
+    <img src="img/mol-perfect6.png" class="mol mol6" alt="molécula" />
+    <img src="img/mol-perfect7.png" class="mol mol7" alt="molécula" />
+    <img src="img/mol-perfect8.png" class="mol mol8" alt="molécula" />
   </div>
 
   <header class="encabezado">
     <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo" />
-    <div class="nav-central">
-      <nav class="menu-principal">
-        <a href="#plataforma">Plataforma</a>
-        <a href="index.html">Diccionario</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-    </div>
+    <nav class="menu-principal">
+      <a href="#plataforma">Plataforma</a>
+      <a href="index.html">Diccionario</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
     <a href="admin.html" class="btn-login">Iniciar sesión</a>
-  </header>  
+  </header>
 
   <main>
     <section class="hero">
       <h1><span>Una herramienta<br>para ti...</span></h1>
       <p>
-        Una herramienta creada para ayudarte a entender y consultar términos técnicos del área regulatoria, 
-        especialmente en química y farmacia. Pensada para estudiantes, profesionales y equipos que trabajan 
-        en documentación y procesos regulatorios.
+        Plataforma colaborativa para consultar y agregar términos técnicos del área regulatoria. Diseñada para estudiantes, profesionales y equipos que trabajan en química, farmacia y documentación regulatoria.
       </p>
       <div class="botones">
         <button onclick="window.location.href='index.html'" class="btn-primario">
@@ -103,6 +88,17 @@
       </p>
     </section>
   </main>
+
+  <div class="bot-launcher" id="botLauncher">
+    <div class="action-list">
+      <div class="action" onclick="alert('Iniciando chat en vivo...')"><i class="fas fa-comments"></i> Live Chat</div>
+      <div class="action" onclick="window.location.href='contacto.html'"><i class="fas fa-envelope"></i> Contacto</div>
+      <div class="action" onclick="window.location.href='index.html'"><i class="fas fa-book"></i> Diccionario</div>
+    </div>
+    <button class="main-btn" onclick="document.getElementById('botLauncher').classList.toggle('active')">
+      <i class="fas fa-robot"></i>
+    </button>
+  </div>
 
   <footer id="contacto">
     © 2025 Diccionario AR · Hecho con 💚 para el área regulatoria

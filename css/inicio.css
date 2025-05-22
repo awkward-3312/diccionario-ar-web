@@ -47,18 +47,19 @@ body {
 .fondo-molecular .mol {
   position: absolute;
   opacity: 0.08;
-  animation: flotar 25s linear infinite alternate;
   max-width: 120px;
+  pointer-events: none;
 }
 
-.mol1 { top: 10%; left: 5%; animation-delay: 0s; }
-.mol2 { top: 30%; left: 85%; animation-delay: 3s; }
-.mol3 { top: 60%; left: 15%; animation-delay: 6s; }
-.mol4 { top: 70%; left: 60%; animation-delay: 9s; }
-.mol5 { top: 15%; left: 35%; animation-delay: 2s; }
-.mol6 { top: 50%; left: 75%; animation-delay: 5s; }
-.mol7 { top: 25%; left: 55%; animation-delay: 8s; }
-.mol8 { top: 80%; left: 30%; animation-delay: 11s; }
+.mol1 { top: 10%; left: 5%; animation: flotar-1 25s ease-in-out infinite; }
+.mol2 { top: 30%; left: 85%; animation: flotar-2 30s ease-in-out infinite; }
+.mol3 { top: 60%; left: 15%; animation: flotar-3 28s ease-in-out infinite; }
+.mol4 { top: 70%; left: 60%; animation: flotar-4 22s ease-in-out infinite; }
+.mol5 { top: 15%; left: 35%; animation: flotar-5 35s ease-in-out infinite; }
+.mol6 { top: 50%; left: 75%; animation: flotar-1 40s ease-in-out infinite reverse; }
+.mol7 { top: 25%; left: 55%; animation: flotar-2 30s ease-in-out infinite reverse; }
+.mol8 { top: 80%; left: 30%; animation: flotar-3 36s ease-in-out infinite; }
+
 
 @keyframes flotar {
   0% { transform: translateY(0) rotate(0deg); }
@@ -337,4 +338,35 @@ body::after {
 
 .bot-launcher .action:hover {
   background-color: #333;
+}
+
+/* === FLUJO MOLECULAR VARIADO === */
+@keyframes flotar-1 {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+  50%  { transform: translate(-20px, -30px) rotate(5deg); opacity: 0.12; }
+  100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+}
+
+@keyframes flotar-2 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(25px, -15px) rotate(-8deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes flotar-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-15px, 20px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes flotar-4 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(10px, -20px) rotate(12deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes flotar-5 {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-10px, 10px); }
+  100% { transform: translate(0, 0); }
 }
