@@ -24,7 +24,7 @@ $body = json_encode([
   "format" => "text"
 ]);
 
-$url = "https://translate.argosopentech.com/translate";
+$url = "https://translate.astian.org/translate";
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -39,17 +39,15 @@ $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $curlError = curl_error($ch);
 curl_close($ch);
 
-// 🧱 Manejo de error de red
 if ($response === false || empty($response)) {
   http_response_code(502);
   echo json_encode([
     "error" => "❌ Fallo en la conexión al servidor de traducción.",
-    "detalle" => $curlError ?: "Respuesta vacía"
+    "detalle" => $curlError ?: "Respuesta vacía o rechazada"
   ]);
   exit;
 }
 
-// ✅ Devolver respuesta de traducción
 http_response_code($httpcode);
 echo $response;
 ?>
