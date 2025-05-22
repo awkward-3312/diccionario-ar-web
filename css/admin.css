@@ -335,19 +335,23 @@ body.light-mode .input-group input {
 
 .mostrar-toggle {
   position: absolute;
-  right: 8px;
   top: 50%;
+  right: 8px;
   transform: translateY(-50%);
-  font-size: 12px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
   background-color: #3ae374;
   color: black;
   border: none;
-  font-weight: bold;
-  padding: 6px 10px;
   border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
   white-space: nowrap;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mostrar-toggle:hover {
