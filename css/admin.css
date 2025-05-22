@@ -85,7 +85,7 @@ h1 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.contenedor, .login {
+.contenedor {
   max-width: 1000px;
   margin: 0 auto;
   background-color: #1e1e1e;
@@ -95,13 +95,12 @@ h1 {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-body.light-mode .contenedor,
-body.light-mode .login {
+body.light-mode .contenedor {
   background-color: #ffffffcc;
   color: #111;
 }
 
-#buscador, .login input {
+#buscador {
   margin-bottom: 10px;
   width: 100%;
   padding: 10px;
@@ -113,23 +112,8 @@ body.light-mode .login {
   transition: background-color 0.3s;
 }
 
-body.light-mode #buscador,
-body.light-mode .login input {
+body.light-mode #buscador {
   background-color: #eee;
-  color: #111;
-}
-
-.mostrar-toggle {
-  background: none;
-  border: none;
-  color: #3ae374;
-  font-size: 14px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-body.light-mode .mostrar-toggle {
   color: #111;
 }
 
@@ -297,7 +281,7 @@ body.light-mode #tablaTerminos tr:hover {
   }
 }
 
-/* === LOGIN CARD FLOTANTE === */
+/* === LOGIN MODERNO FLOTANTE === */
 .login-card {
   max-width: 400px;
   margin: 100px auto;
