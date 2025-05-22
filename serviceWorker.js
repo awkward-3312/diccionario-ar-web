@@ -7,6 +7,7 @@ const urlsToCache = [
   "/agregar.html",
   "/sugerencias.html",
   "/revisar-sugerencias.html",
+  "/traductor.html", // ✅ agregado
   "/favicon-ar.png",
   "/favicon-ar.ico",
   "/fonts/Middle-of-April.ttf",
@@ -17,11 +18,13 @@ const urlsToCache = [
   "/css/agregar.css",
   "/css/sugerencias.css",
   "/css/revisar-sugerencias.css",
+  "/css/traductor.css", // ✅ agregado
   "/js/main.js",
   "/js/admin.js",
   "/js/agregar.js",
   "/js/sugerencias.js",
-  "/js/revisar-sugerencias.js"
+  "/js/revisar-sugerencias.js",
+  "/js/traductor.js" // ✅ agregado
 ];
 
 // Instalar y cachear todos los archivos
@@ -48,15 +51,8 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Interceptar todas las peticiones, excepto al proxy del traductor
+// Interceptar peticiones
 self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
-
-  // Excluir específicamente el proxy del traductor
-  if (url.pathname === "/proxy-traductor.php") {
-    return;
-  }
-
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
