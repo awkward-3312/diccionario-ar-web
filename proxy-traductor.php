@@ -42,8 +42,8 @@ curl_close($ch);
 if ($response === false || empty($response)) {
   http_response_code(502);
   echo json_encode([
-    "error" => "❌ Fallo en la conexión al servidor de traducción.",
-    "detalle" => $curlError ?: "Respuesta vacía o rechazada"
+    "error" => "❌ Fallo al conectar con el servidor de traducción.",
+    "detalle" => $curlError ?: "Respuesta vacía"
   ]);
   exit;
 }
