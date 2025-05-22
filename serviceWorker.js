@@ -48,8 +48,15 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Interceptar todas las peticiones
+// Interceptar todas las peticiones, excepto al proxy del traductor
 self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+
+  // Excluir específicamente el proxy del traductor
+  if (url.pathname === "/proxy-traductor.php") {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
