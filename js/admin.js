@@ -17,14 +17,11 @@ const tbody = document.querySelector("#tablaTerminos tbody");
 function toggleMostrar() {
   const input = document.getElementById("clave");
   const boton = document.querySelector(".mostrar-toggle");
-  if (input.type === "password") {
-    input.type = "text";
-    boton.textContent = "OCULTAR";
-  } else {
-    input.type = "password";
-    boton.textContent = "MOSTRAR";
-  }
+  const mostrar = input.type === "password";
+  input.type = mostrar ? "text" : "password";
+  boton.textContent = mostrar ? "OCULTAR" : "MOSTRAR";
 }
+
 
 async function verificarClave() {
   const clave = document.getElementById("clave").value.trim();

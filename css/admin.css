@@ -85,7 +85,7 @@ h1 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.contenedor {
+.contenedor, .login {
   max-width: 1000px;
   margin: 0 auto;
   background-color: #1e1e1e;
@@ -95,12 +95,13 @@ h1 {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-body.light-mode .contenedor {
+body.light-mode .contenedor,
+body.light-mode .login {
   background-color: #ffffffcc;
   color: #111;
 }
 
-#buscador {
+#buscador, .login input {
   margin-bottom: 10px;
   width: 100%;
   padding: 10px;
@@ -112,8 +113,23 @@ body.light-mode .contenedor {
   transition: background-color 0.3s;
 }
 
-body.light-mode #buscador {
+body.light-mode #buscador,
+body.light-mode .login input {
   background-color: #eee;
+  color: #111;
+}
+
+.mostrar-toggle {
+  background: none;
+  border: none;
+  color: #3ae374;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+body.light-mode .mostrar-toggle {
   color: #111;
 }
 
@@ -281,38 +297,7 @@ body.light-mode #tablaTerminos tr:hover {
   }
 }
 
-/* === LOGIN MODERNO FLOTANTE === */
-.login-card {
-  max-width: 400px;
-  margin: 100px auto;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 40px 30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-body.light-mode .login-card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid #ccc;
-}
-
-.logo-login {
-  width: 140px;
-  margin-bottom: 25px;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
-}
-
-.login-card form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
+/* === AJUSTE FINAL BOTÓN MOSTRAR === */
 .input-group {
   position: relative;
 }
@@ -325,7 +310,7 @@ body.light-mode .login-card {
   font-size: 16px;
   background-color: #2a2a2a;
   color: white;
-  padding-right: 90px;
+  padding-right: 90px; /* espacio para el botón mostrar */
 }
 
 body.light-mode .input-group input {
@@ -335,9 +320,8 @@ body.light-mode .input-group input {
 
 .mostrar-toggle {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 2px);
   right: 8px;
-  transform: translateY(-50%);
   height: 36px;
   padding: 0 12px;
   font-size: 13px;
@@ -352,75 +336,16 @@ body.light-mode .input-group input {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease;
+  transform: none !important;
 }
 
 .mostrar-toggle:hover {
   background-color: #2ed573;
+  transform: none !important;
 }
 
 body.light-mode .mostrar-toggle {
   background-color: #1877f2;
   color: white;
-}
-
-body.light-mode .mostrar-toggle:hover {
-  background-color: #479dff;
-}
-
-
-body.light-mode .mostrar-toggle {
-  color: #1877f2;
-}
-
-.btn-primary {
-  background-color: #1877f2;
-  color: white;
-  font-weight: bold;
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #3ae374;
-  color: black;
-  transform: scale(1.05);
-}
-
-.botones-regreso {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.btn-secundario {
-  background-color: transparent;
-  border: 1px solid #888;
-  color: #ccc;
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-secundario:hover {
-  background-color: #3ae374;
-  color: black;
-  border-color: transparent;
-}
-
-body.light-mode .btn-secundario {
-  color: #222;
-  border: 1px solid #888;
-}
-
-body.light-mode .btn-secundario:hover {
-  background-color: #ff5c39;
-  color: white;
-  border-color: transparent;
 }
