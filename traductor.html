@@ -7,6 +7,17 @@
   <link rel="stylesheet" href="css/traductor.css" />
 </head>
 <body>
+
+  <!-- Botón para volver -->
+  <a href="index.html" id="btn-volver">← Regresar al Diccionario</a>
+
+  <!-- Sparkie arriba a la derecha -->
+  <div id="sparkie-top">
+    <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
+    <p id="frase-sparkie">✨ ¡Estoy listo para ayudarte!</p>
+  </div>
+
+  <!-- Contenedor principal -->
   <div class="chat-container">
     <div class="chat-header">
       <h1><span>Traductor AR</span></h1>
@@ -19,12 +30,6 @@
       <textarea id="entradaTexto" placeholder="Escribe aquí para traducir..." required></textarea>
       <button type="submit">Traducir</button>
     </form>
-  </div>
-
-  <!-- Sparkie flotando con frases motivadoras -->
-  <div id="sparkie">
-    <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
-    <p id="frase-sparkie">✨ ¡Estoy listo para ayudarte!</p>
   </div>
 
   <script src="js/traductor.js"></script>
