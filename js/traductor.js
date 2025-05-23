@@ -54,16 +54,18 @@ function agregarMensaje(texto, clase) {
 }
 
 async function traducirDeepL(texto) {
-  const response = await fetch(BACKEND_URL, {
+  const response = await fetch("https://traductor-backend.onrender.com/traducir", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      texto: texto,
-      targetLang: "EN" // Puedes cambiarlo por otro idioma como "ES", "FR", etc.
-    })
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ texto, targetLang: "EN" })
   });
+
+  if (!response.ok) throw new Error("Error en el servidor");
+
+  const data = await response.json();
+  return data.traduccion;
+}
+
 
   if (!response.ok) throw new Error("Error en el servidor");
 
