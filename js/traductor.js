@@ -3,6 +3,26 @@ const BACKEND_URL = "https://traductor-backend.onrender.com/traducir";
 const form = document.getElementById("chatForm");
 const entrada = document.getElementById("entradaTexto");
 const chatBox = document.getElementById("chatBox");
+const fraseElemento = document.getElementById("frase-sparkie");
+
+// 🟡 Frases que Sparkie mostrará cada 5 segundos
+const frases = [
+  "✨ ¡Eres brillante!",
+  "💡 ¿Sabías que traducir ejercita el cerebro?",
+  "🚀 ¡Vamos, que tú puedes con todo!",
+  "🌟 Estoy aquí para ayudarte",
+  "🧠 Traduce y fortalece tu mente",
+  "🔤 Cada palabra cuenta, ¡sigue así!",
+  "💬 ¡Dame un texto y lo traduzco en un destello!",
+  "📘 Aprende algo nuevo cada día 😄"
+];
+
+function cambiarFrase() {
+  const frase = frases[Math.floor(Math.random() * frases.length)];
+  fraseElemento.textContent = frase;
+}
+
+setInterval(cambiarFrase, 5000);
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -17,7 +37,7 @@ form.addEventListener("submit", async (e) => {
     const traduccion = await traducirDeepL(texto);
     agregarMensaje(traduccion, "bot");
   } catch (error) {
-    agregarMensaje("❌ Error al traducir.", "bot");
+    agregarMensaje("❌ Error al traducir. Intenta más tarde.", "bot");
     console.error(error);
   }
 
@@ -41,11 +61,11 @@ async function traducirDeepL(texto) {
     },
     body: JSON.stringify({
       texto: texto,
-      targetLang: "EN"  // puedes cambiar a "ES", "FR", etc.
+      targetLang: "EN" // Puedes cambiarlo por otro idioma como "ES", "FR", etc.
     })
   });
 
-  if (!response.ok) throw new Error("Error en la API");
+  if (!response.ok) throw new Error("Error en el servidor");
 
   const data = await response.json();
   return data.traduccion;
