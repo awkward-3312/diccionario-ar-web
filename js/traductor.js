@@ -1,4 +1,4 @@
-const API_KEY = "3e5c31fd-9125-47b6-bbdd-d6f157125d60:fx";
+const BACKEND_URL = "https://traductor-backend.onrender.com/traducir";
 
 const form = document.getElementById("chatForm");
 const entrada = document.getElementById("entradaTexto");
@@ -17,7 +17,7 @@ form.addEventListener("submit", async (e) => {
     const traduccion = await traducirDeepL(texto);
     agregarMensaje(traduccion, "bot");
   } catch (error) {
-    agregarMensaje("❌ Error al traducir. Intenta más tarde.", "bot");
+    agregarMensaje("❌ Error al traducir.", "bot");
     console.error(error);
   }
 
@@ -34,20 +34,19 @@ function agregarMensaje(texto, clase) {
 }
 
 async function traducirDeepL(texto) {
-  const response = await fetch("https://api-free.deepl.com/v2/translate", {
+  const response = await fetch(BACKEND_URL, {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": `DeepL-Auth-Key ${API_KEY}`
+      "Content-Type": "application/json"
     },
-    body: new URLSearchParams({
-      text: texto,
-      target_lang: "EN" // puedes cambiar a "ES", "FR", etc.
+    body: JSON.stringify({
+      texto: texto,
+      targetLang: "EN"  // puedes cambiar a "ES", "FR", etc.
     })
   });
 
   if (!response.ok) throw new Error("Error en la API");
 
   const data = await response.json();
-  return data.translations[0].text;
+  return data.traduccion;
 }
