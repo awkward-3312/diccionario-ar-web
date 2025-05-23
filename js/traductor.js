@@ -18,6 +18,7 @@ const frases = [
 ];
 
 function cambiarFrase() {
+  if (!fraseElemento) return;
   const frase = frases[Math.floor(Math.random() * frases.length)];
   fraseElemento.textContent = frase;
 }
@@ -54,18 +55,11 @@ function agregarMensaje(texto, clase) {
 }
 
 async function traducirDeepL(texto) {
-  const response = await fetch("https://traductor-backend.onrender.com/traducir", {
+  const response = await fetch(BACKEND_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ texto, targetLang: "EN" })
+    body: JSON.stringify({ texto, targetLang: "EN" }) // Cambia "EN" por otro idioma si lo deseas
   });
-
-  if (!response.ok) throw new Error("Error en el servidor");
-
-  const data = await response.json();
-  return data.traduccion;
-}
-
 
   if (!response.ok) throw new Error("Error en el servidor");
 
