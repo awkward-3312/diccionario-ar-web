@@ -116,13 +116,18 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* === SPARKIE EN LA PARTE SUPERIOR === */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 /* === SPARKIE EN LA PARTE SUPERIOR === */
 #sparkie-top {
   position: fixed;
   top: 15px;
   right: 15px;
-  width: 90px;
+  width: 80px;
+  max-width: 80px;
   text-align: center;
   animation: flotar 2.5s ease-in-out infinite;
   z-index: 999;
@@ -130,7 +135,9 @@ button:hover {
 }
 
 #sparkie-top img {
-  width: 55px;
+  width: 100%;
+  max-width: 55px;
+  height: auto;
 }
 
 #sparkie-top p {
@@ -139,12 +146,6 @@ button:hover {
   margin-top: 4px;
   animation: fadeIn 1s ease-in-out;
   text-shadow: 1px 1px 2px black;
-}
-
-
-@keyframes flotar {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
 }
 
 /* === BOTÓN DE REGRESO AL DICCIONARIO === */
@@ -171,14 +172,20 @@ button:hover {
 
 /* === RESPONSIVE EN MÓVILES === */
 @media (max-width: 600px) {
+  .chat-container {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
   #sparkie-top {
-    width: 80px;
+    width: 60px;
     right: 10px;
     top: 10px;
   }
 
   #sparkie-top img {
-    width: 45px;
+    width: 100%;
+    max-width: 45px;
   }
 
   #sparkie-top p {
