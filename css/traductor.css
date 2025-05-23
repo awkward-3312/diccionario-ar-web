@@ -8,16 +8,16 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  padding: 20px;
+  padding-bottom: 100px; /* espacio para Sparkie */
 }
 
 .chat-container {
   background-color: #1e1e1e;
   width: 100%;
   max-width: 600px;
+  margin: 0 auto;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 0 25px rgba(0,0,0,0.5);
@@ -56,6 +56,7 @@ body {
   max-width: 80%;
   animation: fadeIn 0.3s ease-in-out;
   line-height: 1.4;
+  word-wrap: break-word;
 }
 
 .usuario {
@@ -117,6 +118,7 @@ button:hover {
   text-align: center;
   animation: flotar 2.5s ease-in-out infinite;
   z-index: 999;
+  pointer-events: none;
 }
 
 #sparkie img {
@@ -128,9 +130,31 @@ button:hover {
   color: #3ae374;
   margin-top: 5px;
   animation: fadeIn 1s ease-in-out;
+  text-shadow: 1px 1px 2px black;
 }
 
 @keyframes flotar {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 600px) {
+  .chat-container {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  #sparkie {
+    width: 100px;
+    left: 10px;
+    bottom: 10px;
+  }
+
+  #sparkie img {
+    width: 60px;
+  }
+
+  #frase-sparkie {
+    font-size: 11px;
+  }
 }
