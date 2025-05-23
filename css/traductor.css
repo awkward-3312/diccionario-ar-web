@@ -1,110 +1,40 @@
 .ventana {
   max-width: 700px;
   width: 90%;
-  margin-top: 80px;
-}
-
-textarea {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 10px;
-  background-color: #2a2a2a;
-  color: white;
-  border: none;
-  resize: vertical;
-  min-height: 150px;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-body.light-mode textarea {
-  background-color: #e8e8e8;
-  color: #111;
-}
-
-select {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  margin-top: 10px;
-  border-radius: 10px;
-  background-color: #2a2a2a;
-  color: white;
-  border: none;
-}
-
-body.light-mode select {
-  background-color: #e8e8e8;
-  color: #111;
-}
-
-#resultadoTraduccion {
-  background-color: #292929;
-  margin-top: 20px;
-  padding: 20px;
+  margin: 80px auto 0;
+  padding: 30px;
   border-radius: 12px;
-  font-size: 16px;
+  background-color: rgba(42, 42, 42, 0.85);
   color: white;
-  text-align: left;
-  white-space: pre-line;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-body.light-mode #resultadoTraduccion {
-  background-color: #f2f2f2;
-  color: #111;
+.subtitulo {
+  font-size: 16px;
+  margin-top: 15px;
+  color: #ccc;
 }
 
-#loader {
-  margin-top: 10px;
-  font-style: italic;
-  color: #70d6ff;
-  display: none;
+#google_translate_element {
+  margin-top: 20px;
+  text-align: center;
 }
 
 .volver {
   color: #3ae374;
   text-decoration: underline;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 30px;
+  font-size: 16px;
 }
 
-button {
-  margin-top: 10px;
-  padding: 10px 14px;
-  font-size: 15px;
-  font-family: 'Segoe UI', sans-serif;
-  border-radius: 8px;
-  border: none;
-  background-color: #444;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 8px;
+body.light-mode .ventana {
+  background-color: #f2f2f2;
+  color: #111;
 }
 
-button:hover {
-  background-color: #666;
+body.light-mode .subtitulo {
+  color: #444;
 }
-
-#btnCopiar {
-  background-color: #3ae374;
-  color: #000;
-}
-
-#btnCopiar:hover {
-  background-color: #28c662;
-}
-
-body.light-mode button {
-  background-color: #ddd;
-  color: #000;
-}
-
-body.light-mode #btnCopiar {
-  background-color: #7dfca3;
-  color: #000;
-}
-
-body.light-mode #btnCopiar:hover {
-  background-color: #61e689;
-}
+`
