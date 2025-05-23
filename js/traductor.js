@@ -39,7 +39,7 @@ form.addEventListener("submit", async (e) => {
     agregarMensaje(traduccion, "bot");
   } catch (error) {
     agregarMensaje("❌ Error al traducir. Intenta más tarde.", "bot");
-    console.error(error);
+    console.error("⛔ Error de traducción:", error.message);
   }
 
   entrada.disabled = false;
@@ -55,14 +55,29 @@ function agregarMensaje(texto, clase) {
 }
 
 async function traducirDeepL(texto) {
-  const response = await fetch(BACKEND_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ texto, targetLang: "EN" }) // Cambia "EN" por otro idioma si lo deseas
-  });
+  try {
+    const response = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ texto, targetLang: "EN" }) // Cambia a otro idioma si lo deseas
+    });
 
-  if (!response.ok) throw new Error("Error en el servidor");
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("❌ Error del backend:", errorText);
+      throw new Error("Respuesta inválida del servidor");
+    }
 
-  const data = await response.json();
-  return data.traduccion;
+    const data = await response.json();
+    console.log("✅ Traducción recibida:", data);
+
+    if (!data.traduccion) {
+      throw new Error("Campo 'traduccion' no encontrado en la respuesta");
+    }
+
+    return data.traduccion;
+  } catch (err) {
+    console.error("⛔ Error capturado en traducirDeepL:", err.message);
+    throw err;
+  }
 }
