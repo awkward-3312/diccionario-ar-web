@@ -117,11 +117,12 @@ button:hover {
 }
 
 /* === SPARKIE EN LA PARTE SUPERIOR === */
+/* === SPARKIE EN LA PARTE SUPERIOR === */
 #sparkie-top {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 120px;
+  top: 15px;
+  right: 15px;
+  width: 90px;
   text-align: center;
   animation: flotar 2.5s ease-in-out infinite;
   z-index: 999;
@@ -129,16 +130,17 @@ button:hover {
 }
 
 #sparkie-top img {
-  width: 70px;
+  width: 55px;
 }
 
 #sparkie-top p {
-  font-size: 12px;
+  font-size: 11px;
   color: #3ae374;
-  margin-top: 5px;
+  margin-top: 4px;
   animation: fadeIn 1s ease-in-out;
   text-shadow: 1px 1px 2px black;
 }
+
 
 @keyframes flotar {
   0%, 100% { transform: translateY(0); }
@@ -169,23 +171,18 @@ button:hover {
 
 /* === RESPONSIVE EN MÓVILES === */
 @media (max-width: 600px) {
-  .chat-container {
-    padding: 15px;
-    border-radius: 15px;
-  }
-
   #sparkie-top {
-    width: 100px;
+    width: 80px;
     right: 10px;
     top: 10px;
   }
 
   #sparkie-top img {
-    width: 60px;
+    width: 45px;
   }
 
   #sparkie-top p {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   #btn-volver {
