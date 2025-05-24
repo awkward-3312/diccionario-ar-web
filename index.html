@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Diccionario - AR</title>
-  <link rel="icon" type="image/png" href="favicon-ar.png">
-  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" type="image/png" href="favicon-ar.png" />
+  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
-  <!-- Botón modo claro/oscuro -->
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
   <!-- Navegación superior -->
@@ -24,22 +23,22 @@
     </div>
   </nav>
 
-  <!-- Botón sugerencias -->
+  <!-- Botón sugerencias fijo abajo -->
   <aside class="btn-sugerencias">
     <button onclick="window.location.href='sugerencias.html'">💬 Sugerencias</button>
   </aside>
 
   <!-- Mascota Sparkie -->
-  <div id="sparkie" aria-label="Mascota Sparkie animada" role="img" tabindex="-1" >
-    <img src="img/sparkie.png" alt="Sparkie, mascota animada" />
-  </div>  
+  <div id="sparkie" aria-label="Mascota Sparkie animada" role="img" tabindex="-1">
+    <img src="img/sparkie.png" alt="Sparkie, tu asistente animado" />
+  </div>
 
   <!-- Contenido principal -->
   <main class="ventana" role="main">
     <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
     <div class="busqueda">
-      <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término">
+      <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
     </div>
 
     <div class="botones-busqueda">
@@ -59,7 +58,6 @@
     <div id="resultado" tabindex="0" aria-live="polite" class="animado resultado-box">Resultado aquí...</div>
   </main>
 
-  <!-- Scripts -->
   <script src="js/main.js"></script>
   <script>
     function toggleModo() {

@@ -131,10 +131,12 @@ button {
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.3s ease;
+  outline-offset: 3px;
 }
-button:hover {
+button:hover, button:focus-visible {
   background-color: #125ecc;
   transform: scale(1.05);
+  outline: none;
 }
 
 /* === CONTENEDOR PRINCIPAL === */
@@ -237,12 +239,11 @@ body.light-mode #toggle-modo::before {
   position: fixed;
   width: 80px;
   height: 80px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 1100;
-  transition: transform 0.5s ease;
+  transition: transform 1s ease-in-out;
 }
 #sparkie img {
   width: 100%;
