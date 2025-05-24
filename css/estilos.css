@@ -120,54 +120,78 @@ body.dark-mode .busqueda input {
 /* === BOTONES GLOBALES === */
 .nav-flotante {
   position: fixed;
-  top: 10px;
+  top: 5px; /* Bajamos de 10px a 5px para que esté más arriba */
   left: 10px;
   right: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px; /* Aumentamos el espacio entre botones */
   justify-content: center;
   z-index: 1002;
-  background: rgba(0,0,0,0.3);
-  padding: 8px 12px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.45); /* Fondo más visible, mejor contraste */
+  padding: 10px 16px; /* Más padding para comodidad visual */
+  border-radius: 14px; /* Bordes más redondeados para suavizar */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8); /* Sombra un poco más marcada */
   user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-flotante:hover {
+  background: rgba(0,0,0,0.65); /* Fondo un poco más oscuro al pasar el mouse */
 }
 
 .nav-flotante button {
-  flex: 1 1 120px;
-  min-width: 100px;
-  max-width: 150px;
-  padding: 10px 14px;
-  font-weight: 600;
-  border-radius: 8px;
+  flex: 1 1 130px; /* Base un poco más ancho */
+  min-width: 110px;
+  max-width: 160px;
+  padding: 12px 18px; /* Más padding para mejor área clickable */
+  font-weight: 700;
+  border-radius: 10px;
   background-color: #1877f2;
   color: white;
   border: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .nav-flotante button:hover,
 .nav-flotante button:focus-visible {
-  background-color: #125ecc;
-  transform: scale(1.05);
+  background-color: #0d4ecb;
+  transform: scale(1.1);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.5);
   outline: none;
 }
 
 .btn-sugerencias {
-  flex: 1 1 120px;
+  flex: 1 1 130px;
   background-color: #ff69b4 !important;
+  color: white !important;
+  font-weight: 700;
+  box-shadow: 0 6px 10px rgba(255,105,180,0.6);
 }
 
 .btn-sugerencias:hover,
 .btn-sugerencias:focus-visible {
-  background-color: #ff85c1 !important;
+  background-color: #ff48b5 !important;
   color: black !important;
+  box-shadow: 0 8px 14px rgba(255,72,181,0.9);
+}
+
+/* Responsivo: que no se vean muy apretados en móviles */
+@media (max-width: 500px) {
+  .nav-flotante {
+    gap: 12px;
+    padding: 8px 12px;
+  }
+  .nav-flotante button {
+    flex: 1 1 100%;
+    max-width: 100%;
+    font-size: 1.1rem;
+    min-width: unset;
+  }
 }
 
 /* === CONTENEDOR PRINCIPAL === */
