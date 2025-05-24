@@ -199,3 +199,24 @@ button:hover {
     font-size: 13px;
   }
 }
+
+select {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #2a2a2a;
+  color: white;
+  appearance: none;
+}
+
+select:focus {
+  outline: 2px solid #3ae374;
+}
+
+@media (max-width: 600px) {
+  select {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

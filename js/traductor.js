@@ -1,11 +1,11 @@
-const BACKEND_URL = "https://traductor-backend.onrender.com/traducir";
+const BACKEND_URL = "https://traductor-backend.vercel.app/traducir";
 
 const form = document.getElementById("chatForm");
 const entrada = document.getElementById("entradaTexto");
+const idioma = document.getElementById("idioma");
 const chatBox = document.getElementById("chatBox");
 const fraseElemento = document.getElementById("frase-sparkie");
 
-// 🟡 Frases que Sparkie mostrará cada 5 segundos
 const frases = [
   "✨ ¡Eres brillante!",
   "💡 ¿Sabías que traducir ejercita el cerebro?",
@@ -28,14 +28,17 @@ setInterval(cambiarFrase, 5000);
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const texto = entrada.value.trim();
-  if (!texto) return;
+  const idiomaDestino = idioma.value;
+
+  if (!texto || !idiomaDestino) return;
 
   agregarMensaje(texto, "usuario");
   entrada.value = "";
   entrada.disabled = true;
+  idioma.disabled = true;
 
   try {
-    const traduccion = await traducirDeepL(texto);
+    const traduccion = await traducirTexto(texto, idiomaDestino);
     agregarMensaje(traduccion, "bot");
   } catch (error) {
     agregarMensaje("❌ Error al traducir. Intenta más tarde.", "bot");
@@ -43,6 +46,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   entrada.disabled = false;
+  idioma.disabled = false;
   entrada.focus();
 });
 
@@ -54,12 +58,12 @@ function agregarMensaje(texto, clase) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-async function traducirDeepL(texto) {
+async function traducirTexto(texto, idiomaDestino) {
   try {
     const response = await fetch(BACKEND_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ texto, targetLang: "EN" }) // Cambia a otro idioma si lo deseas
+      body: JSON.stringify({ texto, idiomaDestino })
     });
 
     if (!response.ok) {
@@ -69,15 +73,13 @@ async function traducirDeepL(texto) {
     }
 
     const data = await response.json();
-    console.log("✅ Traducción recibida:", data);
-
     if (!data.traduccion) {
       throw new Error("Campo 'traduccion' no encontrado en la respuesta");
     }
 
     return data.traduccion;
   } catch (err) {
-    console.error("⛔ Error capturado en traducirDeepL:", err.message);
+    console.error("⛔ Error capturado en traducirTexto:", err.message);
     throw err;
   }
 }
