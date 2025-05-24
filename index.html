@@ -11,25 +11,17 @@
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
-  <!-- Navegación superior -->
-  <nav class="nav-top">
-    <div class="nav-left">
-      <button onclick="window.location.href='agregar.html'">Agregar Término</button>
-    </div>
-    <div class="nav-right">
-      <button onclick="window.location.href='traductor.html'">Traductor</button>
-      <button onclick="window.location.href='inicio.html'">Home</button>
-      <button onclick="window.location.href='admin.html'">Admin</button>
-    </div>
+  <!-- Contenedor único para todos los botones flotantes -->
+  <nav class="nav-flotante">
+    <button onclick="window.location.href='agregar.html'">Agregar Término</button>
+    <button onclick="window.location.href='traductor.html'">Traductor</button>
+    <button onclick="window.location.href='inicio.html'">Home</button>
+    <button onclick="window.location.href='admin.html'">Admin</button>
+    <button class="btn-sugerencias" onclick="window.location.href='sugerencias.html'">💬 Sugerencias</button>
   </nav>
 
-  <!-- Botón sugerencias fijo abajo -->
-  <aside class="btn-sugerencias">
-    <button onclick="window.location.href='sugerencias.html'">💬 Sugerencias</button>
-  </aside>
-
   <!-- Mascota Sparkie -->
-  <div id="sparkie" aria-label="Mascota Sparkie animada" role="img" tabindex="-1">
+  <div id="sparkie" aria-label="Mascota Sparkie animada" role="img" tabindex="-1" >
     <img src="img/sparkie.png" alt="Sparkie, tu asistente animado" />
   </div>
 
