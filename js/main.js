@@ -1,9 +1,15 @@
+// =========================================
+// CONFIGURACIÓN GENERAL
+// =========================================
 const URL = 'https://script.google.com/macros/s/AKfycbys4Dq4jSXyKlERG8AwgpDAsT05sttX_73r0a9IgoXtMNMCzwT3QNMaZ6PVZpieIMEi/exec';
 let glosario = {};
 let db;
 let glosarioCargado = false;
 let debounceTimer;
 
+// =========================================
+// UTILIDADES
+// =========================================
 function toggleModo() {
   const isClaro = document.body.classList.toggle("light-mode");
   localStorage.setItem("modoClaro", isClaro ? "1" : "0");
@@ -13,6 +19,9 @@ function normalizarTexto(texto) {
   return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
 }
 
+// =========================================
+// INDEXEDDB
+// =========================================
 function abrirBaseDatos() {
   const request = indexedDB.open("DiccionarioAR", 1);
   request.onerror = () => console.error("❌ Error al abrir IndexedDB.");
@@ -58,6 +67,9 @@ function cargarDesdeIndexedDB() {
   };
 }
 
+// =========================================
+// GLOSARIO Y BUSCADOR
+// =========================================
 function cargarGlosario(guardarLocal = false) {
   fetch(URL).then(res => res.json()).then(data => {
     glosario = {};
@@ -158,15 +170,18 @@ function limpiarBusqueda() {
   document.getElementById("resultado").innerText = "Resultado aquí...";
 }
 
+// =========================================
+// EVENTOS INICIALES
+// =========================================
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
   }
+
   const ultima = localStorage.getItem("ultimaActualizacion") || "-";
   document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
   abrirBaseDatos();
 
-  // Frases dinámicas para el input
   const frases = [
     "¿Qué deseas buscar hoy? 😊",
     "Descubre un nuevo término técnico 💡",
@@ -192,6 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// =========================================
+// SERVICE WORKER
+// =========================================
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceWorker.js')

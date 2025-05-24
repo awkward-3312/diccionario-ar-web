@@ -9,21 +9,33 @@
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+  <!-- Botón modo claro/oscuro -->
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
-  <div style="position: fixed; top: 10px; left: 20px; z-index: 1001;">
-    <button onclick="window.location.href='agregar.html'">Agregar Término</button>
-  </div>
-  <div style="position: fixed; top: 10px; right: 20px; z-index: 9999; display: flex; gap: 10px;">
-    <button onclick="window.location.href='traductor.html'">Traductor</button>
-    <button onclick="window.location.href='inicio.html'">Home</button>
-    <button onclick="window.location.href='admin.html'">Admin</button>
-  </div>  
-  <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1001;">
+  <!-- Navegación superior -->
+  <nav class="nav-top">
+    <div class="nav-left">
+      <button onclick="window.location.href='agregar.html'">Agregar Término</button>
+    </div>
+    <div class="nav-right">
+      <button onclick="window.location.href='traductor.html'">Traductor</button>
+      <button onclick="window.location.href='inicio.html'">Home</button>
+      <button onclick="window.location.href='admin.html'">Admin</button>
+    </div>
+  </nav>
+
+  <!-- Botón sugerencias -->
+  <aside class="btn-sugerencias">
     <button onclick="window.location.href='sugerencias.html'">💬 Sugerencias</button>
+  </aside>
+
+  <!-- Mascota Sparkie -->
+  <div id="sparkie">
+    <img src="img/sparkie.png" alt="Sparkie, tu asistente virtual">
   </div>
 
-  <div class="ventana">
+  <!-- Contenido principal -->
+  <main class="ventana" role="main">
     <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
     <div class="busqueda">
@@ -36,17 +48,18 @@
       <button onclick="actualizarGlosario()" style="background-color: #3ae374;">🔄 Actualizar</button>
     </div>
 
-    <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
+    <div id="estadoConexion" class="estado-conexion" aria-live="polite"></div>
     <div id="ultima-actualizacion">Última actualización: -</div>
-    <div id="contadorTerminos" style="margin-top: 5px; color: #ccc; font-size: 0.9rem;"></div>
+    <div id="contadorTerminos"></div>
 
     <div class="spinner" id="spinner">
       <span></span><span></span><span></span>
     </div>
 
-    <div id="resultado" tabindex="0" aria-live="polite" class="animado" style="margin-top: 20px; background-color: #292929; padding: 20px; border-radius: 10px; color: white; text-align: left; white-space: pre-line; font-size: 15px; line-height: 1.6;">Resultado aquí...</div>
-  </div>
+    <div id="resultado" tabindex="0" aria-live="polite" class="animado resultado-box">Resultado aquí...</div>
+  </main>
 
+  <!-- Scripts -->
   <script src="js/main.js"></script>
   <script>
     function toggleModo() {
@@ -59,13 +72,11 @@
         document.body.classList.add("light-mode");
       }
 
+      const estado = document.getElementById("estadoConexion");
       function actualizarEstadoConexion() {
-        const estado = document.getElementById("estadoConexion");
-        if (!navigator.onLine) {
-          estado.textContent = "Estás trabajando sin conexión. Algunos datos pueden no estar actualizados.";
-        } else {
-          estado.textContent = "";
-        }
+        estado.textContent = navigator.onLine
+          ? ""
+          : "Estás trabajando sin conexión. Algunos datos pueden no estar actualizados.";
       }
       window.addEventListener("online", actualizarEstadoConexion);
       window.addEventListener("offline", actualizarEstadoConexion);

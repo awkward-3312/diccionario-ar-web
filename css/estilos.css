@@ -3,7 +3,6 @@
   font-family: 'MiddleOfApril';
   src: url('../fonts/Middle-of-April.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Nunito';
   src: url('../fonts/Nunito-BoldItalic.ttf') format('truetype');
@@ -16,13 +15,11 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background:
@@ -37,7 +34,6 @@ body {
   align-items: center;
   flex-direction: column;
 }
-
 body.light-mode {
   background:
     linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.95)),
@@ -47,30 +43,29 @@ body.light-mode {
   color: #111;
 }
 
+/* === ANIMACIONES === */
 @keyframes parallax {
   0% { background-position: center center; }
   50% { background-position: center top; }
   100% { background-position: center center; }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes colores {
   0%   { color: #70d6ff; }
   50%  { color: #3ae374; }
   100% { color: #ff5c39; }
 }
 
+/* === TIPOGRAFÍA Y TÍTULOS === */
 h1 span {
   animation: colores 5s infinite ease-in-out alternate;
   display: inline-block;
   font-family: 'MiddleOfApril', cursive;
   font-size: 3.5rem;
 }
-
 .subtitulo {
   font-family: 'Nunito', sans-serif;
   font-style: italic;
@@ -86,7 +81,6 @@ h1 span {
   margin-bottom: 20px;
   width: 100%;
 }
-
 .busqueda input {
   width: 100%;
   padding: 12px 16px;
@@ -98,7 +92,6 @@ h1 span {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
-
 body.dark-mode .busqueda input {
   background-color: #2a2a2a;
   color: white;
@@ -118,13 +111,12 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
 button:hover {
   background-color: #125ecc;
   transform: scale(1.05);
 }
 
-/* === CONTENEDOR === */
+/* === CONTENEDOR PRINCIPAL === */
 .ventana {
   background-color: #1e1e1e;
   padding: 40px;
@@ -135,13 +127,12 @@ button:hover {
   animation: fadeIn 0.5s ease-in-out;
   text-align: center;
 }
-
 body.light-mode .ventana {
   background-color: rgba(255,255,255,0.95);
   color: #111;
 }
 
-/* === RESULTADO === */
+/* === RESULTADOS === */
 #resultado {
   margin-top: 20px;
   background-color: #292929;
@@ -154,36 +145,26 @@ body.light-mode .ventana {
   line-height: 1.6;
   animation: fadeIn 0.5s ease-in-out;
 }
-
 body.light-mode #resultado {
   background-color: #f2f2f2;
   color: #111;
 }
-
 .titulo-resultado {
   font-weight: bold;
   font-size: 1.2rem;
   color: #3ae374;
   margin-bottom: 10px;
 }
-
-.titulo-resultado strong {
-  color: #3ae374;
-  font-weight: bold;
-}
-
 .pronunciacion {
   color: #70d6ff;
 }
 body.light-mode .pronunciacion {
   color: #002855;
 }
-
 .traduccion,
 .sinonimos {
   font-style: italic;
 }
-
 .sinonimos span {
   display: inline-block;
   margin: 4px 6px 4px 0;
@@ -211,7 +192,6 @@ body.light-mode .sinonimos span {
   overflow: hidden;
   z-index: 1001;
 }
-
 #toggle-modo::before {
   content: '🌙';
   position: absolute;
@@ -226,7 +206,6 @@ body.light-mode .sinonimos span {
   line-height: 26px;
   transition: transform 0.3s ease;
 }
-
 body.light-mode #toggle-modo::before {
   content: '☀️';
   transform: translateX(30px);
