@@ -210,3 +210,22 @@ body.light-mode #toggle-modo::before {
   content: '☀️';
   transform: translateX(30px);
 }
+
+#sparkie {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* para que no interfiera con clicks */
+  z-index: 1100;
+  transition: transform 0.5s ease;
+}
+
+#sparkie img {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+}

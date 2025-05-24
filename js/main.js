@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
   abrirBaseDatos();
 
+  // Frases dinámicas para el input
   const frases = [
     "¿Qué deseas buscar hoy? 😊",
     "Descubre un nuevo término técnico 💡",
@@ -205,6 +206,23 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("load", () => {
     if (navigator.onLine && db) cargarGlosario(true);
   });
+
+  // === Sparkie animado ===
+  const sparkie = document.getElementById('sparkie');
+  if (sparkie) {
+    function moverSparkie() {
+      const maxX = window.innerWidth - sparkie.offsetWidth;
+      const maxY = window.innerHeight - sparkie.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      sparkie.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    moverSparkie();
+    setInterval(moverSparkie, 3000);
+  }
 });
 
 // =========================================
