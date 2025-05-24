@@ -117,34 +117,34 @@ body.dark-mode .busqueda input {
   color: white;
 }
 
-/* === BOTONES GLOBALES === */
+/* === BOTONES GLOBALES MEJORADOS === */
 .nav-flotante {
   position: fixed;
-  top: 5px; /* Bajamos de 10px a 5px para que esté más arriba */
+  top: 5px;
   left: 10px;
   right: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px; /* Aumentamos el espacio entre botones */
+  gap: 15px;
   justify-content: center;
   z-index: 1002;
-  background: rgba(0,0,0,0.45); /* Fondo más visible, mejor contraste */
-  padding: 10px 16px; /* Más padding para comodidad visual */
-  border-radius: 14px; /* Bordes más redondeados para suavizar */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8); /* Sombra un poco más marcada */
+  background: rgba(0,0,0,0.45);
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
   user-select: none;
   transition: background-color 0.3s ease;
 }
 
 .nav-flotante:hover {
-  background: rgba(0,0,0,0.65); /* Fondo un poco más oscuro al pasar el mouse */
+  background: rgba(0,0,0,0.65);
 }
 
 .nav-flotante button {
-  flex: 1 1 130px; /* Base un poco más ancho */
+  flex: 1 1 130px;
   min-width: 110px;
   max-width: 160px;
-  padding: 12px 18px; /* Más padding para mejor área clickable */
+  padding: 12px 18px;
   font-weight: 700;
   border-radius: 10px;
   background-color: #1877f2;
