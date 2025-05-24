@@ -231,7 +231,22 @@ document.addEventListener("DOMContentLoaded", () => {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceWorker.js')
-      .then(reg => console.log('✅ SW registrado:', reg.scope))
+      .then(reg => {
+        console.log('✅ SW registrado:', reg.scope);
+
+        reg.onupdatefound = () => {
+          const newWorker = reg.installing;
+          newWorker.onstatechange = () => {
+            if (newWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // Nuevo SW disponible: recarga página para actualizar
+                console.log('Nueva versión disponible, recargando...');
+                window.location.reload();
+              }
+            }
+          };
+        };
+      })
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
