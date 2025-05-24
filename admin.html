@@ -11,10 +11,11 @@
   <!-- Botón modo claro/oscuro -->
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
-  <!-- LOGIN: tarjeta moderna -->
+  <!-- LOGIN: tarjeta moderna con Sparkie -->
   <div class="login-card" id="loginPanel">
-    <!-- Logo que cambia con el modo -->
-    <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo-login" id="logoImg" />
+    <div class="avatar-sparkie">
+      <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
+    </div>
 
     <form onsubmit="verificarClave(); return false;">
       <div class="input-group">
@@ -81,21 +82,12 @@
     function toggleModo() {
       const esClaro = document.body.classList.toggle("light-mode");
       localStorage.setItem("modoClaro", esClaro ? "1" : "0");
-      actualizarLogo();
-    }
-
-    function actualizarLogo() {
-      const logo = document.getElementById("logoImg");
-      if (!logo) return;
-      const esClaro = document.body.classList.contains("light-mode");
-      logo.src = esClaro ? "img/Logo AR light-mode.png" : "img/Logo AR.png";
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
       }
-      actualizarLogo();
     });
   </script>
 </body>
