@@ -250,3 +250,135 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
+
+
+// === BLOQUE 1 y 2: Movimiento y comportamiento de Sparkie ===
+const sparkie = document.getElementById("sparkie");
+let x = 50, y = 50;
+let vx = 1.5, vy = 1.3;
+
+function moverSparkie() {
+  const maxX = window.innerWidth - sparkie.offsetWidth;
+  const maxY = window.innerHeight - sparkie.offsetHeight;
+
+  x += vx;
+  y += vy;
+
+  if (x <= 0 || x >= maxX) vx *= -1;
+  if (y <= 0 || y >= maxY) vy *= -1;
+
+  sparkie.style.transform = `translate(${x}px, ${y}px)`;
+  requestAnimationFrame(moverSparkie);
+}
+moverSparkie();
+
+document.addEventListener("mousemove", (e) => {
+  sparkie.style.transform = `translate(${e.clientX - 40}px, ${e.clientY - 40}px)`;
+});
+
+
+
+// === BLOQUE 3: Entrada por voz ===
+const btnVoz = document.createElement("button");
+btnVoz.textContent = "🎤 Voz";
+btnVoz.classList.add("boton");
+btnVoz.style.position = "absolute";
+btnVoz.style.top = "0";
+btnVoz.style.right = "0";
+btnVoz.style.zIndex = "1000";
+document.querySelector(".busqueda").appendChild(btnVoz);
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const reconocimiento = new SpeechRecognition();
+  reconocimiento.lang = "es-ES";
+  reconocimiento.continuous = false;
+  reconocimiento.interimResults = true;
+
+  btnVoz.addEventListener("click", () => {
+    reconocimiento.start();
+  });
+
+  reconocimiento.onresult = (event) => {
+    let transcript = "";
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      transcript += event.results[i][0].transcript;
+    }
+    document.getElementById("termino").value = transcript.trim();
+    buscar();
+  };
+}
+
+
+// === BLOQUE 5: Modo Estudio (Favoritos) ===
+const favoritos = JSON.parse(localStorage.getItem("favoritosAR")) || [];
+
+function marcarFavorito(termino) {
+  if (!favoritos.includes(termino)) {
+    favoritos.push(termino);
+    localStorage.setItem("favoritosAR", JSON.stringify(favoritos));
+    alert(`"${termino}" agregado a favoritos.`);
+    actualizarListaFavoritos();
+  }
+}
+
+function actualizarListaFavoritos() {
+  const lista = document.getElementById("lista-favoritos");
+  if (!lista) return;
+  lista.innerHTML = favoritos.map(fav => `<li>${fav}</li>`).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarListaFavoritos();
+});
+
+
+
+// === BLOQUE 5: Comparador de términos ===
+function abrirComparador() {
+  document.getElementById("modal-comparar").style.display = "block";
+}
+
+function cerrarComparador() {
+  document.getElementById("modal-comparar").style.display = "none";
+}
+
+function compararTérminos() {
+  const t1 = document.getElementById("input-comp1").value.trim();
+  const t2 = document.getElementById("input-comp2").value.trim();
+  // Solo una simulación de comparación simple
+  const resultado = `Comparando "${t1}" con "${t2}":\n(Simulación de diferencias aquí...)`;
+  document.getElementById("resultado-comp").textContent = resultado;
+}
+
+
+// === BLOQUE 5: Exportar a PDF ===
+function exportarPDF() {
+  const contenido = document.getElementById("resultado").innerText;
+  if (!contenido.trim()) return alert("No hay resultado para exportar.");
+  const doc = new jsPDF();
+  doc.setFont("Helvetica");
+  doc.setFontSize(12);
+  doc.text(contenido, 10, 10);
+  doc.save("resultado.pdf");
+}
+
+
+
+// === BLOQUE 5: Efectos estacionales ===
+function aplicarEfectoEstacional() {
+  const mes = new Date().getMonth();
+  if (mes === 11) {
+    const nieve = document.createElement("div");
+    nieve.className = "nieve";
+    document.body.appendChild(nieve);
+    for (let i = 0; i < 80; i++) {
+      const copo = document.createElement("div");
+      copo.className = "copo";
+      copo.style.left = Math.random() * 100 + "vw";
+      copo.style.animationDelay = Math.random() * 10 + "s";
+      nieve.appendChild(copo);
+    }
+  }
+}
+document.addEventListener("DOMContentLoaded", aplicarEfectoEstacional);
