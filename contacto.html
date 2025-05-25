@@ -21,18 +21,22 @@
     <h1>Contacto</h1>
     <p>¿Tienes dudas, sugerencias o deseas reportar un error? Rellena el siguiente formulario y nos pondremos en contacto contigo.</p>
 
-    <form class="formulario-contacto">
+    <form class="formulario-contacto" action="https://formsubmit.co/contact_info@diccionario-ar.com" method="POST">
+      <!-- ocultos para configuración -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.diccionario-ar.com/gracias.html">
+    
       <label for="nombre">Nombre completo</label>
       <input type="text" id="nombre" name="nombre" required />
-
+    
       <label for="email">Correo electrónico</label>
       <input type="email" id="email" name="email" required />
-
+    
       <label for="mensaje">Mensaje</label>
       <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
+    
       <button type="submit" class="btn-enviar">Enviar mensaje</button>
-    </form>
+    </form>    
 
     <section class="seccion-traduccion">
       <h2>¿Necesitas traducciones profesionales?</h2>
