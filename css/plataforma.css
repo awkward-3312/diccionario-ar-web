@@ -149,3 +149,35 @@ footer {
     opacity: 1;
   }
 }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .menu-principal {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .btn-login {
+    margin-top: 15px;
+    align-self: flex-end;
+  }
+
+  .seccion-plataforma {
+    padding-top: 140px;
+  }
+
+  .seccion-plataforma h2 {
+    font-size: 2rem;
+  }
+
+  .seccion-plataforma p {
+    font-size: 1rem;
+  }
+}
