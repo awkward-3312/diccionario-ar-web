@@ -180,6 +180,33 @@ body.dark-mode .busqueda input {
   box-shadow: 0 8px 14px rgba(255,72,181,0.9);
 }
 
+/* === BOTONES GLOBALES PARA USO GENERAL === */
+button, .boton {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  background-color: #007bff;
+  color: black;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover, .boton:hover {
+  background-color: #3ae374;
+  color: black;
+  transform: scale(1.05);
+}
+
+body.light-mode button,
+body.light-mode .boton {
+  color: #111;
+}
+
 /* Responsivo: que no se vean muy apretados en móviles */
 @media (max-width: 500px) {
   .nav-flotante {
