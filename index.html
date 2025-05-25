@@ -30,7 +30,6 @@
     <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
     <div class="busqueda">
-      <button class="boton" id="btn-voz" title="Buscar por voz">🎤</button>
       <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
     </div>
 
@@ -49,32 +48,7 @@
     </div>
 
     <div id="resultado" tabindex="0" aria-live="polite" class="animado resultado-box">Resultado aquí...</div>
-  
-<div class="botones-busqueda">
-  <button class="boton" onclick="marcarFavorito(document.getElementById('termino').value)">⭐ Favorito</button>
-  <button class="boton" onclick="abrirComparador()">🧪 Comparar</button>
-  <button class="boton" onclick="exportarPDF()">📄 PDF</button>
-</div>
-
-
-<div id="favoritos-container">
-  <h3>⭐ Términos Favoritos</h3>
-  <ul id="lista-favoritos"></ul>
-</div>
-
-
-<div id="modal-comparar">
-  <div class="contenido">
-    <h2>🧪 Comparador de términos</h2>
-    <input type="text" id="input-comp1" placeholder="Término 1">
-    <input type="text" id="input-comp2" placeholder="Término 2">
-    <button onclick="compararTérminos()">Comparar</button>
-    <pre id="resultado-comp" style="margin-top:10px; background:#eee; padding:10px;"></pre>
-    <button onclick="cerrarComparador()">Cerrar</button>
-  </div>
-</div>
-
-</main>
+  </main>
 
   <script src="js/main.js"></script>
   <script>
