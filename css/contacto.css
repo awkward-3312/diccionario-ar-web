@@ -130,3 +130,35 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.seccion-traduccion {
+  margin-top: 60px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-borde);
+  border-radius: 16px;
+  text-align: left;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.seccion-traduccion h2 {
+  font-size: 1.6rem;
+  color: var(--color-secundario);
+  margin-bottom: 15px;
+}
+
+.seccion-traduccion p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.seccion-traduccion a {
+  color: var(--color-primario);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.seccion-traduccion a:hover {
+  text-decoration: underline;
+}
