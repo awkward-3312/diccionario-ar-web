@@ -333,3 +333,102 @@ body.light-mode #toggle-modo::before {
   user-select: none;
   -webkit-user-drag: none;
 }
+
+
+/* === GRADIENTES FESTIVOS PARA EL TÍTULO === */
+.titulo-festivo span {
+  background: linear-gradient(270deg, #ff5c39, #70d6ff, #3ae374);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 8s ease infinite;
+}
+
+@keyframes gradiente-festivo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Colores por festividad */
+.titulo-navidad span {
+  background: linear-gradient(135deg, #ff4f4f, #3ae374);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-independencia span {
+  background: linear-gradient(135deg, #0073cf, #00c6ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-halloween span {
+  background: linear-gradient(135deg, orange, black);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-thanksgiving span {
+  background: linear-gradient(135deg, #d2691e, #8b4513);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-dia-nino span {
+  background: linear-gradient(135deg, #ff69b4, #00bfff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+
+
+/* === DÍA DE LA MADRE === */
+.titulo-madre span {
+  background: linear-gradient(135deg, #f08080, #ffb6c1);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+
+.flor {
+  position: fixed;
+  top: -20px;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle, pink 60%, white 100%);
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: flotarFlor linear infinite;
+  z-index: 999;
+}
+@keyframes flotarFlor {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* === DÍA DE LOS MUERTOS === */
+.titulo-muertos span {
+  background: linear-gradient(135deg, #800080, #000000);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+
+.vela {
+  position: fixed;
+  bottom: 10px;
+  width: 12px;
+  height: 25px;
+  background: #ffffffcc;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #ffcc00;
+  z-index: 999;
+}
