@@ -94,5 +94,42 @@
       input.type = esPassword ? "text" : "password";
     }
 </script>
+<script>
+  async function hashClave(texto) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(texto);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function verificarClave() {
+    const clave = document.getElementById("clave").value;
+    const claveHash = "e176a4d6700f098d168d271fd4edd0c9363fb3cd4b89c03620cd297690750618"; // SHA-256 ejemplo
+
+    hashClave(clave).then(hash => {
+      if (hash === claveHash) {
+        document.querySelector(".login-card").style.display = "none";
+        document.querySelector("h1").style.display = "block";
+        document.getElementById("adminPanel").style.display = "block";
+        document.getElementById("btnCerrarSesion").style.display = "inline-block";
+        document.getElementById("btnSugerencias").style.display = "inline-block";
+      } else {
+        alert("❌ Contraseña incorrecta.");
+      }
+    });
+  }
+
+  // Activar login con Enter
+  document.addEventListener("DOMContentLoaded", () => {
+    const claveInput = document.getElementById("clave");
+    if (claveInput) {
+      claveInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          verificarClave();
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
