@@ -106,11 +106,10 @@ function buscar() {
   let entrada = null;
   let terminoReal = null;
 
+  // Búsqueda SOLO por clave original (inglés)
   for (let clave in glosario) {
-    const terminoEN = normalizarTexto(clave); // Término original en inglés
-    const terminoES = normalizarTexto(glosario[clave]["Traducción"] || ""); // Traducción en español
-
-    if (termino === terminoEN || termino === terminoES) {
+    const terminoEN = normalizarTexto(clave);
+    if (termino === terminoEN) {
       entrada = glosario[clave];
       terminoReal = clave;
       break;
@@ -133,7 +132,7 @@ function buscar() {
     if (sugerencias.length > 0) {
       const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
         const original = glosario[s]["Traducción"] || s;
-        return `<button onclick="document.getElementById('termino').value='${original}';buscar();">${original}</button>`;
+        return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
       }).join(" ");
       resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
     }
