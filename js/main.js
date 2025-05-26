@@ -154,10 +154,15 @@ function buscar() {
       html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
     }
   
-  if (entrada["Instrumento"] && entrada["Instrumento"].toLowerCase() === "sí" && entrada["Imagen"]) {
-    html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
+    // ✅ Mostrar imagen si es instrumento
+    if (
+      entrada["Instrumento"] &&
+      entrada["Instrumento"].toLowerCase() === "sí" &&
+      entrada["Imagen"]
+    ) {
+      html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
     }
-  }  
+  }   
 
   resultado.innerHTML = html;
 }
