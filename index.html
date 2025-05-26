@@ -1,33 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diccionario - AR</title>
-  <link rel="icon" type="image/png" href="favicon-ar.png">
-  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" type="image/png" href="favicon-ar.png" />
+  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
-  <main class="ventana" role="main">
-    <h1><span class="azul">Diccionario</span> <span class="rojo">AR</span></h1>
-    <p class="subtitulo">Consulta términos técnicos del área regulatoria</p>
+  <div class="zona-moleculas">
+    <img src="img/mol/mol-1.png" class="molecula" style="top: 5%; left: 5%;" alt="mol-1" />
+    <img src="img/mol/mol-2.png" class="molecula" style="top: 10%; left: 75%;" alt="mol-2" />
+    <img src="img/mol/mol-3.png" class="molecula" style="top: 85%; left: 10%;" alt="mol-3" />
+    <img src="img/mol/mol-4.png" class="molecula" style="top: 90%; left: 80%;" alt="mol-4" />
+    <img src="img/mol/mol-5.png" class="molecula" style="top: 35%; left: 90%;" alt="mol-5" />
+    <img src="img/mol/mol-6.png" class="molecula" style="top: 65%; left: 5%;" alt="mol-6" />
+    <img src="img/mol/mol-7.png" class="molecula" style="top: 15%; left: 15%;" alt="mol-7" />
+    <img src="img/mol/mol-8.png" class="molecula" style="top: 75%; left: 85%;" alt="mol-8" />
+    <img src="img/mol/mol-9.png" class="molecula" style="top: 20%; left: 90%;" alt="mol-9" />
+    <img src="img/mol/mol-10.png" class="molecula" style="top: 80%; left: 20%;" alt="mol-10" />
+  </div>
+
+  <nav class="nav-flotante">
+    <button onclick="window.location.href='agregar.html'" class="btn-agregar">Agregar Término</button>
+    <button onclick="window.location.href='sugerencias.html'" class="btn-sugerencias">Sugerencias</button>
+    <button onclick="window.location.href='traductor.html'" class="btn-traductor">Traductor</button>
+    <button onclick="window.location.href='inicio.html'" class="btn-inicio">Inicio</button>
+    <button onclick="window.location.href='admin.html'" class="btn-admin">Admin</button>
+  </nav>
+
+  <div class="ventana">
+    <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
     <div class="busqueda">
-      <input type="text" id="entradaBusqueda" placeholder="Buscar término..." aria-label="Buscar término">
+      <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
     </div>
 
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-      <button id="btnBuscar">Buscar</button>
-      <button id="btnLimpiar">Limpiar</button>
-      <button id="btnActualizar">Actualizar</button>
+    <div class="botones-busqueda">
+      <button onclick="buscar()" class="boton">Buscar</button>
+      <button onclick="limpiarBusqueda()" class="boton">Limpiar</button>
+      <button onclick="actualizarGlosario()" class="boton">Actualizar</button>
     </div>
 
-    <div id="resultado" aria-live="polite"></div>
-  </main>
+    <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
+    <div id="ultima-actualizacion">Última actualización: -</div>
+    <div id="contadorTerminos" style="margin-top: 5px; color: #ccc; font-size: 0.9rem;"></div>
 
+    <div class="spinner" id="spinner">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div id="resultado" tabindex="0" aria-live="polite" class="animado" style="margin-top: 20px; background-color: #292929; padding: 20px; border-radius: 10px; color: white; text-align: left; white-space: pre-line; font-size: 15px; line-height: 1.6;">Resultado aquí...</div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/eventosFestivos.js" defer></script>
   <script>
     function toggleModo() {
       const esClaro = document.body.classList.toggle("light-mode");
@@ -38,8 +68,29 @@
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
       }
+
+      function actualizarEstadoConexion() {
+        const estado = document.getElementById("estadoConexion");
+        if (!navigator.onLine) {
+          estado.textContent = "Estás trabajando sin conexión. Algunos datos pueden no estar actualizados.";
+        } else {
+          estado.textContent = "";
+        }
+      }
+
+      window.addEventListener("online", actualizarEstadoConexion);
+      window.addEventListener("offline", actualizarEstadoConexion);
+      actualizarEstadoConexion();
+
+      const input = document.getElementById("termino");
+      let debounce;
+      input.addEventListener("input", () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+          document.getElementById("spinner").style.display = "flex";
+        }, 500);
+      });
     });
   </script>
-  <script src="main.js" defer></script>
 </body>
 </html>
