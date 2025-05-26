@@ -281,10 +281,10 @@ body.light-mode #toggle-modo::before {
 /* === MOLÉCULAS ANIMADAS COMO FONDO === */
 .molecula {
   position: fixed;
-  width: 60px;                  /* Más grandes */
+  width: 60px;
   height: 60px;
-  opacity: 0.2;                 /* Más visibles */
-  filter: brightness(150%);     /* Aumenta el brillo */
+  opacity: 0.2;
+  filter: brightness(140%);
   animation: moverMol 60s linear infinite;
   z-index: 0;
   pointer-events: none;
