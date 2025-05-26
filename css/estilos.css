@@ -344,3 +344,15 @@ body::before {
   overflow: hidden;
   pointer-events: none;
 }
+
+.imagen-instrumento {
+  display: block;
+  margin: 20px auto;
+  max-width: 300px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+.imagen-instrumento:hover {
+  transform: scale(1.05);
+}

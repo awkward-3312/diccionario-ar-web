@@ -153,7 +153,12 @@ function buscar() {
       const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
       html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
     }
-  }
+  
+    // Mostrar imagen si es instrumento
+    if (entrada["Instrumento"] && entrada["Instrumento"].toLowerCase() === "sí" && entrada["Imagen"]) {
+      html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
+    }
+  }  
 
   resultado.innerHTML = html;
 }
