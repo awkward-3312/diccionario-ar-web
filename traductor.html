@@ -1,3 +1,4 @@
+<!-- COMPLETO: traductor.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,28 +9,24 @@
 </head>
 <body>
 
-  <!-- Botón para volver -->
   <a href="index.html" id="btn-volver">← Regresar al Diccionario</a>
 
-  <!-- Sparkie arriba a la derecha -->
   <div id="sparkie-top">
     <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
     <p id="frase-sparkie">✨ ¡Estoy listo para ayudarte!</p>
   </div>
 
-  <!-- Contenedor principal -->
-  <div class="chat-container">
+  <div class="chat-container" role="main">
     <div class="chat-header">
       <h1><span>Traductor AR</span></h1>
       <p class="subtitulo">Traduce texto fácilmente con Microsoft Translate</p>
     </div>
 
-    <div class="chat-box" id="chatBox"></div>
+    <div class="chat-box" id="chatBox" aria-live="polite"></div>
 
-    <form id="chatForm">
-      <!-- 🔽 Selector de idioma destino -->
+    <form id="chatForm" aria-label="Formulario de traducción">
       <label for="idioma">Idioma destino:</label>
-      <select id="idioma" required>
+      <select id="idioma" aria-required="true">
         <option value="en">Inglés 🇺🇸</option>
         <option value="es">Español 🇪🇸</option>
         <option value="fr">Francés 🇫🇷</option>
@@ -40,9 +37,13 @@
         <option value="zh-Hans">Chino 🇨🇳</option>
       </select>
 
-      <textarea id="entradaTexto" placeholder="Escribe aquí para traducir..." required></textarea>
-      <button type="submit">Traducir</button>
+      <textarea id="entradaTexto" placeholder="Escribe aquí para traducir..." aria-required="true" aria-label="Texto a traducir"></textarea>
+      <button type="submit" id="btnTraducir">Traducir</button>
     </form>
+
+    <div id="loader">
+      <img src="img/sparkie.gif" alt="Cargando traducción..." />
+    </div>
   </div>
 
   <script src="js/traductor.js"></script>

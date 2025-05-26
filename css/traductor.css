@@ -220,3 +220,123 @@ select:focus {
     padding: 10px;
   }
 }
+
+/* NUEVO para loader Sparkie */
+#loader {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#loader img {
+  width: 60px;
+  animation: flotar 2s infinite ease-in-out;
+}
+
+.texto-vacio {
+  outline: 2px solid #ff5c39;
+  animation: vibrar 0.3s linear 2;
+}
+
+@keyframes vibrar {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+/* Estilos para el botón de copiar */
+#btn-copiar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3ae374;
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+#btn-copiar:hover {
+  background-color: #1877f2;
+  color: white;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:disabled {
+  background-color: #555;
+  color: #ccc;
+  cursor: not-allowed;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:disabled:hover {
+  background-color: #555;
+  color: #ccc;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus-visible {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus-visible {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus-visible {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus-visible {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus-visible {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Estilos para el botón de copiar */
+#btn-copiar:focus-visible {
+  outline: 2px solid #3ae374;
+  outline-offset: 2px;
+}
