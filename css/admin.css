@@ -20,7 +20,11 @@ body {
   color: #f1f1f1;
   animation: parallax 60s linear infinite;
   transition: background 0.3s ease;
-}
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;}
 
 body.light-mode {
   background:
