@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatBox = document.getElementById("chatBox");
   const loader = document.getElementById("loader");
 
-  // ✅ Función para agregar burbuja al chat
+  // ✅ Agrega mensaje al chat
   function agregarMensaje(texto, clase) {
     const burbuja = document.createElement("div");
     burbuja.className = `mensaje ${clase}`;
@@ -14,19 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 
-  // ✅ Función para mostrar/ocultar loader Sparkie
+  // ✅ Muestra/oculta el loader
   function mostrarLoader(mostrar) {
     loader.style.display = mostrar ? "block" : "none";
   }
 
-  // ✅ Función para leer en voz alta
+  // ✅ Lectura en voz alta
   function leerEnVozAlta(texto, idiomaDestino) {
     const utterance = new SpeechSynthesisUtterance(texto);
     utterance.lang = idiomaDestino;
     speechSynthesis.speak(utterance);
   }
 
-  // ✅ Evento: enviar formulario
+  // ✅ Enviar traducción
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const texto = textarea.value.trim();
@@ -45,16 +45,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const respuesta = await fetch("https://traductor-backend.vercel.app/traducir", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto, idiomaDestino: destino })
+        body: JSON.stringify({
+          texto: texto,
+          idiomaDestino: destino  // 👈 CLAVE CORRECTA para backend
+        })
       });
 
       const data = await respuesta.json();
 
-      if (data.traduccion) {
+      if (!respuesta.ok) {
+        console.error("⛔ Backend respondió con error:", data);
+        agregarMensaje("❌ Error del servidor al traducir.", "bot");
+      } else if (data.traduccion) {
         agregarMensaje(data.traduccion, "bot");
         leerEnVozAlta(data.traduccion, destino);
       } else {
-        agregarMensaje("❌ No se pudo traducir el texto.", "bot");
+        agregarMensaje("⚠️ No se recibió una traducción válida.", "bot");
       }
     } catch (error) {
       console.error("Error al traducir:", error);
@@ -65,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ✅ Atajo: enter traduce si no se mantiene shift
+  // ✅ Atajo: enter envía
   textarea.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
