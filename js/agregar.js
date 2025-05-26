@@ -8,7 +8,7 @@ async function obtenerUltimoID() {
     const ids = Object.values(data)
       .map(item => parseInt(item.id))
       .filter(id => !isNaN(id));
-    const maxID = ids.length ? Math.max(...ids) : ultimo;
+    const maxID = ids.length ? Math.max(...ids) : 356;
     return maxID + 1;
   } catch (err) {
     console.error("❌ Error obteniendo el último ID", err);
