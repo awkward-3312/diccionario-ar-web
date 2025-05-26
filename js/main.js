@@ -1,18 +1,21 @@
+// main.js corregido, limpio y funcional
 const URL = 'https://script.google.com/macros/s/AKfycbys4Dq4jSXyKlERG8AwgpDAsT05sttX_73r0a9IgoXtMNMCzwT3QNMaZ6PVZpieIMEi/exec';
 let glosario = {};
 let db;
 let glosarioCargado = false;
 let debounceTimer;
 
+// === Utilidades ===
+function normalizarTexto(texto) {
+  return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
+}
+
 function toggleModo() {
   const isClaro = document.body.classList.toggle("light-mode");
   localStorage.setItem("modoClaro", isClaro ? "1" : "0");
 }
 
-function normalizarTexto(texto) {
-  return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
-}
-
+// === IndexedDB ===
 function abrirBaseDatos() {
   const request = indexedDB.open("DiccionarioAR", 1);
   request.onerror = () => console.error("❌ Error al abrir IndexedDB.");
@@ -22,46 +25,7 @@ function abrirBaseDatos() {
   };
   request.onupgradeneeded = (event) => {
     db = event.target.result;
-    db.createObjectStore("terminos", { keyPath: "nombre" 
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});
+    db.createObjectStore("terminos", { keyPath: "nombre" });
   };
 }
 
@@ -88,46 +52,7 @@ function cargarDesdeIndexedDB() {
       datos.forEach(e => {
         const clave = normalizarTexto(e.nombre);
         glosario[clave] = e;
-      
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});
+      });
       glosarioCargado = true;
       actualizarContador();
     } else {
@@ -166,6 +91,7 @@ function actualizarContador() {
   if (cont) cont.textContent = `Actualmente hay ${total} términos registrados.`;
 }
 
+// === Función buscar ===
 function buscar() {
   if (!glosarioCargado) return;
   const terminoInput = document.getElementById("termino");
@@ -206,46 +132,7 @@ function buscar() {
       const val = glosario[key];
       const trad = val["Traducción"] ? normalizarTexto(val["Traducción"]) : "";
       return normal.includes(termino) || trad.includes(termino);
-    
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});
+    });
     if (sugerencias.length > 0) {
       const sugerenciaHTML = sugerencias.slice(0, 3).map(s => `<button onclick="document.getElementById('termino').value='${s}';buscar();">${s}</button>`).join(" ");
       resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
@@ -275,15 +162,17 @@ function limpiarBusqueda() {
   document.getElementById("resultado").innerText = "Resultado aquí...";
 }
 
+// === Inicialización DOM ===
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
   }
+
   const ultima = localStorage.getItem("ultimaActualizacion") || "-";
   document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
+
   abrirBaseDatos();
 
-  // Frases dinámicas para el input
   const frases = [
     "¿Qué deseas buscar hoy? 😊",
     "Descubre un nuevo término técnico 💡",
@@ -293,7 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   let index = 0;
   const input = document.getElementById("termino");
-
   setInterval(() => {
     input.setAttribute("placeholder", frases[index]);
     index = (index + 1) % frases.length;
@@ -302,263 +190,14 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(buscar, 300);
-  
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
+  });
 });
 
-  window.addEventListener("load", () => {
-    if (navigator.onLine && db) cargarGlosario(true);
-  
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});
-
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});
-
+// === Service Worker ===
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceWorker.js')
       .then(reg => console.log('✅ SW registrado:', reg.scope))
       .catch(err => console.error('❌ Error SW:', err));
-  
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});
+  });
 }
-
-
-// === EVENTOS ESTACIONALES Y GRADIENTES DE TÍTULO ===
-document.addEventListener("DOMContentLoaded", () => {
-  const hoy = new Date();
-  const mes = hoy.getMonth() + 1;
-  const dia = hoy.getDate();
-  const diaSemana = hoy.getDay();
-  const h1 = document.querySelector("h1");
-
-  function setTituloClase(clase) {
-    h1.className = clase;
-  }
-
-  function efectoNieve() {
-    for (let i = 0; i < 40; i++) {
-      const copo = document.createElement("div");
-      copo.className = "nieve-copo";
-      copo.style.left = Math.random() * 100 + "vw";
-      copo.style.animationDuration = 6 + Math.random() * 5 + "s";
-      copo.style.animationDelay = Math.random() * 5 + "s";
-      document.body.appendChild(copo);
-    }
-  }
-
-  function efectoHojas() {
-    for (let i = 0; i < 20; i++) {
-      const hoja = document.createElement("div");
-      hoja.className = "hoja-otoño";
-      hoja.style.left = Math.random() * 100 + "vw";
-      hoja.style.animationDuration = 8 + Math.random() * 5 + "s";
-      hoja.style.animationDelay = Math.random() * 5 + "s";
-      document.body.appendChild(hoja);
-    }
-  }
-
-  // === Detección de eventos ===
-  if (mes === 12) {
-    setTituloClase("titulo-navidad");
-    efectoNieve();
-  } else if (mes === 9 && dia === 10) {
-    setTituloClase("titulo-dia-nino");
-  } else if (mes === 9 && dia === 15) {
-    setTituloClase("titulo-independencia");
-  } else if (mes === 10 && dia === 31) {
-    setTituloClase("titulo-halloween");
-  } else if (mes === 11 && diaSemana === 4 && dia + 7 > 30) {
-    setTituloClase("titulo-thanksgiving");
-    efectoHojas();
-  }
-
-  function esSegundoDomingoDeMayo(fecha) {
-    const dia = fecha.getDate();
-    const diaSemana = fecha.getDay(); // 0 = domingo
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  // Día de la Madre (2º domingo de mayo)
-  if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  }
-
-  // Día de los Muertos (2 nov)
-  if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
-  }
-
-});

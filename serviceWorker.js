@@ -1,61 +1,73 @@
-const CACHE_NAME = "diccionario-ar-cache-v2";
+// serviceWorker.js
 
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/admin.html",
-  "/agregar.html",
-  "/sugerencias.html",
-  "/revisar-sugerencias.html",
-  "/traductor.html", // ✅ agregado
-  "/favicon-ar.png",
-  "/favicon-ar.ico",
-  "/fonts/Middle-of-April.ttf",
-  "/img/FONDOOO.jpeg",
-  "/img/fondo-claro.png",
-  "/css/estilos.css",
-  "/css/admin.css",
-  "/css/agregar.css",
-  "/css/sugerencias.css",
-  "/css/revisar-sugerencias.css",
-  "/css/traductor.css", // ✅ agregado
-  "/js/main.js",
-  "/js/admin.js",
-  "/js/agregar.js",
-  "/js/sugerencias.js",
-  "/js/revisar-sugerencias.js",
-  "/js/traductor.js" // ✅ agregado
+const CACHE_NAME = 'diccionario-ar-v1.5';
+const URLS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/css/estilos.css',
+  '/js/main.js',
+  '/favicon-ar.png',
+  '/img/sparkie.png',
+  // Agrega aquí más imágenes, fuentes o páginas si deseas cachearlas
 ];
 
-// Instalar y cachear todos los archivos
-self.addEventListener("install", (event) => {
+// Instalación: precachea recursos esenciales
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
+      console.log('[SW] Precaching...');
+      return cache.addAll(URLS_TO_CACHE);
     })
   );
+  self.skipWaiting();
 });
 
-// Activar y limpiar cachés viejos
-self.addEventListener("activate", (event) => {
+// Activación: limpia cachés antiguas
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
         cacheNames.map((name) => {
           if (name !== CACHE_NAME) {
+            console.log('[SW] Borrando caché antigua:', name);
             return caches.delete(name);
           }
         })
       )
     )
   );
+  self.clients.claim();
 });
 
-// Interceptar peticiones
-self.addEventListener("fetch", (event) => {
+// Fetch: responde desde cache primero, luego red
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            // Evitar cachear llamadas a extensiones o eventos dinámicos
+            if (
+              event.request.url.startsWith('http') &&
+              !event.request.url.includes('/socket.io/')
+            ) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        })
+        .catch(() => {
+          // Fallback: muestra offline.html si se desea
+          if (event.request.destination === 'document') {
+            return caches.match('/offline.html');
+          }
+        });
     })
   );
 });
