@@ -107,10 +107,10 @@ function buscar() {
   let terminoReal = null;
 
   for (let clave in glosario) {
-    const terminoES = normalizarTexto(clave); // Término original
-    const terminoEN = normalizarTexto(glosario[clave]["Traducción"] || ""); // Traducción
+    const terminoEN = normalizarTexto(clave); // Término original en inglés
+    const terminoES = normalizarTexto(glosario[clave]["Traducción"] || ""); // Traducción en español
 
-    if (terminoES === termino || terminoEN === termino) {
+    if (termino === terminoEN || termino === terminoES) {
       entrada = glosario[clave];
       terminoReal = clave;
       break;
@@ -152,11 +152,14 @@ function buscar() {
       const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
       html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
     }
-  
-  if (entrada["Instrumento"] && entrada["Instrumento"].toLowerCase() === "sí" && entrada["Imagen"]) {
-    html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
+    if (
+      entrada["Instrumento"] &&
+      entrada["Instrumento"].toLowerCase() === "sí" &&
+      entrada["Imagen"]
+    ) {
+      html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
     }
-  }  
+  }
 
   resultado.innerHTML = html;
 }
