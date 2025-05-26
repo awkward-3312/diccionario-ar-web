@@ -196,6 +196,33 @@ body.light-mode .pronunciacion {
   background-color: #444;
   font-style: italic;
 }
+
+/* === SUGERENCIAS DE TÉRMINOS NO ENCONTRADOS === */
+.sugerencias {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.sugerencias button {
+  background-color: #2196f3;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: left;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.sugerencias button:hover {
+  background-color: #3ae374;
+  color: black;
+  transform: scale(1.02);
+}
+
 body.light-mode .sinonimos span {
   background-color: #ddd;
 }
