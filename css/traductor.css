@@ -45,9 +45,7 @@ body {
 }
 
 .chat-box {
-  flex: 1;
-  min-height: 300px;
-  max-height: 500px;
+  height: 350px; /* altura fija */
   overflow-y: auto;
   background-color: #121212;
   border-radius: 12px;
@@ -55,6 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  scroll-behavior: smooth;
 }
 
 .mensaje {
