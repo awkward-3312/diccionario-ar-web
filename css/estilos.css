@@ -239,6 +239,7 @@ body.light-mode #toggle-modo::before {
 }
 
 /* === BOTONES FLOTANTES MODERNOS === */
+
 .nav-flotante {
   position: fixed;
   top: 10px;
@@ -248,11 +249,12 @@ body.light-mode #toggle-modo::before {
   justify-content: center;
   gap: 10px;
   padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px);
+  background: transparent;
+  backdrop-filter: none;
   border-radius: 0 0 16px 16px;
   z-index: 1001;
 }
+
 
 .nav-flotante button {
   height: 38px;
@@ -301,16 +303,18 @@ body::before {
   z-index: 0;
 }
 
+
 .molecula {
   position: fixed;
   width: 60px;
   height: 60px;
   opacity: 0.2;
   filter: brightness(140%);
-  animation: flotarMol 60s linear infinite alternate;
+  animation: flotarMol 60s ease-in-out infinite alternate;
   z-index: 0;
   pointer-events: none;
 }
+
 
 @keyframes flotarMol {
   0% {
