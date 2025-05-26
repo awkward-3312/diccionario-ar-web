@@ -89,15 +89,14 @@ h1 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.contenedor, .login {
-  max-width: 1000px;
-  margin: 0 auto;
+.contenedor {
+  max-width: 1400px;         /* MÁS ANCHO */
+  margin: 80px auto 40px;    /* Espacio arriba para el botón sugerencias */
+  padding: 20px;
   background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 0.5s ease-in-out;
+  border-radius: 15px;
 }
+
 
 body.light-mode .contenedor,
 body.light-mode .login {
