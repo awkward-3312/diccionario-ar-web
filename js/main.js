@@ -116,18 +116,17 @@ function buscar() {
 
   let entrada = null;
   let terminoReal = null;
-
+  
   for (let clave in glosario) {
-    const normalClave = normalizarTexto(clave);
-    const traduccion = glosario[clave]["Traducción"] || "";
-    const normalTraduccion = normalizarTexto(traduccion);
-
-    if (normalClave === termino || normalTraduccion === termino) {
+    const terminoES = normalizarTexto(clave); // Término en español
+    const terminoEN = normalizarTexto(glosario[clave]["Traducción"] || ""); // Traducción en inglés
+  
+    if (terminoES === termino || terminoEN === termino) {
       entrada = glosario[clave];
       terminoReal = clave;
       break;
     }
-  }
+  }  
 
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
