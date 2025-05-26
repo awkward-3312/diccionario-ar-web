@@ -11,12 +11,17 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('../img/fondo-oscuro.png') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
   color: white;
   min-height: 100vh;
   padding: 20px;
-  padding-top: 80px;   /* espacio para Sparkie arriba */
+  padding-top: 80px;
   padding-bottom: 40px;
+  animation: parallax 60s linear infinite, fadeIn 0.5s ease-in-out;
 }
 
 .chat-container {
@@ -243,4 +248,15 @@ select:focus {
   50% { transform: translateX(3px); }
   75% { transform: translateX(-3px); }
   100% { transform: translateX(0); }
+}
+
+@keyframes parallax {
+  0% { background-position: center center; }
+  50% { background-position: center top; }
+  100% { background-position: center center; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
