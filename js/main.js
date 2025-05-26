@@ -143,26 +143,26 @@ function buscar() {
 
   let html = `<div class="titulo-resultado">${terminoReal}</div>`;
   if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
-    html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
-  } else {
-    html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-    if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
-    if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
-    if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
-    if (entrada["Sinónimos"]) {
-      const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
-      html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
-    }
-  
-    // ✅ Mostrar imagen si es instrumento
-    if (
-      entrada["Instrumento"] &&
-      entrada["Instrumento"].toLowerCase() === "sí" &&
-      entrada["Imagen"]
-    ) {
-      html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
-    }
-  }   
+  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
+} else {
+  html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
+  if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
+  if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
+  if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
+  if (entrada["Sinónimos"]) {
+    const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
+    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
+  }
+
+  // Mostrar imagen si aplica
+  if (
+    entrada["Instrumento"] &&
+    entrada["Instrumento"].toLowerCase() === "sí" &&
+    entrada["Imagen"]
+  ) {
+    html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
+  }
+}  
 
   resultado.innerHTML = html;
 }
