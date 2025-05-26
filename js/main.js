@@ -103,17 +103,18 @@ function buscar() {
   spinner.style.display = "block";
   setTimeout(() => spinner.style.display = "none", 500);
 
-  let entrada = glosario[termino];
-  let terminoReal = termino;
+  let entrada = null;
+  let terminoReal = null;
 
-  if (!entrada) {
-    for (let clave in glosario) {
-      const valor = glosario[clave];
-      if (valor["Traducción"] && normalizarTexto(valor["Traducción"]) === termino) {
-        entrada = valor;
-        terminoReal = clave;
-        break;
-      }
+  for (let clave in glosario) {
+    const normalClave = normalizarTexto(clave);
+    const traduccion = glosario[clave]["Traducción"] || "";
+    const normalTraduccion = normalizarTexto(traduccion);
+
+    if (normalClave === termino || normalTraduccion === termino) {
+      entrada = glosario[clave];
+      terminoReal = clave;
+      break;
     }
   }
 
@@ -129,8 +130,12 @@ function buscar() {
       const trad = val["Traducción"] ? normalizarTexto(val["Traducción"]) : "";
       return normal.includes(termino) || trad.includes(termino);
     });
+
     if (sugerencias.length > 0) {
-      const sugerenciaHTML = sugerencias.slice(0, 3).map(s => `<button onclick="document.getElementById('termino').value='${s}';buscar();">${s}</button>`).join(" ");
+      const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
+        const original = glosario[s]["Traducción"] || s;
+        return `<button onclick="document.getElementById('termino').value='${original}';buscar();">${original}</button>`;
+      }).join(" ");
       resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
     }
     return;
