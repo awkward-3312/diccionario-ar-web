@@ -98,7 +98,7 @@ function actualizarContador() {
 function buscar() {
   if (!glosarioCargado) return;
   const terminoInput = document.getElementById("termino");
-  const termino = terminoInput.value.trim().toUpperCase(); // buscar solo en inglés
+  const termino = terminoInput.value.trim().toUpperCase();
   const resultado = document.getElementById("resultado");
   const spinner = document.getElementById("spinner");
 
@@ -110,7 +110,7 @@ function buscar() {
   spinner.style.display = "block";
   setTimeout(() => spinner.style.display = "none", 500);
 
-  let entrada = glosario[termino]; // clave exacta en inglés
+  let entrada = glosario[termino];
   let terminoReal = entrada ? termino : null;
 
   resultado.classList.remove("animado");
@@ -156,8 +156,8 @@ function buscar() {
       entrada["Imagen"]
     ) {
       html += `<br><img src="${entrada["Imagen"].trim()}" alt="Imagen del instrumento" class="imagen-instrumento">`;
-    }       
-
+    }
+  }
   resultado.innerHTML = html;
 }
 
@@ -167,8 +167,7 @@ function limpiarBusqueda() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  actualizarBtn = document.getElementById("actualizarBtn");
+  const actualizarBtn = document.getElementById("actualizarBtn");
   if (actualizarBtn) {
     actualizarBtn.disabled = true;
     const esperarDB = setInterval(() => {
@@ -180,12 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200);
   }
 
-
-  const actualizarBtn = document.getElementById("actualizarBtn");
-  if (actualizarBtn) {
-    actualizarBtn.addEventListener("click", actualizarGlosario);
-  }
-
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
   }
@@ -193,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
   abrirBaseDatos();
 
-  // Frases dinámicas para el input
   const frases = [
     "¿Qué deseas buscar hoy? 😊",
     "Descubre un nuevo término técnico 💡",
@@ -225,5 +217,4 @@ if ('serviceWorker' in navigator) {
       .then(reg => console.log('✅ SW registrado:', reg.scope))
       .catch(err => console.error('❌ Error SW:', err));
   });
-}
 }
