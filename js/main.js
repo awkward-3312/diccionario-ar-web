@@ -91,7 +91,7 @@ function actualizarContador() {
 function buscar() {
   if (!glosarioCargado) return;
   const terminoInput = document.getElementById("termino");
-  const termino = normalizarTexto(terminoInput.value.trim());
+  const termino = terminoInput.value.trim().toUpperCase(); // buscar solo en inglés
   const resultado = document.getElementById("resultado");
   const spinner = document.getElementById("spinner");
 
@@ -103,18 +103,8 @@ function buscar() {
   spinner.style.display = "block";
   setTimeout(() => spinner.style.display = "none", 500);
 
-  let entrada = null;
-  let terminoReal = null;
-
-  // Búsqueda SOLO por clave original (inglés)
-  for (let clave in glosario) {
-    const terminoEN = normalizarTexto(clave);
-    if (termino === terminoEN) {
-      entrada = glosario[clave];
-      terminoReal = clave;
-      break;
-    }
-  }
+  let entrada = glosario[termino]; // clave exacta en inglés
+  let terminoReal = entrada ? termino : null;
 
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
@@ -123,10 +113,12 @@ function buscar() {
   if (!entrada) {
     resultado.innerHTML = "⚠️ Término no encontrado.";
     const sugerencias = Object.keys(glosario).filter(key => {
-      const normal = normalizarTexto(key);
-      const val = glosario[key];
-      const trad = val["Traducción"] ? normalizarTexto(val["Traducción"]) : "";
-      return normal.includes(termino) || trad.includes(termino);
+      const normalClave = normalizarTexto(key);
+      const trad = glosario[key]["Traducción"]
+        ? normalizarTexto(glosario[key]["Traducción"])
+        : "";
+      const inputNormalizado = normalizarTexto(terminoInput.value.trim());
+      return normalClave.includes(inputNormalizado) || trad.includes(inputNormalizado);
     });
 
     if (sugerencias.length > 0) {
@@ -204,26 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/serviceWorker.js')
-      .then(reg => {
-        console.log('✅ SW registrado:', reg.scope);
-
-        // Detectar nuevas versiones
-        reg.onupdatefound = () => {
-          const nuevoSW = reg.installing;
-          if (nuevoSW) {
-            nuevoSW.onstatechange = () => {
-              if (nuevoSW.state === 'installed') {
-                if (navigator.serviceWorker.controller) {
-                  console.log('🔁 Nueva versión detectada, actualizando...');
-                  nuevoSW.postMessage('SKIP_WAITING');
-                  window.location.reload();
-                }
-              }
-            };
-          }
-        };
-      })
+    navigator.serviceWorker.register('serviceWorker.js')
+      .then(reg => console.log('✅ SW registrado:', reg.scope))
       .catch(err => console.error('❌ Error SW:', err));
   });
 }

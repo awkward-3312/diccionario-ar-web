@@ -1,4 +1,4 @@
-const CACHE_NAME = 'diccionario-ar-v1.6';
+const CACHE_NAME = 'diccionario-ar-v1.7';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
