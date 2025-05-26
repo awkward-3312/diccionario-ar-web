@@ -138,27 +138,41 @@ function buscar() {
     return;
   }
 
-  let html = `<div class="titulo-resultado">${terminoReal}</div>`;
-  if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
-    html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
-  } else {
-    html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-    if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
-    if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
-    if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
-    if (entrada["Sinónimos"]) {
-      const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
-      html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
-    }
-    if (
-      entrada["Instrumento"] &&
-      entrada["Instrumento"].normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase() === "si" &&
-      entrada["Imagen"]
-    ) {
-      html += `<br><img src="${entrada["Imagen"].trim()}" alt="Imagen del instrumento" class="imagen-instrumento">`;
-    }
+let html = `<div class="resultado-flex">`;
+
+html += `<div class="bloque-texto">`;
+html += `<div class="titulo-resultado">${terminoReal}</div>`;
+
+if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
+  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
+} else {
+  html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
+  if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
+  if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
+  if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
+  if (entrada["Sinónimos"]) {
+    const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
+    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
   }
-  resultado.innerHTML = html;
+}
+html += `</div>`; // .bloque-texto
+
+// Mostrar imagen a la derecha
+if (
+  entrada["Instrumento"] &&
+  entrada["Instrumento"].normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase() === "si" &&
+  entrada["Imagen"]
+) {
+  html += `
+    <div class="bloque-imagen">
+      <img src="${entrada["Imagen"].trim()}" alt="Imagen del instrumento" class="imagen-instrumento">
+    </div>
+  `;
+}
+
+html += `</div>`; // .resultado-flex
+
+resultado.innerHTML = html;
 }
 
 function limpiarBusqueda() {
