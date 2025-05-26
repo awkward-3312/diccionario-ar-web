@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const respuesta = await fetch("https://traductor-backend.vercel.app/api/traducir", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto, destino })
+        body: JSON.stringify({ texto, lenguaje: destino })
       });
 
       const data = await respuesta.json();
