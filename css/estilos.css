@@ -48,6 +48,7 @@ body.light-mode {
 @keyframes parallax {
   0% { background-position: center center; }
   50% { background-position: center top; }
+  100% { background-position: center center; }
 }
 
 @keyframes fadeIn {
