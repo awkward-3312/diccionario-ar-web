@@ -1,58 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diccionario - AR</title>
-  <link rel="icon" type="image/png" href="favicon-ar.png" />
-  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="icon" type="image/png" href="favicon-ar.png">
+  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
-  <!-- Contenedor único para todos los botones flotantes -->
-  <nav class="nav-flotante">
+  <div style="position: fixed; top: 10px; left: 20px; z-index: 1001;">
     <button onclick="window.location.href='agregar.html'">Agregar Término</button>
-    <button onclick="window.location.href='traductor.html'">Traductor</button>
-    <button onclick="window.location.href='inicio.html'">Home</button>
+  </div>
+  <div style="position: fixed; top: 10px; right: 20px; z-index: 1001;">
     <button onclick="window.location.href='admin.html'">Admin</button>
-    <button class="btn-sugerencias" onclick="window.location.href='sugerencias.html'">💬 Sugerencias</button>
-  </nav>
-
-  <!-- Mascota Sparkie -->
-  <div id="sparkie" aria-label="Mascota Sparkie animada" role="img" tabindex="-1">
-    <img src="img/sparkie.png" alt="Sparkie, tu asistente animado" />
+  </div>
+  <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1001;">
+    <button onclick="window.location.href='sugerencias.html'">💬 Sugerencias</button>
   </div>
 
-  <!-- Contenido principal -->
-  <main class="ventana" role="main">
+  <div class="ventana">
     <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
     <div class="busqueda">
-      <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
+      <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término">
     </div>
 
     <div class="botones-busqueda">
-      <button class="boton" onclick="buscar()">Buscar</button>
-      <button class="boton" onclick="limpiarBusqueda()">Limpiar</button>
-      <button class="boton" onclick="actualizarGlosario()">🔄 Actualizar</button>
+      <button onclick="buscar()">Buscar</button>
+      <button onclick="limpiarBusqueda()" style="background-color: #444;">Limpiar</button>
+      <button onclick="actualizarGlosario()" style="background-color: #3ae374;">🔄 Actualizar</button>
     </div>
 
-    <div id="estadoConexion" class="estado-conexion" aria-live="polite"></div>
+    <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
     <div id="ultima-actualizacion">Última actualización: -</div>
-    <div id="contadorTerminos"></div>
+    <div id="contadorTerminos" style="margin-top: 5px; color: #ccc; font-size: 0.9rem;"></div>
 
     <div class="spinner" id="spinner">
       <span></span><span></span><span></span>
     </div>
 
-    <div id="resultado" tabindex="0" aria-live="polite" class="animado resultado-box">Resultado aquí...</div>
-  </main>
+    <div id="resultado" tabindex="0" aria-live="polite" class="animado" style="margin-top: 20px; background-color: #292929; padding: 20px; border-radius: 10px; color: white; text-align: left; white-space: pre-line; font-size: 15px; line-height: 1.6;">Resultado aquí...</div>
+  </div>
 
   <script src="js/main.js"></script>
-  <script src="js/eventosFestivos.js"></script> <!-- ← AÑADE ESTA LÍNEA AQUÍ -->
-
   <script>
     function toggleModo() {
       const esClaro = document.body.classList.toggle("light-mode");
@@ -64,11 +57,13 @@
         document.body.classList.add("light-mode");
       }
 
-      const estado = document.getElementById("estadoConexion");
       function actualizarEstadoConexion() {
-        estado.textContent = navigator.onLine
-          ? ""
-          : "Estás trabajando sin conexión. Algunos datos pueden no estar actualizados.";
+        const estado = document.getElementById("estadoConexion");
+        if (!navigator.onLine) {
+          estado.textContent = "Estás trabajando sin conexión. Algunos datos pueden no estar actualizados.";
+        } else {
+          estado.textContent = "";
+        }
       }
       window.addEventListener("online", actualizarEstadoConexion);
       window.addEventListener("offline", actualizarEstadoConexion);
