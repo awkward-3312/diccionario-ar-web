@@ -385,3 +385,24 @@ body::before {
     transform: scale(1);
   }
 }
+
+.resultado-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bloque-texto {
+  flex: 1 1 60%;
+  min-width: 250px;
+}
+
+.bloque-imagen {
+  flex: 1 1 35%;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
