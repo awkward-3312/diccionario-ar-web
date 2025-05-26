@@ -70,17 +70,6 @@ function cargarGlosario(guardarLocal = false) {
   }).catch(err => console.error("Error al cargar glosario:", err));
 }
 
-// Solo para depuración
-fetch(URL)
-  .then(r => r.json())
-  .then(data => {
-    const claves = Object.keys(data);
-    const coincidencias = claves.filter(k => k.includes("BALANZA"));
-    console.log("🔍 Coincidencias con BALANZA:", coincidencias);
-    coincidencias.forEach(clave => console.log(clave, "→", data[clave]));
-  })
-  .catch(err => console.error("❌ Error al obtener glosario:", err));
-
 function actualizarGlosario() {
   if (navigator.onLine && db) {
     cargarGlosario(true);
@@ -116,17 +105,17 @@ function buscar() {
 
   let entrada = null;
   let terminoReal = null;
-  
+
   for (let clave in glosario) {
-    const terminoES = normalizarTexto(clave); // Término en español
-    const terminoEN = normalizarTexto(glosario[clave]["Traducción"] || ""); // Traducción en inglés
-  
+    const terminoES = normalizarTexto(clave); // Término original
+    const terminoEN = normalizarTexto(glosario[clave]["Traducción"] || ""); // Traducción
+
     if (terminoES === termino || terminoEN === termino) {
       entrada = glosario[clave];
       terminoReal = clave;
       break;
     }
-  }  
+  }
 
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
@@ -153,26 +142,21 @@ function buscar() {
 
   let html = `<div class="titulo-resultado">${terminoReal}</div>`;
   if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
-  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
-} else {
-  html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-  if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
-  if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
-  if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
-  if (entrada["Sinónimos"]) {
-    const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
-    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
-  }
-
-  // Mostrar imagen si aplica
-  if (
-    entrada["Instrumento"] &&
-    entrada["Instrumento"].toLowerCase() === "sí" &&
-    entrada["Imagen"]
-  ) {
+    html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
+  } else {
+    html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
+    if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
+    if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
+    if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
+    if (entrada["Sinónimos"]) {
+      const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
+      html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
+    }
+  
+  if (entrada["Instrumento"] && entrada["Instrumento"].toLowerCase() === "sí" && entrada["Imagen"]) {
     html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
-  }
-}  
+    }
+  }  
 
   resultado.innerHTML = html;
 }
