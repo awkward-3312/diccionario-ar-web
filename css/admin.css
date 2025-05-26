@@ -355,56 +355,63 @@ body.light-mode .mostrar-toggle {
 }
 
 /* === TARJETA DE LOGIN CON SPARKIE === */
+
 .login-card {
-  max-width: 400px;
-  width: 90%;
-  margin: 0 auto;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 40px 30px 30px;
+  padding: 80px 30px 40px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   text-align: center;
   animation: fadeIn 0.6s ease-in-out;
+  max-width: 400px;
+  width: 90%;
+  margin: 100px auto 0;
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
-body.light-mode .login-card {
-  max-width: 400px;
-  width: 90%;
-  margin: 0 auto;
+
+body.light-mode 
+.login-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 40px 30px 30px;
+  padding: 80px 30px 40px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   text-align: center;
   animation: fadeIn 0.6s ease-in-out;
+  max-width: 400px;
+  width: 90%;
+  margin: 100px auto 0;
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
+
 
 /* === SPARKIE COMO AVATAR CIRCULAR === */
-.avatar-sparkie {
-  width: 80px;
-  height: 80px;
-  background-color: #1e1e1e;
-  border-radius: 50%;
-  margin: -60px auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid #3ae374;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-}
 
+.avatar-sparkie {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at center, #1effb1, #0ef09a);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(0, 255, 204, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
 .avatar-sparkie img {
-  width: 100%;
+  width: 70%;
   height: auto;
   object-fit: contain;
 }
+
 
 /* === BOTONES DE REGRESO EN COLUMNA === */
 .botones-regreso {
@@ -431,31 +438,45 @@ body.light-mode .login-card {
 
 /* RESPONSIVO */
 @media (max-width: 500px) {
-  .login-card {
-  max-width: 400px;
-  width: 90%;
-  margin: 0 auto;
+  
+.login-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 40px 30px 30px;
+  padding: 80px 30px 40px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   text-align: center;
   animation: fadeIn 0.6s ease-in-out;
+  max-width: 400px;
+  width: 90%;
+  margin: 100px auto 0;
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
-  .avatar-sparkie {
-    width: 70px;
-    height: 70px;
-  }
 
-  .avatar-sparkie img {
-  width: 100%;
+  
+.avatar-sparkie {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at center, #1effb1, #0ef09a);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(0, 255, 204, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.avatar-sparkie img {
+  width: 70%;
   height: auto;
   object-fit: contain;
 }
+
 
   .btn-secundario {
     font-size: 14px;
@@ -483,22 +504,24 @@ body.light-mode .login-card {
 }
 
 
+
 .avatar-sparkie {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -70px auto 30px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 110px;
   height: 110px;
   background: radial-gradient(circle at center, #1effb1, #0ef09a);
   border-radius: 50%;
   box-shadow: 0 0 0 5px rgba(0, 255, 204, 0.2);
-  overflow: hidden;
-  position: relative;
-  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
 .avatar-sparkie img {
-  width: 75%;
+  width: 70%;
   height: auto;
   object-fit: contain;
 }
