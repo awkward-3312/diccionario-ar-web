@@ -67,7 +67,13 @@
   </button>
 
   <!-- JS principal -->
-  <script src="js/admin.js"></script>
+  <script src="js/admin.js">
+    function toggleClave() {
+      const input = document.getElementById("clave");
+      const esPassword = input.type === "password";
+      input.type = esPassword ? "text" : "password";
+    }
+</script>
 
   <!-- Modo claro/oscuro y cambio de logo -->
   <script>
@@ -81,6 +87,12 @@
         document.body.classList.add("light-mode");
       }
     });
-  </script>
+  
+    function toggleClave() {
+      const input = document.getElementById("clave");
+      const esPassword = input.type === "password";
+      input.type = esPassword ? "text" : "password";
+    }
+</script>
 </body>
 </html>
