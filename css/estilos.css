@@ -48,7 +48,6 @@ body.light-mode {
 @keyframes parallax {
   0% { background-position: center center; }
   50% { background-position: center top; }
-  100% { background-position: center center; }
 }
 
 @keyframes fadeIn {
@@ -59,7 +58,6 @@ body.light-mode {
 @keyframes colores {
   0% { color: #70d6ff; }
   50% { color: #3ae374; }
-  100% { color: #ff5c39; }
 }
 
 h1 span {
@@ -73,7 +71,6 @@ h1 span {
 @keyframes colores {
   0%   { color: #70d6ff; }
   50%  { color: #3ae374; }
-  100% { color: #ff5c39; }
 }
 
 .subtitulo {
@@ -281,14 +278,6 @@ body.light-mode #toggle-modo::before {
 }
 
 /* === MOLÉCULAS ANIMADAS COMO FONDO === */
-
-
-
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-  }
-}
-
 /* Repetición automática en varias posiciones */
 body::before {
   content: "";
@@ -328,9 +317,6 @@ body::before {
   }
   75% {
     transform: translate(-20px, 10px) rotate(270deg);
-  }
-  100% {
-    transform: translate(0, 0) rotate(360deg);
   }
 }
 
