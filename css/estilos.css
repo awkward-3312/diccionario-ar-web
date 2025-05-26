@@ -3,7 +3,6 @@
   font-family: 'MiddleOfApril';
   src: url('../fonts/Middle-of-April.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Nunito';
   src: url('../fonts/Nunito-BoldItalic.ttf') format('truetype');
@@ -16,17 +15,16 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
-
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: url('../img/fondo-oscuro.png') no-repeat center center fixed;
-  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('../img/FONDOOO.jpeg') no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
   color: white;
@@ -36,46 +34,58 @@ body {
   align-items: center;
   flex-direction: column;
 }
-
 body.light-mode {
-  background: url('../img/fondo-claro.png') no-repeat center center fixed;
-  background-size: cover;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.95)),
+    url('../img/fondo-claro.png') no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
   color: #111;
 }
 
+/* === ESTILOS GLOBALES PARA FORMULARIOS === */
+input, button, select, textarea {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+}
+
+/* === PLACEHOLDER ESTILOS === */
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1; /* para Firefox */
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+body.light-mode input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* === ANIMACIONES === */
 @keyframes parallax {
   0% { background-position: center center; }
   50% { background-position: center top; }
   100% { background-position: center center; }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes colores {
-  0% { color: #70d6ff; }
-  50% { color: #3ae374; }
-  100% { color: #ff5c39; }
-}
-
-h1 span {
-  animation: colores 5s infinite ease-in-out alternate;
-  display: inline-block;
-  font-family: 'MiddleOfApril', cursive;
-  font-size: 3.5rem;
-}
-
-
 @keyframes colores {
   0%   { color: #70d6ff; }
   50%  { color: #3ae374; }
   100% { color: #ff5c39; }
 }
 
+/* === TIPOGRAFÍA Y TÍTULOS === */
+h1 span {
+  animation: colores 5s infinite ease-in-out alternate;
+  display: inline-block;
+  font-family: 'MiddleOfApril', cursive;
+  font-size: 3.5rem;
+}
 .subtitulo {
   font-family: 'Nunito', sans-serif;
   font-style: italic;
@@ -91,7 +101,6 @@ h1 span {
   margin-bottom: 20px;
   width: 100%;
 }
-
 .busqueda input {
   width: 100%;
   padding: 12px 16px;
@@ -103,14 +112,76 @@ h1 span {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
-
 body.dark-mode .busqueda input {
   background-color: #2a2a2a;
   color: white;
 }
 
-/* === BOTONES GLOBALES === */
-button {
+/* === BOTONES GLOBALES MEJORADOS === */
+.nav-flotante {
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  z-index: 1002;
+  background: rgba(0,0,0,0.45);
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-flotante:hover {
+  background: rgba(0,0,0,0.65);
+}
+
+.nav-flotante button {
+  flex: 1 1 130px;
+  min-width: 110px;
+  max-width: 160px;
+  padding: 12px 18px;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+}
+
+.nav-flotante button:hover,
+.nav-flotante button:focus-visible {
+  background-color: #0d4ecb;
+  transform: scale(1.1);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.5);
+  outline: none;
+}
+
+.btn-sugerencias {
+  flex: 1 1 130px;
+  background-color: #ff69b4 !important;
+  color: white !important;
+  font-weight: 700;
+  box-shadow: 0 6px 10px rgba(255,105,180,0.6);
+}
+
+.btn-sugerencias:hover,
+.btn-sugerencias:focus-visible {
+  background-color: #ff48b5 !important;
+  color: black !important;
+  box-shadow: 0 8px 14px rgba(255,72,181,0.9);
+}
+
+/* === BOTONES GLOBALES PARA USO GENERAL === */
+button, .boton {
   font-family: 'Segoe UI', sans-serif;
   font-weight: 600;
   background-color: #007bff;
@@ -122,18 +193,38 @@ button {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background-color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
+  margin: 5px;
 }
 
-button:hover {
+button:hover, .boton:hover {
   background-color: #3ae374;
   color: black;
   transform: scale(1.05);
 }
 
-/* === CONTENEDOR === */
+body.light-mode button,
+body.light-mode .boton {
+  color: #111;
+}
+
+/* Responsivo: que no se vean muy apretados en móviles */
+@media (max-width: 500px) {
+  .nav-flotante {
+    gap: 12px;
+    padding: 8px 12px;
+  }
+  .nav-flotante button {
+    flex: 1 1 100%;
+    max-width: 100%;
+    font-size: 1.1rem;
+    min-width: unset;
+  }
+}
+
+/* === CONTENEDOR PRINCIPAL === */
 .ventana {
   background-color: #1e1e1e;
-  padding: 40px;
+  padding: 50px 40px;
   border-radius: 20px;
   max-width: 700px;
   width: 90%;
@@ -141,13 +232,12 @@ button:hover {
   animation: fadeIn 0.5s ease-in-out;
   text-align: center;
 }
-
 body.light-mode .ventana {
   background-color: rgba(255,255,255,0.95);
   color: #111;
 }
 
-/* === RESULTADO === */
+/* === RESULTADOS === */
 #resultado {
   margin-top: 20px;
   background-color: #292929;
@@ -160,36 +250,26 @@ body.light-mode .ventana {
   line-height: 1.6;
   animation: fadeIn 0.5s ease-in-out;
 }
-
 body.light-mode #resultado {
   background-color: #f2f2f2;
   color: #111;
 }
-
 .titulo-resultado {
   font-weight: bold;
   font-size: 1.2rem;
   color: #3ae374;
   margin-bottom: 10px;
 }
-
-.titulo-resultado strong {
-  color: #3ae374;
-  font-weight: bold;
-}
-
 .pronunciacion {
   color: #70d6ff;
 }
 body.light-mode .pronunciacion {
   color: #002855;
 }
-
 .traduccion,
 .sinonimos {
   font-style: italic;
 }
-
 .sinonimos span {
   display: inline-block;
   margin: 4px 6px 4px 0;
@@ -217,7 +297,6 @@ body.light-mode .sinonimos span {
   overflow: hidden;
   z-index: 1001;
 }
-
 #toggle-modo::before {
   content: '🌙';
   position: absolute;
@@ -232,83 +311,153 @@ body.light-mode .sinonimos span {
   line-height: 26px;
   transition: transform 0.3s ease;
 }
-
 body.light-mode #toggle-modo::before {
   content: '☀️';
   transform: translateX(30px);
 }
 
-/* === BOTONES FLOTANTES MODERNOS === */
-.nav-flotante {
+/* === SPARKIE ANIMADO === */
+#sparkie {
   position: fixed;
-  top: 10px;
+  width: 80px;
+  height: 80px;
+  top: 0;
   left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px);
-  border-radius: 0 0 16px 16px;
-  z-index: 1001;
+  pointer-events: none;
+  z-index: 1100;
+  transition: transform 1s ease-in-out;
+}
+#sparkie img {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.nav-flotante button {
-  height: 38px;
-  padding: 6px 16px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  cursor: pointer;
+
+/* === GRADIENTES FESTIVOS PARA EL TÍTULO === */
+.titulo-festivo span {
+  background: linear-gradient(270deg, #ff5c39, #70d6ff, #3ae374);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 8s ease infinite;
 }
 
-.btn-agregar    { background-color: #ff9800; }
-.btn-sugerencias{ background-color: #ff69b4; }
-.btn-traductor  { background-color: #03a9f4; }
-.btn-inicio     { background-color: #8bc34a; }
-.btn-admin      { background-color: #3f51b5; }
+@keyframes gradiente-festivo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-.nav-flotante button:hover {
+/* Colores por festividad */
+.titulo-navidad span {
+  background: linear-gradient(135deg, #ff4f4f, #3ae374);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-independencia span {
+  background: linear-gradient(135deg, #0073cf, #00c6ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-halloween span {
+  background: linear-gradient(135deg, orange, black);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-thanksgiving span {
+  background: linear-gradient(135deg, #d2691e, #8b4513);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+.titulo-dia-nino span {
+  background: linear-gradient(135deg, #ff69b4, #00bfff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+
+
+/* === DÍA DE LA MADRE === */
+.titulo-madre span {
+  background: linear-gradient(135deg, #f08080, #ffb6c1);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+
+.flor {
+  position: fixed;
+  top: -20px;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle, pink 60%, white 100%);
+  border-radius: 50%;
   opacity: 0.9;
-  transform: translateY(-1px);
+  animation: flotarFlor linear infinite;
+  z-index: 999;
+}
+@keyframes flotarFlor {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* === MOLÉCULAS ANIMADAS COMO FONDO === */
+/* === DÍA DE LOS MUERTOS === */
+.titulo-muertos span {
+  background: linear-gradient(135deg, #800080, #000000);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradiente-festivo 5s ease infinite;
+}
+
+.vela {
+  position: fixed;
+  bottom: 10px;
+  width: 12px;
+  height: 25px;
+  background: #ffffffcc;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #ffcc00;
+  z-index: 999;
+}
+
 .molecula {
   position: fixed;
   width: 60px;
   height: 60px;
-  opacity: 0.3;
+  opacity: 0.2;
   filter: brightness(140%);
-  animation: moverMol 60s linear infinite;
+  animation: flotarMol 60s linear infinite alternate;
   z-index: 0;
   pointer-events: none;
 }
 
-@keyframes moverMol {
+@keyframes flotarMol {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, 10px) rotate(90deg);
+  }
+  50% {
+    transform: translate(0, 20px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-20px, 10px) rotate(270deg);
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translate(0, 0) rotate(360deg);
   }
-}
-
-/* Repetición automática en varias posiciones */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: repeat;
-  background-position: center;
-  pointer-events: none;
-  z-index: 0;
 }
