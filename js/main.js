@@ -145,12 +145,11 @@ function buscar() {
     }
     if (
       entrada["Instrumento"] &&
-      entrada["Instrumento"].toLowerCase() === "sí" &&
+      entrada["Instrumento"].normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase() === "si" &&
       entrada["Imagen"]
     ) {
-      html += `<br><img src="${entrada["Imagen"]}" alt="Imagen del instrumento" class="imagen-instrumento">`;
-    }
-  }
+      html += `<br><img src="${entrada["Imagen"].trim()}" alt="Imagen del instrumento" class="imagen-instrumento">`;
+    }       
 
   resultado.innerHTML = html;
 }
