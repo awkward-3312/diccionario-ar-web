@@ -1,6 +1,4 @@
-// serviceWorker.js
-
-const CACHE_NAME = 'diccionario-ar-v1.5';
+const CACHE_NAME = 'diccionario-ar-v1.6';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
@@ -8,28 +6,29 @@ const URLS_TO_CACHE = [
   '/js/main.js',
   '/favicon-ar.png',
   '/img/sparkie.png',
-  // Agrega aquí más imágenes, fuentes o páginas si deseas cachearlas
+  // Agrega más si es necesario
 ];
 
 // Instalación: precachea recursos esenciales
 self.addEventListener('install', (event) => {
+  console.log('[SW] Instalando...');
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Precaching...');
       return cache.addAll(URLS_TO_CACHE);
     })
   );
-  self.skipWaiting();
+  self.skipWaiting(); // fuerza activación inmediata
 });
 
-// Activación: limpia cachés antiguas
+// Activación: elimina cachés antiguas
 self.addEventListener('activate', (event) => {
+  console.log('[SW] Activando y limpiando...');
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
         cacheNames.map((name) => {
           if (name !== CACHE_NAME) {
-            console.log('[SW] Borrando caché antigua:', name);
+            console.log('[SW] Eliminando caché antigua:', name);
             return caches.delete(name);
           }
         })
@@ -39,35 +38,33 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch: responde desde cache primero, luego red
+// Fetch: cache-first con actualización en background
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(event.request)
-        .then((networkResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            // Evitar cachear llamadas a extensiones o eventos dinámicos
-            if (
-              event.request.url.startsWith('http') &&
-              !event.request.url.includes('/socket.io/')
-            ) {
-              cache.put(event.request, networkResponse.clone());
-            }
-            return networkResponse;
-          });
-        })
-        .catch(() => {
-          // Fallback: muestra offline.html si se desea
-          if (event.request.destination === 'document') {
-            return caches.match('/offline.html');
+      const fetchAndCache = fetch(event.request).then((networkResponse) => {
+        return caches.open(CACHE_NAME).then((cache) => {
+          if (
+            event.request.url.startsWith('http') &&
+            !event.request.url.includes('/socket.io/')
+          ) {
+            cache.put(event.request, networkResponse.clone());
           }
+          return networkResponse;
         });
+      });
+
+      return cachedResponse || fetchAndCache;
     })
   );
+});
+
+// Comunicación: forzar actualización desde la app
+self.addEventListener('message', (event) => {
+  if (event.data === 'SKIP_WAITING') {
+    console.log('[SW] Forzando activación inmediata');
+    self.skipWaiting();
+  }
 });

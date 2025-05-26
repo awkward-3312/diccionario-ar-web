@@ -204,8 +204,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('serviceWorker.js')
-      .then(reg => console.log('✅ SW registrado:', reg.scope))
+    navigator.serviceWorker.register('/serviceWorker.js')
+      .then(reg => {
+        console.log('✅ SW registrado:', reg.scope);
+
+        // Detectar nuevas versiones
+        reg.onupdatefound = () => {
+          const nuevoSW = reg.installing;
+          if (nuevoSW) {
+            nuevoSW.onstatechange = () => {
+              if (nuevoSW.state === 'installed') {
+                if (navigator.serviceWorker.controller) {
+                  console.log('🔁 Nueva versión detectada, actualizando...');
+                  nuevoSW.postMessage('SKIP_WAITING');
+                  window.location.reload();
+                }
+              }
+            };
+          }
+        };
+      })
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
