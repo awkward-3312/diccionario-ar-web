@@ -1,21 +1,18 @@
-// main.js corregido, limpio y funcional
 const URL = 'https://script.google.com/macros/s/AKfycbys4Dq4jSXyKlERG8AwgpDAsT05sttX_73r0a9IgoXtMNMCzwT3QNMaZ6PVZpieIMEi/exec';
 let glosario = {};
 let db;
 let glosarioCargado = false;
 let debounceTimer;
 
-// === Utilidades ===
-function normalizarTexto(texto) {
-  return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
-}
-
 function toggleModo() {
   const isClaro = document.body.classList.toggle("light-mode");
   localStorage.setItem("modoClaro", isClaro ? "1" : "0");
 }
 
-// === IndexedDB ===
+function normalizarTexto(texto) {
+  return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
+}
+
 function abrirBaseDatos() {
   const request = indexedDB.open("DiccionarioAR", 1);
   request.onerror = () => console.error("❌ Error al abrir IndexedDB.");
@@ -91,7 +88,6 @@ function actualizarContador() {
   if (cont) cont.textContent = `Actualmente hay ${total} términos registrados.`;
 }
 
-// === Función buscar ===
 function buscar() {
   if (!glosarioCargado) return;
   const terminoInput = document.getElementById("termino");
@@ -162,17 +158,15 @@ function limpiarBusqueda() {
   document.getElementById("resultado").innerText = "Resultado aquí...";
 }
 
-// === Inicialización DOM ===
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
   }
-
   const ultima = localStorage.getItem("ultimaActualizacion") || "-";
   document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
-
   abrirBaseDatos();
 
+  // Frases dinámicas para el input
   const frases = [
     "¿Qué deseas buscar hoy? 😊",
     "Descubre un nuevo término técnico 💡",
@@ -182,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   let index = 0;
   const input = document.getElementById("termino");
+
   setInterval(() => {
     input.setAttribute("placeholder", frases[index]);
     index = (index + 1) % frases.length;
@@ -191,9 +186,12 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(buscar, 300);
   });
+
+  window.addEventListener("load", () => {
+    if (navigator.onLine && db) cargarGlosario(true);
+  });
 });
 
-// === Service Worker ===
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceWorker.js')
