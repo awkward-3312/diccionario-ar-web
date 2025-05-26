@@ -168,6 +168,19 @@ function limpiarBusqueda() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  actualizarBtn = document.getElementById("actualizarBtn");
+  if (actualizarBtn) {
+    actualizarBtn.disabled = true;
+    const esperarDB = setInterval(() => {
+      if (glosarioCargado) {
+        actualizarBtn.disabled = false;
+        actualizarBtn.addEventListener("click", actualizarGlosario);
+        clearInterval(esperarDB);
+      }
+    }, 200);
+  }
+
+
   const actualizarBtn = document.getElementById("actualizarBtn");
   if (actualizarBtn) {
     actualizarBtn.addEventListener("click", actualizarGlosario);
@@ -212,4 +225,5 @@ if ('serviceWorker' in navigator) {
       .then(reg => console.log('✅ SW registrado:', reg.scope))
       .catch(err => console.error('❌ Error SW:', err));
   });
+}
 }
