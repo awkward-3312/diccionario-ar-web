@@ -1,4 +1,4 @@
-const CACHE_NAME = "diccionario-ar-cache-v2";
+const CACHE_NAME = "diccionario-ar-cache-v3";
 
 const urlsToCache = [
   "/",
