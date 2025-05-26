@@ -160,6 +160,12 @@ function limpiarBusqueda() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  const actualizarBtn = document.getElementById("actualizarBtn");
+  if (actualizarBtn) {
+    actualizarBtn.addEventListener("click", actualizarGlosario);
+  }
+
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
   }
