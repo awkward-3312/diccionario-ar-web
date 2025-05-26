@@ -70,6 +70,17 @@ function cargarGlosario(guardarLocal = false) {
   }).catch(err => console.error("Error al cargar glosario:", err));
 }
 
+// Solo para depuración
+fetch(URL)
+  .then(r => r.json())
+  .then(data => {
+    const claves = Object.keys(data);
+    const coincidencias = claves.filter(k => k.includes("BALANZA"));
+    console.log("🔍 Coincidencias con BALANZA:", coincidencias);
+    coincidencias.forEach(clave => console.log(clave, "→", data[clave]));
+  })
+  .catch(err => console.error("❌ Error al obtener glosario:", err));
+
 function actualizarGlosario() {
   if (navigator.onLine && db) {
     cargarGlosario(true);
