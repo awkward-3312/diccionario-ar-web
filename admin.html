@@ -12,24 +12,31 @@
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
  <!-- LOGIN: tarjeta moderna con Sparkie -->
- <div class="login-card">
-  <div class="avatar-sparkie"><img src="img/sparkie.png" alt="Sparkie avatar"></div>
-  
-  <input type="text" value="administrador" disabled>
-  <input type="password" id="clave" placeholder="Ingrese la contraseña" aria-label="Campo para contraseña">
-  <div class="botones">
-    <button onclick="verificarClave()">Ingresar</button>
-    <button onclick="toggleClave()">Mostrar</button>
+<div class="login-card" id="loginPanel">
+  <div class="avatar-sparkie">
+    <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
   </div>
-  <button onclick="location.href='index.html'" class="regresar">Regresar a Diccionario</button>
+
+  <form onsubmit="verificarClave(); return false;">
+    <div class="input-group">
+      <input type="text" value="administrador" readonly aria-label="Usuario" />
+    </div>
+    <div class="input-group">
+      <input type="password" id="clave" placeholder="Ingrese la contraseña" aria-label="Contraseña" />
+      <button type="button" class="mostrar-toggle" onclick="toggleMostrar()">MOSTRAR</button>
+    </div>
+    <button type="submit" class="btn-primary">Ingresar</button>
+    <div class="botones-regreso">
+      <button type="button" onclick="window.location.href='inicio.html'" class="btn-secundario">Regresar a Inicio</button>
+      <button type="button" onclick="window.location.href='index.html'" class="btn-secundario">Regresar a Diccionario</button>
+    </div>
+  </form>
 </div>
-  </div>
 
   <!-- PANEL ADMIN oculto hasta iniciar sesión -->
-  
+  <h1 style="display: none;"><span class="azul">PANEL</span> <span class="rojo">ADMIN</span></h1>
 
   <div class="contenedor" id="adminPanel" style="display: none;">
-  <h1><span class="azul">PANEL</span> <span class="rojo">ADMIN</span></h1>
     <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
       <button id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none; background-color:#e74c3c;">Cerrar sesión</button>
       <button onclick="window.location.href='index.html'">Volver al inicio</button>
@@ -68,13 +75,7 @@
   </button>
 
   <!-- JS principal -->
-  <script src="js/admin.js">
-    function toggleClave() {
-      const input = document.getElementById("clave");
-      const esPassword = input.type === "password";
-      input.type = esPassword ? "text" : "password";
-    }
-</script>
+  <script src="js/admin.js"></script>
 
   <!-- Modo claro/oscuro y cambio de logo -->
   <script>
@@ -88,49 +89,6 @@
         document.body.classList.add("light-mode");
       }
     });
-  
-    function toggleClave() {
-      const input = document.getElementById("clave");
-      const esPassword = input.type === "password";
-      input.type = esPassword ? "text" : "password";
-    }
-</script>
-<script>
-  async function hashClave(texto) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(texto);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
-  }
-
-  function verificarClave() {
-    const clave = document.getElementById("clave").value;
-    const claveHash = "e176a4d6700f098d168d271fd4edd0c9363fb3cd4b89c03620cd297690750618"; // SHA-256 ejemplo
-
-    hashClave(clave).then(hash => {
-      if (hash === claveHash) {
-        document.querySelector(".login-card").style.display = "none";
-        document.querySelector("h1").style.display = "block";
-        document.getElementById("adminPanel").style.display = "block";
-        document.getElementById("btnCerrarSesion").style.display = "inline-block";
-        document.getElementById("btnSugerencias").style.display = "inline-block";
-      } else {
-        alert("❌ Contraseña incorrecta.");
-      }
-    });
-  }
-
-  // Activar login con Enter
-  document.addEventListener("DOMContentLoaded", () => {
-    const claveInput = document.getElementById("clave");
-    if (claveInput) {
-      claveInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-          verificarClave();
-        }
-      });
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
