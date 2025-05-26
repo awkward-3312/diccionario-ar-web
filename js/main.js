@@ -218,3 +218,8 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
+
+// Exponer funciones globales si se usa onclick en HTML
+window.buscar = buscar;
+window.limpiarBusqueda = limpiarBusqueda;
+window.actualizarGlosario = actualizarGlosario;
