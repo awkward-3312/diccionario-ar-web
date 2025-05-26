@@ -7,7 +7,7 @@ const urlsToCache = [
   "/agregar.html",
   "/sugerencias.html",
   "/revisar-sugerencias.html",
-  "/traductor.html", // ✅ agregado
+  "/traductor.html",
   "/favicon-ar.png",
   "/favicon-ar.ico",
   "/fonts/Middle-of-April.ttf",
@@ -18,17 +18,17 @@ const urlsToCache = [
   "/css/agregar.css",
   "/css/sugerencias.css",
   "/css/revisar-sugerencias.css",
-  "/css/traductor.css", // ✅ agregado
+  "/css/traductor.css",
   "/js/main.js",
   "/js/admin.js",
   "/js/agregar.js",
   "/js/sugerencias.js",
   "/js/revisar-sugerencias.js",
-  "/js/traductor.js" // ✅ agregado
+  "/js/traductor.js"
 ];
 
-// Instalar y cachear todos los archivos
 self.addEventListener("install", (event) => {
+  self.skipWaiting(); // ✅ activa de inmediato
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(urlsToCache);
@@ -36,7 +36,6 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activar y limpiar cachés viejos
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) =>
@@ -51,11 +50,10 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Interceptar peticiones
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then((response) => response)
+      .catch(() => caches.match(event.request))
   );
 });
