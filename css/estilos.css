@@ -211,6 +211,20 @@ body.light-mode .aviso-nuevos {
   color: #1877f2;
 }
 
+#contadorTerminos {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #ccc;
+  font-family: 'Nunito', sans-serif;
+  font-style: italic;
+  line-height: 1.4;
+  animation: fadeIn 0.4s ease-in-out;
+  text-align: center;
+}
+body.light-mode #contadorTerminos {
+  color: #222;
+}
+
 /* === SUGERENCIAS === */
 .sugerencias {
   display: flex;

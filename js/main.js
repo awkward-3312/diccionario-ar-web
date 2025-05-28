@@ -91,33 +91,28 @@ function actualizarGlosario() {
 
 function actualizarContador() {
   const total = Object.keys(glosario).length;
-  const cont = document.getElementById("contadorTerminos");
-  if (!cont) return;
+  const contenedor = document.getElementById("contadorTerminos");
+  if (!contenedor) return;
 
-  cont.textContent = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
+  let texto = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
 
   let nuevos = 0;
   const ahora = new Date();
-  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
+  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // Últimas 8 horas
 
   for (const termino of Object.values(glosario)) {
     const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
-    const fechaObj = new Date(fecha);
-    if (!isNaN(fechaObj) && fechaObj > limite) {
-      nuevos++;
+    if (fecha) {
+      const fechaObj = new Date(fecha);
+      if (!isNaN(fechaObj) && fechaObj > limite) nuevos++;
     }
   }
 
-  const avisoExistente = document.getElementById("aviso-nuevos");
-  if (avisoExistente) avisoExistente.remove();
-
   if (nuevos > 0) {
-    const aviso = document.createElement("div");
-    aviso.id = "aviso-nuevos";
-    aviso.className = "aviso-nuevos";
-    aviso.textContent = `📌 Se ha${nuevos > 1 ? 'n' : ''} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`;
-    cont.after(aviso);
+    texto += ` 📌 Se ha${nuevos > 1 ? 'n' : ''} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`;
   }
+
+  contenedor.textContent = texto;
 }
 
 function buscar() {
