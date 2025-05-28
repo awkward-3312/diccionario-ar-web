@@ -5,6 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const proveedor = document.getElementById("proveedor");
   const chatBox = document.getElementById("chatBox");
   const loader = document.getElementById("loader");
+  const subtitulo = document.querySelector(".subtitulo"); // ✅ subtítulo dinámico
+
+  // ✅ actualizar subtítulo dinámicamente
+  proveedor.addEventListener("change", () => {
+    subtitulo.textContent =
+      proveedor.value === "deepl"
+        ? "Traduce texto fácilmente con DeepL"
+        : "Traduce texto fácilmente con Microsoft Translate";
+  });
 
   function agregarMensaje(texto, clase) {
     const burbuja = document.createElement("div");
@@ -56,7 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Mensaje:", data?.error || "Sin mensaje");
         console.error("Detalle:", data?.detalle || "Sin detalle");
 
-        agregarMensaje(`❌ Error al traducir con ${fuente === "deepl" ? "DeepL" : "Microsoft"}: ${data?.error || "desconocido"}`, "bot");
+        agregarMensaje(
+          `❌ Error al traducir con ${
+            fuente === "deepl" ? "DeepL" : "Microsoft"
+          }: ${data?.error || "desconocido"}`,
+          "bot"
+        );
       } else if (data.traduccion) {
         agregarMensaje(data.traduccion, "bot");
       } else {
