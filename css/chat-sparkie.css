@@ -218,3 +218,15 @@ body.dark-mode .chat-container {
 #btn-regresar:hover {
   transform: scale(1.2);
 }
+
+/* === ÍCONOS FONT AWESOME EN HEADER === */
+.botones-header i.fas {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.botones-header button:hover i.fas {
+  color: var(--user-bubble);
+  transform: scale(1.2);
+}
