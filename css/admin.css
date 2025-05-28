@@ -524,3 +524,29 @@ body.light-mode
   height: auto;
   object-fit: contain;
 }
+
+/* === ESTILO PARA ÍCONOS DE FONT AWESOME === */
+
+button i {
+  margin-right: 8px;
+  font-size: 15px;
+  vertical-align: middle;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.btn-fijo-sugerencias i {
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+/* Ícono del botón de modo claro/oscuro */
+#toggle-modo i {
+  font-size: 16px;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode #toggle-modo i {
+  color: #111;
+}
