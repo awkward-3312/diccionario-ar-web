@@ -8,9 +8,14 @@
   <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/agregar.css">
   <script src="js/agregar.js" defer></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
+  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
+    <i class="fas fa-moon" id="icono-modo"></i>
+  </button>
 
   <div class="formulario">
     <h2><span class="azul">AGREGAR</span> <span class="rojo">TÉRMINO</span></h2>
@@ -32,8 +37,8 @@
 
       <div id="loader"><span></span><span></span><span></span></div>
 
-      <button type="submit">Guardar</button>
-      <button type="button" onclick="window.location.href='index.html'">Cancelar</button>
+      <button type="submit"><i class="fas fa-save"></i> Guardar</button>
+      <button type="button" onclick="window.location.href='index.html'"><i class="fas fa-times"></i> Cancelar</button>
     </form>
 
     <p id="mensaje" style="text-align:center; margin-top:10px;"></p>
@@ -44,19 +49,27 @@
   </div>
 
   <div class="barra-inferior">
-    <button onclick="window.location.href='index.html'">🏠 Inicio</button>
-    <button onclick="window.location.href='admin.html'">🔒 Admin</button>
+    <button onclick="window.location.href='index.html'">
+      <i class="fas fa-home"></i> Inicio
+    </button>
+    <button onclick="window.location.href='admin.html'">
+      <i class="fas fa-lock"></i> Admin
+    </button>
   </div>
 
   <script>
     function toggleModo() {
-      const esClaro = document.body.classList.toggle("light-mode");
+      const body = document.body;
+      const icono = document.getElementById("icono-modo");
+      const esClaro = body.classList.toggle("light-mode");
+      icono.className = esClaro ? "fas fa-sun" : "fas fa-moon";
       localStorage.setItem("modoClaro", esClaro ? "1" : "0");
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
+        document.getElementById("icono-modo").className = "fas fa-sun";
       }
     });
   </script>

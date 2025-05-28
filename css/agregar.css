@@ -172,3 +172,23 @@ button:focus-visible {
   h2 { font-size: 2rem; }
   select, input, textarea, button { font-size: 14px; padding: 8px; }
 }
+
+/* === ESTILO PARA ÍCONOS DE FONT AWESOME EN BOTONES === */
+button i {
+  margin-right: 8px;
+  font-size: 16px;
+  vertical-align: middle;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* Ícono del botón de modo claro/oscuro */
+#toggle-modo i {
+  font-size: 16px;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode #toggle-modo i {
+  color: #111;
+}
