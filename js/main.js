@@ -77,15 +77,26 @@ function cargarGlosario(guardarLocal = false) {
   }).catch(err => console.error("Error al cargar glosario:", err));
 }
 
+function mostrarNotificacion(mensaje) {
+  const popup = document.getElementById("popupNotificacion");
+  const texto = document.getElementById("popupTexto");
+
+  if (popup && texto) {
+    texto.textContent = mensaje;
+    popup.classList.remove("oculto");
+    setTimeout(() => popup.classList.add("oculto"), 3000);
+  }
+}
+
 function actualizarGlosario() {
   if (navigator.onLine && db) {
     cargarGlosario(true);
     const ahora = new Date().toLocaleString();
     localStorage.setItem("ultimaActualizacion", ahora);
     document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ahora;
-    alert("✅ Glosario actualizado con éxito.");
+    mostrarNotificacion("Glosario actualizado con éxito.");
   } else {
-    alert("⚠️ No hay conexión o base de datos no disponible.");
+    mostrarNotificacion("⚠️ No hay conexión o base de datos disponible.");
   }
 }
 
