@@ -78,7 +78,10 @@ function cargarDatos() {
           <td>${fila["Definición"] || ""}</td>
           <td>${fila["Sinónimos"] || ""}</td>
           <td>${fila["Tipo"] || ""}</td>
-          <td>${fila["Forma farmacéutica"] || ""}</td>`;
+          <td>${fila["Forma farmacéutica"] || ""}</td>
+          <td>${fila["Instrumento"] || ""}</td>
+          <td>${fila["Imagen"] ? `<a href="${fila["Imagen"]}" target="_blank">Ver</a>` : ""}</td>
+          <td>${fila["fecha_agregado"] || "-"}</td>`;
         const editarBtn = `<button onclick="editarFila(this)">✏️</button>`;
         const eliminarBtn = `<button onclick="eliminarFila(this)">🗑️</button>`;
         tr.innerHTML += `<td>${editarBtn} ${eliminarBtn}</td>`;
@@ -88,7 +91,7 @@ function cargarDatos() {
       mostrarPagina(1);
     })
     .catch(err => {
-      tbody.innerHTML = `<tr><td colspan='10'>❌ Error al cargar los términos.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan='13'>❌ Error al cargar los términos.</td></tr>`;
       console.error("Error cargando términos:", err);
     });
 }
