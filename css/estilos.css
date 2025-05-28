@@ -430,3 +430,24 @@ body::before {
 .oculto {
   display: none;
 }
+
+/* === ICONOS EN BOTONES === */
+.boton i {
+  font-size: 16px;
+  margin: 0;
+  color: white;
+  transition: color 0.3s ease;
+}
+.boton:hover i {
+  color: black;
+}
+
+/* Ícono del botón de modo claro/oscuro */
+#toggle-modo i {
+  font-size: 16px;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+body.light-mode #toggle-modo i {
+  color: #111;
+}

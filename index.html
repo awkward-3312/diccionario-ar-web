@@ -7,9 +7,14 @@
   <link rel="icon" type="image/png" href="favicon-ar.png" />
   <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
   <link rel="stylesheet" href="css/estilos.css" />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
+  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
+    <i class="fas fa-moon" id="icono-modo"></i>
+  </button>
 
   <div class="zona-moleculas">
     <img src="img/mol/mol-1.png" class="molecula" style="top: 5%; left: 5%;" alt="mol-1" />
@@ -40,9 +45,15 @@
     </div>
 
     <div class="botones-busqueda">
-      <button id="btnBuscar" class="boton">Buscar</button>
-      <button id="btnLimpiar" class="boton">Limpiar</button>
-      <button id="btnActualizar" class="boton">Actualizar</button>      
+      <button id="btnBuscar" class="boton" title="Buscar">
+        <i class="fas fa-search"></i>
+      </button>
+      <button id="btnLimpiar" class="boton" title="Limpiar búsqueda">
+        <i class="fas fa-eraser"></i>
+      </button>
+      <button id="btnActualizar" class="boton" title="Actualizar glosario">
+        <i class="fas fa-rotate"></i>
+      </button>
     </div>
 
     <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
@@ -55,25 +66,29 @@
 
     <div id="resultado" tabindex="0" aria-live="polite" class="animado">
       Resultado aquí...
-    </div>    
+    </div>
 
-  <!-- Ícono flotante de Sparkie -->
-<div id="sparkie-boton" title="Habla con Sparkie">
-  <img src="img/sparkie.png" alt="Sparkie" />
-  <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
-</div>
+    <!-- Ícono flotante de Sparkie -->
+    <div id="sparkie-boton" title="Habla con Sparkie">
+      <img src="img/sparkie.png" alt="Sparkie" />
+      <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
+    </div>
 
   <script src="js/main.js" defer></script>
   <script src="js/eventosFestivos.js" defer></script>
   <script>
     function toggleModo() {
-      const esClaro = document.body.classList.toggle("light-mode");
+      const body = document.body;
+      const icono = document.getElementById("icono-modo");
+      const esClaro = body.classList.toggle("light-mode");
+      icono.className = esClaro ? "fas fa-sun" : "fas fa-moon";
       localStorage.setItem("modoClaro", esClaro ? "1" : "0");
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
+        document.getElementById("icono-modo").className = "fas fa-sun";
       }
 
       function actualizarEstadoConexion() {
@@ -98,14 +113,11 @@
         }, 500);
       });
     });
-  </script>
 
-<!-- Esto expone las funciones para que funcionen los botones -->
-  <script>
+    // Esto expone las funciones globales
     window.buscar = buscar;
     window.limpiarBusqueda = limpiarBusqueda;
     window.actualizarGlosario = actualizarGlosario;
   </script>
-
 </body>
 </html>
