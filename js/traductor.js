@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const endpoint =
       fuente === "deepl"
-        ? "https://<TU-PROYECTO>.vercel.app/api/deepl" // ⚠️ Reemplaza con tu dominio
+        ? "https://traductor-backend.vercel.app/api/deepl"
         : "https://traductor-backend.vercel.app/traducir";
 
     try {

@@ -36,10 +36,16 @@
         <option value="ja">Japonés 🇯🇵</option>
         <option value="zh-Hans">Chino 🇨🇳</option>
       </select>
-
+    
+      <label for="proveedor">Proveedor de traducción:</label>
+      <select id="proveedor" aria-required="true">
+        <option value="microsoft" selected>Microsoft</option>
+        <option value="deepl">DeepL</option>
+      </select>
+    
       <textarea id="entradaTexto" placeholder="Escribe aquí para traducir..." aria-required="true" aria-label="Texto a traducir"></textarea>
       <button type="submit" id="btnTraducir">Traducir</button>
-    </form>
+    </form>    
 
     <div id="loader">
       <img src="img/sparkie.gif" alt="Cargando traducción..." />
