@@ -8,9 +8,14 @@
     <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/sugerencias.css">
     <script src="js/sugerencias.js" defer></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   </head>  
 <body>
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
+  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
+    <i class="fas fa-moon" id="icono-modo"></i>
+  </button>
 
   <main class="ventana" role="main">
     <h1>Sugerencias</h1>
@@ -18,23 +23,30 @@
     <textarea id="sugerencia" placeholder="Escribe aquí tu sugerencia..." aria-label="Caja de texto para sugerencias"></textarea>
 
     <div>
-      <button class="enviar" onclick="enviarSugerencia()" aria-label="Enviar sugerencia">Enviar</button>
-      <button class="volver" onclick="window.location.href='index.html'" aria-label="Volver a inicio">Regresar</button>
+      <button class="enviar" onclick="enviarSugerencia()" aria-label="Enviar sugerencia">
+        <i class="fas fa-paper-plane"></i> Enviar
+      </button>
+      <button class="volver" onclick="window.location.href='index.html'" aria-label="Volver a inicio">
+        <i class="fas fa-arrow-left"></i> Regresar
+      </button>
     </div>
 
     <div id="mensaje" aria-live="polite"></div>
   </main>
 
-  <script src="js/sugerencias.js"></script>
   <script>
     function toggleModo() {
-      const esClaro = document.body.classList.toggle("light-mode");
+      const body = document.body;
+      const icono = document.getElementById("icono-modo");
+      const esClaro = body.classList.toggle("light-mode");
+      icono.className = esClaro ? "fas fa-sun" : "fas fa-moon";
       localStorage.setItem("modoClaro", esClaro ? "1" : "0");
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
+        document.getElementById("icono-modo").className = "fas fa-sun";
       }
     });
   </script>
