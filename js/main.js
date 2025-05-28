@@ -99,14 +99,14 @@ function actualizarContador() {
   const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
 
   for (const termino of Object.values(glosario)) {
-    const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
-    if (fecha) {
-      const fechaObj = new Date(fecha);
-      if (!isNaN(fechaObj) && fechaObj > limite) {
-        nuevos++;
-      }      
+    let fechaTexto = termino["fecha_agregado"] || termino["Fecha agregado"] || termino["fechaAgregado"] || "";
+    if (fechaTexto) {
+      const fechaObj = new Date(fechaTexto);
+      if (!isNaN(fechaObj)) {
+        if (fechaObj > limite) nuevos++;
+      }
     }
-  }  
+  }
 
   const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
   const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
