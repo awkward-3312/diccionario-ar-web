@@ -232,3 +232,23 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
+
+  // SPARKIE: Ícono flotante + burbuja sugerencia
+  const sparkieBtn = document.createElement("div");
+  sparkieBtn.id = "sparkie-boton";
+  sparkieBtn.title = "Habla con Sparkie";
+  sparkieBtn.innerHTML = `
+    <img src="img/sparkie.png" alt="Sparkie">
+    <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
+  `;
+  document.body.appendChild(sparkieBtn);
+
+  sparkieBtn.addEventListener("click", () => {
+    window.location.href = "chat-sparkie.html";
+  });
+
+  setInterval(() => {
+    const burbuja = document.getElementById("sparkie-burbuja");
+    burbuja.classList.remove("oculto");
+    setTimeout(() => burbuja.classList.add("oculto"), 4000);
+  }, 20000);

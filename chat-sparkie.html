@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat con Sparkie IA</title>
+  <link rel="stylesheet" href="css/chat-sparkie.css">
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <span>💬 Chat con <strong>Sparkie IA</strong></span>
+      <div class="botones-header">
+        <button id="toggle-sonido" title="Sonido activado">🔊</button>
+        <button id="toggle-tema" title="Cambiar tema">🌓</button>
+      </div>
+    </header>
+    <main id="chat" class="chat-body"></main>
+    <form id="formulario" class="chat-form">
+      <textarea id="pregunta" placeholder="Escribe tu pregunta..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <audio id="sparkie-sound" src="/audio/notify.mp3" preload="auto"></audio>
+  <script src="js/chat-sparkie.js"></script>
+</body>
+</html>

@@ -406,3 +406,54 @@ body::before {
   justify-content: center;
   align-items: center;
 }
+
+/* === SPARKIE BOTÓN === */
+#sparkie-boton {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+#sparkie-boton:hover {
+  transform: scale(1.05);
+}
+
+#sparkie-boton img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+#sparkie-burbuja {
+  position: absolute;
+  top: -45px;
+  left: 80px;
+  background-color: #ffffffcc;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: burbujaAnimacion 0.5s ease;
+  white-space: nowrap;
+}
+
+.oculto {
+  display: none;
+}
+
+@keyframes burbujaAnimacion {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
