@@ -59,7 +59,8 @@ body {
   margin-left: 0.5rem;
 }
 
-.chat-body {
+.chat-body,
+#chat {
   flex: 1;
   overflow-y: auto;
   padding: 1rem;
@@ -101,58 +102,62 @@ body {
   background: #e44827;
 }
 
+/* === Mensajes === */
 .mensaje {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
   max-width: 90%;
-  opacity: 0;
-  transform: translateY(10px);
   animation: fadeIn 0.3s ease forwards;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.usuario {
+.mensaje.usuario {
   align-self: flex-end;
-  justify-content: flex-end;
   flex-direction: row-reverse;
 }
 
-.usuario .burbuja {
-  background-color: var(--user-bubble);
-  color: white;
-}
-
-.sparkie .burbuja {
-  background-color: var(--sparkie-bubble);
-  color: var(--text-color);
+.mensaje.sparkie {
+  align-self: flex-start;
+  flex-direction: row;
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: 2px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .burbuja {
   padding: 0.75rem 1rem;
-  border-radius: 18px;
-  line-height: 1.4;
+  border-radius: 16px;
   font-size: 0.95rem;
-  max-width: 80%;
+  max-width: 75%;
   word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.4;
   transition: all 0.3s ease;
 }
 
-.pensando {
+.mensaje.usuario .burbuja {
+  background-color: var(--user-bubble);
+  color: white;
+}
+
+.mensaje.sparkie .burbuja {
+  background-color: var(--sparkie-bubble);
+  color: var(--text-color);
+}
+
+.burbuja.pensando {
   font-style: italic;
   opacity: 0.6;
+}
+
+/* === Animaciones === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
