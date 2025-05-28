@@ -91,7 +91,7 @@ function actualizarGlosario() {
 
 function actualizarContador() {
   const total = Object.keys(glosario).length;
-  const cont = document.getElementById("btnBuscar").addEventListener("click", buscar);
+  const cont = document.getElementById("contadorTerminos");
   if (!cont) return;
 
   cont.textContent = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
@@ -101,11 +101,10 @@ function actualizarContador() {
   const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
 
   for (const termino of Object.values(glosario)) {
-    //CORREGIDO: Soporte para ambas claves posibles
     const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
-    if (fecha) {
-      const fechaObj = new Date(fecha);
-      if (!isNaN(fechaObj) && fechaObj > limite) nuevos++;
+    const fechaObj = new Date(fecha);
+    if (!isNaN(fechaObj) && fechaObj > limite) {
+      nuevos++;
     }
   }
 
@@ -236,28 +235,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let index = 0;
   const input = document.getElementById("termino");
 
+  document.getElementById("btnBuscar")?.addEventListener("click", buscar);
+  document.getElementById("btnLimpiar")?.addEventListener("click", limpiarBusqueda);
+  document.getElementById("btnActualizar")?.addEventListener("click", actualizarGlosario);
+  
   setInterval(() => {
     input.setAttribute("placeholder", frases[index]);
     index = (index + 1) % frases.length;
   }, 4000);
-
+  
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(buscar, 300);
   });
-
+  
   window.addEventListener("load", () => {
     if (navigator.onLine && db) cargarGlosario(true);
   });
-});
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('serviceWorker.js')
-      .then(reg => console.log('✅ SW registrado:', reg.scope))
-      .catch(err => console.error('❌ Error SW:', err));
-  });
-}
 
   // SPARKIE: Ícono flotante + burbuja sugerencia
   const sparkieBtn = document.createElement("div");
@@ -278,3 +272,13 @@ if ('serviceWorker' in navigator) {
     burbuja.classList.remove("oculto");
     setTimeout(() => burbuja.classList.add("oculto"), 4000);
   }, 20000);
+}); // ⬅️ ESTA ES LA LLAVE QUE FALTABA
+
+// ✅ Fuera del DOMContentLoaded
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('serviceWorker.js')
+      .then(reg => console.log('✅ SW registrado:', reg.scope))
+      .catch(err => console.error('❌ Error SW:', err));
+  });
+}
