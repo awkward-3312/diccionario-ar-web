@@ -91,7 +91,7 @@ function actualizarGlosario() {
 
 function actualizarContador() {
   const total = Object.keys(glosario).length;
-  const cont = document.getElementById("contadorTerminos");
+  const cont = document.getElementById("btnBuscar").addEventListener("click", buscar);
   if (!cont) return;
 
   cont.textContent = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
