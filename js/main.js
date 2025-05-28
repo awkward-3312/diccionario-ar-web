@@ -94,6 +94,10 @@ function actualizarContador() {
   const cont = document.getElementById("contadorTerminos");
   if (!cont) return;
 
+  // Mostrar el total de términos
+  cont.textContent = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
+
+  // Calcular nuevos en las últimas 8 horas
   let nuevos = 0;
   const ahora = new Date();
   const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
@@ -106,9 +110,16 @@ function actualizarContador() {
     }
   }
 
-  const texto = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.` +
-                (nuevos > 0 ? ` Se agregaron ${nuevos} en las últimas 8 horas.` : "");
-  cont.textContent = texto;
+  const avisoExistente = document.getElementById("aviso-nuevos");
+  if (avisoExistente) avisoExistente.remove();
+
+  if (nuevos > 0) {
+    const aviso = document.createElement("div");
+    aviso.id = "aviso-nuevos";
+    aviso.className = "aviso-nuevos";
+    aviso.textContent = `📌 Se han agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`;
+    cont.after(aviso);
+  }
 }
 
 function buscar() {

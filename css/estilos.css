@@ -192,6 +192,25 @@ body.light-mode .sinonimos span {
   color: #222;
 }
 
+/* === AVISO NUEVOS TÉRMINOS === */
+.aviso-nuevos {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: rgba(58, 227, 116, 0.1);
+  border: 1px solid #3ae374;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #3ae374;
+  font-style: italic;
+  animation: fadeIn 0.4s ease-in-out;
+  text-align: center;
+}
+body.light-mode .aviso-nuevos {
+  background-color: rgba(24, 119, 242, 0.1);
+  border: 1px solid #1877f2;
+  color: #1877f2;
+}
+
 /* === SUGERENCIAS === */
 .sugerencias {
   display: flex;
