@@ -19,7 +19,8 @@
 
     <main id="chat" class="chat-body"></main>
 
-    <form id="formulario" class="chat-form">
+    <!-- ✅ Se añadió action defensivo -->
+    <form id="formulario" class="chat-form" action="javascript:void(0)">
       <textarea id="pregunta" placeholder="Escribe tu pregunta..." required></textarea>
       <button type="submit">Enviar</button>
     </form>
@@ -27,7 +28,7 @@
 
   <audio id="sparkie-sound" src="audio/notify.mp3" preload="auto"></audio>
 
-  <!-- ✅ Versión con cache-busting + defer -->
+  <!-- ✅ Script actualizado con defer y cache-busting -->
   <script src="js/chat-sparkie.js?v=4" defer></script>
 </body>
 </html>
