@@ -1,3 +1,32 @@
+/* === VARIABLES DE COLOR === */
+:root {
+  --color-fondo: #fefefe;
+  --color-texto: #222;
+  --color-secundario: #555;
+  --color-acento: #1877f2;
+  --color-exito: #2ecc71;
+  --color-alerta: #ff5c39;
+  --color-tarjeta: #ffffff;
+  --color-borde: #ddd;
+  --color-boton: #1877f2;
+  --color-boton-texto: #fff;
+  --color-sinonimo: #e1eaff;
+}
+
+body.dark-mode {
+  --color-fondo: #121212;
+  --color-texto: #f0f0f0;
+  --color-secundario: #ccc;
+  --color-acento: #00ffd0;
+  --color-exito: #00ff99;
+  --color-alerta: #ff5c39;
+  --color-tarjeta: #1f1f1f;
+  --color-borde: #333;
+  --color-boton: #00ffd0;
+  --color-boton-texto: #000;
+  --color-sinonimo: #333f4f;
+}
+
 /* === FUENTES === */
 @font-face {
   font-family: 'MiddleOfApril';
@@ -27,9 +56,8 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: url('../img/fondo-oscuro.png') no-repeat center center fixed;
   background-size: cover;
-  background-size: cover;
   background-attachment: fixed;
-  color: white;
+  color: var(--color-texto);
   animation: parallax 60s linear infinite, fadeIn 0.5s ease-in-out;
   display: flex;
   justify-content: center;
@@ -40,9 +68,7 @@ body {
 body.light-mode {
   background: url('../img/fondo-claro.png') no-repeat center center fixed;
   background-size: cover;
-  background-size: cover;
   background-attachment: fixed;
-  color: #111;
 }
 
 @keyframes parallax {
@@ -68,12 +94,6 @@ h1 span {
   font-size: 3.5rem;
 }
 
-
-@keyframes colores {
-  0%   { color: #70d6ff; }
-  50%  { color: #3ae374; }
-}
-
 .subtitulo {
   font-family: 'Nunito', sans-serif;
   font-style: italic;
@@ -95,24 +115,24 @@ h1 span {
   padding: 12px 16px;
   font-size: 16px;
   border-radius: 12px;
-  border: 2px solid #3ae374;
+  border: 2px solid var(--color-exito);
   background-color: #5e5e5e;
-  color: #111;
+  color: var(--color-texto);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
 body.dark-mode .busqueda input {
   background-color: #2a2a2a;
-  color: white;
+  color: var(--color-texto);
 }
 
 /* === BOTONES GLOBALES === */
 button {
   font-family: 'Segoe UI', sans-serif;
   font-weight: 600;
-  background-color: #007bff;
-  color: black;
+  background-color: var(--color-boton);
+  color: var(--color-boton-texto);
   border-radius: 8px;
   padding: 10px 16px;
   font-size: 14px;
@@ -123,14 +143,14 @@ button {
 }
 
 button:hover {
-  background-color: #3ae374;
+  background-color: var(--color-exito);
   color: black;
   transform: scale(1.05);
 }
 
 /* === CONTENEDOR === */
 .ventana {
-  background-color: #1e1e1e;
+  background-color: var(--color-tarjeta);
   padding: 40px;
   border-radius: 20px;
   max-width: 700px;
@@ -138,11 +158,7 @@ button:hover {
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   animation: fadeIn 0.5s ease-in-out;
   text-align: center;
-}
-
-body.light-mode .ventana {
-  background-color: rgba(255,255,255,0.95);
-  color: #111;
+  color: var(--color-texto);
 }
 
 /* === RESULTADO === */
@@ -151,7 +167,7 @@ body.light-mode .ventana {
   background-color: #292929;
   padding: 20px;
   border-radius: 10px;
-  color: white;
+  color: var(--color-texto);
   text-align: left;
   white-space: pre-line;
   font-size: 15px;
@@ -161,24 +177,17 @@ body.light-mode .ventana {
 
 body.light-mode #resultado {
   background-color: #f2f2f2;
-  color: #111;
-}
-
-.titulo-resultado {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #3ae374;
-  margin-bottom: 10px;
 }
 
 .titulo-resultado strong {
-  color: #3ae374;
+  color: var(--color-exito);
   font-weight: bold;
 }
 
 .pronunciacion {
   color: #70d6ff;
 }
+
 body.light-mode .pronunciacion {
   color: #002855;
 }
@@ -193,8 +202,9 @@ body.light-mode .pronunciacion {
   margin: 4px 6px 4px 0;
   padding: 4px 10px;
   border-radius: 16px;
-  background-color: #444;
+  background-color: var(--color-sinonimo);
   font-style: italic;
+  color: var(--color-texto);
 }
 
 /* === SUGERENCIAS DE TÉRMINOS NO ENCONTRADOS === */
