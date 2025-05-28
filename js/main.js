@@ -92,7 +92,23 @@ function actualizarGlosario() {
 function actualizarContador() {
   const total = Object.keys(glosario).length;
   const cont = document.getElementById("contadorTerminos");
-  if (cont) cont.textContent = `Actualmente hay ${total} términos registrados.`;
+  if (!cont) return;
+
+  let nuevos = 0;
+  const ahora = new Date();
+  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
+
+  for (const termino of Object.values(glosario)) {
+    const fecha = termino["Fecha agregado"];
+    if (fecha) {
+      const fechaObj = new Date(fecha);
+      if (!isNaN(fechaObj) && fechaObj > limite) nuevos++;
+    }
+  }
+
+  const texto = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.` +
+                (nuevos > 0 ? ` Se agregaron ${nuevos} en las últimas 8 horas.` : "");
+  cont.textContent = texto;
 }
 
 function buscar() {
