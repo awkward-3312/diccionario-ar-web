@@ -102,9 +102,12 @@ function actualizarContador() {
     const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
     if (fecha) {
       const fechaObj = new Date(fecha);
-      if (!isNaN(fechaObj) && fechaObj > limite) nuevos++;
+      if (!isNaN(fechaObj)) {
+        const localFecha = new Date(fechaObj.getTime() - fechaObj.getTimezoneOffset() * 60000);
+        if (localFecha > limite) nuevos++;
+      }
     }
-  }
+  }  
 
   const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
   const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
