@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mensaje.className = `mensaje ${clase}`;
 
     const avatar = document.createElement('img');
-    avatar.src = clase === 'sparkie' ? 'img/sparkie.png' : 'img/user.png';
+    avatar.src = clase === 'sparkie' ? 'img/user1.png' : 'img/user2.png';
     avatar.className = 'avatar';
 
     const burbuja = document.createElement('div');
@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
     mensaje.id = 'pensando';
 
     const avatar = document.createElement('img');
-    avatar.src = 'img/sparkie.png';
+    avatar.src = 'img/user1.png';
     avatar.className = 'avatar';
 
     const burbuja = document.createElement('div');
     burbuja.className = 'burbuja pensando';
-    burbuja.textContent = 'Sparkie está pensando...';
+    burbuja.textContent = 'Sparkie está pensando';
 
     mensaje.appendChild(avatar);
     mensaje.appendChild(burbuja);
