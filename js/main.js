@@ -101,7 +101,7 @@ function actualizarContador() {
   const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
 
   for (const termino of Object.values(glosario)) {
-    // 🛠 CORREGIDO: Soporte para ambas claves posibles
+    //CORREGIDO: Soporte para ambas claves posibles
     const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
     if (fecha) {
       const fechaObj = new Date(fecha);
