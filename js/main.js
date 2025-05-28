@@ -94,11 +94,9 @@ function actualizarContador() {
   const contenedor = document.getElementById("contadorTerminos");
   if (!contenedor) return;
 
-  let texto = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
-
   let nuevos = 0;
   const ahora = new Date();
-  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // Últimas 8 horas
+  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
 
   for (const termino of Object.values(glosario)) {
     const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
@@ -108,11 +106,10 @@ function actualizarContador() {
     }
   }
 
-  if (nuevos > 0) {
-    texto += ` 📌 Se ha${nuevos > 1 ? 'n' : ''} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`;
-  }
+  const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
+  const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
 
-  contenedor.textContent = texto;
+  contenedor.textContent = textoBase + textoNuevos;
 }
 
 function buscar() {
