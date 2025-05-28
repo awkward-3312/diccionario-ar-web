@@ -160,7 +160,7 @@ function buscar() {
 let html = `<div class="resultado-flex">`;
 
 html += `<div class="bloque-texto">`;
-html += `<div class="titulo-resultado">${terminoReal}</div>`;
+html += `<div class="titulo-resultado">${entrada["Término"] || entrada["termino"] || terminoReal}</div>`;
 
 if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
   html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
