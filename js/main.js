@@ -103,7 +103,7 @@ function actualizarContador() {
   const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
 
   for (const termino of Object.values(glosario)) {
-    const fecha = termino["Fecha agregado"];
+    const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || termino["fecha"] || "";
     if (fecha) {
       const fechaObj = new Date(fecha);
       if (!isNaN(fechaObj) && fechaObj > limite) nuevos++;
