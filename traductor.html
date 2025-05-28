@@ -1,4 +1,3 @@
-<!-- COMPLETO: traductor.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Traductor AR</title>
   <link rel="stylesheet" href="css/traductor.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <a href="index.html" id="btn-volver">← Regresar al Diccionario</a>
+  <a href="index.html" id="btn-volver"><i class="fas fa-arrow-left"></i> Regresar al Diccionario</a>
 
   <div id="sparkie-top">
     <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
@@ -44,7 +46,7 @@
       </select>
     
       <textarea id="entradaTexto" placeholder="Escribe aquí para traducir..." aria-required="true" aria-label="Texto a traducir"></textarea>
-      <button type="submit" id="btnTraducir">Traducir</button>
+      <button type="submit" id="btnTraducir"><i class="fas fa-language"></i> Traducir</button>
     </form>    
 
     <div id="loader">
