@@ -143,6 +143,11 @@ function buscar() {
   let entrada = glosario[termino];
   let terminoReal = entrada ? termino : null;
 
+  if (entrada) {
+    const nombreVisible = entrada["Término"] || entrada["termino"] || "";
+    document.getElementById("termino").value = nombreVisible;
+  }
+
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
   resultado.classList.add("animado");
