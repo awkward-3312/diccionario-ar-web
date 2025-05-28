@@ -65,12 +65,15 @@ function cargarDatos() {
     .then(data => {
       todasLasFilas = [];
       datosCrudos = [];
-      for (const termino in data) {
-        const fila = data[termino];
+
+      for (const id in data) {
+        const fila = data[id];
+        const termino = fila["Término"] || fila["termino"] || "(Sin término)";
         const tr = document.createElement("tr");
-        tr.dataset.id = fila.id;
+        tr.dataset.id = fila.id || id;
+
         tr.innerHTML = `
-          <td>${fila.id || ""}</td>
+          <td>${fila.id || id}</td>
           <td>${termino}</td>
           <td>${fila["Traducción"] || ""}</td>
           <td>${fila["Pronunciación"] || ""}</td>
@@ -82,12 +85,15 @@ function cargarDatos() {
           <td>${fila["Instrumento"] || ""}</td>
           <td>${fila["Imagen"] ? `<a href="${fila["Imagen"]}" target="_blank">Ver</a>` : ""}</td>
           <td>${fila["fecha_agregado"] || "-"}</td>`;
+
         const editarBtn = `<button onclick="editarFila(this)">✏️</button>`;
         const eliminarBtn = `<button onclick="eliminarFila(this)">🗑️</button>`;
         tr.innerHTML += `<td>${editarBtn} ${eliminarBtn}</td>`;
+
         todasLasFilas.push(tr);
-        datosCrudos.push({ id: fila.id, termino, ...fila });
+        datosCrudos.push({ id: fila.id || id, termino, ...fila });
       }
+
       mostrarPagina(1);
     })
     .catch(err => {
