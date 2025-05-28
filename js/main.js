@@ -94,16 +94,15 @@ function actualizarContador() {
   const cont = document.getElementById("contadorTerminos");
   if (!cont) return;
 
-  // Mostrar el total de términos
   cont.textContent = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
 
-  // Calcular nuevos en las últimas 8 horas
   let nuevos = 0;
   const ahora = new Date();
   const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimas 8 horas
 
   for (const termino of Object.values(glosario)) {
-    const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || termino["fecha"] || "";
+    // 🛠 CORREGIDO: Soporte para ambas claves posibles
+    const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
     if (fecha) {
       const fechaObj = new Date(fecha);
       if (!isNaN(fechaObj) && fechaObj > limite) nuevos++;
@@ -117,7 +116,7 @@ function actualizarContador() {
     const aviso = document.createElement("div");
     aviso.id = "aviso-nuevos";
     aviso.className = "aviso-nuevos";
-    aviso.textContent = `📌 Se han agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`;
+    aviso.textContent = `📌 Se ha${nuevos > 1 ? 'n' : ''} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`;
     cont.after(aviso);
   }
 }
