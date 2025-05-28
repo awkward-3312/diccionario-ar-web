@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("chatForm");
   const textarea = document.getElementById("entradaTexto");
   const idioma = document.getElementById("idioma");
+  const proveedor = document.getElementById("proveedor"); // nuevo
   const chatBox = document.getElementById("chatBox");
   const loader = document.getElementById("loader");
 
-  // ✅ Agrega mensaje al chat
   function agregarMensaje(texto, clase) {
     const burbuja = document.createElement("div");
     burbuja.className = `mensaje ${clase}`;
@@ -14,23 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 
-  // ✅ Muestra/oculta el loader
   function mostrarLoader(mostrar) {
     loader.style.display = mostrar ? "block" : "none";
   }
 
-  // ✅ Lectura en voz alta
   function leerEnVozAlta(texto, idiomaDestino) {
     const utterance = new SpeechSynthesisUtterance(texto);
     utterance.lang = idiomaDestino;
     speechSynthesis.speak(utterance);
   }
 
-  // ✅ Enviar traducción
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const texto = textarea.value.trim();
     const destino = idioma.value;
+    const fuente = proveedor.value;
 
     if (!texto) {
       textarea.classList.add("texto-vacio");
@@ -41,13 +39,18 @@ document.addEventListener("DOMContentLoaded", () => {
     agregarMensaje(texto, "usuario");
     mostrarLoader(true);
 
+    const endpoint =
+      fuente === "deepl"
+        ? "https://<TU-PROYECTO>.vercel.app/api/deepl" // ⚠️ Reemplaza con tu dominio
+        : "https://traductor-backend.vercel.app/traducir";
+
     try {
-      const respuesta = await fetch("https://traductor-backend.vercel.app/traducir", {
+      const respuesta = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           texto: texto,
-          idiomaDestino: destino  // 👈 CLAVE CORRECTA para backend
+          idiomaDestino: destino
         })
       });
 
@@ -71,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ✅ Atajo: enter envía
   textarea.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
