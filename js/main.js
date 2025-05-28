@@ -102,10 +102,9 @@ function actualizarContador() {
     const fecha = termino["Fecha agregado"] || termino["fechaAgregado"] || "";
     if (fecha) {
       const fechaObj = new Date(fecha);
-      if (!isNaN(fechaObj)) {
-        const localFecha = new Date(fechaObj.getTime() - fechaObj.getTimezoneOffset() * 60000);
-        if (localFecha > limite) nuevos++;
-      }
+      if (!isNaN(fechaObj) && fechaObj > limite) {
+        nuevos++;
+      }      
     }
   }  
 
