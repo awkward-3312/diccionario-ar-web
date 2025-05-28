@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Término - Diccionario AR</title>
-    <link rel="icon" type="image/png" href="favicon-ar.png">
-    <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/agregar.css">
-    <script src="js/agregar.js" defer></script>
-  </head>  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Término - Diccionario AR</title>
+  <link rel="icon" type="image/png" href="favicon-ar.png">
+  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/agregar.css">
+  <script src="js/agregar.js" defer></script>
+</head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro"></button>
 
@@ -43,13 +43,11 @@
     ✅ Término agregado correctamente
   </div>
 
-  <!-- Barra inferior en modo móvil -->
   <div class="barra-inferior">
     <button onclick="window.location.href='index.html'">🏠 Inicio</button>
     <button onclick="window.location.href='admin.html'">🔒 Admin</button>
   </div>
 
-  <script src="js/agregar.js"></script>
   <script>
     function toggleModo() {
       const esClaro = document.body.classList.toggle("light-mode");

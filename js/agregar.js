@@ -1,20 +1,4 @@
-// ✅ agregar.js con ID consecutivo basado en el último ID existente
 const URL = 'https://script.google.com/macros/s/AKfycbys4Dq4jSXyKlERG8AwgpDAsT05sttX_73r0a9IgoXtMNMCzwT3QNMaZ6PVZpieIMEi/exec';
-
-async function obtenerUltimoID() {
-  try {
-    const res = await fetch(URL);
-    const data = await res.json();
-    const ids = Object.values(data)
-      .map(item => parseInt(item.id))
-      .filter(id => !isNaN(id));
-    const maxID = ids.length ? Math.max(...ids) : 356;
-    return maxID + 1;
-  } catch (err) {
-    console.error("❌ Error obteniendo el último ID", err);
-    return Date.now(); // fallback temporal si falla
-  }
-}
 
 document.getElementById('formulario').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -28,10 +12,7 @@ document.getElementById('formulario').addEventListener('submit', async function(
   const sinonimos = document.getElementById('sinonimos').value.trim();
   const formaFarmaceutica = tipo === 'forma' ? definicion : '';
 
-  const id = (await obtenerUltimoID()).toString();
-
   const datos = {
-    id,
     termino,
     traduccion,
     pronunciacion,
@@ -40,6 +21,7 @@ document.getElementById('formulario').addEventListener('submit', async function(
     sinonimos,
     tipo,
     formaFarmaceutica
+    // NOTA: no enviamos "id"
   };
 
   document.getElementById("loader").style.display = "block";
@@ -51,11 +33,16 @@ document.getElementById('formulario').addEventListener('submit', async function(
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
 
+    const texto = await res.text();
     document.getElementById("loader").style.display = "none";
-    document.getElementById("mensaje").textContent = "✅ Término agregado exitosamente";
+    document.getElementById("mensaje").textContent = texto.includes("✅")
+      ? "✅ Término agregado exitosamente"
+      : texto;
+
     document.getElementById("formulario").reset();
     setTimeout(() => document.getElementById("mensaje").textContent = '', 3000);
   } catch (err) {
+    console.error("❌ Error al enviar:", err);
     document.getElementById("loader").style.display = "none";
     document.getElementById("mensaje").textContent = "❌ Error al agregar el término";
   }
