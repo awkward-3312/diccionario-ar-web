@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("chatForm");
   const textarea = document.getElementById("entradaTexto");
   const idioma = document.getElementById("idioma");
-  const proveedor = document.getElementById("proveedor"); // nuevo
+  const proveedor = document.getElementById("proveedor");
   const chatBox = document.getElementById("chatBox");
   const loader = document.getElementById("loader");
 
@@ -16,12 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function mostrarLoader(mostrar) {
     loader.style.display = mostrar ? "block" : "none";
-  }
-
-  function leerEnVozAlta(texto, idiomaDestino) {
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = idiomaDestino;
-    speechSynthesis.speak(utterance);
   }
 
   form.addEventListener("submit", async (e) => {
@@ -57,11 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await respuesta.json();
 
       if (!respuesta.ok) {
-        console.error("⛔ Backend respondió con error:", data);
-        agregarMensaje("❌ Error del servidor al traducir.", "bot");
+        console.error("⛔ Backend respondió con error:");
+        console.error("Status:", respuesta.status);
+        console.error("Mensaje:", data?.error || "Sin mensaje");
+        console.error("Detalle:", data?.detalle || "Sin detalle");
+
+        agregarMensaje(`❌ Error al traducir con ${fuente === "deepl" ? "DeepL" : "Microsoft"}: ${data?.error || "desconocido"}`, "bot");
       } else if (data.traduccion) {
         agregarMensaje(data.traduccion, "bot");
-        leerEnVozAlta(data.traduccion, destino);
       } else {
         agregarMensaje("⚠️ No se recibió una traducción válida.", "bot");
       }
