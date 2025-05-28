@@ -39,6 +39,25 @@ body.light-mode {
   color: #111;
 }
 
+/* === CLASE BOTÓN PERSONALIZADA === */
+.boton {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.boton:hover {
+  background-color: #3ae374;
+  color: black;
+  transform: scale(1.05);
+}
+
 /* === ANIMACIONES === */
 @keyframes parallax {
   0% { background-position: center center; }
@@ -285,7 +304,7 @@ body::before {
   position: fixed;
   width: 60px;
   height: 60px;
-  opacity: 0.2;
+  opacity: 0.3;
   filter: brightness(140%);
   animation: flotarMol 60s ease-in-out infinite alternate;
   z-index: 0;
