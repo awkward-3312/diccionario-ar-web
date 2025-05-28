@@ -94,30 +94,9 @@ h1 span {
   transition: all 0.3s ease;
 }
 
-body.dark-mode .busqueda input {
-  background-color: #2a2a2a;
-  color: white;
-}
-
-/* === BOTONES GLOBALES === */
-button {
-  font-family: 'Segoe UI', sans-serif;
-  font-weight: 600;
-  background-color: #007bff;
-  color: black;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-size: 14px;
-  border: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #3ae374;
-  color: black;
-  transform: scale(1.05);
+body.light-mode .busqueda input {
+  background-color: #f3f3f3;
+  color: #111;
 }
 
 /* === CONTENEDOR === */
@@ -125,7 +104,7 @@ button:hover {
   background-color: #1e1e1e;
   padding: 40px;
   border-radius: 20px;
-  max-width: 900px;
+  max-width: 960px;
   width: 90%;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   animation: fadeIn 0.5s ease-in-out;
@@ -152,8 +131,9 @@ body.light-mode .ventana {
 }
 
 body.light-mode #resultado {
-  background-color: #f2f2f2;
+  background-color: #f7f7f7;
   color: #111;
+  border: 1px solid #ccc;
 }
 
 .titulo-resultado {
@@ -171,8 +151,9 @@ body.light-mode #resultado {
 .pronunciacion {
   color: #70d6ff;
 }
+
 body.light-mode .pronunciacion {
-  color: #002855;
+  color: #2254a3;
 }
 
 .traduccion,
