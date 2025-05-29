@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Página principal -->
+  <url>
+    <loc>https://diccionario-ar.com/</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Páginas de navegación -->
+  <url>
+    <loc>https://diccionario-ar.com/inicio.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://diccionario-ar.com/plataforma.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diccionario-ar.com/contacto.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Páginas internas -->
+  <url>
+    <loc>https://diccionario-ar.com/admin.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diccionario-ar.com/chat-sparkie.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diccionario-ar.com/traductor.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diccionario-ar.com/agregar.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://diccionario-ar.com/sugerencias.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://diccionario-ar.com/revisar-sugerencias.html</loc>
+    <lastmod>2025-05-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
