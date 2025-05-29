@@ -380,3 +380,120 @@ body.fade-out {
 .bot-launcher .action:hover {
   background-color: #333;
 }
+
+/* === SECCIONES INFORMATIVAS (Qué es, Para quién, Cómo se construyó) === */
+.seccion-info {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.seccion-info h2 {
+  font-size: 2.4rem;
+  color: var(--color-primario);
+  margin-bottom: 20px;
+}
+
+.seccion-info p {
+  font-size: 1.1rem;
+  color: var(--color-subtexto);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* === CARDS DE AUDIENCIAS === */
+.cards-usuarios {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 30px 24px;
+  width: 260px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.card i {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--color-texto-principal);
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--color-subtexto);
+  line-height: 1.4;
+}
+
+/* === BOTÓN ANIMADO CTA === */
+.btn-primario.animado {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primario.animado::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--color-secundario);
+  z-index: 0;
+  transition: width 0.4s ease;
+}
+
+.btn-primario.animado:hover::before {
+  width: 100%;
+}
+
+.btn-primario.animado span {
+  position: relative;
+  z-index: 2;
+}
+
+/* === FOOTER LINKS === */
+footer nav {
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+
+footer nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 6px;
+  transition: color 0.3s;
+}
+
+footer nav a:hover {
+  color: var(--color-primario);
+}
+
+/* === RESPONSIVO PARA SECCIONES === */
+@media (max-width: 768px) {
+  .cards-usuarios {
+    flex-direction: column;
+    align-items: center;
+  }
+}
