@@ -29,6 +29,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   color: white;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .contenedor-pagina {
