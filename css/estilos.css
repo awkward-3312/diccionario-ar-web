@@ -484,3 +484,22 @@ body.light-mode #toggle-modo i {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.footer-legal {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  background-color: rgba(0, 0, 0, 0.5); /* semitransparente */
+  color: #ccc;
+  margin-top: 3rem;
+}
+
+.footer-legal a {
+  color: #00ffd0;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer-legal a:hover {
+  text-decoration: underline;
+}
