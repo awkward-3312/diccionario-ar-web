@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inicio – Diccionario AR</title>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-REW5RZ32MX');
-</script>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-REW5RZ32MX');
+  </script>
 
+  <!-- Estilos -->
   <link rel="stylesheet" href="css/inicio.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
   <!-- Google AdSense -->
@@ -26,6 +26,7 @@
 </head>
 <body class="fade-in">
 
+  <!-- Fondo molecular animado -->
   <div class="fondo-molecular">
     <img src="img/mol-perfect1.png" class="mol mol1" alt="molécula" />
     <img src="img/mol-perfect2.png" class="mol mol2" alt="molécula" />
@@ -37,6 +38,7 @@
     <img src="img/mol-perfect8.png" class="mol mol8" alt="molécula" />
   </div>
 
+  <!-- Encabezado -->
   <header class="encabezado">
     <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo" />
     <nav class="menu-principal">
@@ -48,19 +50,55 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h1><span>Una herramienta<br>para ti...</span></h1>
+    <!-- HERO principal -->
+    <section class="hero" data-aos="fade-up">
+      <h1><span>Explora. Aprende. Conecta.</span></h1>
       <p>
-        Plataforma colaborativa para consultar y agregar términos técnicos del área regulatoria. Diseñada para estudiantes, profesionales y equipos que trabajan en química, farmacia y documentación regulatoria.
+        Una plataforma visual y colaborativa para descubrir y compartir términos del área regulatoria, farmacéutica y científica.
       </p>
       <div class="botones">
-        <button onclick="transicionar('index.html')" class="btn-primario">
-          Explorar diccionario
+        <button onclick="transicionar('index.html')" class="btn-primario animado">
+          Explorar Diccionario
         </button>
       </div>
     </section>
+
+    <!-- Sección: Qué es -->
+    <section class="seccion-info" data-aos="fade-up">
+      <h2>¿Qué es Diccionario AR?</h2>
+      <p>Una herramienta digital que te permite consultar y sugerir términos técnicos con apoyo visual, pronunciación, sinónimos y categorías gramaticales.</p>
+    </section>
+
+    <!-- Sección: Para quién -->
+    <section class="seccion-info" data-aos="fade-up">
+      <h2>¿A quién va dirigido?</h2>
+      <div class="cards-usuarios">
+        <div class="card" data-aos="fade-right">
+          <i class="fas fa-user-graduate"></i>
+          <h3>Estudiantes</h3>
+          <p>Ideal para quienes se están formando en áreas reguladas.</p>
+        </div>
+        <div class="card" data-aos="fade-up">
+          <i class="fas fa-flask"></i>
+          <h3>Profesionales</h3>
+          <p>Útil para validar terminología técnica precisa.</p>
+        </div>
+        <div class="card" data-aos="fade-left">
+          <i class="fas fa-people-carry"></i>
+          <h3>Equipos</h3>
+          <p>Colabora y estandariza términos con tu equipo regulatorio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección: Cómo se construyó -->
+    <section class="seccion-info" data-aos="fade-up">
+      <h2>¿Cómo se construyó?</h2>
+      <p>Con tecnologías web modernas, integración a Google Sheets, almacenamiento offline y una interfaz adaptada a ti.</p>
+    </section>
   </main>
 
+  <!-- Bot flotante de Sparkie -->
   <div class="bot-launcher" id="botLauncher">
     <div class="action-list">
       <div class="action" onclick="alert('Iniciando chat en vivo...')"><i class="fas fa-comments"></i> Live Chat</div>
@@ -72,14 +110,20 @@
     </button>
   </div>
 
-  <footer id="contacto">
-    © 2025 Diccionario AR · Hecho con 💚 para el área regulatoria
+  <!-- Footer -->
+  <footer id="contacto" data-aos="fade-up">
+    <p>© 2025 Diccionario AR · Hecho con 💚 para el área regulatoria</p>
+    <nav>
+      <a href="terminos.html">Términos</a> ·
+      <a href="condiciones-uso.html">Condiciones de Uso</a> ·
+      <a href="politica-privacidad.html">Privacidad</a>
+    </nav>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
   <script>
-    // Transición suave entre páginas
     function transicionar(url) {
       document.body.classList.remove("fade-in");
       document.body.classList.add("fade-out");
