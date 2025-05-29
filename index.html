@@ -4,15 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diccionario - AR</title>
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-REW5RZ32MX');
-  </script>
+  gtag('config', 'G-REW5RZ32MX');
+</script>
 
   <link rel="icon" type="image/png" href="favicon-ar.png" />
   <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
@@ -22,7 +23,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
+     crossorigin="anonymous"></script>
 </head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
@@ -50,7 +52,7 @@
     <button onclick="window.location.href='admin.html'" class="btn-admin">Admin</button>
   </nav>
 
-  <main class="ventana">
+  <div class="ventana">
     <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
     <div class="busqueda">
@@ -80,16 +82,11 @@
     <div id="resultado" tabindex="0" aria-live="polite" class="animado">
       Resultado aquí...
     </div>
-  </main>
 
-  <div id="sparkie-boton" title="Habla con Sparkie">
-    <img src="img/sparkie.png" alt="Sparkie" />
-    <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
-  </div>
-
-  <div id="notificacion" class="popup-exito oculto">
-    <i class="fas fa-check-circle"></i> Glosario actualizado con éxito.
-  </div>
+    <div id="sparkie-boton" title="Habla con Sparkie">
+      <img src="img/sparkie.png" alt="Sparkie" />
+      <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
+    </div>
 
   <footer class="footer-legal">
     <p>
@@ -143,5 +140,18 @@
     window.limpiarBusqueda = limpiarBusqueda;
     window.actualizarGlosario = actualizarGlosario;
   </script>
+
+  <div id="notificacion" class="popup-exito oculto">
+    <i class="fas fa-check-circle"></i> Glosario actualizado con éxito.
+  </div>
+    
+<footer class="footer-legal">
+  <p>
+    © 2025 <strong>Diccionario AR/RA</strong>. Todos los derechos reservados. ·
+    <a href="terminos.html">Términos y Condiciones</a> ·
+    <a href="privacidad.html">Política de Privacidad</a>
+  </p>
+</footer>
+
 </body>
 </html>
