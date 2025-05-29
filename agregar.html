@@ -4,17 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agregar Término - Diccionario AR</title>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-REW5RZ32MX');
-</script>
-
   <link rel="icon" type="image/png" href="favicon-ar.png">
   <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/agregar.css">
@@ -22,10 +11,11 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
+  
+  <!-- Código de verificación de Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
      crossorigin="anonymous"></script>
+
 </head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
@@ -47,4 +37,46 @@
       <input type="text" id="traduccion" placeholder="Traducción" style="display:none">
       <input type="text" id="pronunciacion" placeholder="Pronunciación" style="display:none">
       <input type="text" id="categoria" placeholder="Categoría" style="display:none">
-      <textarea id="def
+      <textarea id="definicion" placeholder="Definición" style="display:none"></textarea>
+      <input type="text" id="sinonimos" placeholder="Sinónimos (separados por coma)" style="display:none">
+
+      <div id="loader"><span></span><span></span><span></span></div>
+
+      <button type="submit"><i class="fas fa-save"></i> Guardar</button>
+      <button type="button" onclick="window.location.href='index.html'"><i class="fas fa-times"></i> Cancelar</button>
+    </form>
+
+    <p id="mensaje" style="text-align:center; margin-top:10px;"></p>
+  </div>
+
+  <div id="popupMsg" style="display:none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #3ae374; color: black; padding: 12px 24px; border-radius: 10px; font-weight: bold; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+    ✅ Término agregado correctamente
+  </div>
+
+  <div class="barra-inferior">
+    <button onclick="window.location.href='index.html'">
+      <i class="fas fa-home"></i> Inicio
+    </button>
+    <button onclick="window.location.href='admin.html'">
+      <i class="fas fa-lock"></i> Admin
+    </button>
+  </div>
+
+  <script>
+    function toggleModo() {
+      const body = document.body;
+      const icono = document.getElementById("icono-modo");
+      const esClaro = body.classList.toggle("light-mode");
+      icono.className = esClaro ? "fas fa-sun" : "fas fa-moon";
+      localStorage.setItem("modoClaro", esClaro ? "1" : "0");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("modoClaro") === "1") {
+        document.body.classList.add("light-mode");
+        document.getElementById("icono-modo").className = "fas fa-sun";
+      }
+    });
+  </script>
+</body>
+</html>
