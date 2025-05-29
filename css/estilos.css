@@ -25,6 +25,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: url('../img/fondo-oscuro.png') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
 }
 
 .contenedor-pagina {
