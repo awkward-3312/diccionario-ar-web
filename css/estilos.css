@@ -505,22 +505,6 @@ body {
   justify-content: flex-start;
 }
 
-main.ventana {
-  margin: 60px 0; /* Centra verticalmente con margen arriba y abajo */
-  max-width: 960px;
-  width: 90%;
-  background-color: #1e1e1e;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  animation: fadeIn 0.5s ease-in-out;
-  text-align: center;
-}
-body.light-mode main.ventana {
-  background-color: rgba(255,255,255,0.95);
-  color: #111;
-}
-
 .footer-legal {
   text-align: center;
   padding: 1rem;
