@@ -50,37 +50,34 @@
     <button onclick="window.location.href='admin.html'" class="btn-admin">Admin</button>
   </nav>
 
-  <main class="ventana">
-    <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
+  <!-- Contenedor para centrar verticalmente la ventana -->
+  <div class="contenedor-principal">
+    <main class="ventana">
+      <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
-    <div class="busqueda">
-      <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
-    </div>
+      <div class="busqueda">
+        <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
+      </div>
 
-    <div class="botones-busqueda">
-      <button id="btnBuscar" class="boton" title="Buscar">
-        <i class="fas fa-search"></i>
-      </button>
-      <button id="btnLimpiar" class="boton" title="Limpiar búsqueda">
-        <i class="fas fa-eraser"></i>
-      </button>
-      <button id="btnActualizar" class="boton" title="Actualizar glosario">
-        <i class="fas fa-rotate"></i>
-      </button>
-    </div>
+      <div class="botones-busqueda">
+        <button id="btnBuscar" class="boton" title="Buscar"><i class="fas fa-search"></i></button>
+        <button id="btnLimpiar" class="boton" title="Limpiar búsqueda"><i class="fas fa-eraser"></i></button>
+        <button id="btnActualizar" class="boton" title="Actualizar glosario"><i class="fas fa-rotate"></i></button>
+      </div>
 
-    <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
-    <div id="ultima-actualizacion">Última actualización: -</div>
-    <div id="contadorTerminos" class="aviso-nuevos"></div>
+      <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
+      <div id="ultima-actualizacion">Última actualización: -</div>
+      <div id="contadorTerminos" class="aviso-nuevos"></div>
 
-    <div class="spinner" id="spinner">
-      <span></span><span></span><span></span>
-    </div>
+      <div class="spinner" id="spinner">
+        <span></span><span></span><span></span>
+      </div>
 
-    <div id="resultado" tabindex="0" aria-live="polite" class="animado">
-      Resultado aquí...
-    </div>
-  </main>
+      <div id="resultado" tabindex="0" aria-live="polite" class="animado">
+        Resultado aquí...
+      </div>
+    </main>
+  </div>
 
   <div id="sparkie-boton" title="Habla con Sparkie">
     <img src="img/sparkie.png" alt="Sparkie" />
