@@ -145,6 +145,14 @@ body.light-mode .ventana {
   color: #111;
 }
 
+.contenedor-principal {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 /* === RESULTADOS === */
 #resultado {
   margin-top: 20px;
