@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diccionario - AR</title>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -60,7 +60,7 @@
         <button id="btnActualizar" class="boton" title="Actualizar glosario"><i class="fas fa-rotate"></i></button>
       </div>      
 
-      <div id="estadoConexion" style="margin-top: 10px; color: #ff5c39; font-weight: bold;"></div>
+      <div id="estadoConexion" class="estado-conexion"></div>
       <div id="ultima-actualizacion">Última actualización: -</div>
       <div id="contadorTerminos" class="aviso-nuevos"></div>
 
@@ -74,11 +74,10 @@
     </main>
   </div>
 
-  <!-- Ventana emergente para sugerencias -->
-  <button id="btn-sugerir" title="Sugerir algo para este término">
-    <i class="fas fa-lightbulb"></i>
-  </button>  
+  <!-- Botón único para sugerencia -->
+  <button id="btn-sugerir" title="Sugerir algo para este término">💡</button>
 
+  <!-- Ventana emergente flotante para sugerencias -->
   <div id="ventana-sugerencia" class="ventana-sugerencia oculto">
     <h3>Sugerencia sobre este término</h3>
     <textarea id="sugerencia-input" placeholder="Escribe tu sugerencia..."></textarea>
@@ -88,22 +87,25 @@
       <button id="cerrar-sugerencia">Cancelar</button>
     </div>
     <div id="mensaje-sugerencia"></div>
-  </div>  
+  </div>
 
+  <!-- Sparkie -->
   <div id="sparkie-boton" title="Habla con Sparkie">
     <img src="img/sparkie.png" alt="Sparkie" />
     <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
   </div>
 
+  <!-- Popup -->
   <div id="notificacion" class="popup-exito oculto">
     <i class="fas fa-check-circle"></i> Glosario actualizado con éxito.
   </div>
 
+  <!-- Footer legal -->
   <footer class="footer-legal">
     <p>
       © 2025 <strong>Diccionario AR/RA</strong>. Todos los derechos reservados. ·
       <a href="terminos.html">Términos y Condiciones</a> ·
-      <a href="politica-privacidad.html">Política de Privacidad</a>
+      <a href="politica-privacidad.html">Política de Privacidad</a> ·
       <a href="condiciones-uso.html">Condiciones de Uso</a>
     </p>
   </footer>
