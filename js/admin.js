@@ -78,7 +78,7 @@ async function cargarDatos() {
   const { data, error } = await client
     .from('base_datos')
     .select('*')
-    .order('Fecha agregado', { ascending: false });
+    .order('id', { ascending: false })
   ocultarLoader();
 
   if (error) {
@@ -189,7 +189,7 @@ async function editarFila(id) {
     ["Forma farmacéutica"]: prompt("Forma farmacéutica:", fila["Forma farmacéutica"]) || fila["Forma farmacéutica"],
     Imagen: prompt("URL de la imagen:", fila.Imagen) || fila.Imagen,
     ["Fecha agregado"]: new Date().toISOString()
-  };
+  };  
 
   mostrarLoader();
 
