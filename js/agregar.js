@@ -56,8 +56,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('formulario').addEventListener('submit', async (e) => {
     e.preventDefault();
+  
+    // ✅ Validación CAPTCHA ANTES de activar el loader
+    const captchaToken = grecaptcha.getResponse();
+    if (!captchaToken) {
+      mostrarPopup("❌ Verifica que no eres un robot.", false);
+      return;
+    }
+  
     toggleLoader(true);
-
+  
     const tipo = document.getElementById('tipo').value;
     const termino = document.getElementById('termino').value.trim();
     const traduccion = document.getElementById('traduccion').value.trim();
@@ -67,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const sinonimos = document.getElementById('sinonimos').value.trim();
     const forma = document.getElementById('formaFarmaceutica').value.trim();
     const imagen = document.getElementById('imagen').value.trim();
-
+  
     const registro = {
       termino,
       traduccion: traduccion || null,
@@ -77,7 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
         tipo === 'forma' ? 'Forma farmacéutica' :
         'Instrumento',
       fecha_agregado: new Date().toISOString()
-    };
+    };  
 
     if (tipo === 'termino') {
       registro.pronunciacion = pronunciacion || null;
@@ -110,6 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
       mostrarPopup('❌ Error al guardar: ' + error.message, false);
     } else {
       mostrarPopup('✅ Término agregado correctamente');
+      grecaptcha.reset();
       e.target.reset();
       mostrarCampos();
     }
