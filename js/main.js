@@ -132,7 +132,13 @@ function buscar() {
 
   const terminoBuscado = normalizarTexto(input.value.trim());
 
-  if (!terminoBuscado) {
+  
+if (!terminoBuscado) {
+    resultadoDiv.innerText = "⚠️ Escribe un término para buscar.";
+    sugerenciaDiv.innerHTML = ""; // Limpiar sugerencias
+    return;
+}
+
     resultadoDiv.innerText = "⚠️ Escribe un término para buscar.";
     return;
   }
