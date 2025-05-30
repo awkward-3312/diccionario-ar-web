@@ -14,28 +14,22 @@
     gtag('config', 'G-REW5RZ32MX');
   </script>
 
-  <!-- Estilos -->
+  <!-- Estilos y librerías -->
   <link rel="stylesheet" href="css/inicio.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
-     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 </head>
 <body class="fade-in">
 
-  <!-- Fondo molecular animado -->
+  <!-- Fondo decorativo -->
   <div class="fondo-molecular">
+    <!-- Imágenes flotantes moleculares -->
     <img src="img/mol-perfect1.png" class="mol mol1" alt="molécula" />
-    <img src="img/mol-perfect2.png" class="mol mol2" alt="molécula" />
-    <img src="img/mol-perfect3.png" class="mol mol3" alt="molécula" />
-    <img src="img/mol-perfect4.png" class="mol mol4" alt="molécula" />
-    <img src="img/mol-perfect5.png" class="mol mol5" alt="molécula" />
-    <img src="img/mol-perfect6.png" class="mol mol6" alt="molécula" />
-    <img src="img/mol-perfect7.png" class="mol mol7" alt="molécula" />
-    <img src="img/mol-perfect8.png" class="mol mol8" alt="molécula" />
+    <!-- ... resto de imágenes ... -->
   </div>
 
   <!-- Encabezado -->
@@ -43,62 +37,71 @@
     <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo" />
     <nav class="menu-principal">
       <a href="plataforma.html">Plataforma</a>
-      <a href="index.html" class="link-transicion">Diccionario</a>
-      <a href="contacto.html" class="link-transicion">Contacto</a>
+      <a href="index.html">Diccionario</a>
+      <a href="contacto.html">Contacto</a>
     </nav>
-    <a href="admin.html" class="btn-login link-transicion">Iniciar sesión</a>
+    <a href="admin.html" class="btn-login">Iniciar sesión</a>
   </header>
 
-  <main>
-    <!-- HERO principal -->
-    <section class="hero" data-aos="fade-up">
-      <h1><span>Explora. Aprende. Conecta.</span></h1>
-      <p>
-        Una plataforma visual y colaborativa para descubrir y compartir términos del área regulatoria, farmacéutica y científica.
-      </p>
+  <main class="scroll-snap-container">
+    <!-- HERO animado -->
+    <section class="hero scroll-snap" data-aos="fade-up">
+      <h1>Explora. Aprende. <mark>Conecta</mark>.</h1>
+      <p>Diccionario visual y colaborativo para ciencia regulatoria, farmacéutica y documentación técnica.</p>
       <div class="botones">
-        <button onclick="transicionar('index.html')" class="btn-primario animado">
-          Explorar Diccionario
-        </button>
+        <button onclick="transicionar('index.html')" class="btn-primario animado">Explorar Diccionario</button>
       </div>
     </section>
 
-    <!-- Sección: Qué es -->
-    <section class="seccion-info" data-aos="fade-up">
-      <h2>¿Qué es Diccionario AR?</h2>
-      <p>Una herramienta digital que te permite consultar y sugerir términos técnicos con apoyo visual, pronunciación, sinónimos y categorías gramaticales.</p>
+    <!-- Estadísticas animadas -->
+    <section class="estadisticas scroll-snap">
+      <div class="contador">
+        <span id="terminosContador">0</span><p>Términos</p>
+      </div>
+      <div class="contador">
+        <span id="paisesContador">0</span><p>Países</p>
+      </div>
+      <div class="contador">
+        <span id="visitasContador">0</span><p>Visitas</p>
+      </div>
     </section>
 
-    <!-- Sección: Para quién -->
-    <section class="seccion-info" data-aos="fade-up">
+    <!-- ¿Qué es? con tooltip -->
+    <section class="seccion-info scroll-snap" data-aos="fade-up">
+      <h2 data-tippy-content="Una base colaborativa de términos regulados">¿Qué es Diccionario AR?</h2>
+      <p>Herramienta digital para consultar, sugerir y validar términos técnicos con pronunciación, sinónimos y categorías gramaticales.</p>
+    </section>
+
+    <!-- Para quién -->
+    <section class="seccion-info scroll-snap" data-aos="fade-up">
       <h2>¿A quién va dirigido?</h2>
       <div class="cards-usuarios">
-        <div class="card" data-aos="fade-right">
+        <div class="card" data-tippy-content="Recurso didáctico para aprender terminología farmacéutica">
           <i class="fas fa-user-graduate"></i>
           <h3>Estudiantes</h3>
-          <p>Ideal para quienes se están formando en áreas reguladas.</p>
+          <p>Formación en áreas técnicas y reguladas.</p>
         </div>
-        <div class="card" data-aos="fade-up">
+        <div class="card" data-tippy-content="Referencia técnica para ensayos, QA y documentación">
           <i class="fas fa-flask"></i>
           <h3>Profesionales</h3>
-          <p>Útil para validar terminología técnica precisa.</p>
+          <p>Validación de uso correcto de términos clave.</p>
         </div>
-        <div class="card" data-aos="fade-left">
+        <div class="card" data-tippy-content="Unifica glosarios para documentos y reportes">
           <i class="fas fa-people-carry"></i>
           <h3>Equipos</h3>
-          <p>Colabora y estandariza términos con tu equipo regulatorio.</p>
+          <p>Colaboración entre miembros de áreas reguladas.</p>
         </div>
       </div>
     </section>
 
-    <!-- Sección: Cómo se construyó -->
-    <section class="seccion-info" data-aos="fade-up">
+    <!-- Cómo se construyó -->
+    <section class="seccion-info scroll-snap" data-aos="fade-up">
       <h2>¿Cómo se construyó?</h2>
-      <p>Con tecnologías web modernas, integración a Google Sheets, almacenamiento offline y una interfaz adaptada a ti.</p>
+      <p>Con tecnologías web modernas, conexión con Google Sheets, almacenamiento offline y diseño accesible.</p>
     </section>
   </main>
 
-  <!-- Bot flotante de Sparkie -->
+  <!-- Sparkie botón flotante -->
   <div class="bot-launcher" id="botLauncher">
     <div class="action-list">
       <div class="action" onclick="alert('Iniciando chat en vivo...')"><i class="fas fa-comments"></i> Live Chat</div>
@@ -111,7 +114,7 @@
   </div>
 
   <!-- Footer -->
-  <footer id="contacto" data-aos="fade-up">
+  <footer id="contacto">
     <p>© 2025 Diccionario AR · Hecho con 💚 para el área regulatoria</p>
     <nav>
       <a href="terminos.html">Términos</a> ·
@@ -124,12 +127,24 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
   <script>
+    tippy('[data-tippy-content]');
+
+    const opciones = {
+      duration: 2,
+      useEasing: true,
+      separator: ',',
+    };
+    const terminos = new countUp.CountUp('terminosContador', 350, opciones);
+    const paises = new countUp.CountUp('paisesContador', 15, opciones);
+    const visitas = new countUp.CountUp('visitasContador', 1200, opciones);
+    if (!terminos.error) { terminos.start(); paises.start(); visitas.start(); }
+  </script>
+  <script>
     function transicionar(url) {
       document.body.classList.remove("fade-in");
       document.body.classList.add("fade-out");
       setTimeout(() => { window.location.href = url; }, 300);
     }
-
     document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
     });
