@@ -394,8 +394,8 @@ body.light-mode
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px; /* Ancho reducido */
-  height: 60px; /* Alto reducido */
+  width: 60px !important;
+  height: 60px !important;
   background: radial-gradient(circle at center, #1effb1, #0ef09a);
   border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.2);
@@ -403,13 +403,15 @@ body.light-mode
   justify-content: center;
   align-items: center;
   z-index: 2;
+  overflow: hidden;
 }
 
 .avatar-sparkie img {
-  width: 80%;
-  height: 80%;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: contain;
   border-radius: 50%;
+  display: block;
 }
 
 /* === BOTONES DE REGRESO EN COLUMNA === */
