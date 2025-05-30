@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const registro = {
       "Término": termino,
       "Traducción": traduccion || null,
-      "Tipo de Termino":
+      "Tipo de término":
         tipo === 'termino' ? 'Término' :
         tipo === 'abreviatura' ? 'Abreviatura' :
         tipo === 'forma' ? 'Forma farmacéutica' :
