@@ -126,57 +126,96 @@ function actualizarContador() {
 
 
 function buscar() {
-  const input = document.getElementById("termino");
-  const resultadoDiv = document.getElementById("resultado");
-  const sugerenciaDiv = document.getElementById("sugerencias");
+  if (!glosarioCargado) return;
+  const terminoInput = document.getElementById("termino");
+  const inputUsuario = terminoInput.value.trim();
+  const termino = normalizarTexto(inputUsuario);
+  const resultado = document.getElementById("resultado");
+  const spinner = document.getElementById("spinner");
 
-  const terminoBuscado = normalizarTexto(input.value.trim());
-
-  if (!terminoBuscado) {
-    resultadoDiv.innerText = "⚠️ Escribe un término para buscar.";
-    sugerenciaDiv.innerHTML = ""; // Limpiar sugerencias
+  if (!termino) {
+    resultado.innerText = "Por favor escribe un término.";
     return;
   }
 
-  let resultadoExacto = null;
-  let sugerencias = [];
+  spinner.style.display = "block";
+  setTimeout(() => spinner.style.display = "none", 500);
 
-  for (let clave in glosario) {
-    const entrada = glosario[clave];
-    const claveNorm = normalizarTexto(clave);
-    const traduccionNorm = entrada.traduccion ? normalizarTexto(entrada.traduccion) : "";
+  let entrada = null;
+  let terminoReal = null;
 
-    if (claveNorm.startsWith(terminoBuscado) || traduccionNorm.startsWith(terminoBuscado)) {
-      sugerencias.push(clave);
+  for (const key in glosario) {
+    const item = glosario[key];
+    const normalizadoTermino = normalizarTexto(item.termino || "");
+    const normalizadoTraduccion = normalizarTexto(item.traduccion || "");
+
+    if (normalizadoTermino === termino || normalizadoTraduccion === termino) {
+      entrada = item;
+      terminoReal = item.termino;
+      break;
     }
   }
 
-  // Mostrar solo 4 sugerencias más cercanas
-  sugerencias = sugerencias.slice(0, 4);
+  resultado.classList.remove("animado");
+  void resultado.offsetWidth;
+  resultado.classList.add("animado");
 
-  if (sugerencias.length > 0) {
-    sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p>` + 
-      sugerencias.map(s => 
-        `<button class="sugerencia-boton" onclick="mostrarResultado('${s}')">${s}</button>`
-      ).join("");
+  if (!entrada) {
+    resultado.innerHTML = "⚠️ Término no encontrado.";
+
+    const sugerencias = Object.values(glosario).filter(e => {
+      const t = normalizarTexto(e.termino || "");
+      const tr = normalizarTexto(e.traduccion || "");
+      return t.includes(termino) || tr.includes(termino);
+    });
+
+    if (sugerencias.length > 0) {
+      const sugerenciaHTML = sugerencias.slice(0, 3).map(e => {
+        const visible = e.termino || e.traduccion || "Sin nombre";
+        return `<button onclick="document.getElementById('termino').value='${visible}';buscar();">${visible}</button>`;
+      }).join(" ");
+      resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
+    }
+
+    return;
+  }
+
+  // Mostrar término original en el input
+  document.getElementById("termino").value = entrada.termino || terminoReal;
+
+  let html = `<div class="resultado-flex">`;
+
+  html += `<div class="bloque-texto">`;
+  html += `<div class="titulo-resultado">${entrada.termino || terminoReal}</div>`;
+
+  if ((entrada.tipo_termino || "").toLowerCase() === "abreviatura") {
+    html += `<p><strong>Traducción:</strong><br><span class="italic">${entrada.traduccion || "-"}</span></p>`;
   } else {
-    sugerenciaDiv.innerHTML = ""; // Limpiar si no hay sugerencias
+    if (entrada.traduccion) html += `<p><strong>Traducción:</strong> <span class="italic">${entrada.traduccion}</span></p>`;
+    if (entrada.pronunciacion) html += `<p><strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion}</span></p>`;
+    if (entrada.categoria) html += `<p><strong>Categoría:</strong> ${entrada.categoria}</p>`;
+    if (entrada.definicion) html += `<p><strong>Definición:</strong><br>${entrada.definicion}</p>`;
+    if (entrada.sinonimos) {
+      const sin = entrada.sinonimos.split(",").map(s => `<span class="etiqueta">${s.trim()}</span>`).join(" ");
+      html += `<p><strong>Sinónimos:</strong><br><div class="sinonimos">${sin}</div></p>`;
+    }
+  }
+  html += `</div>`; // .bloque-texto
+
+  if ((entrada.tipo_termino || "").toLowerCase() === "instrumento" && entrada.imagen) {
+    const urlImagen = entrada.imagen.startsWith("http")
+      ? entrada.imagen
+      : `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${entrada.imagen.trim()}`;
+
+    html += `
+      <div class="bloque-imagen">
+        <img src="${urlImagen}" alt="Imagen del instrumento" class="imagen-instrumento" />
+      </div>
+    `;
   }
 
-  if (resultadoExacto) {
-    const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = resultadoExacto;
-    resultadoDiv.innerHTML = `
-      <div class="titulo-resultado">${ultimaBusqueda}</div>
-      ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
-      ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
-      ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
-      ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-      ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
-      ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
-    `;
-    sugerenciaDiv.innerHTML = "";
-  }
+  html += `</div>`; // .resultado-flex
+  resultado.innerHTML = html;
 }
 
 async function enviarSugerenciaTermino() {
