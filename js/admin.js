@@ -193,10 +193,13 @@ async function editarFila(id) {
 
   mostrarLoader();
 
-  const { error } = await client
-    .from('base_datos')
-    .update(actualizado)
-    .eq('id', id);
+  const { data, error } = await client
+  .from('base_datos')
+  .update(actualizado)
+  .eq('id', id)
+  .select("*");
+
+console.log("🔁 Resultado actualización:", data);
 
   ocultarLoader();
 
