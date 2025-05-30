@@ -216,6 +216,10 @@ async function enviarSugerenciaTermino() {
 document.addEventListener("DOMContentLoaded", () => {
   abrirBaseDatos();
   document.getElementById("btnBuscar")?.addEventListener("click", buscar);
+  document.getElementById("termino")?.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(buscar, 200);
+  });
   document.getElementById("btnLimpiar")?.addEventListener("click", () => {
     document.getElementById("termino").value = "";
     document.getElementById("resultado").innerText = "Resultado aquí...";
