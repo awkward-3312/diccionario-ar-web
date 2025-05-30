@@ -1,11 +1,9 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // ✅ Verifica que Supabase esté cargado correctamente
   if (typeof window.supabase === 'undefined') {
-    console.error('❌ Supabase no está disponible. Asegúrate que el script se cargue antes.');
+    console.error('❌ Supabase no está disponible.');
     return;
   }
 
-  // ✅ Configuración Supabase
   const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
   const client = window.supabase.createClient(supabaseUrl, supabaseKey);
@@ -18,7 +16,8 @@ window.addEventListener('DOMContentLoaded', () => {
       categoria: document.getElementById('categoria'),
       definicion: document.getElementById('definicion'),
       sinonimos: document.getElementById('sinonimos'),
-      forma: document.getElementById('formaFarmaceutica')
+      forma: document.getElementById('formaFarmaceutica'),
+      imagen: document.getElementById('imagen')
     };
 
     for (let campo in campos) campos[campo].style.display = 'none';
@@ -36,6 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
       campos.forma.style.display = 'block';
     } else if (tipo === 'instrumento') {
       campos.traduccion.style.display = 'block';
+      campos.imagen.style.display = 'block';
     }
   }
 
@@ -66,6 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const definicion = document.getElementById('definicion').value.trim();
     const sinonimos = document.getElementById('sinonimos').value.trim();
     const forma = document.getElementById('formaFarmaceutica').value.trim();
+    const imagen = document.getElementById('imagen').value.trim();
 
     const registro = {
       termino,
@@ -76,7 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
         tipo === 'forma' ? 'Forma farmacéutica' :
         'Instrumento',
       fecha_agregado: new Date().toISOString()
-    };    
+    };
 
     if (tipo === 'termino') {
       registro.pronunciacion = pronunciacion || null;
@@ -89,6 +90,14 @@ window.addEventListener('DOMContentLoaded', () => {
       registro.forma_farmaceutica = forma || null;
     }
 
+    if (tipo === 'instrumento') {
+      registro.imagen = imagen || null;
+    }
+
+    if ('id' in registro) delete registro.id;
+
+    console.log("📤 Registro a insertar:", registro);
+
     const { error } = await client
       .from('base_datos')
       .insert([registro]);
@@ -96,7 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
     toggleLoader(false);
 
     if (error) {
-      console.error(error);
+      console.error('❌ Error Supabase:', error);
       mostrarPopup('❌ Error al guardar: ' + error.message, false);
     } else {
       mostrarPopup('✅ Término agregado correctamente');
