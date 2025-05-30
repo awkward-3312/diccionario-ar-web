@@ -160,17 +160,17 @@ async function editarFila(id) {
   if (!fila) return alert("ID no encontrado");
 
   const actualizado = {
-    termino: prompt("Término:", fila.termino) || fila.termino,
-    traduccion: prompt("Traducción:", fila.traduccion) || fila.traduccion,
-    pronunciacion: prompt("Pronunciación:", fila.pronunciacion) || fila.pronunciacion,
-    categoria: prompt("Categoría:", fila.categoria) || fila.categoria,
-    definicion: prompt("Definición:", fila.definicion) || fila.definicion,
-    sinonimos: prompt("Sinónimos:", fila.sinonimos) || fila.sinonimos,
-    tipo_termino: prompt("Tipo de término:", fila.tipo_termino) || fila.tipo_termino,
-    forma_farmaceutica: prompt("Forma farmacéutica:", fila.forma_farmaceutica) || fila.forma_farmaceutica,
-    imagen: prompt("URL de la imagen:", fila.imagen) || fila.imagen,
+    termino: prompt("Término:", fila.termino)?.trim() || null,
+    traduccion: prompt("Traducción:", fila.traduccion)?.trim() || null,
+    pronunciacion: prompt("Pronunciación:", fila.pronunciacion)?.trim() || null,
+    categoria: prompt("Categoría:", fila.categoria)?.trim() || null,
+    definicion: prompt("Definición:", fila.definicion)?.trim() || null,
+    sinonimos: prompt("Sinónimos:", fila.sinonimos)?.trim() || null,
+    tipo_termino: prompt("Tipo de término:", fila.tipo_termino)?.trim() || null,
+    forma_farmaceutica: prompt("Forma farmacéutica:", fila.forma_farmaceutica)?.trim() || null,
+    imagen: prompt("URL de la imagen:", fila.imagen)?.trim() || null,
     fecha_agregado: new Date().toISOString()
-  };
+  };  
 
   mostrarLoader();
   const { data, error } = await client
