@@ -22,8 +22,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Google reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- ✅ Google reCAPTCHA Enterprise v3 -->
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26"></script>
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984" crossorigin="anonymous"></script>
@@ -39,11 +39,11 @@
 
     <textarea id="sugerencia" placeholder="Escribe aquí tu sugerencia..." aria-label="Caja de texto para sugerencias"></textarea>
 
-    <!-- ✅ CAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26" style="margin: 20px auto;"></div>
+    <!-- ✅ Token reCAPTCHA v3 -->
+    <input type="hidden" id="recaptcha-token" name="recaptcha-token" />
 
     <div>
-      <button class="enviar" onclick="enviarSugerencia()" aria-label="Enviar sugerencia">
+      <button class="enviar" id="btnSugerencia" aria-label="Enviar sugerencia">
         <i class="fas fa-paper-plane"></i> Enviar
       </button>
       <button class="volver" onclick="window.location.href='index.html'" aria-label="Volver a inicio">
@@ -68,6 +68,19 @@
         document.body.classList.add("light-mode");
         document.getElementById("icono-modo").className = "fas fa-sun";
       }
+
+      // ✅ Integración de reCAPTCHA v3
+      document.getElementById("btnSugerencia").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        grecaptcha.enterprise.ready(async () => {
+          const token = await grecaptcha.enterprise.execute('6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26', {action: 'SUGERENCIA'});
+          document.getElementById("recaptcha-token").value = token;
+
+          // Ejecutar la función de envío
+          enviarSugerencia();
+        });
+      });
     });
   </script>
 </body>
