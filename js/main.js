@@ -173,7 +173,7 @@ function buscar() {
       ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
       ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(s => `<span>${s.trim()}</span>`).join('') + `</div>` : ""}
       ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
-      ${imagen ? `<img src="img/imagen/${imagen}.png" alt="${imagen}" class="imagen-instrumento">` : ""}
+      ${imagen ? `<img src="https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${imagen}" alt="${imagen}" class="imagen-instrumento">` : ""}
     `;
     sugerenciaDiv.innerHTML = "";
   }
