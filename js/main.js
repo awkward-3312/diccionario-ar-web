@@ -251,6 +251,57 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("icono-modo").className = "fas fa-sun";
   }
 
+  const btnSugerir = document.getElementById("btn-sugerir");
+const ventanaSugerencia = document.getElementById("ventana-sugerencia");
+const cerrarSugerencia = document.getElementById("cerrar-sugerencia");
+const enviarSugerenciaBtn = document.getElementById("enviar-sugerencia");
+
+btnSugerir.addEventListener("click", () => {
+  if (!ultimaBusqueda) {
+    alert("Busca un término antes de enviar una sugerencia.");
+    return;
+  }
+  ventanaSugerencia.classList.remove("oculto");
+});
+
+cerrarSugerencia.addEventListener("click", () => {
+  ventanaSugerencia.classList.add("oculto");
+});
+
+enviarSugerenciaBtn.addEventListener("click", async () => {
+  const texto = document.getElementById("sugerencia-input").value.trim();
+  const apodo = document.getElementById("apodo-input").value.trim();
+  const mensaje = document.getElementById("mensaje-sugerencia");
+
+  if (!texto) {
+    mensaje.innerHTML = "<div class='error'>⚠️ Escribe tu sugerencia antes de enviar.</div>";
+    return;
+  }
+
+  const fecha = new Date().toISOString();
+
+  const { error } = await supabase.from("sugerencias").insert([{
+    termino: ultimaBusqueda,
+    sugerencia: texto,
+    apodo: apodo || null,
+    estado: "pendiente",
+    fecha_sugerida: fecha
+  }]);
+
+  if (error) {
+    console.error(error);
+    mensaje.innerHTML = "<div class='error'>❌ Error al enviar sugerencia.</div>";
+  } else {
+    mensaje.innerHTML = "<div class='mensaje'>✅ ¡Gracias por tu sugerencia!</div>";
+    document.getElementById("sugerencia-input").value = "";
+    document.getElementById("apodo-input").value = "";
+    setTimeout(() => {
+      ventanaSugerencia.classList.add("oculto");
+      mensaje.innerHTML = "";
+    }, 2500);
+  }
+});
+
   // Mostrar fecha de última actualización
   const ultima = localStorage.getItem("ultimaActualizacion") || "-";
   document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
