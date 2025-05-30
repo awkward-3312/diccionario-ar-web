@@ -124,59 +124,64 @@ function actualizarContador() {
   contenedor.textContent = textoBase + textoNuevos;
 }
 
+
 function buscar() {
-  if (!glosarioCargado) return;
-  const terminoInput = document.getElementById("termino");
-  const inputUsuario = terminoInput.value.trim();
-  const termino = normalizarTexto(inputUsuario);
-  const resultado = document.getElementById("resultado");
-  const spinner = document.getElementById("spinner");
-  if (!termino) {
-    resultado.innerText = "Por favor escribe un término.";
+  const input = document.getElementById("termino");
+  const resultadoDiv = document.getElementById("resultado");
+  const sugerenciaDiv = document.getElementById("sugerencias");
+
+  const terminoBuscado = normalizarTexto(input.value.trim());
+
+  if (!terminoBuscado) {
+    resultadoDiv.innerText = "⚠️ Escribe un término para buscar.";
     return;
   }
-  spinner.style.display = "block";
-  setTimeout(() => spinner.style.display = "none", 500);
-  let entrada = null;
-  let terminoReal = null;
-  for (const key in glosario) {
-    const item = glosario[key];
-    const normalizadoTermino = normalizarTexto(item.termino || "");
-    const normalizadoTraduccion = normalizarTexto(item.traduccion || "");
-    if (normalizadoTermino === termino || normalizadoTraduccion === termino) {
-      entrada = item;
-      terminoReal = item.termino;
+
+  let resultadoExacto = null;
+  let sugerencias = [];
+
+  for (let clave in glosario) {
+    const entrada = glosario[clave];
+    const claveNorm = normalizarTexto(clave);
+    const traduccionNorm = entrada.traduccion ? normalizarTexto(entrada.traduccion) : "";
+
+    if (claveNorm === terminoBuscado || traduccionNorm === terminoBuscado) {
+      resultadoExacto = entrada;
+      ultimaBusqueda = clave;
       break;
     }
-  }
-  resultado.classList.remove("animado");
-  void resultado.offsetWidth;
-  resultado.classList.add("animado");
-  if (!entrada) {
-    resultado.innerHTML = "⚠️ Término no encontrado.";
-    return;
-  }
 
-  document.getElementById("termino").value = entrada.termino || terminoReal;
-  ultimaBusqueda = entrada.termino || terminoReal;
-
-  let html = `<div class="resultado-flex"><div class="bloque-texto">`;
-  html += `<div class="titulo-resultado">${entrada.termino || terminoReal}</div>`;
-  if ((entrada.tipo_termino || "").toLowerCase() === "abreviatura") {
-    html += `<p><strong>Traducción:</strong><br><span class="italic">${entrada.traduccion || "-"}</span></p>`;
-  } else {
-    if (entrada.traduccion) html += `<p><strong>Traducción:</strong> <span class="italic">${entrada.traduccion}</span></p>`;
-    if (entrada.pronunciacion) html += `<p><strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion}</span></p>`;
-    if (entrada.categoria) html += `<p><strong>Categoría:</strong> ${entrada.categoria}</p>`;
-    if (entrada.definicion) html += `<p><strong>Definición:</strong><br>${entrada.definicion}</p>`;
-    if (entrada.sinonimos) {
-      const sin = entrada.sinonimos.split(",").map(s => `<span class="etiqueta">${s.trim()}</span>`).join(" ");
-      html += `<p><strong>Sinónimos:</strong><br><div class="sinonimos">${sin}</div></p>`;
+    if (
+      claveNorm.includes(terminoBuscado) ||
+      traduccionNorm.includes(terminoBuscado)
+    ) {
+      sugerencias.push(clave);
     }
   }
-  html += `</div></div>`;
-  resultado.innerHTML = html;
+
+  if (resultadoExacto) {
+    const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = resultadoExacto;
+    resultadoDiv.innerHTML = `
+      <h3>${ultimaBusqueda}</h3>
+      ${traduccion ? `<p><strong>Traducción:</strong> ${traduccion}</p>` : ""}
+      ${pronunciacion ? `<p><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
+      ${categoria ? `<p><strong>Categoría:</strong> ${categoria}</p>` : ""}
+      ${definicion ? `<p><strong>Definición:</strong> ${definicion}</p>` : ""}
+      ${sinonimos ? `<p><strong>Sinónimos:</strong> ${sinonimos}</p>` : ""}
+      ${tipo_termino ? `<p><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+      ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="img-instrumento">` : ""}
+    `;
+    sugerenciaDiv.innerHTML = "";
+  } else {
+    resultadoDiv.innerText = "❌ No se encontró el término.";
+    if (sugerencias.length > 0) {
+      sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p><ul>` + sugerencias.map(s => `<li>${s}</li>`).join("") + `</ul>`;
+    } else {
+      sugerenciaDiv.innerHTML = "";
+    }
+  }
 }
+
 
 async function enviarSugerenciaTermino() {
   const texto = document.getElementById("sugerencia-input").value.trim();
