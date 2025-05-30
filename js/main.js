@@ -143,17 +143,23 @@ function buscar() {
   let entrada = glosario[termino];
   let terminoReal = entrada ? termino : null;
   
-  // Si no se encuentra directamente por clave, busca por "Traducción"
+  // Si no se encuentra por clave, buscar en "Traducción" parcial
   if (!entrada) {
     for (const key in glosario) {
-      const normalizadoTraduccion = normalizarTexto(glosario[key]["Traducción"] || "");
-      if (normalizadoTraduccion === termino) {
+      const claveNormalizada = normalizarTexto(key);
+      const traduccionNormalizada = normalizarTexto(glosario[key]["Traducción"] || "");
+      const terminoBuscado = normalizarTexto(terminoInput.value.trim());
+  
+      if (
+        claveNormalizada.includes(terminoBuscado) ||
+        traduccionNormalizada.includes(terminoBuscado)
+      ) {
         entrada = glosario[key];
         terminoReal = key;
-        break;
+        break; // solo mostramos la primera coincidencia exacta
       }
     }
-  }
+  }  
   
   // Mostrar nombre visible en campo de búsqueda
   if (entrada) {
