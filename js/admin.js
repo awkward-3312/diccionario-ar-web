@@ -131,13 +131,24 @@ function generarPaginacion() {
   const paginacion = document.getElementById("paginacion");
   paginacion.innerHTML = "";
 
+  const mostrarRango = 3; // cantidad de páginas visibles
+  const inicio = Math.max(1, paginaActual - 1);
+  const fin = Math.min(totalPaginas, inicio + mostrarRango - 1);
+
+  if (paginaActual > 1) {
+    const btnInicio = document.createElement("button");
+    btnInicio.textContent = "Inicio";
+    btnInicio.onclick = () => mostrarPagina(1);
+    paginacion.appendChild(btnInicio);
+  }
+
   const btnAnterior = document.createElement("button");
-  btnAnterior.innerHTML = "&lt;";
+  btnAnterior.innerHTML = "<";
   btnAnterior.disabled = paginaActual === 1;
   btnAnterior.onclick = () => mostrarPagina(paginaActual - 1);
   paginacion.appendChild(btnAnterior);
 
-  for (let i = 1; i <= totalPaginas; i++) {
+  for (let i = inicio; i <= fin; i++) {
     const btn = document.createElement("button");
     btn.textContent = i;
     btn.onclick = () => mostrarPagina(i);
@@ -149,10 +160,17 @@ function generarPaginacion() {
   }
 
   const btnSiguiente = document.createElement("button");
-  btnSiguiente.innerHTML = "&gt;";
+  btnSiguiente.innerHTML = ">";
   btnSiguiente.disabled = paginaActual === totalPaginas;
   btnSiguiente.onclick = () => mostrarPagina(paginaActual + 1);
   paginacion.appendChild(btnSiguiente);
+
+  if (paginaActual < totalPaginas) {
+    const btnFinal = document.createElement("button");
+    btnFinal.textContent = "Final";
+    btnFinal.onclick = () => mostrarPagina(totalPaginas);
+    paginacion.appendChild(btnFinal);
+  }
 }
 
 // === EDITAR ===
@@ -181,10 +199,10 @@ async function editarFila(id) {
   ocultarLoader();
 
   if (error) {
-    alert("❌ Error al editar");
+    mostrarPopup("❌ Error al editar");
     console.error(error);
   } else {
-    alert("✅ Término actualizado exitosamente.");
+    mostrarPopup("✅ Término actualizado exitosamente.");
     cargarDatos();
   }
 }
@@ -201,10 +219,10 @@ async function eliminarFila(id) {
   ocultarLoader();
 
   if (error) {
-    alert("❌ Error al eliminar");
+    mostrarPopup("❌ Error al eliminar");
     console.error(error);
   } else {
-    alert("🗑️ Término eliminado correctamente.");
+    mostrarPopup("🗑️ Término eliminado correctamente.");
     cargarDatos();
   }
 }
