@@ -361,3 +361,33 @@ if ('serviceWorker' in navigator) {
 window.buscar = buscar;
 window.limpiarBusqueda = limpiarBusqueda;
 window.actualizarGlosario = actualizarGlosario;
+
+async function enviarSugerenciaTermino(terminoActual) {
+  const texto = document.getElementById("sugerencia-input").value.trim();
+  const apodo = document.getElementById("apodo-input").value.trim();
+  const mensaje = document.getElementById("mensaje-sugerencia");
+
+  if (!texto) {
+    mensaje.innerHTML = "<div class='error'>⚠️ Escribe tu sugerencia antes de enviar.</div>";
+    return;
+  }
+
+  const fecha = new Date().toISOString();
+
+  const { error } = await supabase.from("sugerencias").insert([{
+    termino: terminoActual,
+    sugerencia: texto,
+    apodo: apodo || null,
+    estado: "pendiente",
+    fecha_sugerida: fecha
+  }]);
+
+  if (error) {
+    console.error(error);
+    mensaje.innerHTML = "<div class='error'>❌ Error al enviar sugerencia.</div>";
+  } else {
+    mensaje.innerHTML = "<div class='mensaje'>✅ ¡Gracias por tu sugerencia!</div>";
+    document.getElementById("sugerencia-input").value = "";
+    document.getElementById("apodo-input").value = "";
+  }
+}
