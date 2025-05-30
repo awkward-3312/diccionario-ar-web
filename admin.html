@@ -13,7 +13,9 @@
   <div id="loginPanel" class="ventana">
     <img src="img/sparkie.png" alt="Sparkie" class="avatar">
     <h2>Acceso Administrativo</h2>
-    <form onsubmit="verificarClave(); return false;">
+
+    <!-- ✅ FORMULARIO actualizado para capturar submit con Enter -->
+    <form id="formLogin">
       <div class="input-group">
         <input type="email" id="correo" placeholder="Correo del administrador" required />
       </div>
@@ -70,5 +72,16 @@
       <div id="paginacion"></div>
     </main>
   </div>
+
+  <script>
+    // ✅ Capturar envío con Enter
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("formLogin");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        verificarClave(); // Usa tu función ya definida
+      });
+    });
+  </script>
 </body>
 </html>
