@@ -78,18 +78,19 @@ function buscar() {
   const termino = normalizarTexto(input);
   const resultadoDiv = document.getElementById("resultado");
   resultadoDiv.innerHTML = "";
-  let resultados = [];
+  const resultados = [];
 
   for (const clave in glosario) {
-    const normalizadoClave = normalizarTexto(clave);
     const entrada = glosario[clave];
-    const normalizadoEsp = normalizarTexto(entrada.espanol || "");
-    const normalizadoIng = normalizarTexto(entrada.ingles || "");
+
+    const claveNorm = normalizarTexto(clave);
+    const espNorm = entrada.espanol ? normalizarTexto(entrada.espanol) : "";
+    const ingNorm = entrada.ingles ? normalizarTexto(entrada.ingles) : "";
 
     if (
-      normalizadoClave.includes(termino) ||
-      normalizadoEsp.includes(termino) ||
-      normalizadoIng.includes(termino)
+      claveNorm.includes(termino) ||
+      espNorm.includes(termino) ||
+      ingNorm.includes(termino)
     ) {
       resultados.push({ clave, entrada });
     }
@@ -101,21 +102,20 @@ function buscar() {
   }
 
   resultados.forEach(({ clave, entrada }) => {
-    const card = document.createElement("div");
-    card.classList.add("tarjeta-resultado");
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("tarjeta-resultado");
 
-    const titulo = entrada.espanol && entrada.ingles
-      ? `<h2>${entrada.espanol} / ${entrada.ingles}</h2>`
-      : `<h2>${clave}</h2>`;
-
-    card.innerHTML = `
-      ${titulo}
+    tarjeta.innerHTML = `
+      <h2>${clave}</h2>
+      ${entrada.espanol ? `<p><strong>Español:</strong> ${entrada.espanol}</p>` : ""}
+      ${entrada.ingles ? `<p><strong>Inglés:</strong> ${entrada.ingles}</p>` : ""}
       ${entrada.pronunciacion ? `<p><strong>Pronunciación:</strong> ${entrada.pronunciacion}</p>` : ""}
       ${entrada.categoria ? `<p><strong>Categoría:</strong> ${entrada.categoria}</p>` : ""}
       ${entrada.definicion ? `<p><strong>Definición:</strong> ${entrada.definicion}</p>` : ""}
       ${entrada.sinonimos ? `<p><strong>Sinónimos:</strong> ${entrada.sinonimos}</p>` : ""}
     `;
-    resultadoDiv.appendChild(card);
+
+    resultadoDiv.appendChild(tarjeta);
   });
 }
 
@@ -141,10 +141,10 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Exponer funciones globalmente para index.html
+// ✅ Exponer funciones globales para evitar error de referencia
 window.buscar = buscar;
 window.limpiarBusqueda = limpiarBusqueda;
 window.actualizarGlosario = actualizarGlosario;
 
-// Inicialización
+// ✅ Inicialización al cargar
 abrirBaseDatos();
