@@ -11,9 +11,6 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- ✅ Google reCAPTCHA Enterprise v3 -->
-  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26"></script>
 </head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
@@ -50,9 +47,6 @@
       <input type="text" id="sinonimos" placeholder="Sinónimos (separados por coma)" style="display:none" />
       <input type="text" id="imagen" placeholder="Nombre o URL de imagen" style="display:none" />
 
-      <!-- ✅ TOKEN reCAPTCHA oculto -->
-      <input type="hidden" id="recaptcha-token" name="recaptcha-token" />
-
       <div id="loader" style="display:none;"><span></span><span></span><span></span></div>
 
       <button type="submit" id="btnGuardar"><i class="fas fa-save"></i> Guardar</button>
@@ -79,22 +73,6 @@
         document.body.classList.add("light-mode");
         document.getElementById("icono-modo").className = "fas fa-sun";
       }
-
-      // ✅ Interceptar envío y agregar token de reCAPTCHA
-      const form = document.getElementById("formulario");
-      const btn = document.getElementById("btnGuardar");
-
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        grecaptcha.enterprise.ready(async () => {
-          const token = await grecaptcha.enterprise.execute('6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26', {action: 'AGREGAR_TERMINO'});
-          document.getElementById("recaptcha-token").value = token;
-
-          // Ahora sí, enviar el formulario
-          form.submit();
-        });
-      });
     });
   </script>
 </body>
