@@ -177,18 +177,30 @@ async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
   if (!fila) return alert("ID no encontrado");
 
-  const actualizado = {
-    termino: prompt("Término:", fila.termino)?.trim() || null,
-    traduccion: prompt("Traducción:", fila.traduccion)?.trim() || null,
-    pronunciacion: prompt("Pronunciación:", fila.pronunciacion)?.trim() || null,
-    categoria: prompt("Categoría:", fila.categoria)?.trim() || null,
-    definicion: prompt("Definición:", fila.definicion)?.trim() || null,
-    sinonimos: prompt("Sinónimos:", fila.sinonimos)?.trim() || null,
-    tipo_termino: prompt("Tipo de término:", fila.tipo_termino)?.trim() || null,
-    forma_farmaceutica: prompt("Forma farmacéutica:", fila.forma_farmaceutica)?.trim() || null,
-    imagen: prompt("URL de la imagen:", fila.imagen)?.trim() || null,
-    fecha_agregado: new Date().toISOString()
-  };  
+  const campos = [
+    "termino", "traduccion", "pronunciacion", "categoria", "definicion",
+    "sinonimos", "tipo_termino", "forma_farmaceutica", "imagen"
+  ];
+
+  const actualizado = {};
+  let hayCambios = false;
+
+  for (const campo of campos) {
+    const valorOriginal = fila[campo] || "";
+    const nuevoValor = prompt(`Editar ${campo.replace("_", " ")}:`, valorOriginal) ?? valorOriginal;
+
+    if (nuevoValor !== valorOriginal) {
+      actualizado[campo] = nuevoValor;
+      hayCambios = true;
+    }
+  }
+
+  if (!hayCambios) {
+    mostrarPopup("⚠️ No se realizaron cambios.", false);
+    return;
+  }
+
+  actualizado.fecha_agregado = new Date().toISOString();
 
   mostrarLoader();
   const { data, error } = await client
@@ -201,8 +213,6 @@ async function editarFila(id) {
   if (error) {
     mostrarPopup("❌ Error al editar", false);
     console.error(error);
-  } else if (!data || data.length === 0) {
-    mostrarPopup("⚠️ No se realizaron cambios.", false);
   } else {
     mostrarPopup("✅ Término actualizado exitosamente.");
     await cargarDatos();
