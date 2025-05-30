@@ -132,26 +132,44 @@ async function cargarDatos() {
 }
 
 // === PAGINACIÓN ===
-function mostrarPagina(numero) {
-  paginaActual = numero;
-  const inicio = (numero - 1) * filasPorPagina;
+function mostrarPagina(nro) {
+  paginaActual = nro;
+
+  const inicio = (nro - 1) * filasPorPagina;
   const fin = inicio + filasPorPagina;
-  const paginaFilas = todasLasFilas.slice(inicio, fin);
-
   tbody.innerHTML = "";
-  paginaFilas.forEach(f => tbody.appendChild(f));
+  todasLasFilas.slice(inicio, fin).forEach(f => tbody.appendChild(f));
 
+  const totalPaginas = Math.ceil(todasLasFilas.length / filasPorPagina);
   const paginacion = document.getElementById("paginacion");
   paginacion.innerHTML = "";
 
-  const totalPaginas = Math.ceil(todasLasFilas.length / filasPorPagina);
+  const crearBoton = (texto, numero, deshabilitado = false) => {
+    const btn = document.createElement("button");
+    btn.textContent = texto;
+    btn.disabled = deshabilitado;
+    if (!deshabilitado) btn.onclick = () => mostrarPagina(numero);
+    paginacion.appendChild(btn);
+  };
+
+  // Botón anterior
+  crearBoton("<", paginaActual - 1, paginaActual === 1);
+
+  // Botones de página
   for (let i = 1; i <= totalPaginas; i++) {
     const btn = document.createElement("button");
     btn.textContent = i;
-    btn.disabled = i === paginaActual;
-    btn.onclick = () => mostrarPagina(i);
+    if (i === paginaActual) {
+      btn.disabled = true;
+      btn.classList.add("pagina-activa");
+    } else {
+      btn.onclick = () => mostrarPagina(i);
+    }
     paginacion.appendChild(btn);
   }
+
+  // Botón siguiente
+  crearBoton(">", paginaActual + 1, paginaActual === totalPaginas);
 }
 
 // === EDITAR ===
