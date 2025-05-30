@@ -78,11 +78,16 @@ function buscar() {
   const termino = normalizarTexto(input);
   const resultadoDiv = document.getElementById("resultado");
   resultadoDiv.innerHTML = "";
+
+  if (!termino) {
+    resultadoDiv.innerHTML = "<p>Por favor escribe un término para buscar.</p>";
+    return;
+  }
+
   const resultados = [];
 
   for (const clave in glosario) {
     const entrada = glosario[clave];
-
     const claveNorm = normalizarTexto(clave);
     const espNorm = entrada.espanol ? normalizarTexto(entrada.espanol) : "";
     const ingNorm = entrada.ingles ? normalizarTexto(entrada.ingles) : "";
@@ -132,7 +137,7 @@ function actualizarGlosario() {
   }, 3000);
 }
 
-// Registrar service worker
+// Registrar Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceWorker.js')
@@ -141,10 +146,10 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// ✅ Exponer funciones globales para evitar error de referencia
+// ✅ Exportar funciones al scope global (crítico para index.html)
 window.buscar = buscar;
 window.limpiarBusqueda = limpiarBusqueda;
 window.actualizarGlosario = actualizarGlosario;
 
-// ✅ Inicialización al cargar
+// ✅ Iniciar carga de datos
 abrirBaseDatos();
