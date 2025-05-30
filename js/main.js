@@ -162,25 +162,28 @@ function buscar() {
   if (resultadoExacto) {
     const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = resultadoExacto;
     
-resultadoDiv.innerHTML = `
-  <div class="titulo-resultado">${nombre}</div>
-  ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
-  ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
-  ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
-  ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-  ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-  ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
-  ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
-`;
+
+    resultadoDiv.innerHTML = `
+      <div class="titulo-resultado">${ultimaBusqueda}</div>
+      ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
+      ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
+      ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
+      ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
+      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
+      ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+      ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
+    `;
+    
     sugerenciaDiv.innerHTML = "";
   } else {
     
     resultadoDiv.innerText = "❌ No se encontró el término.";
 
     if (sugerencias.length > 0 && sugerenciaDiv) {
-      sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p><div class="sugerencia-botones">` +
-        sugerencias.map(s => `<button onclick="mostrarResultado('${s}')">${s}</button>`).join("") +
-        `</div>`;
+      
+    sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p>` +
+      sugerencias.map(s => `<button onclick="mostrarResultado('${s}')">${s}</button>`).join("");
+    
     } else {
       if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
     }
@@ -257,29 +260,6 @@ window.actualizarGlosario = actualizarGlosario;
 
 
 
-function mostrarResultado(nombre) {
-  const entrada = glosario[normalizarTexto(nombre)];
-  if (!entrada) return;
-
-  const resultadoDiv = document.getElementById("resultado");
-  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = entrada;
-
-  ultimaBusqueda = nombre;
-
-  resultadoDiv.innerHTML = `
-    <div class="titulo-resultado">${nombre}</div>
-    ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
-    ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
-    ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
-    ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
-    ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
-  `;
-
-  const sugerenciaDiv = document.getElementById("sugerencias");
-  if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
-}
 
 function mostrarResultado(nombre) {
   const entrada = glosario[normalizarTexto(nombre)];
@@ -305,3 +285,31 @@ function mostrarResultado(nombre) {
 
   if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
 }
+    
+
+
+function mostrarResultado(nombre) {
+  const entrada = glosario[normalizarTexto(nombre)];
+  if (!entrada) return;
+
+  const resultadoDiv = document.getElementById("resultado");
+  const sugerenciaDiv = document.getElementById("sugerencias");
+
+  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = entrada;
+
+  ultimaBusqueda = nombre;
+
+  resultadoDiv.innerHTML = `
+    <div class="titulo-resultado">${nombre}</div>
+    ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
+    ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
+    ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
+    ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
+    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+    ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
+  `;
+
+  if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
+}
+    
