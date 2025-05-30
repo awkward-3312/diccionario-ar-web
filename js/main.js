@@ -24,271 +24,127 @@ function abrirBaseDatos() {
 
   request.onsuccess = (event) => {
     db = event.target.result;
-    cargarDesdeIndexedDB();
-  };
+    const transaccion = db.transaction(["terminos"], "readonly");
+    const store = transaccion.objectStore("terminos");
+    const getAll = store.getAll();
 
-  request.onupgradeneeded = (event) => {
-    db = event.target.result;
-    db.createObjectStore("terminos", { keyPath: "nombre" });
-  };
-}
-
-function guardarEnIndexedDB(datos) {
-  const tx = db.transaction("terminos", "readwrite");
-  const store = tx.objectStore("terminos");
-  for (let nombre in datos) {
-    const claveNormalizada = normalizarTexto(nombre);
-    const entrada = { ...datos[nombre], nombre: claveNormalizada };
-    store.put(entrada);
-  }
-  tx.oncomplete = () => {
-    glosarioCargado = true;
-    actualizarContador();
-  };
-}
-
-function cargarDesdeIndexedDB() {
-  const tx = db.transaction("terminos", "readonly");
-  const store = tx.objectStore("terminos");
-  store.getAll().onsuccess = (event) => {
-    const datos = event.target.result;
-    if (datos.length > 0) {
-      datos.forEach(e => {
-        const clave = normalizarTexto(e.nombre);
-        glosario[clave] = e;
+    getAll.onsuccess = () => {
+      glosario = {};
+      getAll.result.forEach(entrada => {
+        glosario[entrada.termino] = entrada;
       });
       glosarioCargado = true;
       actualizarContador();
-    } else {
-      cargarGlosario(true);
-    }
+    };
+  };
+
+  request.onupgradeneeded = (event) => {
+    const db = event.target.result;
+    db.createObjectStore("terminos", { keyPath: "termino" });
   };
 }
 
-function cargarGlosario(guardarLocal = false) {
-  fetch(URL).then(res => res.json()).then(data => {
-    glosario = {};
-    for (let nombre in data) {
-      const clave = normalizarTexto(nombre);
-      glosario[clave] = data[nombre];
-    }
-    if (guardarLocal && db) guardarEnIndexedDB(glosario);
-    actualizarContador();
-  }).catch(err => console.error("Error al cargar glosario:", err));
-}
-
-function mostrarNotificacion(mensaje) {
-  const popup = document.getElementById("popupNotificacion");
-  const texto = document.getElementById("popupTexto");
-
-  if (popup && texto) {
-    texto.textContent = mensaje;
-    popup.classList.remove("oculto");
-    setTimeout(() => popup.classList.add("oculto"), 3000);
-  }
-}
-
-function actualizarGlosario() {
-  if (navigator.onLine && db) {
-    cargarGlosario(true);
-    const ahora = new Date().toLocaleString();
-    localStorage.setItem("ultimaActualizacion", ahora);
-    document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ahora;
-    mostrarNotificacion("Glosario actualizado con éxito.");
-  } else {
-    mostrarNotificacion("⚠️ No hay conexión o base de datos disponible.");
-  }
+function cargarGlosario() {
+  fetch(URL)
+    .then(res => res.json())
+    .then(data => {
+      glosario = data;
+      if (db) {
+        const transaccion = db.transaction(["terminos"], "readwrite");
+        const store = transaccion.objectStore("terminos");
+        store.clear();
+        for (const termino in data) {
+          const entrada = { termino, ...data[termino] };
+          store.put(entrada);
+        }
+      }
+      glosarioCargado = true;
+      actualizarContador();
+    })
+    .catch(err => {
+      console.error("Error al cargar glosario:", err);
+      document.getElementById("estadoConexion").textContent = "⚠️ Error de conexión. Mostrando datos en caché.";
+    });
 }
 
 function actualizarContador() {
+  const contador = document.getElementById("contadorTerminos");
   const total = Object.keys(glosario).length;
-  const contenedor = document.getElementById("contadorTerminos");
-  if (!contenedor) return;
-
-  let nuevos = 0;
-  const ahora = new Date();
-  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
-
-  for (const termino of Object.values(glosario)) {
-    let fechaTexto = termino["fecha_agregado"] || termino["Fecha agregado"] || termino["fechaAgregado"] || "";
-    if (fechaTexto) {
-      const fechaObj = new Date(fechaTexto);
-      if (!isNaN(fechaObj)) {
-        if (fechaObj > limite) nuevos++;
-      }
-    }
-  }
-
-  const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
-  const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
-
-  contenedor.textContent = textoBase + textoNuevos;
+  contador.textContent = `Términos disponibles: ${total}`;
 }
 
 function buscar() {
-  if (!glosarioCargado) return;
-  const terminoInput = document.getElementById("termino");
-  const termino = terminoInput.value.trim().toUpperCase();
-  const resultado = document.getElementById("resultado");
-  const spinner = document.getElementById("spinner");
+  const input = document.getElementById("termino").value.trim();
+  const termino = normalizarTexto(input);
+  const resultadoDiv = document.getElementById("resultado");
+  resultadoDiv.innerHTML = "";
+  let resultados = [];
 
-  if (!termino) {
-    resultado.innerText = "Por favor escribe un término.";
-    return;
-  }
+  for (const clave in glosario) {
+    const normalizadoClave = normalizarTexto(clave);
+    const entrada = glosario[clave];
+    const normalizadoEsp = normalizarTexto(entrada.espanol || "");
+    const normalizadoIng = normalizarTexto(entrada.ingles || "");
 
-  spinner.style.display = "block";
-  setTimeout(() => spinner.style.display = "none", 500);
-
-  let entrada = glosario[termino];
-  let terminoReal = entrada ? termino : null;
-
-  if (entrada) {
-    const nombreVisible = entrada["Término"] || entrada["termino"] || "";
-    document.getElementById("termino").value = nombreVisible;
-  }
-
-  resultado.classList.remove("animado");
-  void resultado.offsetWidth;
-  resultado.classList.add("animado");
-
-  if (!entrada) {
-    resultado.innerHTML = "⚠️ Término no encontrado.";
-    const sugerencias = Object.keys(glosario).filter(key => {
-      const normalClave = normalizarTexto(key);
-      const trad = glosario[key]["Traducción"]
-        ? normalizarTexto(glosario[key]["Traducción"])
-        : "";
-      const inputNormalizado = normalizarTexto(terminoInput.value.trim());
-      return normalClave.includes(inputNormalizado) || trad.includes(inputNormalizado);
-    });
-
-    if (sugerencias.length > 0) {
-      const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
-        const original = glosario[s]["Traducción"] || s;
-        return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
-      }).join(" ");
-      resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
+    if (
+      normalizadoClave.includes(termino) ||
+      normalizadoEsp.includes(termino) ||
+      normalizadoIng.includes(termino)
+    ) {
+      resultados.push({ clave, entrada });
     }
+  }
+
+  if (resultados.length === 0) {
+    resultadoDiv.innerHTML = "<p>No se encontraron resultados.</p>";
     return;
   }
 
-let html = `<div class="resultado-flex">`;
+  resultados.forEach(({ clave, entrada }) => {
+    const card = document.createElement("div");
+    card.classList.add("tarjeta-resultado");
 
-html += `<div class="bloque-texto">`;
-html += `<div class="titulo-resultado">${entrada["Término"] || entrada["termino"] || terminoReal}</div>`;
+    const titulo = entrada.espanol && entrada.ingles
+      ? `<h2>${entrada.espanol} / ${entrada.ingles}</h2>`
+      : `<h2>${clave}</h2>`;
 
-if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
-  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
-} else {
-  html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-  if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
-  if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
-  if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
-  if (entrada["Sinónimos"]) {
-    const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
-    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
-  }
-}
-html += `</div>`; // .bloque-texto
-
-// Mostrar imagen a la derecha
-if (
-  entrada["Instrumento"] &&
-  entrada["Instrumento"].normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase() === "si" &&
-  entrada["Imagen"]
-) {
-  html += `
-    <div class="bloque-imagen">
-      <img src="${entrada["Imagen"].trim()}" alt="Imagen del instrumento" class="imagen-instrumento">
-    </div>
-  `;
-}
-
-html += `</div>`; // .resultado-flex
-
-resultado.innerHTML = html;
+    card.innerHTML = `
+      ${titulo}
+      ${entrada.pronunciacion ? `<p><strong>Pronunciación:</strong> ${entrada.pronunciacion}</p>` : ""}
+      ${entrada.categoria ? `<p><strong>Categoría:</strong> ${entrada.categoria}</p>` : ""}
+      ${entrada.definicion ? `<p><strong>Definición:</strong> ${entrada.definicion}</p>` : ""}
+      ${entrada.sinonimos ? `<p><strong>Sinónimos:</strong> ${entrada.sinonimos}</p>` : ""}
+    `;
+    resultadoDiv.appendChild(card);
+  });
 }
 
 function limpiarBusqueda() {
   document.getElementById("termino").value = "";
-  document.getElementById("resultado").innerText = "Resultado aquí...";
+  document.getElementById("resultado").innerHTML = "Resultado aquí...";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const actualizarBtn = document.getElementById("actualizarBtn");
-  if (actualizarBtn) {
-    actualizarBtn.disabled = true;
-    const esperarDB = setInterval(() => {
-      if (glosarioCargado) {
-        actualizarBtn.disabled = false;
-        actualizarBtn.addEventListener("click", actualizarGlosario);
-        clearInterval(esperarDB);
-      }
-    }, 200);
-  }
+function actualizarGlosario() {
+  cargarGlosario();
+  document.getElementById("notificacion").classList.remove("oculto");
+  setTimeout(() => {
+    document.getElementById("notificacion").classList.add("oculto");
+  }, 3000);
+}
 
-  if (localStorage.getItem("modoClaro") === "1") {
-    document.body.classList.add("light-mode");
-  }
-  const ultima = localStorage.getItem("ultimaActualizacion") || "-";
-  document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
-  abrirBaseDatos();
-
-  const frases = [
-    "¿Qué deseas buscar hoy? 😊",
-    "Descubre un nuevo término técnico 💡",
-    "¿Qué significa ese símbolo raro? 🤔",
-    "¡Explora el glosario! 📚",
-    "Busca abreviaturas, formas, términos… 🧪"
-  ];
-  let index = 0;
-  const input = document.getElementById("termino");
-
-  document.getElementById("btnBuscar")?.addEventListener("click", buscar);
-  document.getElementById("btnLimpiar")?.addEventListener("click", limpiarBusqueda);
-  document.getElementById("btnActualizar")?.addEventListener("click", actualizarGlosario);
-  
-  setInterval(() => {
-    input.setAttribute("placeholder", frases[index]);
-    index = (index + 1) % frases.length;
-  }, 4000);
-  
-  input.addEventListener("input", () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(buscar, 300);
-  });
-  
-  window.addEventListener("load", () => {
-    if (navigator.onLine && db) cargarGlosario(true);
-  });
-
-  // SPARKIE: Ícono flotante + burbuja sugerencia
-  const sparkieBtn = document.createElement("div");
-  sparkieBtn.id = "sparkie-boton";
-  sparkieBtn.title = "Habla con Sparkie";
-  sparkieBtn.innerHTML = `
-    <img src="img/sparkie.png" alt="Sparkie">
-    <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
-  `;
-  document.body.appendChild(sparkieBtn);
-
-  sparkieBtn.addEventListener("click", () => {
-    window.location.href = "chat-sparkie.html";
-  });
-
-  setInterval(() => {
-    const burbuja = document.getElementById("sparkie-burbuja");
-    burbuja.classList.remove("oculto");
-    setTimeout(() => burbuja.classList.add("oculto"), 4000);
-  }, 20000);
-}); // ⬅️ ESTA ES LA LLAVE QUE FALTABA
-
-// ✅ Fuera del DOMContentLoaded
+// Registrar service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceWorker.js')
       .then(reg => console.log('✅ SW registrado:', reg.scope))
-      .catch(err => console.error('❌ Error SW:', err));
+      .catch(err => console.warn('SW falló:', err));
   });
 }
+
+// Exponer funciones globalmente para index.html
+window.buscar = buscar;
+window.limpiarBusqueda = limpiarBusqueda;
+window.actualizarGlosario = actualizarGlosario;
+
+// Inicialización
+abrirBaseDatos();
