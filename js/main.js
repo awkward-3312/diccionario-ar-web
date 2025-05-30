@@ -132,14 +132,9 @@ function buscar() {
 
   const terminoBuscado = normalizarTexto(input.value.trim());
 
-  
-if (!terminoBuscado) {
+  if (!terminoBuscado) {
     resultadoDiv.innerText = "⚠️ Escribe un término para buscar.";
     sugerenciaDiv.innerHTML = ""; // Limpiar sugerencias
-    return;
-}
-
-    resultadoDiv.innerText = "⚠️ Escribe un término para buscar.";
     return;
   }
 
@@ -151,24 +146,25 @@ if (!terminoBuscado) {
     const claveNorm = normalizarTexto(clave);
     const traduccionNorm = entrada.traduccion ? normalizarTexto(entrada.traduccion) : "";
 
-    if (claveNorm === terminoBuscado || traduccionNorm === terminoBuscado) {
-      resultadoExacto = entrada;
-      ultimaBusqueda = clave;
-      break;
-    }
-
-    if (
-      claveNorm.includes(terminoBuscado) ||
-      traduccionNorm.includes(terminoBuscado)
-    ) {
+    if (claveNorm.startsWith(terminoBuscado) || traduccionNorm.startsWith(terminoBuscado)) {
       sugerencias.push(clave);
     }
   }
 
+  // Mostrar solo 4 sugerencias más cercanas
+  sugerencias = sugerencias.slice(0, 4);
+
+  if (sugerencias.length > 0) {
+    sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p>` + 
+      sugerencias.map(s => 
+        `<button class="sugerencia-boton" onclick="mostrarResultado('${s}')">${s}</button>`
+      ).join("");
+  } else {
+    sugerenciaDiv.innerHTML = ""; // Limpiar si no hay sugerencias
+  }
+
   if (resultadoExacto) {
     const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = resultadoExacto;
-    
-
     resultadoDiv.innerHTML = `
       <div class="titulo-resultado">${ultimaBusqueda}</div>
       ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
@@ -179,23 +175,9 @@ if (!terminoBuscado) {
       ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
       ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
     `;
-    
     sugerenciaDiv.innerHTML = "";
-  } else {
-    
-    resultadoDiv.innerText = "❌ No se encontró el término.";
-
-    if (sugerencias.length > 0 && sugerenciaDiv) {
-      
-    sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p>` +
-      sugerencias.map(s => `<button onclick="mostrarResultado('${s}')">${s}</button>`).join("");
-    
-    } else {
-      if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
-    }
-    
-    }
   }
+}
 
 async function enviarSugerenciaTermino() {
   const texto = document.getElementById("sugerencia-input").value.trim();
