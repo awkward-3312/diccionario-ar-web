@@ -1,33 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panel Administrativo - Diccionario AR</title>
-  <link rel="icon" href="favicon-ar.png" type="image/png" />
-  <link rel="stylesheet" href="css/admin.css" />
-
-  <!-- Font Awesome -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - Diccionario AR</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script defer src="js/admin.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Botón modo claro/oscuro -->
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
-    <i class="fas fa-moon" id="icono-modo"></i>
-  </button>
-
-  <!-- LOGIN: tarjeta moderna con Sparkie -->
-  <div class="login-card" id="loginPanel">
-    <div class="avatar-sparkie">
-      <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
-    </div>
-
+  <div id="loginPanel" class="ventana">
+    <img src="img/sparkie.png" alt="Sparkie" class="avatar">
+    <h2>Acceso Administrativo</h2>
     <form onsubmit="verificarClave(); return false;">
       <div class="input-group">
-        <input type="text" value="administrador" readonly aria-label="Usuario" />
+        <input type="email" id="correo" placeholder="Correo del administrador" required />
       </div>
       <div class="input-group">
-        <input type="password" id="clave" placeholder="Ingrese la contraseña" aria-label="Contraseña" />
+        <input type="password" id="clave" placeholder="Ingrese la contraseña" required />
         <button type="button" class="mostrar-toggle" onclick="toggleMostrar()">MOSTRAR</button>
       </div>
       <button type="submit" class="btn-primary"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
@@ -42,21 +33,21 @@
     </form>
   </div>
 
-  <!-- PANEL ADMIN oculto hasta iniciar sesión -->
-  <div class="contenedor" id="adminPanel" style="display: none;">
-    <h1><span class="azul">PANEL</span> <span class="rojo">ADMIN</span></h1>
-    <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
-      <button id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none; background-color:#e74c3c;">
-        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-      </button>
-      <button onclick="window.location.href='index.html'">
-        <i class="fas fa-arrow-left"></i> Volver al inicio
-      </button>
-    </div>
+  <div id="adminPanel" style="display: none">
+    <header class="admin-header">
+      <h1>Panel de Administración</h1>
+      <div class="acciones">
+        <input type="text" id="buscador" oninput="filtrarTabla()" placeholder="Buscar..." />
+        <button id="btnSugerencias" onclick="window.location.href='revisar-sugerencias.html'" style="display:none">
+          <i class="fas fa-lightbulb"></i> Sugerencias
+        </button>
+        <button id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none">
+          <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+        </button>
+      </div>
+    </header>
 
-    <input type="text" id="buscador" placeholder="Buscar por término..." onkeyup="filtrarTabla()" aria-label="Buscar término" />
-
-    <div style="overflow-x: auto;">
+    <main>
       <table id="tablaTerminos">
         <thead>
           <tr>
@@ -69,45 +60,15 @@
             <th>Sinónimos</th>
             <th>Tipo de término</th>
             <th>Forma farmacéutica</th>
-            <th>Instrumento</th>
             <th>Imagen</th>
             <th>Fecha agregado</th>
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr><td colspan="13">Cargando términos...</td></tr>
-        </tbody>
+        <tbody></tbody>
       </table>
-    </div>
-
-    <div id="paginacion" style="text-align:center; margin-top:20px;"></div>
+      <div id="paginacion"></div>
+    </main>
   </div>
-
-  <!-- Botón fijo para sugerencias -->
-  <button id="btnSugerencias" class="btn-fijo-sugerencias" style="display:none;" onclick="window.location.href='revisar-sugerencias.html'">
-    <i class="fas fa-envelope-open-text"></i> Ver sugerencias
-  </button>
-
-  <!-- JS principal -->
-  <script src="js/admin.js"></script>
-
-  <!-- Modo claro/oscuro y cambio de icono -->
-  <script>
-    function toggleModo() {
-      const body = document.body;
-      const icono = document.getElementById("icono-modo");
-      const esClaro = body.classList.toggle("light-mode");
-      icono.className = esClaro ? "fas fa-sun" : "fas fa-moon";
-      localStorage.setItem("modoClaro", esClaro ? "1" : "0");
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("modoClaro") === "1") {
-        document.body.classList.add("light-mode");
-        document.getElementById("icono-modo").className = "fas fa-sun";
-      }
-    });
-  </script>
 </body>
 </html>
