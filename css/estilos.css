@@ -592,3 +592,21 @@ body {
 .oculto {
   display: none !important;
 }
+
+#btn-sugerir {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #ff5c39;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+#btn-sugerir:hover {
+  background-color: #e14b2f;
+}
