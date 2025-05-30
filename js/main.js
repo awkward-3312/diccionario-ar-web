@@ -225,16 +225,6 @@ function buscar() {
   }
 
   html += `</div>`; // .resultado-flex
-  html += `
-  <div class="formulario-sugerencia">
-    <hr>
-    <h3>¿Tienes una sugerencia sobre este término?</h3>
-    <textarea id="sugerencia-input" placeholder="Escribe tu sugerencia..."></textarea>
-    <input id="apodo-input" placeholder="Tu apodo (opcional)" />
-    <button onclick="enviarSugerenciaTermino('${entrada.termino || terminoReal}')">Enviar sugerencia</button>
-    <div id="mensaje-sugerencia"></div>
-  </div>
-`;
 
 resultado.innerHTML = html;
 }
