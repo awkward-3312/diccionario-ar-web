@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // tu key
   const client = window.supabase.createClient(supabaseUrl, supabaseKey);
 
   function mostrarCampos() {
@@ -56,69 +56,68 @@ window.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('formulario').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const captchaToken = document.getElementById("recaptcha-token").value;
-    if (!captchaToken) {
-      mostrarPopup("❌ No se pudo verificar el captcha. Intenta de nuevo.", false);
-      return;
-    }
-
     toggleLoader(true);
 
-    const tipo = document.getElementById('tipo').value;
-    const termino = document.getElementById('termino').value.trim();
-    const traduccion = document.getElementById('traduccion').value.trim();
-    const pronunciacion = document.getElementById('pronunciacion').value.trim();
-    const categoria = document.getElementById('categoria').value.trim();
-    const definicion = document.getElementById('definicion').value.trim();
-    const sinonimos = document.getElementById('sinonimos').value.trim();
-    const forma = document.getElementById('formaFarmaceutica').value.trim();
-    const imagen = document.getElementById('imagen').value.trim();
+    // ✅ Generar token nuevo justo antes de insertar
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26', { action: 'AGREGAR_TERMINO' });
+      if (!token) {
+        toggleLoader(false);
+        mostrarPopup("❌ No se pudo verificar el captcha. Intenta de nuevo.", false);
+        return;
+      }
 
-    const registro = {
-      termino,
-      traduccion: traduccion || null,
-      tipo_termino:
-        tipo === 'termino' ? 'Término' :
-        tipo === 'abreviatura' ? 'Abreviatura' :
-        tipo === 'forma' ? 'Forma farmacéutica' :
-        'Instrumento',
-      fecha_agregado: new Date().toISOString()
-    };
+      // ✔️ Recolectar datos del formulario
+      const tipo = document.getElementById('tipo').value;
+      const termino = document.getElementById('termino').value.trim();
+      const traduccion = document.getElementById('traduccion').value.trim();
+      const pronunciacion = document.getElementById('pronunciacion').value.trim();
+      const categoria = document.getElementById('categoria').value.trim();
+      const definicion = document.getElementById('definicion').value.trim();
+      const sinonimos = document.getElementById('sinonimos').value.trim();
+      const forma = document.getElementById('formaFarmaceutica').value.trim();
+      const imagen = document.getElementById('imagen').value.trim();
 
-    if (tipo === 'termino') {
-      registro.pronunciacion = pronunciacion || null;
-      registro.categoria = categoria || null;
-      registro.definicion = definicion || null;
-      registro.sinonimos = sinonimos || null;
-    }
+      const registro = {
+        termino,
+        traduccion: traduccion || null,
+        tipo_termino:
+          tipo === 'termino' ? 'Término' :
+          tipo === 'abreviatura' ? 'Abreviatura' :
+          tipo === 'forma' ? 'Forma farmacéutica' :
+          'Instrumento',
+        fecha_agregado: new Date().toISOString()
+      };
 
-    if (tipo === 'forma') {
-      registro.forma_farmaceutica = forma || null;
-    }
+      if (tipo === 'termino') {
+        registro.pronunciacion = pronunciacion || null;
+        registro.categoria = categoria || null;
+        registro.definicion = definicion || null;
+        registro.sinonimos = sinonimos || null;
+      }
 
-    if (tipo === 'instrumento') {
-      registro.imagen = imagen || null;
-    }
+      if (tipo === 'forma') {
+        registro.forma_farmaceutica = forma || null;
+      }
 
-    if ('id' in registro) delete registro.id;
+      if (tipo === 'instrumento') {
+        registro.imagen = imagen || null;
+      }
 
-    const { id, ...registroLimpio } = registro;
-    console.log("📤 Registro limpio a insertar:", JSON.stringify(registroLimpio, null, 2));
+      const { error } = await client
+        .from('base_datos')
+        .insert([registro]);
 
-    const { error } = await client
-      .from('base_datos')
-      .insert([registroLimpio]);
+      toggleLoader(false);
 
-    toggleLoader(false);
-
-    if (error) {
-      console.error('❌ Error Supabase:', error);
-      mostrarPopup('❌ Error al guardar: ' + error.message, false);
-    } else {
-      mostrarPopup('✅ Término agregado correctamente');
-      e.target.reset();
-      mostrarCampos();
-    }
+      if (error) {
+        console.error('❌ Error Supabase:', error);
+        mostrarPopup('❌ Error al guardar: ' + error.message, false);
+      } else {
+        mostrarPopup('✅ Término agregado correctamente');
+        e.target.reset();
+        mostrarCampos();
+      }
+    });
   });
 });
