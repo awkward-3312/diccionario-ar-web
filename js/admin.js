@@ -1,7 +1,7 @@
 // === CONFIGURACIÓN SUPABASE ===
 const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const client = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let todasLasFilas = [];
 let datosCrudos = [];
@@ -42,7 +42,7 @@ async function verificarClave() {
   const correo = document.getElementById("correo").value.trim();
   const clave = document.getElementById("clave").value;
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await client.auth.signInWithPassword({
     email: correo,
     password: clave
   });
@@ -58,7 +58,7 @@ async function verificarClave() {
 }
 
 async function cerrarSesion() {
-  await supabase.auth.signOut();
+  await client.auth.signOut();
   localStorage.removeItem("adminAutenticado");
   location.reload();
 }
@@ -75,7 +75,7 @@ function mostrarPanel() {
 // === CARGAR TERMINOS ===
 async function cargarDatos() {
   mostrarLoader();
-  const { data, error } = await supabase
+  const { data, error } = await client
     .from('base_datos')
     .select('*')
     .order('Fecha Agregado', { ascending: false });
@@ -174,7 +174,7 @@ async function editarFila(id) {
   };
 
   mostrarLoader();
-  const { error } = await supabase
+  const { error } = await client
     .from('base_datos')
     .update(actualizado)
     .eq('id', id);
@@ -194,7 +194,7 @@ async function eliminarFila(id) {
   if (!confirm("¿Seguro que deseas eliminar este término?")) return;
 
   mostrarLoader();
-  const { error } = await supabase
+  const { error } = await client
     .from('base_datos')
     .delete()
     .eq('id', id);
