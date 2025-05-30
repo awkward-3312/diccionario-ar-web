@@ -292,3 +292,7 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
+
+window.buscar = buscar;
+window.limpiarBusqueda = limpiarBusqueda;
+window.actualizarGlosario = actualizarGlosario;
