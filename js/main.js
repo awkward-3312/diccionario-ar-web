@@ -68,25 +68,23 @@ function cargarDesdeIndexedDB() {
 }
 
 async function cargarGlosario(guardarLocal = false) {
-  try {
-    const { data, error } = await supabase
-      .from('base_datos') // nombre exacto de la tabla en Supabase
-      .select('*');
+  const { data, error } = await supabase
+    .from('base_datos') // nombre exacto de la tabla en Supabase
+    .select('*');
 
-    if (error) throw error;
-
-    glosario = {};
-    data.forEach(item => {
-      const clave = normalizarTexto(item["Término"] || item["termino"]);
-      glosario[clave] = item;
-    });
-
-    if (guardarLocal && db) guardarEnIndexedDB(glosario);
-    actualizarContadorDesdeSupabase(); // 👈 se actualiza desde Supabase, no desde glosario
-
-  } catch (error) {
+  if (error) {
     console.error("❌ Error al cargar desde Supabase:", error);
+    return;
   }
+
+  glosario = {};
+  data.forEach(item => {
+    const clave = normalizarTexto(item["Término"] || item["termino"]);
+    glosario[clave] = item;
+  });
+
+  if (guardarLocal && db) guardarEnIndexedDB(glosario);
+  actualizarContador();
 }
 
 function mostrarNotificacion(mensaje) {
@@ -112,41 +110,29 @@ function actualizarGlosario() {
   }
 }
 
-// ✅ NUEVA función que reemplaza actualizarContador anterior, pero usando Supabase
-async function actualizarContadorDesdeSupabase() {
-  try {
-    const { data, error } = await supabase
-      .from("base_datos")
-      .select("id, fecha_agregado");
+function actualizarContador() {
+  const total = Object.keys(glosario).length;
+  const contenedor = document.getElementById("contadorTerminos");
+  if (!contenedor) return;
 
-    if (error) throw error;
+  let nuevos = 0;
+  const ahora = new Date();
+  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
 
-    const total = data.length;
-    let nuevos = 0;
-    const ahora = new Date();
-    const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // últimos 8 horas
-
-    for (const item of data) {
-      const fechaTexto = item["fecha_agregado"] || item["Fecha agregado"] || item["fechaAgregado"];
-      if (fechaTexto) {
-        const fechaObj = new Date(fechaTexto);
-        if (!isNaN(fechaObj) && fechaObj > limite) {
-          nuevos++;
-        }
+  for (const termino of Object.values(glosario)) {
+    let fechaTexto = termino["fecha_agregado"] || termino["Fecha agregado"] || termino["fechaAgregado"] || "";
+    if (fechaTexto) {
+      const fechaObj = new Date(fechaTexto);
+      if (!isNaN(fechaObj)) {
+        if (fechaObj > limite) nuevos++;
       }
     }
-
-    const contenedor = document.getElementById("contadorTerminos");
-    if (!contenedor) return;
-
-    const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
-    const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
-
-    contenedor.textContent = textoBase + textoNuevos;
-
-  } catch (err) {
-    console.error("❌ Error al contar términos desde Supabase:", err);
   }
+
+  const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
+  const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
+
+  contenedor.textContent = textoBase + textoNuevos;
 }
 
 function buscar() {
