@@ -152,11 +152,11 @@ function buscar() {
     }
 
     if (
-      claveNorm.includes(terminoBuscado) ||
-      traduccionNorm.includes(terminoBuscado)
+      claveNorm.startsWith(terminoBuscado) ||
+      traduccionNorm.startsWith(terminoBuscado)
     ) {
       sugerencias.push(clave);
-    }
+    }    
   }
 
   if (resultadoExacto) {
