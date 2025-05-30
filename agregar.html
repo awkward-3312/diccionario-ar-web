@@ -11,6 +11,9 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ✅ Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
@@ -46,6 +49,9 @@
       <textarea id="definicion" placeholder="Definición" style="display:none"></textarea>
       <input type="text" id="sinonimos" placeholder="Sinónimos (separados por coma)" style="display:none" />
       <input type="text" id="imagen" placeholder="Nombre o URL de imagen" style="display:none" />
+
+      <!-- ✅ CAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26" style="margin-top: 20px;"></div>
 
       <div id="loader" style="display:none;"><span></span><span></span><span></span></div>
 
