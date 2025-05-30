@@ -268,39 +268,39 @@ document.addEventListener("DOMContentLoaded", () => {
   let index = 0;
   const input = document.getElementById("termino");
 
-  document.getElementById("btnBuscar")?.addEventListener("click", buscar);
-  document.getElementById("btnLimpiar")?.addEventListener("click", limpiarBusqueda);
-  document.getElementById("btnActualizar")?.addEventListener("click", actualizarGlosario);
-  
-  setInterval(() => {
-    input.setAttribute("placeholder", frases[index]);
-    index = (index + 1) % frases.length;
-  }, 4000);
-  
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
-      const texto = input.value.trim().toUpperCase();
+      const termino = input.value.trim().toUpperCase();
       const resultado = document.getElementById("resultado");
+
+      if (!termino) {
+        resultado.innerText = "Resultado aquí...";
+        return;
+      }
+
       const sugerencias = Object.keys(glosario).filter(key => {
         const claveNorm = normalizarTexto(key);
         const tradNorm = normalizarTexto(glosario[key]["Traducción"] || "");
-        return (
-          claveNorm.includes(normalizarTexto(texto)) ||
-          tradNorm.includes(normalizarTexto(texto))
-        );
+        const inputNorm = normalizarTexto(termino);
+        return claveNorm.includes(inputNorm) || tradNorm.includes(inputNorm);
       });
 
-      if (texto && sugerencias.length > 0) {
-        let sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
-          const original = glosario[s]["Traducción"] || s;
+      if (sugerencias.length > 0) {
+        const sugerenciaHTML = sugerencias.slice(0, 5).map(s => {
+          const original = glosario[s]["Término"] || glosario[s]["Traducción"] || s;
           return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
         }).join(" ");
-        resultado.innerHTML = `<br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
+        resultado.innerHTML = `<em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
       } else {
-        resultado.innerHTML = "Resultado aquí...";
+        resultado.innerHTML = "⚠️ Término no encontrado.";
       }
     }, 300);
+  });
+  
+  input.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(buscar, 300);
   });
   
   window.addEventListener("load", () => {
