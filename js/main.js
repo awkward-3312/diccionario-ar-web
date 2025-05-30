@@ -164,18 +164,16 @@ function buscar() {
   }
 
   if (resultadoExacto) {
-    const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = resultadoExacto;
+    const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, imagen } = resultadoExacto;
     resultadoDiv.innerHTML = `
-  <div class="resultado-flex"><div class="bloque-texto">
       <div class="titulo-resultado">${ultimaBusqueda}</div>
       ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
       ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
       ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
       ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo =>
-  `<button class="sinonimo-boton">${sinonimo.trim()}</button>`).join('') + `</div>` : ""}
-      ${tipo_termino ? "" : ""}
-      ${instrumentos ? `</div><div class="bloque-imagen"><img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento"></div></div>` : `</div></div>`}
+      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(s => `<span>${s.trim()}</span>`).join('') + `</div>` : ""}
+      ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+      ${imagen ? `<img src="img/imagen/${imagen}.png" alt="${imagen}" class="imagen-instrumento">` : ""}
     `;
     sugerenciaDiv.innerHTML = "";
   }
@@ -258,21 +256,19 @@ function mostrarResultado(nombre) {
   const resultadoDiv = document.getElementById("resultado");
   const sugerenciaDiv = document.getElementById("sugerencias");
 
-  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = entrada;
+  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, imagen } = entrada;
 
   ultimaBusqueda = nombre;
 
   resultadoDiv.innerHTML = `
-  <div class="resultado-flex"><div class="bloque-texto">
     <div class="titulo-resultado">${nombre}</div>
     ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
     ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
     ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
     ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo =>
-  `<button class="sinonimo-boton">${sinonimo.trim()}</button>`).join('') + `</div>` : ""}
-    ${tipo_termino ? "" : ""}
-    ${instrumentos ? `</div><div class="bloque-imagen"><img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento"></div></div>` : `</div></div>`}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(s => `<span>${s.trim()}</span>`).join('') + `</div>` : ""}
+    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+    ${imagen ? `<img src="img/imagen/${imagen}.png" alt="${imagen}" class="imagen-instrumento">` : ""}
   `;
 
   if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
@@ -287,21 +283,19 @@ function mostrarResultado(nombre) {
   const resultadoDiv = document.getElementById("resultado");
   const sugerenciaDiv = document.getElementById("sugerencias");
 
-  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = entrada;
+  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, imagen } = entrada;
 
   ultimaBusqueda = nombre;
 
   resultadoDiv.innerHTML = `
-  <div class="resultado-flex"><div class="bloque-texto">
     <div class="titulo-resultado">${nombre}</div>
     ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
     ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
     ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
     ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo =>
-  `<button class="sinonimo-boton">${sinonimo.trim()}</button>`).join('') + `</div>` : ""}
-    ${tipo_termino ? "" : ""}
-    ${instrumentos ? `</div><div class="bloque-imagen"><img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento"></div></div>` : `</div></div>`}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(s => `<span>${s.trim()}</span>`).join('') + `</div>` : ""}
+    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+    ${imagen ? `<img src="img/imagen/${imagen}.png" alt="${imagen}" class="imagen-instrumento">` : ""}
   `;
 
   if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
