@@ -7,8 +7,28 @@ let todasLasFilas = [];
 let datosCrudos = [];
 let paginaActual = 1;
 const filasPorPagina = 15;
-const tbody = document.querySelector("#tablaTerminos tbody");
+let tbody;
 
+// === LOADER ===
+function mostrarLoader() {
+  document.getElementById("loader").style.display = "block";
+}
+function ocultarLoader() {
+  document.getElementById("loader").style.display = "none";
+}
+
+// === MODO CLARO OSCURO Y CARGA INICIAL ===
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("modoClaro") === "1") {
+    document.body.classList.add("light-mode");
+  }
+  tbody = document.querySelector("#tablaTerminos tbody");
+  if (localStorage.getItem("adminAutenticado") === "true") {
+    mostrarPanel();
+  }
+});
+
+// === MOSTRAR CONTRASEÑA ===
 function toggleMostrar() {
   const input = document.getElementById("clave");
   const boton = document.querySelector(".mostrar-toggle");
@@ -17,6 +37,7 @@ function toggleMostrar() {
   boton.textContent = mostrar ? "OCULTAR" : "MOSTRAR";
 }
 
+// === AUTENTICACIÓN ===
 async function verificarClave() {
   const correo = document.getElementById("correo").value.trim();
   const clave = document.getElementById("clave").value;
@@ -36,6 +57,12 @@ async function verificarClave() {
   mostrarPanel();
 }
 
+async function cerrarSesion() {
+  await supabase.auth.signOut();
+  localStorage.removeItem("adminAutenticado");
+  location.reload();
+}
+
 function mostrarPanel() {
   document.getElementById("loginPanel").style.display = "none";
   document.getElementById("adminPanel").style.display = "block";
@@ -45,37 +72,25 @@ function mostrarPanel() {
   cargarDatos();
 }
 
-async function cerrarSesion() {
-  await supabase.auth.signOut();
-  localStorage.removeItem("adminAutenticado");
-  location.reload();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("modoClaro") === "1") {
-    document.body.classList.add("light-mode");
-  }
-  if (localStorage.getItem("adminAutenticado") === "true") {
-    mostrarPanel();
-  }
-});
-
+// === CARGAR TERMINOS ===
 async function cargarDatos() {
+  mostrarLoader();
   const { data, error } = await supabase
     .from('base_datos')
     .select('*')
     .order('Fecha Agregado', { ascending: false });
+  ocultarLoader();
 
   if (error) {
     console.error("Error al cargar los términos:", error);
-    tbody.innerHTML = `<tr><td colspan='13'>❌ Error al cargar los términos.</td></tr>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan='13'>❌ Error al cargar los términos.</td></tr>`;
     return;
   }
 
   todasLasFilas = [];
   datosCrudos = data;
 
-  data.forEach((fila, index) => {
+  data.forEach(fila => {
     const tr = document.createElement("tr");
     tr.dataset.id = fila.id;
     tr.innerHTML = `
@@ -86,10 +101,10 @@ async function cargarDatos() {
       <td>${fila.Categoría || ""}</td>
       <td>${fila.Definición || ""}</td>
       <td>${fila.Sinónimos || ""}</td>
-      <td>${fila["Tipo de termino"] || ""}</td>
+      <td>${fila["Tipo de término"] || ""}</td>
       <td>${fila["Forma farmacéutica"] || ""}</td>
       <td>${fila.Imagen ? `<a href="${fila.Imagen}" target="_blank">Ver</a>` : ""}</td>
-      <td>${fila["Fecha agregado"] ? new Date(fila["Fecha agregado"]).toLocaleDateString() : "-"}</td>
+      <td>${fila["Fecha Agregado"] ? new Date(fila["Fecha Agregado"]).toLocaleDateString() : "-"}</td>
       <td>
         <button onclick="editarFila(${fila.id})">✏️</button>
         <button onclick="eliminarFila(${fila.id})">🗑️</button>
@@ -100,6 +115,7 @@ async function cargarDatos() {
   mostrarPagina(1);
 }
 
+// === PAGINACIÓN ===
 function mostrarPagina(pagina) {
   paginaActual = pagina;
   tbody.innerHTML = "";
@@ -124,7 +140,6 @@ function generarPaginacion() {
   for (let i = 1; i <= totalPaginas; i++) {
     const btn = document.createElement("button");
     btn.textContent = i;
-    btn.style.margin = "0 3px";
     btn.onclick = () => mostrarPagina(i);
     if (i === paginaActual) {
       btn.style.backgroundColor = "#3ae374";
@@ -140,6 +155,7 @@ function generarPaginacion() {
   paginacion.appendChild(btnSiguiente);
 }
 
+// === EDITAR ===
 async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
   if (!fila) return alert("ID no encontrado");
@@ -151,44 +167,54 @@ async function editarFila(id) {
     Categoría: prompt("Categoría:", fila.Categoría) || fila.Categoría,
     Definición: prompt("Definición:", fila.Definición) || fila.Definición,
     Sinónimos: prompt("Sinónimos:", fila.Sinónimos) || fila.Sinónimos,
-    ["Tipo de termino"]: prompt("Tipo de término:", fila["Tipo de termino"]) || fila["Tipo de termino"],
+    ["Tipo de término"]: prompt("Tipo de término:", fila["Tipo de término"]) || fila["Tipo de término"],
     ["Forma farmacéutica"]: prompt("Forma farmacéutica:", fila["Forma farmacéutica"]) || fila["Forma farmacéutica"],
     Imagen: prompt("URL de la imagen:", fila.Imagen) || fila.Imagen,
     ["Fecha Agregado"]: new Date().toISOString()
   };
 
+  mostrarLoader();
   const { error } = await supabase
     .from('base_datos')
     .update(actualizado)
     .eq('id', id);
+  ocultarLoader();
 
   if (error) {
     alert("❌ Error al editar");
     console.error(error);
   } else {
+    alert("✅ Término actualizado exitosamente.");
     cargarDatos();
   }
 }
 
+// === ELIMINAR ===
 async function eliminarFila(id) {
   if (!confirm("¿Seguro que deseas eliminar este término?")) return;
 
+  mostrarLoader();
   const { error } = await supabase
     .from('base_datos')
     .delete()
     .eq('id', id);
+  ocultarLoader();
 
   if (error) {
     alert("❌ Error al eliminar");
     console.error(error);
   } else {
+    alert("🗑️ Término eliminado correctamente.");
     cargarDatos();
   }
 }
 
+// === FILTRAR ===
 function filtrarTabla() {
   const filtro = document.getElementById("buscador").value.toLowerCase();
-  const filasFiltradas = todasLasFilas.filter(fila => fila.innerText.toLowerCase().includes(filtro));
+  const filasFiltradas = todasLasFilas.filter(fila =>
+    fila.innerText.toLowerCase().includes(filtro)
+  );
   tbody.innerHTML = "";
   filasFiltradas.slice(0, filasPorPagina).forEach(f => tbody.appendChild(f));
 }
