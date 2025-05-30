@@ -75,16 +75,18 @@
   </div>
 
   <!-- Ventana emergente para sugerencias -->
-  <div id="form-sugerencia" class="ventana-sugerencia oculto">
-    <h3>📝 Sugerir mejora</h3>
-    <textarea id="inputSugerencia" placeholder="Escribe tu sugerencia..."></textarea>
-    <input type="text" id="inputAutor" placeholder="Tu nombre o correo (opcional)" />
-    <input type="text" id="inputTerminoRelacionado" placeholder="Término relacionado" />
+  <button id="btn-sugerir" title="Sugerir algo para este término">💡</button>
+
+  <div id="ventana-sugerencia" class="ventana-sugerencia oculto">
+    <h3>Sugerencia sobre este término</h3>
+    <textarea id="sugerencia-input" placeholder="Escribe tu sugerencia..."></textarea>
+    <input id="apodo-input" placeholder="Tu apodo (opcional)" />
     <div class="botones-form">
-      <button onclick="enviarSugerencia()">Enviar</button>
-      <button onclick="cerrarFormularioSugerencia()">Cancelar</button>
+      <button id="enviar-sugerencia">Enviar</button>
+      <button id="cerrar-sugerencia">Cancelar</button>
     </div>
-  </div>
+    <div id="mensaje-sugerencia"></div>
+  </div>  
 
   <!-- Botón flotante -->
   <button id="btn-sugerir" title="Sugerir una mejora" onclick="abrirFormularioSugerencia()">📝</button>
