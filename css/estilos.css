@@ -448,6 +448,19 @@ body::before {
   display: none;
 }
 
+@keyframes reboteSparkie {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+#sparkie-boton img {
+  animation: reboteSparkie 2s ease-in-out infinite;
+}
+
+#sparkie-boton:hover img {
+  transform: scale(1.1) rotate(2deg);
+}
+
 /* === ICONOS EN BOTONES === */
 .boton i {
   font-size: 16px;
