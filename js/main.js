@@ -207,13 +207,22 @@ if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
   html += `<strong>Traducción:</strong><br><span class="italic">${entrada["traduccion"] || "-"}</span>`;
 } else {
   html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-  if (entrada["pronunciacion"]) html += `<strong>Pronunciación:</strong> <span class="Pronunciación">${entrada["Pronunciación"]}</span><br>`;
-  if (entrada["categoria"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
-  if (entrada["definicion"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
-  if (entrada["sinonimos"]) {
-    const sin = entrada["sinonimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
-    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
+  if (entrada.pronunciacion || entrada["Pronunciación"]) {
+    html += `<strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion || entrada["Pronunciación"]}</span><br>`;
   }
+  
+  if (entrada.categoria || entrada["Categoría"]) {
+    html += `<strong>Categoría:</strong> ${entrada.categoria || entrada["Categoría"]}<br>`;
+  }
+  
+  if (entrada.definicion || entrada["Definición"]) {
+    html += `<strong>Definición:</strong><br>${entrada.definicion || entrada["Definición"]}<br>`;
+  }
+  
+  if (entrada.sinonimos) {
+    const sin = entrada.sinonimos.split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
+    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
+  }  
 }
 html += `</div>`; // .bloque-texto
 
