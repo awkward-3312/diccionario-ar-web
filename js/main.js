@@ -143,20 +143,13 @@ function buscar() {
   let entrada = glosario[termino];
   let terminoReal = entrada ? termino : null;
   
-  // Si no se encuentra por clave, buscar en "Traducción" parcial
   if (!entrada) {
     for (const key in glosario) {
-      const claveNormalizada = normalizarTexto(key);
-      const traduccionNormalizada = normalizarTexto(glosario[key]["Traducción"] || "");
-      const terminoBuscado = normalizarTexto(terminoInput.value.trim());
-  
-      if (
-        claveNormalizada.includes(terminoBuscado) ||
-        traduccionNormalizada.includes(terminoBuscado)
-      ) {
+      const normalizadoTraduccion = normalizarTexto(glosario[key]["Traducción"] || "");
+      if (normalizadoTraduccion === termino) {
         entrada = glosario[key];
         terminoReal = key;
-        break; // solo mostramos la primera coincidencia exacta
+        break;
       }
     }
   }  
@@ -173,14 +166,15 @@ function buscar() {
 
   if (!entrada) {
     resultado.innerHTML = "⚠️ Término no encontrado.";
+    const inputNormalizado = normalizarTexto(terminoInput.value.trim());
     const sugerencias = Object.keys(glosario).filter(key => {
-      const normalClave = normalizarTexto(key);
-      const trad = glosario[key]["Traducción"]
-        ? normalizarTexto(glosario[key]["Traducción"])
-        : "";
-      const inputNormalizado = normalizarTexto(terminoInput.value.trim());
-      return normalClave.includes(inputNormalizado) || trad.includes(inputNormalizado);
-    });
+      const claveNorm = normalizarTexto(key);
+      const tradNorm = normalizarTexto(glosario[key]["Traducción"] || "");
+      return (
+        claveNorm.includes(inputNormalizado) ||
+        tradNorm.includes(inputNormalizado)
+      );
+    });    
 
     if (sugerencias.length > 0) {
       const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
