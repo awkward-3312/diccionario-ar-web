@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
         tipo === 'forma' ? 'Forma farmacéutica' :
         'Instrumento',
       fecha_agregado: new Date().toISOString()
-    };
+    };    
 
     if (tipo === 'termino') {
       registro.pronunciacion = pronunciacion || null;
