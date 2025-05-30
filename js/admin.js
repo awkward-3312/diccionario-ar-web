@@ -78,7 +78,7 @@ async function cargarDatos() {
   const { data, error } = await client
     .from('base_datos')
     .select('*')
-    .order('id', { ascending: true });
+    .order('id', { ascending: false });
   ocultarLoader();
 
   if (error) {
@@ -95,16 +95,16 @@ async function cargarDatos() {
     tr.dataset.id = fila.id;
     tr.innerHTML = `
       <td>${fila.id}</td>
-      <td>${fila.Término || ""}</td>
-      <td>${fila.Traducción || ""}</td>
-      <td>${fila.Pronunciación || ""}</td>
-      <td>${fila.Categoría || ""}</td>
-      <td>${fila.Definición || ""}</td>
-      <td>${fila.Sinónimos || ""}</td>
-      <td>${fila["Tipo de término"] || ""}</td>
-      <td>${fila["Forma farmacéutica"] || ""}</td>
-      <td>${fila.Imagen ? `<a href="${fila.Imagen}" target="_blank">Ver</a>` : ""}</td>
-      <td>${fila["Fecha agregado"] ? new Date(fila["Fecha agregado"]).toLocaleDateString() : "-"}</td>
+      <td>${fila.termino || ""}</td>
+      <td>${fila.traduccion || ""}</td>
+      <td>${fila.pronunciacion || ""}</td>
+      <td>${fila.categoria || ""}</td>
+      <td>${fila.definicion || ""}</td>
+      <td>${fila.sinonimos || ""}</td>
+      <td>${fila.tipo_termino || ""}</td>
+      <td>${fila.forma_farmaceutica || ""}</td>
+      <td>${fila.imagen ? `<a href="${fila.imagen}" target="_blank">Ver</a>` : ""}</td>
+      <td>${fila.fecha_agregado ? new Date(fila.fecha_agregado).toLocaleDateString() : "-"}</td>
       <td>
         <button onclick="editarFila(${fila.id})">✏️</button>
         <button onclick="eliminarFila(${fila.id})">🗑️</button>
@@ -115,101 +115,41 @@ async function cargarDatos() {
   mostrarPagina(1);
 }
 
-// === PAGINACIÓN ===
-function mostrarPagina(pagina) {
-  paginaActual = pagina;
-  tbody.innerHTML = "";
-  const inicio = (pagina - 1) * filasPorPagina;
-  const fin = inicio + filasPorPagina;
-  const filasMostrar = todasLasFilas.slice(inicio, fin);
-  filasMostrar.forEach(f => tbody.appendChild(f));
-  generarPaginacion();
-}
-
-function generarPaginacion() {
-  const totalPaginas = Math.ceil(todasLasFilas.length / filasPorPagina);
-  const paginacion = document.getElementById("paginacion");
-  paginacion.innerHTML = "";
-
-  const mostrarRango = 3; // cantidad de páginas visibles
-  const inicio = Math.max(1, paginaActual - 1);
-  const fin = Math.min(totalPaginas, inicio + mostrarRango - 1);
-
-  if (paginaActual > 1) {
-    const btnInicio = document.createElement("button");
-    btnInicio.textContent = "Inicio";
-    btnInicio.onclick = () => mostrarPagina(1);
-    paginacion.appendChild(btnInicio);
-  }
-
-  const btnAnterior = document.createElement("button");
-  btnAnterior.innerHTML = "<";
-  btnAnterior.disabled = paginaActual === 1;
-  btnAnterior.onclick = () => mostrarPagina(paginaActual - 1);
-  paginacion.appendChild(btnAnterior);
-
-  for (let i = inicio; i <= fin; i++) {
-    const btn = document.createElement("button");
-    btn.textContent = i;
-    btn.onclick = () => mostrarPagina(i);
-    if (i === paginaActual) {
-      btn.style.backgroundColor = "#3ae374";
-      btn.style.color = "black";
-    }
-    paginacion.appendChild(btn);
-  }
-
-  const btnSiguiente = document.createElement("button");
-  btnSiguiente.innerHTML = ">";
-  btnSiguiente.disabled = paginaActual === totalPaginas;
-  btnSiguiente.onclick = () => mostrarPagina(paginaActual + 1);
-  paginacion.appendChild(btnSiguiente);
-
-  if (paginaActual < totalPaginas) {
-    const btnFinal = document.createElement("button");
-    btnFinal.textContent = "Final";
-    btnFinal.onclick = () => mostrarPagina(totalPaginas);
-    paginacion.appendChild(btnFinal);
-  }
-}
-
 // === EDITAR ===
 async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
   if (!fila) return alert("ID no encontrado");
 
   const actualizado = {
-    Término: prompt("Término:", fila.Término) || fila.Término,
-    Traducción: prompt("Traducción:", fila.Traducción) || fila.Traducción,
-    Pronunciación: prompt("Pronunciación:", fila.Pronunciación) || fila.Pronunciación,
-    Categoría: prompt("Categoría:", fila.Categoría) || fila.Categoría,
-    Definición: prompt("Definición:", fila.Definición) || fila.Definición,
-    Sinónimos: prompt("Sinónimos:", fila.Sinónimos) || fila.Sinónimos,
-    ["Tipo de término"]: prompt("Tipo de término:", fila["Tipo de término"]) || fila["Tipo de término"],
-    ["Forma farmacéutica"]: prompt("Forma farmacéutica:", fila["Forma farmacéutica"]) || fila["Forma farmacéutica"],
-    Imagen: prompt("URL de la imagen:", fila.Imagen) || fila.Imagen,
-    ["Fecha agregado"]: new Date().toISOString()
-  };  
+    termino: prompt("Término:", fila.termino) || fila.termino,
+    traduccion: prompt("Traducción:", fila.traduccion) || fila.traduccion,
+    pronunciacion: prompt("Pronunciación:", fila.pronunciacion) || fila.pronunciacion,
+    categoria: prompt("Categoría:", fila.categoria) || fila.categoria,
+    definicion: prompt("Definición:", fila.definicion) || fila.definicion,
+    sinonimos: prompt("Sinónimos:", fila.sinonimos) || fila.sinonimos,
+    tipo_termino: prompt("Tipo de término:", fila.tipo_termino) || fila.tipo_termino,
+    forma_farmaceutica: prompt("Forma farmacéutica:", fila.forma_farmaceutica) || fila.forma_farmaceutica,
+    imagen: prompt("URL de la imagen:", fila.imagen) || fila.imagen,
+    fecha_agregado: new Date().toISOString()
+  };
 
   mostrarLoader();
-
   const { data, error } = await client
-  .from('base_datos')
-  .update(actualizado)
-  .eq('id', id)
-  .select("*");
-
-console.log("🔁 Resultado actualización:", data);
-
+    .from('base_datos')
+    .update(actualizado)
+    .eq('id', id)
+    .select();
   ocultarLoader();
 
   if (error) {
     mostrarPopup("❌ Error al editar", false);
     console.error(error);
+  } else if (!data || data.length === 0) {
+    mostrarPopup("⚠️ No se realizaron cambios.", false);
   } else {
     mostrarPopup("✅ Término actualizado exitosamente.");
-    await cargarDatos();                    // 🔄 Recarga desde Supabase
-    mostrarPagina(paginaActual);           // 🔄 Vuelve a dibujar la página actual
+    await cargarDatos();
+    mostrarPagina(paginaActual);
   }
 }
 
@@ -225,11 +165,12 @@ async function eliminarFila(id) {
   ocultarLoader();
 
   if (error) {
-    mostrarPopup("❌ Error al eliminar");
+    mostrarPopup("❌ Error al eliminar", false);
     console.error(error);
   } else {
     mostrarPopup("🗑️ Término eliminado correctamente.");
-    cargarDatos();
+    await cargarDatos();
+    mostrarPagina(paginaActual);
   }
 }
 
@@ -243,7 +184,7 @@ function filtrarTabla() {
   filasFiltradas.slice(0, filasPorPagina).forEach(f => tbody.appendChild(f));
 }
 
-// === ALERTA EMERGENTE ===
+// === ALERTA EMERGENTE COMO EN agregar.js ===
 function mostrarPopup(mensaje, exito = true) {
   const popup = document.createElement("div");
   popup.textContent = mensaje;
