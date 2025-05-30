@@ -279,7 +279,28 @@ document.addEventListener("DOMContentLoaded", () => {
   
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(buscar, 900);
+    debounceTimer = setTimeout(() => {
+      const texto = input.value.trim().toUpperCase();
+      const resultado = document.getElementById("resultado");
+      const sugerencias = Object.keys(glosario).filter(key => {
+        const claveNorm = normalizarTexto(key);
+        const tradNorm = normalizarTexto(glosario[key]["Traducción"] || "");
+        return (
+          claveNorm.includes(normalizarTexto(texto)) ||
+          tradNorm.includes(normalizarTexto(texto))
+        );
+      });
+
+      if (texto && sugerencias.length > 0) {
+        let sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
+          const original = glosario[s]["Traducción"] || s;
+          return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
+        }).join(" ");
+        resultado.innerHTML = `<br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
+      } else {
+        resultado.innerHTML = "Resultado aquí...";
+      }
+    }, 300);
   });
   
   window.addEventListener("load", () => {
