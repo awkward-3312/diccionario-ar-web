@@ -173,11 +173,17 @@ function buscar() {
     `;
     sugerenciaDiv.innerHTML = "";
   } else {
+    
     resultadoDiv.innerText = "❌ No se encontró el término.";
-    if (sugerencias.length > 0) {
-      sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p><ul>` + sugerencias.map(s => `<li>${s}</li>`).join("") + `</ul>`;
+
+    if (sugerencias.length > 0 && sugerenciaDiv) {
+      sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p><div class="sugerencia-botones">` +
+        sugerencias.map(s => `<button onclick="mostrarResultado('${s}')">${s}</button>`).join("") +
+        `</div>`;
     } else {
-      sugerenciaDiv.innerHTML = "";
+      if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
+    }
+    
     }
   }
 }
@@ -248,3 +254,29 @@ if ('serviceWorker' in navigator) {
 
 window.buscar = buscar;
 window.actualizarGlosario = actualizarGlosario;
+
+
+
+function mostrarResultado(nombre) {
+  const entrada = glosario[normalizarTexto(nombre)];
+  if (!entrada) return;
+
+  const resultadoDiv = document.getElementById("resultado");
+  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = entrada;
+
+  ultimaBusqueda = nombre;
+
+  resultadoDiv.innerHTML = `
+    <h3>${nombre}</h3>
+    ${traduccion ? `<p><strong>Traducción:</strong> ${traduccion}</p>` : ""}
+    ${pronunciacion ? `<p><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
+    ${categoria ? `<p><strong>Categoría:</strong> ${categoria}</p>` : ""}
+    ${definicion ? `<p><strong>Definición:</strong> ${definicion}</p>` : ""}
+    ${sinonimos ? `<p><strong>Sinónimos:</strong> ${sinonimos}</p>` : ""}
+    ${tipo_termino ? `<p><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+    ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="img-instrumento">` : ""}
+  `;
+
+  const sugerenciaDiv = document.getElementById("sugerencias");
+  if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
+}
