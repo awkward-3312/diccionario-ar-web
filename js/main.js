@@ -240,25 +240,38 @@ function limpiarBusqueda() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const actualizarBtn = document.getElementById("actualizarBtn");
-  if (actualizarBtn) {
-    actualizarBtn.disabled = true;
+  // Activar modo claro si está guardado
+  if (localStorage.getItem("modoClaro") === "1") {
+    document.body.classList.add("light-mode");
+    document.getElementById("icono-modo").className = "fas fa-sun";
+  }
+
+  // Mostrar fecha de última actualización
+  const ultima = localStorage.getItem("ultimaActualizacion") || "-";
+  document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
+
+  abrirBaseDatos();
+
+  // Enlazar botones correctamente
+  const btnBuscar = document.getElementById("btnBuscar");
+  const btnLimpiar = document.getElementById("btnLimpiar");
+  const btnActualizar = document.getElementById("btnActualizar");
+
+  if (btnBuscar) btnBuscar.addEventListener("click", buscar);
+  if (btnLimpiar) btnLimpiar.addEventListener("click", limpiarBusqueda);
+
+  if (btnActualizar) {
+    btnActualizar.disabled = true;
     const esperarDB = setInterval(() => {
       if (glosarioCargado) {
-        actualizarBtn.disabled = false;
-        actualizarBtn.addEventListener("click", actualizarGlosario);
+        btnActualizar.disabled = false;
+        btnActualizar.addEventListener("click", actualizarGlosario);
         clearInterval(esperarDB);
       }
     }, 200);
   }
 
-  if (localStorage.getItem("modoClaro") === "1") {
-    document.body.classList.add("light-mode");
-  }
-  const ultima = localStorage.getItem("ultimaActualizacion") || "-";
-  document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ultima;
-  abrirBaseDatos();
-
+  // Placeholder dinámico
   const frases = [
     "¿Qué deseas buscar hoy? 😊",
     "Descubre un nuevo término técnico 💡",
@@ -269,6 +282,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let index = 0;
   const input = document.getElementById("termino");
 
+  setInterval(() => {
+    input.setAttribute("placeholder", frases[index]);
+    index = (index + 1) % frases.length;
+  }, 4000);
+
+  // Mostrar sugerencias sin activar búsqueda automática
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
@@ -298,17 +317,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, 300);
   });
-  
-  input.addEventListener("input", () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(buscar, 300);
-  });
-  
-  window.addEventListener("load", () => {
-    if (navigator.onLine && db) cargarGlosario(true);
-  });
 
-  // SPARKIE: Ícono flotante + burbuja sugerencia
+  // Sparkie botón flotante
   const sparkieBtn = document.createElement("div");
   sparkieBtn.id = "sparkie-boton";
   sparkieBtn.title = "Habla con Sparkie";
@@ -327,7 +337,12 @@ document.addEventListener("DOMContentLoaded", () => {
     burbuja.classList.remove("oculto");
     setTimeout(() => burbuja.classList.add("oculto"), 4000);
   }, 20000);
-}); // ⬅️ ESTA ES LA LLAVE QUE FALTABA
+
+  // Recarga glosario desde Supabase si hay conexión
+  window.addEventListener("load", () => {
+    if (navigator.onLine && db) cargarGlosario(true);
+  });
+});
 
 // ✅ Fuera del DOMContentLoaded
 if ('serviceWorker' in navigator) {
