@@ -138,7 +138,8 @@ function actualizarContador() {
 function buscar() {
   if (!glosarioCargado) return;
   const terminoInput = document.getElementById("termino");
-  const termino = terminoInput.value.trim().toUpperCase();
+  const inputUsuario = terminoInput.value.trim();
+  const termino = normalizarTexto(inputUsuario);
   const resultado = document.getElementById("resultado");
   const spinner = document.getElementById("spinner");
 
@@ -150,27 +151,20 @@ function buscar() {
   spinner.style.display = "block";
   setTimeout(() => spinner.style.display = "none", 500);
 
-  let entrada = glosario[termino];
-  let terminoReal = entrada ? termino : null;
-  
-  if (!entrada) {
-    for (const key in glosario) {
-      const item = glosario[key];
-      const normalizadoTraduccion = normalizarTexto(item.traduccion || item["Traducción"] || "");
-      const normalizadoTermino = normalizarTexto(item.termino || item["Término"] || "");
-      if (normalizadoTermino === termino || normalizadoTraduccion === termino) {
-        entrada = item;
-        terminoReal = key;
-        break;
-      }
-    }    
-  }  
-  
-  // Mostrar nombre visible en campo de búsqueda
-  if (entrada) {
-    const nombreVisible = entrada.termino || terminoReal;
-    document.getElementById("termino").value = nombreVisible;
-  }  
+  let entrada = null;
+  let terminoReal = null;
+
+  for (const key in glosario) {
+    const item = glosario[key];
+    const normalizadoTermino = normalizarTexto(item.termino || "");
+    const normalizadoTraduccion = normalizarTexto(item.traduccion || "");
+
+    if (normalizadoTermino === termino || normalizadoTraduccion === termino) {
+      entrada = item;
+      terminoReal = item.termino;
+      break;
+    }
+  }
 
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
@@ -178,66 +172,60 @@ function buscar() {
 
   if (!entrada) {
     resultado.innerHTML = "⚠️ Término no encontrado.";
-    const inputNormalizado = normalizarTexto(terminoInput.value.trim());
-    const sugerencias = Object.keys(glosario).filter(key => {
-      const claveNorm = normalizarTexto(key);
-      const tradNorm = normalizarTexto(glosario[key].traduccion || "");
-      return (
-        claveNorm.includes(inputNormalizado) ||
-        tradNorm.includes(inputNormalizado)
-      );
-    });    
+
+    const sugerencias = Object.values(glosario).filter(e => {
+      const t = normalizarTexto(e.termino || "");
+      const tr = normalizarTexto(e.traduccion || "");
+      return t.includes(termino) || tr.includes(termino);
+    });
 
     if (sugerencias.length > 0) {
-      const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
-        const original = glosario[s].traduccion || s;
-        return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
+      const sugerenciaHTML = sugerencias.slice(0, 3).map(e => {
+        const visible = e.termino || e.traduccion || "Sin nombre";
+        return `<button onclick="document.getElementById('termino').value='${visible}';buscar();">${visible}</button>`;
       }).join(" ");
       resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
     }
+
     return;
   }
 
-let html = `<div class="resultado-flex">`;
+  // Mostrar término original en el input
+  document.getElementById("termino").value = entrada.termino || terminoReal;
 
-html += `<div class="bloque-texto">`;
-html += `<div class="titulo-resultado">${entrada.termino || terminoReal}</div>`;
+  let html = `<div class="resultado-flex">`;
 
-if ((entrada.tipo_termino || '').toLowerCase() === "abreviatura") {
-  html += `<p><strong>Traducción:</strong><br><span class="italic">${entrada.traduccion || "-"}</span></p>`;
-} else {
-  if (entrada.traduccion) html += `<p><strong>Traducción:</strong> <span class="italic">${entrada.traduccion}</span></p>`;
-  if (entrada.pronunciacion) html += `<p><strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion}</span></p>`;
-  if (entrada.categoria) html += `<p><strong>Categoría:</strong> ${entrada.categoria}</p>`;
-  if (entrada.definicion) html += `<p><strong>Definición:</strong><br>${entrada.definicion}</p>`;
-  if (entrada.sinonimos) {
-    const sin = entrada.sinonimos.split(",").map(s => `<span class="etiqueta">${s.trim()}</span>`).join(" ");
-    html += `<p><strong>Sinónimos:</strong><br><div class="sinonimos">${sin}</div></p>`;
+  html += `<div class="bloque-texto">`;
+  html += `<div class="titulo-resultado">${entrada.termino || terminoReal}</div>`;
+
+  if ((entrada.tipo_termino || "").toLowerCase() === "abreviatura") {
+    html += `<p><strong>Traducción:</strong><br><span class="italic">${entrada.traduccion || "-"}</span></p>`;
+  } else {
+    if (entrada.traduccion) html += `<p><strong>Traducción:</strong> <span class="italic">${entrada.traduccion}</span></p>`;
+    if (entrada.pronunciacion) html += `<p><strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion}</span></p>`;
+    if (entrada.categoria) html += `<p><strong>Categoría:</strong> ${entrada.categoria}</p>`;
+    if (entrada.definicion) html += `<p><strong>Definición:</strong><br>${entrada.definicion}</p>`;
+    if (entrada.sinonimos) {
+      const sin = entrada.sinonimos.split(",").map(s => `<span class="etiqueta">${s.trim()}</span>`).join(" ");
+      html += `<p><strong>Sinónimos:</strong><br><div class="sinonimos">${sin}</div></p>`;
+    }
   }
-}
+  html += `</div>`; // .bloque-texto
 
-html += `</div>`; // .bloque-texto
+  if ((entrada.tipo_termino || "").toLowerCase() === "instrumento" && entrada.imagen) {
+    const urlImagen = entrada.imagen.startsWith("http")
+      ? entrada.imagen
+      : `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${entrada.imagen.trim()}`;
 
-// Mostrar imagen a la derecha
-const tipo = (entrada.tipo_termino || "").toLowerCase();
-const imagen = entrada.imagen;
+    html += `
+      <div class="bloque-imagen">
+        <img src="${urlImagen}" alt="Imagen del instrumento" class="imagen-instrumento" />
+      </div>
+    `;
+  }
 
-if (tipo === "instrumento" && imagen) {
-  const nombreArchivo = imagen.trim();
-  const urlImagen = nombreArchivo.startsWith("http")
-    ? nombreArchivo
-    : `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${nombreArchivo}`;
-
-  html += `
-    <div class="bloque-imagen">
-      <img src="${urlImagen}" alt="Imagen del instrumento" class="imagen-instrumento">
-    </div>
-  `;
-}
-
-html += `</div>`; // .resultado-flex
-
-resultado.innerHTML = html;
+  html += `</div>`; // .resultado-flex
+  resultado.innerHTML = html;
 }
 
 function limpiarBusqueda() {
