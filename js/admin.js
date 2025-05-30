@@ -104,7 +104,7 @@ async function cargarDatos() {
       <td>${fila["Tipo de término"] || ""}</td>
       <td>${fila["Forma farmacéutica"] || ""}</td>
       <td>${fila.Imagen ? `<a href="${fila.Imagen}" target="_blank">Ver</a>` : ""}</td>
-      <td>${fila["Fecha Agregado"] ? new Date(fila["Fecha Agregado"]).toLocaleDateString() : "-"}</td>
+      <td>${fila["Fecha agregado"] ? new Date(fila["Fecha agregado"]).toLocaleDateString() : "-"}</td>
       <td>
         <button onclick="editarFila(${fila.id})">✏️</button>
         <button onclick="eliminarFila(${fila.id})">🗑️</button>
@@ -170,7 +170,7 @@ async function editarFila(id) {
     ["Tipo de término"]: prompt("Tipo de término:", fila["Tipo de término"]) || fila["Tipo de término"],
     ["Forma farmacéutica"]: prompt("Forma farmacéutica:", fila["Forma farmacéutica"]) || fila["Forma farmacéutica"],
     Imagen: prompt("URL de la imagen:", fila.Imagen) || fila.Imagen,
-    ["Fecha Agregado"]: new Date().toISOString()
+    ["Fecha agregado"]: new Date().toISOString()
   };
 
   mostrarLoader();
