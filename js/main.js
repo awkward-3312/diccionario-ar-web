@@ -69,7 +69,7 @@ function cargarDesdeIndexedDB() {
 
 async function cargarGlosario(guardarLocal = false) {
   const { data, error } = await supabase
-    .from('base_datos') // nombre exacto de la tabla en Supabase
+    .from('base_datos')
     .select('*');
 
   if (error) {
@@ -79,7 +79,7 @@ async function cargarGlosario(guardarLocal = false) {
 
   glosario = {};
   data.forEach(item => {
-    const clave = normalizarTexto(item["Término"] || item["termino"]);
+    const clave = normalizarTexto(item["termino"]);
     glosario[clave] = item;
   });
 
@@ -117,10 +117,10 @@ function actualizarContador() {
 
   let nuevos = 0;
   const ahora = new Date();
-  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
+  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000);
 
   for (const termino of Object.values(glosario)) {
-    let fechaTexto = termino["fecha_agregado"] || termino["Fecha agregado"] || termino["fechaAgregado"] || "";
+    let fechaTexto = termino["fecha_agregado"] || "";
     if (fechaTexto) {
       const fechaObj = new Date(fechaTexto);
       if (!isNaN(fechaObj)) {
@@ -166,7 +166,7 @@ function buscar() {
   
   // Mostrar nombre visible en campo de búsqueda
   if (entrada) {
-    const nombreVisible = entrada["Término"] || entrada["termino"] || terminoReal;
+    const nombreVisible = entrada["termino"] || terminoReal;
     document.getElementById("termino").value = nombreVisible;
   }  
 
@@ -188,7 +188,7 @@ function buscar() {
 
     if (sugerencias.length > 0) {
       const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
-        const original = glosario[s]["Traducción"] || s;
+        const original = glosario[s]["traduccion"] || s;
         return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
       }).join(" ");
       resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
@@ -202,14 +202,14 @@ html += `<div class="bloque-texto">`;
 html += `<div class="titulo-resultado">${entrada["Término"] || entrada["termino"] || terminoReal}</div>`;
 
 if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
-  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["Traducción"] || "-"}</span>`;
+  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["traduccion"] || "-"}</span>`;
 } else {
   html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-  if (entrada["Pronunciación"]) html += `<strong>Pronunciación:</strong> <span class="pronunciacion">${entrada["Pronunciación"]}</span><br>`;
-  if (entrada["Categoría"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
-  if (entrada["Definición"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
-  if (entrada["Sinónimos"]) {
-    const sin = entrada["Sinónimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
+  if (entrada["pronunciacion"]) html += `<strong>Pronunciación:</strong> <span class="Pronunciación">${entrada["Pronunciación"]}</span><br>`;
+  if (entrada["categoria"]) html += `<strong>Categoría:</strong> ${entrada["Categoría"]}<br>`;
+  if (entrada["definicion"]) html += `<strong>Definición:</strong><br>${entrada["Definición"]}<br>`;
+  if (entrada["sinonimos"]) {
+    const sin = entrada["sinonimos"].split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
     html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
   }
 }
@@ -217,10 +217,10 @@ html += `</div>`; // .bloque-texto
 
 // Mostrar imagen a la derecha
 if (
-  (entrada["Tipo"] || "").toLowerCase() === "instrumento" &&
-  entrada["Imagen"]
+  (entrada["tipo_termino"] || "").toLowerCase() === "instrumento" &&
+  entrada["imagen"]
 ) {
-  const nombreArchivo = entrada["Imagen"].trim();
+  const nombreArchivo = entrada["imagen"].trim();
   const urlImagen = `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${nombreArchivo}`;
   html += `
     <div class="bloque-imagen">
