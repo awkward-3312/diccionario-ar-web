@@ -387,22 +387,30 @@ body.light-mode
   z-index: 1;
 }
 
-
 /* === SPARKIE COMO AVATAR CIRCULAR === */
 
+.avatar-sparkie {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at center, #1effb1, #0ef09a);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
 .avatar-sparkie img {
-  width: 40px;
-  height: 40px;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
-  transition: transform 0.3s ease;
 }
-
-.avatar-sparkie img:hover {
-  transform: scale(1.05);
-}
-
 
 /* === BOTONES DE REGRESO EN COLUMNA === */
 .botones-regreso {
