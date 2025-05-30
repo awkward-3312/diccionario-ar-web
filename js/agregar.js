@@ -98,19 +98,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
     console.log("📤 Registro a insertar:", registro);
 
-    const { error } = await client
-      .from('base_datos')
-      .insert([registro]);
+    // Limpieza preventiva por si algún bug envía `id`
+if ('id' in registro) delete registro.id;
 
-    toggleLoader(false);
+// Crea una copia limpia del objeto, sin mutar el original
+const { id, ...registroLimpio } = registro;
 
-    if (error) {
-      console.error('❌ Error Supabase:', error);
-      mostrarPopup('❌ Error al guardar: ' + error.message, false);
-    } else {
-      mostrarPopup('✅ Término agregado correctamente');
-      e.target.reset();
-      mostrarCampos();
-    }
-  });
-});
+console.log("📤 Registro limpio a insertar:", JSON.stringify(registroLimpio, null, 2));
+
+const { error } = await client
+  .from('base_datos')
+  .insert([registroLimpio]);
+
+toggleLoader(false);
+
+if (error) {
+  console.error('❌ Error Supabase:', error);
+  mostrarPopup('❌ Error al guardar: ' + error.message, false);
+} else {
+  mostrarPopup('✅ Término agregado correctamente');
+  e.target.reset();
+  mostrarCampos();
+}
+}
