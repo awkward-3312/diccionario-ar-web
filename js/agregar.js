@@ -8,9 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // ✅ Configuración Supabase
   const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
-  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-  // === FUNCIONES ===
+  const client = window.supabase.createClient(supabaseUrl, supabaseKey);
 
   function mostrarCampos() {
     const tipo = document.getElementById('tipo').value;
@@ -54,8 +52,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => popup.style.display = 'none', 3000);
   }
 
-  // === EVENTOS ===
-
   document.getElementById('tipo').addEventListener('change', mostrarCampos);
 
   document.getElementById('formulario').addEventListener('submit', async (e) => {
@@ -72,29 +68,29 @@ window.addEventListener('DOMContentLoaded', () => {
     const forma = document.getElementById('formaFarmaceutica').value.trim();
 
     const registro = {
-      "Término": termino,
-      "Traducción": traduccion || null,
-      "Tipo de término":
+      termino,
+      traduccion: traduccion || null,
+      tipo_termino:
         tipo === 'termino' ? 'Término' :
         tipo === 'abreviatura' ? 'Abreviatura' :
         tipo === 'forma' ? 'Forma farmacéutica' :
         'Instrumento',
-      "Fecha agregado": new Date().toISOString()
+      fecha_agregado: new Date().toISOString()
     };
 
     if (tipo === 'termino') {
-      registro["Pronunciación"] = pronunciacion || null;
-      registro["Categoría"] = categoria || null;
-      registro["Definición"] = definicion || null;
-      registro["Sinónimos"] = sinonimos || null;
+      registro.pronunciacion = pronunciacion || null;
+      registro.categoria = categoria || null;
+      registro.definicion = definicion || null;
+      registro.sinonimos = sinonimos || null;
     }
 
     if (tipo === 'forma') {
-      registro["Forma farmacéutica"] = forma || null;
+      registro.forma_farmaceutica = forma || null;
     }
 
-    const { error } = await supabase
-      .from('base_datos') // ⬅️ Cambia este nombre si tu tabla se llama diferente
+    const { error } = await client
+      .from('base_datos')
       .insert([registro]);
 
     toggleLoader(false);
