@@ -405,32 +405,50 @@ body::before {
   align-items: center;
 }
 
-/* === SPARKIE === */
+/* === SPARKIE CON EFECTO BRILLO === */
 #sparkie-boton {
   position: fixed;
   bottom: 20px;
   left: 20px;
   width: 70px;
   height: 70px;
-  background-color: white;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3);
   cursor: pointer;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+  background: none; /* ✅ sin fondo blanco */
 }
+
 #sparkie-boton:hover {
   transform: scale(1.05);
 }
+
 #sparkie-boton img {
   width: 60px;
   height: 60px;
   object-fit: contain;
   border-radius: 50%;
+  animation: reboteSparkie 2s ease-in-out infinite, brilloSparkie 3s ease-in-out infinite;
 }
+
+@keyframes reboteSparkie {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes brilloSparkie {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
+  }
+}
+
 #sparkie-burbuja {
   position: absolute;
   top: -45px;
@@ -444,6 +462,7 @@ body::before {
   animation: burbujaAnimacion 0.5s ease;
   white-space: nowrap;
 }
+
 .oculto {
   display: none;
 }
