@@ -73,6 +73,26 @@
     </main>
   </div>
 
+  <div id="loader" style="display:none;">
+    <img src="img/sparkie.png" alt="Cargando..." style="width:60px; animation: spin 1s linear infinite;">
+  </div>
+  <style>
+    #loader {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  
   <script>
     // ✅ Capturar envío con Enter
     document.addEventListener("DOMContentLoaded", () => {
