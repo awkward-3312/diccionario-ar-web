@@ -217,13 +217,14 @@ html += `</div>`; // .bloque-texto
 
 // Mostrar imagen a la derecha
 if (
-  entrada["Instrumento"] &&
-  entrada["Instrumento"].normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase() === "si" &&
+  (entrada["Tipo"] || "").toLowerCase() === "instrumento" &&
   entrada["Imagen"]
 ) {
+  const nombreArchivo = entrada["Imagen"].trim();
+  const urlImagen = `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${nombreArchivo}`;
   html += `
     <div class="bloque-imagen">
-      <img src="${entrada["Imagen"].trim()}" alt="Imagen del instrumento" class="imagen-instrumento">
+      <img src="${urlImagen}" alt="Imagen del instrumento" class="imagen-instrumento">
     </div>
   `;
 }
