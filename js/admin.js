@@ -78,7 +78,7 @@ async function cargarDatos() {
   const { data, error } = await client
     .from('base_datos')
     .select('*')
-    .order('id', { ascending: false })
+    .order('id', { ascending: true });
   ocultarLoader();
 
   if (error) {
