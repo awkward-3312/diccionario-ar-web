@@ -166,16 +166,16 @@ function buscar() {
   if (resultadoExacto) {
     const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = resultadoExacto;
     resultadoDiv.innerHTML = `
+  <div class="resultado-flex"><div class="bloque-texto">
       <div class="titulo-resultado">${ultimaBusqueda}</div>
       ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
       ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
       ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
       ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo => 
-      `<button class="sinonimo-boton">${sinonimo.trim()}</button>`
-    ).join('') + `</div>` : ""}
+      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo =>
+  `<button class="sinonimo-boton">${sinonimo.trim()}</button>`).join('') + `</div>` : ""}
       ${tipo_termino ? "" : ""}
-      ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
+      ${instrumentos ? `</div><div class="bloque-imagen"><img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento"></div></div>` : `</div></div>`}
     `;
     sugerenciaDiv.innerHTML = "";
   }
@@ -263,16 +263,16 @@ function mostrarResultado(nombre) {
   ultimaBusqueda = nombre;
 
   resultadoDiv.innerHTML = `
+  <div class="resultado-flex"><div class="bloque-texto">
     <div class="titulo-resultado">${nombre}</div>
     ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
     ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
     ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
     ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo => 
-      `<button class="sinonimo-boton">${sinonimo.trim()}</button>`
-    ).join('') + `</div>` : ""}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo =>
+  `<button class="sinonimo-boton">${sinonimo.trim()}</button>`).join('') + `</div>` : ""}
     ${tipo_termino ? "" : ""}
-    ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
+    ${instrumentos ? `</div><div class="bloque-imagen"><img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento"></div></div>` : `</div></div>`}
   `;
 
   if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
@@ -292,16 +292,16 @@ function mostrarResultado(nombre) {
   ultimaBusqueda = nombre;
 
   resultadoDiv.innerHTML = `
+  <div class="resultado-flex"><div class="bloque-texto">
     <div class="titulo-resultado">${nombre}</div>
     ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
     ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
     ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
     ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo => 
-      `<button class="sinonimo-boton">${sinonimo.trim()}</button>`
-    ).join('') + `</div>` : ""}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo =>
+  `<button class="sinonimo-boton">${sinonimo.trim()}</button>`).join('') + `</div>` : ""}
     ${tipo_termino ? "" : ""}
-    ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
+    ${instrumentos ? `</div><div class="bloque-imagen"><img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento"></div></div>` : `</div></div>`}
   `;
 
   if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
