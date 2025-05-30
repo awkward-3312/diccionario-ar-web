@@ -152,11 +152,11 @@ function buscar() {
     }
 
     if (
-      claveNorm.startsWith(terminoBuscado) ||
-      traduccionNorm.startsWith(terminoBuscado)
+      claveNorm.includes(terminoBuscado) ||
+      traduccionNorm.includes(terminoBuscado)
     ) {
       sugerencias.push(clave);
-    }    
+    }
   }
 
   if (resultadoExacto) {
@@ -181,10 +181,8 @@ function buscar() {
 
     if (sugerencias.length > 0 && sugerenciaDiv) {
       
-      sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p>` +
-      sugerencias.map(s => 
-        `<button class="sugerencia-boton" onclick="mostrarResultado('${s}')">${s}</button>`
-      ).join("");
+    sugerenciaDiv.innerHTML = `<p>¿Quisiste decir?</p>` +
+      sugerencias.map(s => `<button onclick="mostrarResultado('${s}')">${s}</button>`).join("");
     
     } else {
       if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
