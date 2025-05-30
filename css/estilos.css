@@ -405,7 +405,7 @@ body::before {
   align-items: center;
 }
 
-/* === SPARKIE CON EFECTO BRILLO === */
+/* === SPARKIE CON EFECTO BRILLO Y MOVIMIENTO === */
 #sparkie-boton {
   position: fixed;
   bottom: 20px;
@@ -413,18 +413,13 @@ body::before {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3);
   cursor: pointer;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none; /* Sin fondo */
   transition: transform 0.3s ease;
-  background: none; /* ✅ sin fondo blanco */
-}
-
-#sparkie-boton:hover {
-  transform: scale(1.05);
 }
 
 #sparkie-boton img {
@@ -433,20 +428,27 @@ body::before {
   object-fit: contain;
   border-radius: 50%;
   animation: reboteSparkie 2s ease-in-out infinite, brilloSparkie 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
 }
 
-@keyframes reboteSparkie {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+#sparkie-boton:hover img {
+  transform: scale(1.1) rotate(2deg);
 }
 
+/* Brillo intermitente */
 @keyframes brilloSparkie {
   0%, 100% {
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
   }
   50% {
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
   }
+}
+
+/* Rebote vertical */
+@keyframes reboteSparkie {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 #sparkie-burbuja {
@@ -465,19 +467,6 @@ body::before {
 
 .oculto {
   display: none;
-}
-
-@keyframes reboteSparkie {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-#sparkie-boton img {
-  animation: reboteSparkie 2s ease-in-out infinite;
-}
-
-#sparkie-boton:hover img {
-  transform: scale(1.1) rotate(2deg);
 }
 
 /* === ICONOS EN BOTONES === */
