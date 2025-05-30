@@ -26,6 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("adminAutenticado") === "true") {
     mostrarPanel();
   }
+
+  const form = document.getElementById("formLogin");
+  form?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    verificarClave();
+  });
 });
 
 // === MOSTRAR CONTRASEÑA ===
@@ -103,33 +109,28 @@ async function cargarDatos() {
       <td>${fila.sinonimos || ""}</td>
       <td>${fila.tipo_termino || ""}</td>
       <td>${fila.forma_farmaceutica || ""}</td>
-      <td>${
-        fila.imagen
-          ? `<a href="${fila.imagen.startsWith('http') ? fila.imagen : 'https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/' + fila.imagen}" target="_blank">Ver</a>`
-          : ""
-      }</td>
+      <td>${fila.imagen ? `<a href="${fila.imagen}" target="_blank">Ver</a>` : ""}</td>
       <td>${fila.fecha_agregado ? new Date(fila.fecha_agregado).toLocaleDateString() : "-"}</td>
       <td>
-        <button onclick="editarFila(${fila.id})"><i class="fas fa-pen"></i></button>
-        <button onclick="eliminarFila(${fila.id})"><i class="fas fa-trash"></i></button>
+        <button onclick="editarFila(${fila.id})">✏️</button>
+        <button onclick="eliminarFila(${fila.id})">🗑️</button>
       </td>`;
     todasLasFilas.push(tr);
   });
 
-  mostrarPagina(paginaActual || 1);
+  mostrarPagina(1);
 }
 
+// === PAGINACIÓN ===
 function mostrarPagina(numero) {
   paginaActual = numero;
   const inicio = (numero - 1) * filasPorPagina;
   const fin = inicio + filasPorPagina;
   const paginaFilas = todasLasFilas.slice(inicio, fin);
 
-  // Limpiar tabla
   tbody.innerHTML = "";
   paginaFilas.forEach(f => tbody.appendChild(f));
 
-  // Mostrar paginación
   const paginacion = document.getElementById("paginacion");
   paginacion.innerHTML = "";
 
@@ -177,7 +178,7 @@ async function editarFila(id) {
   } else {
     mostrarPopup("✅ Término actualizado exitosamente.");
     await cargarDatos();
-    mostrarPagina(paginaActual || 1);
+    mostrarPagina(paginaActual);
   }
 }
 
@@ -198,7 +199,7 @@ async function eliminarFila(id) {
   } else {
     mostrarPopup("🗑️ Término eliminado correctamente.");
     await cargarDatos();
-    mostrarPagina(paginaActual || 1);
+    mostrarPagina(paginaActual);
   }
 }
 
