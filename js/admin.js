@@ -178,16 +178,17 @@ async function editarFila(id) {
   if (!fila) return alert("ID no encontrado");
 
   const actualizado = {
-    termino: prompt("Término:", fila.termino)?.trim() || fila.termino,
-    traduccion: prompt("Traducción:", fila.traduccion)?.trim() || fila.traduccion,
-    pronunciacion: prompt("Pronunciación:", fila.pronunciacion)?.trim() || fila.pronunciacion,
-    categoria: prompt("Categoría:", fila.categoria)?.trim() || fila.categoria,
-    definicion: prompt("Definición:", fila.definicion)?.trim() || fila.definicion,
-    sinonimos: prompt("Sinónimos:", fila.sinonimos)?.trim() || fila.sinonimos,
-    tipo_termino: prompt("Tipo de término:", fila.tipo_termino)?.trim() || fila.tipo_termino,
-    forma_farmaceutica: prompt("Forma farmacéutica:", fila.forma_farmaceutica)?.trim() || fila.forma_farmaceutica,
-    imagen: prompt("URL de la imagen:", fila.imagen)?.trim() || fila.imagen
-  };
+    termino: prompt("Término:", fila.termino) ?? fila.termino,
+    traduccion: prompt("Traducción:", fila.traduccion) ?? fila.traduccion,
+    pronunciacion: prompt("Pronunciación:", fila.pronunciacion) ?? fila.pronunciacion,
+    categoria: prompt("Categoría:", fila.categoria) ?? fila.categoria,
+    definicion: prompt("Definición:", fila.definicion) ?? fila.definicion,
+    sinonimos: prompt("Sinónimos:", fila.sinonimos) ?? fila.sinonimos,
+    tipo_termino: prompt("Tipo de término:", fila.tipo_termino) ?? fila.tipo_termino,
+    forma_farmaceutica: prompt("Forma farmacéutica:", fila.forma_farmaceutica) ?? fila.forma_farmaceutica,
+    imagen: prompt("URL de la imagen:", fila.imagen) ?? fila.imagen,
+    fecha_agregado: new Date().toISOString()
+  };  
 
   // Verifica si hay cambios reales
   let hayCambios = false;
