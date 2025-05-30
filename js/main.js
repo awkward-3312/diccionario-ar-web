@@ -142,11 +142,24 @@ function buscar() {
 
   let entrada = glosario[termino];
   let terminoReal = entrada ? termino : null;
-
-  if (entrada) {
-    const nombreVisible = entrada["Término"] || entrada["termino"] || "";
-    document.getElementById("termino").value = nombreVisible;
+  
+  // Si no se encuentra directamente por clave, busca por "Traducción"
+  if (!entrada) {
+    for (const key in glosario) {
+      const normalizadoTraduccion = normalizarTexto(glosario[key]["Traducción"] || "");
+      if (normalizadoTraduccion === termino) {
+        entrada = glosario[key];
+        terminoReal = key;
+        break;
+      }
+    }
   }
+  
+  // Mostrar nombre visible en campo de búsqueda
+  if (entrada) {
+    const nombreVisible = entrada["Término"] || entrada["termino"] || terminoReal;
+    document.getElementById("termino").value = nombreVisible;
+  }  
 
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
