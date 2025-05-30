@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inicio Diccionario AR</title>
   <link rel="stylesheet" href="css/inicio.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
+
   <header class="encabezado">
     <img class="logo" src="img/logo.png" alt="Diccionario AR" />
     <nav class="menu-principal">
@@ -16,7 +18,7 @@
     <button class="btn-login" onclick="location.href='admin.html'">Iniciar sesión</button>
   </header>
 
-  <main class="hero">
+  <main class="hero" data-aos="fade-up">
     <h1>Bienvenido a Diccionario AR</h1>
     <p>Explora términos técnicos con nuestra herramienta interactiva</p>
   </main>
@@ -25,6 +27,11 @@
     <p>&copy; 2025 Diccionario AR. Todos los derechos reservados.</p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="js/inicio.js"></script>
 </body>
 </html>

@@ -164,7 +164,7 @@ body::before {
   left: 0;
   width: 110%;
   height: 110%;
-  background-image: url('../img/background.png');
+  background-image: url('../img/background.png'); /* Reemplázalo con el nombre correcto si cambió */
   background-size: cover;
   background-position: center;
   z-index: -5;
