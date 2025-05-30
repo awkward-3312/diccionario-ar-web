@@ -36,12 +36,10 @@ function mostrarCampos() {
   }
 }
 
-// === FUNCIÓN PARA OBTENER FECHA ISO ===
 function obtenerFechaISO() {
   return new Date().toISOString();
 }
 
-// === FUNCIÓN PARA MOSTRAR MENSAJE EMERGENTE ===
 function mostrarPopup(texto, exito = true) {
   const popup = document.getElementById('popupMsg');
   popup.style.backgroundColor = exito ? '#3ae374' : '#ff5e57';
@@ -52,9 +50,18 @@ function mostrarPopup(texto, exito = true) {
   }, 3000);
 }
 
-// === ENVÍO DE FORMULARIO ===
+function toggleLoader(visible) {
+  const loader = document.getElementById('loader');
+  const botones = document.querySelectorAll('#formulario button');
+
+  loader.style.display = visible ? 'block' : 'none';
+  botones.forEach(btn => btn.disabled = visible);
+}
+
+// === ENVÍO DEL FORMULARIO ===
 document.getElementById('formulario').addEventListener('submit', async (e) => {
   e.preventDefault();
+  toggleLoader(true);
 
   const tipo = document.getElementById('tipo').value;
   const termino = document.getElementById('termino').value.trim();
@@ -90,12 +97,14 @@ document.getElementById('formulario').addEventListener('submit', async (e) => {
     .from('base_datos')
     .insert([nuevo]);
 
+  toggleLoader(false);
+
   if (error) {
     console.error(error);
     mostrarPopup('❌ Error al guardar: ' + error.message, false);
   } else {
     mostrarPopup('✅ Término agregado correctamente');
     e.target.reset();
-    mostrarCampos(); // Oculta campos dinámicos después de enviar
+    mostrarCampos(); // Oculta campos dinámicos otra vez
   }
 });
