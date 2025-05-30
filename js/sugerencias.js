@@ -3,21 +3,14 @@ const URL_SUGERENCIAS = "https://script.google.com/macros/s/AKfycbxZj7zbD0onrR8V
 function enviarSugerencia() {
   const texto = document.getElementById("sugerencia").value.trim();
   const mensaje = document.getElementById("mensaje");
-  const token = document.getElementById("recaptcha-token").value;
 
   if (!texto) {
     mensaje.innerHTML = '<div class="error">⚠️ Por favor escribe una sugerencia antes de enviar.</div>';
     return;
   }
 
-  if (!token) {
-    mensaje.innerHTML = '<div class="error">❌ Error al validar el captcha. Intenta de nuevo.</div>';
-    return;
-  }
-
   const datos = new URLSearchParams();
   datos.append("sugerencia", texto);
-  datos.append("recaptcha-token", token);
 
   fetch(URL_SUGERENCIAS, {
     method: 'POST',
