@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   tbody = document.querySelector("#tablaTerminos tbody");
   if (localStorage.getItem("adminAutenticado") === "true") {
     mostrarPanel();
+  const btnInicio = document.createElement("button");
+        btnInicio.innerHTML = '<i class="fas fa-home"></i> Inicio';
+        btnInicio.classList.add("btn-secundario");
+        btnInicio.onclick = () => window.location.href = "inicio.html";
+        document.querySelector(".acciones")?.prepend(btnInicio);
   }
 
   const form = document.getElementById("formLogin");
@@ -61,6 +66,11 @@ async function verificarClave() {
 
   localStorage.setItem("adminAutenticado", "true");
   mostrarPanel();
+  const btnInicio = document.createElement("button");
+        btnInicio.innerHTML = '<i class="fas fa-home"></i> Inicio';
+        btnInicio.classList.add("btn-secundario");
+        btnInicio.onclick = () => window.location.href = "inicio.html";
+        document.querySelector(".acciones")?.prepend(btnInicio);
 }
 
 async function cerrarSesion() {
@@ -112,8 +122,8 @@ async function cargarDatos() {
       <td>${fila.imagen ? `<a href="${fila.imagen}" target="_blank">Ver</a>` : ""}</td>
       <td>${fila.fecha_agregado ? new Date(fila.fecha_agregado).toLocaleDateString() : "-"}</td>
       <td>
-        <button onclick="editarFila(${fila.id})">✏️</button>
-        <button onclick="eliminarFila(${fila.id})">🗑️</button>
+        <button onclick="editarFila(${fila.id})"><i class="fas fa-pen"></i></button>
+        <button onclick="eliminarFila(${fila.id})"><i class="fas fa-trash"></i></button>
       </td>`;
     todasLasFilas.push(tr);
   });
