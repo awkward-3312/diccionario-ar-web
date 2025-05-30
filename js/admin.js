@@ -178,40 +178,35 @@ async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
   if (!fila) return alert("ID no encontrado");
 
-  function limpiar(input, valorAnterior) {
-    if (input === null || input.trim() === "" || input.trim() === "null") return valorAnterior || null;
-    return input.trim();
-  }
-
   const actualizado = {
-    Término: limpiar(prompt("Término:", fila.Término), fila.Término),
-    Traducción: limpiar(prompt("Traducción:", fila.Traducción), fila.Traducción),
-    Pronunciación: limpiar(prompt("Pronunciación:", fila.Pronunciación), fila.Pronunciación),
-    Categoría: limpiar(prompt("Categoría:", fila.Categoría), fila.Categoría),
-    Definición: limpiar(prompt("Definición:", fila.Definición), fila.Definición),
-    Sinónimos: limpiar(prompt("Sinónimos:", fila.Sinónimos), fila.Sinónimos),
-    ["Tipo de término"]: limpiar(prompt("Tipo de término:", fila["Tipo de término"]), fila["Tipo de término"]),
-    ["Forma farmacéutica"]: limpiar(prompt("Forma farmacéutica:", fila["Forma farmacéutica"]), fila["Forma farmacéutica"]),
-    Imagen: limpiar(prompt("URL de la imagen:", fila.Imagen), fila.Imagen),
+    Término: prompt("Término:", fila.Término) || fila.Término,
+    Traducción: prompt("Traducción:", fila.Traducción) || fila.Traducción,
+    Pronunciación: prompt("Pronunciación:", fila.Pronunciación) || fila.Pronunciación,
+    Categoría: prompt("Categoría:", fila.Categoría) || fila.Categoría,
+    Definición: prompt("Definición:", fila.Definición) || fila.Definición,
+    Sinónimos: prompt("Sinónimos:", fila.Sinónimos) || fila.Sinónimos,
+    ["Tipo de término"]: prompt("Tipo de término:", fila["Tipo de término"]) || fila["Tipo de término"],
+    ["Forma farmacéutica"]: prompt("Forma farmacéutica:", fila["Forma farmacéutica"]) || fila["Forma farmacéutica"],
+    Imagen: prompt("URL de la imagen:", fila.Imagen) || fila.Imagen,
     ["Fecha agregado"]: new Date().toISOString()
   };
 
   mostrarLoader();
-  const { data, error, count } = await client
+
+  const { error } = await client
     .from('base_datos')
     .update(actualizado)
-    .eq('id', id)
-    .select(); // <- permite ver si actualizó algo
+    .eq('id', id);
+
   ocultarLoader();
 
   if (error) {
     mostrarPopup("❌ Error al editar", false);
     console.error(error);
-  } else if (!data || data.length === 0) {
-    mostrarPopup("⚠️ No se realizaron cambios. Revisa si modificaste algo.", false);
   } else {
     mostrarPopup("✅ Término actualizado exitosamente.");
-    cargarDatos();
+    await cargarDatos();                    // 🔄 Recarga desde Supabase
+    mostrarPagina(paginaActual);           // 🔄 Vuelve a dibujar la página actual
   }
 }
 
