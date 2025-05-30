@@ -110,29 +110,44 @@ function actualizarGlosario() {
   }
 }
 
-function actualizarContador() {
-  const total = Object.keys(glosario).length;
+async function actualizarContador() {
   const contenedor = document.getElementById("contadorTerminos");
   if (!contenedor) return;
 
-  let nuevos = 0;
-  const ahora = new Date();
-  const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
+  try {
+    const ahora = new Date();
+    const limite = new Date(ahora.getTime() - 8 * 60 * 60 * 1000); // 8 horas atrás
+    const fechaISO = limite.toISOString();
 
-  for (const termino of Object.values(glosario)) {
-    let fechaTexto = termino["fecha_agregado"] || termino["Fecha agregado"] || termino["fechaAgregado"] || "";
-    if (fechaTexto) {
-      const fechaObj = new Date(fechaTexto);
-      if (!isNaN(fechaObj)) {
-        if (fechaObj > limite) nuevos++;
-      }
-    }
+    // Consulta total de términos
+    const { count: total, error: errorTotal } = await supabase
+      .from("Glosario")
+      .select("*", { count: "exact", head: true });
+
+    if (errorTotal) throw errorTotal;
+
+    // Consulta de nuevos en las últimas 8 horas
+    const { count: nuevos, error: errorNuevos } = await supabase
+      .from("Glosario")
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .gte("Fecha agregado", fechaISO);
+
+    if (errorNuevos) throw errorNuevos;
+
+    const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
+    const textoNuevos = nuevos > 0
+      ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.`
+      : "";
+
+    contenedor.textContent = textoBase + textoNuevos;
+
+  } catch (error) {
+    console.error("Error al obtener conteo de términos:", error);
+    contenedor.textContent = "Error al contar términos.";
   }
-
-  const textoBase = `Actualmente hay ${total} término${total !== 1 ? "s" : ""} registrados.`;
-  const textoNuevos = nuevos > 0 ? ` 📌 Se ha${nuevos > 1 ? "n" : ""} agregado ${nuevos} término${nuevos !== 1 ? "s" : ""} en las últimas 8 horas.` : "";
-
-  contenedor.textContent = textoBase + textoNuevos;
 }
 
 function buscar() {
