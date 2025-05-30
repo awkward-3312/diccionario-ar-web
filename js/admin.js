@@ -119,6 +119,30 @@ async function cargarDatos() {
   mostrarPagina(paginaActual || 1);
 }
 
+function mostrarPagina(numero) {
+  paginaActual = numero;
+  const inicio = (numero - 1) * filasPorPagina;
+  const fin = inicio + filasPorPagina;
+  const paginaFilas = todasLasFilas.slice(inicio, fin);
+
+  // Limpiar tabla
+  tbody.innerHTML = "";
+  paginaFilas.forEach(f => tbody.appendChild(f));
+
+  // Mostrar paginación
+  const paginacion = document.getElementById("paginacion");
+  paginacion.innerHTML = "";
+
+  const totalPaginas = Math.ceil(todasLasFilas.length / filasPorPagina);
+  for (let i = 1; i <= totalPaginas; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.disabled = i === paginaActual;
+    btn.onclick = () => mostrarPagina(i);
+    paginacion.appendChild(btn);
+  }
+}
+
 // === EDITAR ===
 async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
