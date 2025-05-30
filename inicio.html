@@ -3,85 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diccionario AR - Inicio</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="img/favicon.png" type="image/png">
-
-  <!-- CSS Principal -->
-  <link rel="stylesheet" href="css/inicio.css">
-
-  <!-- AOS Animations (JSDelivr recomendado) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-
-  <!-- Font Awesome actualizado (JSDelivr) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <title>Inicio Diccionario AR</title>
+  <link rel="stylesheet" href="css/inicio.css" />
 </head>
-<body class="fade-in">
-  <!-- ENCABEZADO -->
+<body>
   <header class="encabezado">
-    <img src="img/logo-diccionario.png" alt="Logo Diccionario AR" class="logo">
+    <img class="logo" src="img/logo.png" alt="Diccionario AR" />
     <nav class="menu-principal">
       <a href="index.html">Diccionario</a>
-      <a href="traductor.html">Traductor</a>
-      <a href="#contacto">Contacto</a>
+      <a href="contacto.html">Contacto</a>
     </nav>
-    <a href="admin.html" class="btn-login">Iniciar sesión</a>
+    <button class="btn-login" onclick="location.href='admin.html'">Iniciar sesión</button>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero" data-aos="fade-up">
-    <h1>Conocimiento claro, confiable y accesible</h1>
-    <p>Descubre términos, traducciones, definiciones y más sobre el mundo farmacéutico.</p>
-    <a href="index.html" class="btn-primario">Ir al Diccionario</a>
-  </section>
+  <main class="hero">
+    <h1>Bienvenido a Diccionario AR</h1>
+    <p>Explora términos técnicos con nuestra herramienta interactiva</p>
+  </main>
 
-  <!-- INFORMACIÓN GENERAL -->
-  <section class="seccion-info" data-aos="fade-up" data-aos-delay="100">
-    <div class="card">
-      <i class="fas fa-microscope fa-2x"></i>
-      <h3>Precisión Técnica</h3>
-      <p>Términos verificados por profesionales del sector regulatorio y técnico.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-language fa-2x"></i>
-      <h3>Bilingüe Especializado</h3>
-      <p>Español e inglés con enfoque técnico-regulatorio.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-bolt fa-2x"></i>
-      <h3>Fácil de usar</h3>
-      <p>Diseño amigable, accesible desde cualquier dispositivo.</p>
-    </div>
-  </section>
-
-  <!-- CTA CON ESTADÍSTICAS -->
-  <section class="cta-estadisticas" data-aos="zoom-in">
-    <h2>+370 términos definidos</h2>
-    <p>Actualizado constantemente con nuevas entradas.</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contacto">
+  <footer>
     <p>&copy; 2025 Diccionario AR. Todos los derechos reservados.</p>
-    <nav>
-      <a href="terminos.html">Términos y condiciones</a> |
-      <a href="privacidad.html">Política de privacidad</a>
-    </nav>
   </footer>
 
-  <!-- SPARKIE FLOTANTE -->
-  <a href="chat-sparkie.html" class="boton-flotante" title="Habla con Sparkie">
-    <img src="img/sparkie-icon.png" alt="Sparkie" />
-  </a>
-
-  <!-- BACKGROUND MOLECULAR DINÁMICO (ya integrado por CSS) -->
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-  </script>
   <script src="js/inicio.js"></script>
 </body>
 </html>
