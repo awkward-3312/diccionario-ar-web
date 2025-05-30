@@ -171,8 +171,10 @@ function buscar() {
       ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
       ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
       ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-      ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+      ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo => 
+      `<button class="sinonimo-boton">${sinonimo.trim()}</button>`
+    ).join('') + `</div>` : ""}
+      ${tipo_termino ? "" : ""}
       ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
     `;
     sugerenciaDiv.innerHTML = "";
@@ -266,8 +268,10 @@ function mostrarResultado(nombre) {
     ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
     ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
     ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo => 
+      `<button class="sinonimo-boton">${sinonimo.trim()}</button>`
+    ).join('') + `</div>` : ""}
+    ${tipo_termino ? "" : ""}
     ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
   `;
 
@@ -293,8 +297,10 @@ function mostrarResultado(nombre) {
     ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
     ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
     ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
+    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ` + sinonimos.split(',').map(sinonimo => 
+      `<button class="sinonimo-boton">${sinonimo.trim()}</button>`
+    ).join('') + `</div>` : ""}
+    ${tipo_termino ? "" : ""}
     ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
   `;
 
