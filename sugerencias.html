@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugerencias - Diccionario AR</title>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugerencias - Diccionario AR</title>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-REW5RZ32MX');
+  </script>
 
-  gtag('config', 'G-REW5RZ32MX');
-</script>
+  <link rel="icon" type="image/png" href="favicon-ar.png">
+  <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/sugerencias.css">
+  <script src="js/sugerencias.js" defer></script>
 
-    <link rel="icon" type="image/png" href="favicon-ar.png">
-    <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/sugerencias.css">
-    <script src="js/sugerencias.js" defer></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
-     crossorigin="anonymous"></script>
-  </head>  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984" crossorigin="anonymous"></script>
+</head>  
+
 <body>
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
     <i class="fas fa-moon" id="icono-modo"></i>
@@ -36,6 +38,9 @@
     <h1>Sugerencias</h1>
 
     <textarea id="sugerencia" placeholder="Escribe aquí tu sugerencia..." aria-label="Caja de texto para sugerencias"></textarea>
+
+    <!-- ✅ CAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26" style="margin: 20px auto;"></div>
 
     <div>
       <button class="enviar" onclick="enviarSugerencia()" aria-label="Enviar sugerencia">
