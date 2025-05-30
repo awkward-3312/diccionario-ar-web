@@ -186,7 +186,6 @@ function buscar() {
     
     }
   }
-}
 
 
 async function enviarSugerenciaTermino() {
