@@ -58,37 +58,6 @@ window.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     toggleLoader(true);
 
-    // ✅ Esperar a que reCAPTCHA esté listo
-    const esperarToken = () => new Promise((resolve, reject) => {
-      if (typeof grecaptcha === 'undefined' || typeof grecaptcha.enterprise === 'undefined') {
-        reject("⚠️ reCAPTCHA no está disponible");
-        return;
-      }
-
-      grecaptcha.enterprise.ready(() => {
-        grecaptcha.enterprise.execute('6LeOMVArAAAAAPNrIJw5k4XIdWdlVjI03Hzb4F26', { action: 'AGREGAR_TERMINO' })
-          .then(resolve)
-          .catch(reject);
-      });
-    });
-
-    let token;
-    try {
-      token = await esperarToken();
-    } catch (err) {
-      toggleLoader(false);
-      mostrarPopup("❌ Error con reCAPTCHA. Intenta nuevamente.", false);
-      console.error(err);
-      return;
-    }
-
-    if (!token) {
-      toggleLoader(false);
-      mostrarPopup("❌ No se obtuvo token reCAPTCHA.", false);
-      return;
-    }
-
-    // ✔️ Recolectar datos
     const tipo = document.getElementById('tipo').value;
     const termino = document.getElementById('termino').value.trim();
     const traduccion = document.getElementById('traduccion').value.trim();
