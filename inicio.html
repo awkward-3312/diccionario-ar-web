@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio Diccionario AR</title>
+  <title>Inicio – Diccionario AR</title>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="css/inicio.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-</head>
-<body>
 
+  <!-- Fuente opcional de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="fade-in">
+
+  <!-- Encabezado -->
   <header class="encabezado">
-    <img class="logo" src="img/logo.png" alt="Diccionario AR" />
+    <img class="logo" src="img/logo.png" alt="Logo Diccionario AR" />
     <nav class="menu-principal">
       <a href="index.html">Diccionario</a>
       <a href="contacto.html">Contacto</a>
@@ -18,11 +24,13 @@
     <button class="btn-login" onclick="location.href='admin.html'">Iniciar sesión</button>
   </header>
 
-  <main class="hero" data-aos="fade-up">
+  <!-- Hero -->
+  <main class="hero" data-aos="fade-up" data-aos-delay="100">
     <h1>Bienvenido a Diccionario AR</h1>
     <p>Explora términos técnicos con nuestra herramienta interactiva</p>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Diccionario AR. Todos los derechos reservados.</p>
   </footer>
@@ -30,8 +38,10 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({ once: true });
+    });
   </script>
-  <script src="js/inicio.js"></script>
+  <script src="js/inicio.js" defer></script>
 </body>
 </html>
