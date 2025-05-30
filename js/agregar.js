@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.getElementById("formulario").addEventListener("submit", guardarTermino);
+
+  // ✅ Ejecutar mostrarCampos() al iniciar, para mostrar los campos si ya hay valor seleccionado
+  mostrarCampos();
 });
 
 // ✅ Mostrar/ocultar campos según tipo
