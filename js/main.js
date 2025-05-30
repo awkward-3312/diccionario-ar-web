@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(buscar, 300);
+    debounceTimer = setTimeout(buscar, 900);
   });
   
   window.addEventListener("load", () => {
