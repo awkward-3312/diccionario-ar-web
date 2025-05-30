@@ -236,3 +236,28 @@ function filtrarTabla() {
   tbody.innerHTML = "";
   filasFiltradas.slice(0, filasPorPagina).forEach(f => tbody.appendChild(f));
 }
+
+// === ALERTA EMERGENTE ===
+function mostrarPopup(mensaje, exito = true) {
+  const popup = document.createElement("div");
+  popup.textContent = mensaje;
+  popup.style.position = "fixed";
+  popup.style.top = "20px";
+  popup.style.right = "20px";
+  popup.style.padding = "15px 25px";
+  popup.style.backgroundColor = exito ? "#3ae374" : "#ff5c39";
+  popup.style.color = "#111";
+  popup.style.fontWeight = "bold";
+  popup.style.borderRadius = "10px";
+  popup.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+  popup.style.zIndex = "9999";
+  popup.style.transition = "opacity 0.3s ease";
+  popup.style.opacity = "1";
+
+  document.body.appendChild(popup);
+
+  setTimeout(() => {
+    popup.style.opacity = "0";
+    setTimeout(() => popup.remove(), 300);
+  }, 2500);
+}
