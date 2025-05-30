@@ -192,3 +192,27 @@ button i {
 body.light-mode #toggle-modo i {
   color: #111;
 }
+
+select,
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+body.light-mode select {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+body:not(.light-mode) select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+}
