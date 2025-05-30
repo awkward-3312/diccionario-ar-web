@@ -292,8 +292,3 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('❌ Error SW:', err));
   });
 }
-
-// ✅ Exportar funciones globalmente para evitar errores de referencia
-window.buscar = buscar;
-window.limpiarBusqueda = limpiarBusqueda;
-window.actualizarGlosario = actualizarGlosario;
