@@ -192,6 +192,7 @@ function buscar() {
 
   // Mostrar término original en el input
   document.getElementById("termino").value = entrada.termino || terminoReal;
+  window.ultimaBusqueda = entrada.termino || terminoReal;
 
   let html = `<div class="resultado-flex">`;
 
@@ -244,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSugerir = document.getElementById("btn-sugerir");
 const ventanaSugerencia = document.getElementById("ventana-sugerencia");
 const cerrarSugerencia = document.getElementById("cerrar-sugerencia");
-const enviarSugerenciaBtn = document.getElementById("enviar-sugerencia");
 
 btnSugerir.addEventListener("click", () => {
   if (!ultimaBusqueda) {
