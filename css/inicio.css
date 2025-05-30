@@ -1,24 +1,21 @@
-/* === VARIABLES DE COLOR === */
 :root {
-  --color-fondo-top: #f4f6fc;
-  --color-fondo-bottom: #ffffff;
+  --color-fondo-top: #0f1115;
+  --color-fondo-bottom: #1a1c22;
   --color-primario: #1877f2;
   --color-secundario: #ff5c39;
-  --color-texto-principal: #111;
-  --color-subtexto: #444;
+  --color-texto-principal: #ffffff;
+  --color-subtexto: #dddddd;
   --color-onda: rgba(24,119,242,0.1);
   --color-onda-secundaria: rgba(255,92,57,0.2);
 }
 
-/* === FUENTES === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* === RESET Y BASE === */
 * {
   box-sizing: border-box;
-  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -30,16 +27,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.hero h1, .hero p, .btn-primario {
-  line-height: 1.4;
-  font-weight: 600;
-  letter-spacing: 0.3px;
 }
 
 body::after {
@@ -55,35 +42,40 @@ body::after {
   z-index: 0;
 }
 
-/* QUITAMOS fondo-molecular (ahora usamos un video o fondo más moderno desde HTML/CSS directamente) */
-.fondo-molecular {
-  display: none;
-}
-
-/* ENCABEZADO */
+/* Encabezado */
 .encabezado {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
 }
 
 .logo {
-  width: 160px;
+  width: 200px;
   height: auto;
 }
 
-.menu-principal a {
-  color: var(--color-texto-principal);
+/* Menú */
+.menu-principal {
+  display: flex;
+  gap: 30px;
 }
+
+.menu-principal a {
+  text-decoration: none;
+  color: var(--color-texto-principal);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
 .menu-principal a:hover {
   color: var(--color-primario);
 }
@@ -94,59 +86,54 @@ body::after {
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
+
 .btn-login:hover {
   background-color: var(--color-secundario);
 }
 
-/* HERO */
+/* Hero */
 .hero {
   padding: 220px 20px 60px;
   text-align: center;
   background: none;
 }
+
 .hero h1 {
   font-size: 3rem;
   color: var(--color-primario);
 }
+
 .hero p {
   font-size: 1.2rem;
   color: var(--color-subtexto);
 }
 
-/* INFO GENERAL */
-.seccion-info h2 {
-  color: var(--color-primario);
-}
-.seccion-info p {
-  color: var(--color-subtexto);
-}
-
-.card {
-  background: #fff;
-  border: 1px solid #ddd;
-  color: #111;
-}
-.card h3 {
-  color: var(--color-primario);
-}
-.card i {
-  color: var(--color-secundario);
-}
-
-/* FOOTER */
+/* Footer */
 footer {
-  background-color: #f9f9f9;
-  color: #777;
+  background-color: #1a1c22;
+  color: #ccc;
+  text-align: center;
+  padding: 40px 20px 60px;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
+
 footer nav a {
-  color: #888;
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 6px;
+  transition: color 0.3s;
 }
+
 footer nav a:hover {
   color: var(--color-primario);
 }
 
-/* Transiciones mantenidas */
+/* Transiciones */
 body.fade-in {
   opacity: 0;
   animation: bodyFadeIn 0.6s ease forwards;
@@ -157,27 +144,27 @@ body.fade-out {
   animation: bodyFadeOut 0.4s ease forwards;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 110%;
-  height: 110%;
-  background-image: url('../img/background.png'); /* Reemplázalo con el nombre correcto si cambió */
-  background-size: cover;
-  background-position: center;
-  z-index: -5;
-  animation: zoomParallax 40s ease-in-out infinite;
-  opacity: 0.95;
-  pointer-events: none;
+@keyframes bodyFadeIn {
+  to { opacity: 1; }
 }
 
-@keyframes zoomParallax {
-  0%, 100% {
-    transform: scale(1) translate(0, 0);
+@keyframes bodyFadeOut {
+  to { opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
   }
-  50% {
-    transform: scale(1.05) translate(-1%, -1%);
+
+  .menu-principal {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .logo {
+    width: 120px;
   }
 }

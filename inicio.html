@@ -7,40 +7,67 @@
 
   <!-- Estilos -->
   <link rel="stylesheet" href="css/inicio.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-  <!-- Fuente opcional de Google -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body class="fade-in">
 
+  <!-- Fondo decorativo (si usas moléculas) -->
+  <div class="fondo-molecular">
+    <img src="img/mol-perfect1.png" class="mol mol1" alt="molécula" />
+    <img src="img/mol-perfect2.png" class="mol mol2" alt="molécula" />
+    <img src="img/mol-perfect3.png" class="mol mol3" alt="molécula" />
+    <img src="img/mol-perfect4.png" class="mol mol4" alt="molécula" />
+  </div>
+
   <!-- Encabezado -->
   <header class="encabezado">
-    <img class="logo" src="img/logo.png" alt="Logo Diccionario AR" />
+    <img src="img/logo.png" alt="Logo Diccionario AR" class="logo" />
     <nav class="menu-principal">
       <a href="index.html">Diccionario</a>
       <a href="contacto.html">Contacto</a>
     </nav>
-    <button class="btn-login" onclick="location.href='admin.html'">Iniciar sesión</button>
+    <a href="admin.html" class="btn-login">Iniciar sesión</a>
   </header>
 
-  <!-- Hero -->
-  <main class="hero" data-aos="fade-up" data-aos-delay="100">
-    <h1>Bienvenido a Diccionario AR</h1>
-    <p>Explora términos técnicos con nuestra herramienta interactiva</p>
+  <!-- Hero principal -->
+  <main class="hero" data-aos="fade-up">
+    <h1>Explora. Aprende. <mark>Conecta</mark>.</h1>
+    <p>Diccionario visual y colaborativo para ciencia regulatoria, farmacéutica y documentación técnica.</p>
+    <div class="botones">
+      <button onclick="transicionar('index.html')" class="btn-primario animado"><span>Explorar Diccionario</span></button>
+    </div>
   </main>
+
+  <!-- Sección informativa -->
+  <section class="seccion-info" data-aos="fade-up">
+    <h2>¿Qué es Diccionario AR?</h2>
+    <p>Herramienta digital para consultar, sugerir y validar términos técnicos con pronunciación, sinónimos y categorías gramaticales.</p>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Diccionario AR. Todos los derechos reservados.</p>
+    <p>&copy; 2025 Diccionario AR · Hecho con 💚 para el área regulatoria</p>
+    <nav>
+      <a href="terminos.html">Términos</a> ·
+      <a href="condiciones-uso.html">Condiciones de Uso</a> ·
+      <a href="politica-privacidad.html">Privacidad</a>
+    </nav>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", () => {
       AOS.init({ once: true });
+      document.body.classList.add("fade-in");
     });
+
+    function transicionar(url) {
+      document.body.classList.remove("fade-in");
+      document.body.classList.add("fade-out");
+      setTimeout(() => { window.location.href = url; }, 300);
+    }
   </script>
   <script src="js/inicio.js" defer></script>
 </body>
