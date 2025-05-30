@@ -155,13 +155,15 @@ function buscar() {
   
   if (!entrada) {
     for (const key in glosario) {
-      const normalizadoTraduccion = normalizarTexto(glosario[key]["Traducción"] || "");
-      if (normalizadoTraduccion === termino) {
-        entrada = glosario[key];
+      const item = glosario[key];
+      const normalizadoTraduccion = normalizarTexto(item.traduccion || item["Traducción"] || "");
+      const normalizadoTermino = normalizarTexto(item.termino || item["Término"] || "");
+      if (normalizadoTermino === termino || normalizadoTraduccion === termino) {
+        entrada = item;
         terminoReal = key;
         break;
       }
-    }
+    }    
   }  
   
   // Mostrar nombre visible en campo de búsqueda
@@ -216,12 +218,15 @@ if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
 html += `</div>`; // .bloque-texto
 
 // Mostrar imagen a la derecha
-if (
-  (entrada["tipo_termino"] || "").toLowerCase() === "instrumento" &&
-  entrada["imagen"]
-) {
-  const nombreArchivo = entrada["imagen"].trim();
-  const urlImagen = `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${nombreArchivo}`;
+const tipo = (entrada.tipo_termino || entrada["tipo_termino"] || "").toLowerCase();
+const imagen = entrada.imagen || entrada["imagen"];
+
+if (tipo === "instrumento" && imagen) {
+  const nombreArchivo = imagen.trim();
+  const urlImagen = nombreArchivo.startsWith("http")
+    ? nombreArchivo
+    : `https://gapivzjnehrkbbnjtvam.supabase.co/storage/v1/object/public/instrumentos/${nombreArchivo}`;
+
   html += `
     <div class="bloque-imagen">
       <img src="${urlImagen}" alt="Imagen del instrumento" class="imagen-instrumento">
