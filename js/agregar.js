@@ -59,52 +59,114 @@ function toggleLoader(visible) {
 }
 
 // === ENVÍO DEL FORMULARIO ===
-document.getElementById('formulario').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  toggleLoader(true);
+document.addEventListener('DOMContentLoaded', () => {
+  // === CONFIGURACIÓN SUPABASE ===
+  const supabaseUrl = 'https://TU_PROYECTO.supabase.co'; // 🟦 Reemplaza con tu URL real
+  const supabaseKey = 'TU_ANON_KEY'; // 🟦 Reemplaza con tu API Key real
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-  const tipo = document.getElementById('tipo').value;
-  const termino = document.getElementById('termino').value.trim();
-  const traduccion = document.getElementById('traduccion').value.trim();
-  const pronunciacion = document.getElementById('pronunciacion').value.trim();
-  const categoria = document.getElementById('categoria').value.trim();
-  const definicion = document.getElementById('definicion').value.trim();
-  const sinonimos = document.getElementById('sinonimos').value.trim();
-  const forma = document.getElementById('formaFarmaceutica').value.trim();
+  function mostrarCampos() {
+    const tipo = document.getElementById('tipo').value;
+    const traduccion = document.getElementById('traduccion');
+    const pronunciacion = document.getElementById('pronunciacion');
+    const categoria = document.getElementById('categoria');
+    const definicion = document.getElementById('definicion');
+    const sinonimos = document.getElementById('sinonimos');
+    const formaFarmaceutica = document.getElementById('formaFarmaceutica');
 
-  const nuevo = {
-    "Término": termino,
-    "Traducción": traduccion || null,
-    "Tipo de Termino": tipo === 'termino' ? 'Término'
-                        : tipo === 'abreviatura' ? 'Abreviatura'
-                        : tipo === 'forma' ? 'Forma farmacéutica'
-                        : 'Instrumento',
-    "Fecha agregado": obtenerFechaISO()
-  };
+    traduccion.style.display = 'none';
+    pronunciacion.style.display = 'none';
+    categoria.style.display = 'none';
+    definicion.style.display = 'none';
+    sinonimos.style.display = 'none';
+    formaFarmaceutica.style.display = 'none';
 
-  if (tipo === 'termino') {
-    nuevo["Pronunciación"] = pronunciacion || null;
-    nuevo["Categoría"] = categoria || null;
-    nuevo["Definición"] = definicion || null;
-    nuevo["Sinónimos"] = sinonimos || null;
+    if (tipo === 'abreviatura') {
+      traduccion.style.display = 'block';
+    } else if (tipo === 'termino') {
+      traduccion.style.display = 'block';
+      pronunciacion.style.display = 'block';
+      categoria.style.display = 'block';
+      definicion.style.display = 'block';
+      sinonimos.style.display = 'block';
+    } else if (tipo === 'forma') {
+      traduccion.style.display = 'block';
+      formaFarmaceutica.style.display = 'block';
+    } else if (tipo === 'instrumento') {
+      traduccion.style.display = 'block';
+    }
   }
 
-  if (tipo === 'forma') {
-    nuevo["Forma farmacéutica"] = forma || null;
+  function obtenerFechaISO() {
+    return new Date().toISOString();
   }
 
-  const { data, error } = await supabase
-    .from('base_datos')
-    .insert([nuevo]);
-
-  toggleLoader(false);
-
-  if (error) {
-    console.error(error);
-    mostrarPopup('❌ Error al guardar: ' + error.message, false);
-  } else {
-    mostrarPopup('✅ Término agregado correctamente');
-    e.target.reset();
-    mostrarCampos(); // Oculta campos dinámicos otra vez
+  function mostrarPopup(texto, exito = true) {
+    const popup = document.getElementById('popupMsg');
+    popup.style.backgroundColor = exito ? '#3ae374' : '#ff5e57';
+    popup.innerText = texto;
+    popup.style.display = 'block';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 3000);
   }
+
+  function toggleLoader(visible) {
+    const loader = document.getElementById('loader');
+    const botones = document.querySelectorAll('#formulario button');
+    loader.style.display = visible ? 'block' : 'none';
+    botones.forEach(btn => btn.disabled = visible);
+  }
+
+  document.getElementById('tipo').addEventListener('change', mostrarCampos);
+
+  document.getElementById('formulario').addEventListener('submit', async (e) => {
+    e.preventDefault(); // ✅ Evita recarga con "?"
+    toggleLoader(true);
+
+    const tipo = document.getElementById('tipo').value;
+    const termino = document.getElementById('termino').value.trim();
+    const traduccion = document.getElementById('traduccion').value.trim();
+    const pronunciacion = document.getElementById('pronunciacion').value.trim();
+    const categoria = document.getElementById('categoria').value.trim();
+    const definicion = document.getElementById('definicion').value.trim();
+    const sinonimos = document.getElementById('sinonimos').value.trim();
+    const forma = document.getElementById('formaFarmaceutica').value.trim();
+
+    const nuevo = {
+      "Término": termino,
+      "Traducción": traduccion || null,
+      "Tipo de Termino": tipo === 'termino' ? 'Término'
+                          : tipo === 'abreviatura' ? 'Abreviatura'
+                          : tipo === 'forma' ? 'Forma farmacéutica'
+                          : 'Instrumento',
+      "Fecha agregado": obtenerFechaISO()
+    };
+
+    if (tipo === 'termino') {
+      nuevo["Pronunciación"] = pronunciacion || null;
+      nuevo["Categoría"] = categoria || null;
+      nuevo["Definición"] = definicion || null;
+      nuevo["Sinónimos"] = sinonimos || null;
+    }
+
+    if (tipo === 'forma') {
+      nuevo["Forma farmacéutica"] = forma || null;
+    }
+
+    const { data, error } = await supabase
+      .from('base_datos') // 🟦 Cambia si tu tabla se llama diferente
+      .insert([nuevo]);
+
+    toggleLoader(false);
+
+    if (error) {
+      console.error(error);
+      mostrarPopup('❌ Error al guardar: ' + error.message, false);
+    } else {
+      mostrarPopup('✅ Término agregado correctamente');
+      e.target.reset();
+      mostrarCampos();
+    }
+  });
 });
