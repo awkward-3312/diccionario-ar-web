@@ -25,29 +25,37 @@ document.addEventListener("DOMContentLoaded", () => {
 // ✅ Mostrar/ocultar campos según tipo
 function mostrarCampos() {
   const tipo = document.getElementById("tipo").value;
-
-  // Siempre ocultar todos primero
-  const campos = ["traduccion", "pronunciacion", "categoria", "definicion", "sinonimos", "formaFarmaceutica"];
-  campos.forEach(id => document.getElementById(id)?.style && (document.getElementById(id).style.display = "none"));
+  const campos = {
+    traduccion: "none",
+    pronunciacion: "none",
+    categoria: "none",
+    formaFarmaceutica: "none",
+    definicion: "none",
+    sinonimos: "none"
+  };
 
   if (tipo === "abreviatura") {
-    document.getElementById("traduccion").style.display = "block";
+    campos.traduccion = "block";
   } else if (tipo === "termino") {
-    document.getElementById("traduccion").style.display = "block";
-    document.getElementById("pronunciacion").style.display = "block";
-    document.getElementById("categoria").style.display = "block";
-    document.getElementById("definicion").style.display = "block";
-    document.getElementById("sinonimos").style.display = "block";
+    campos.traduccion = "block";
+    campos.pronunciacion = "block";
+    campos.categoria = "block";
+    campos.definicion = "block";
+    campos.sinonimos = "block";
   } else if (tipo === "forma") {
-    document.getElementById("definicion").style.display = "block";
-    document.getElementById("formaFarmaceutica").style.display = "block";
+    campos.definicion = "block";
+    campos.formaFarmaceutica = "block";
   } else if (tipo === "instrumento") {
-    document.getElementById("traduccion").style.display = "block";
-    document.getElementById("pronunciacion").style.display = "block";
-    document.getElementById("categoria").style.display = "block";
-    document.getElementById("definicion").style.display = "block";
-    document.getElementById("sinonimos").style.display = "block";
+    campos.traduccion = "block";
+    campos.pronunciacion = "block";
+    campos.categoria = "block";
+    campos.definicion = "block";
+    campos.sinonimos = "block";
   }
+
+  Object.keys(campos).forEach(id => {
+    document.getElementById(id).style.display = campos[id];
+  });
 }
 
 // ✅ Guardar término en Supabase
@@ -57,26 +65,26 @@ async function guardarTermino(e) {
   const loader = document.getElementById("loader");
   loader.style.display = "block";
 
+  const tipoSeleccionado = document.getElementById("tipo").value;
   const termino = document.getElementById("termino").value.trim();
-  let tipo = document.getElementById("tipo").value;
   const traduccion = document.getElementById("traduccion").value.trim();
   const pronunciacion = document.getElementById("pronunciacion").value.trim();
   const categoria = document.getElementById("categoria").value.trim();
+  const formaFarmaceutica = document.getElementById("formaFarmaceutica").value.trim();
   const definicion = document.getElementById("definicion").value.trim();
   const sinonimos = document.getElementById("sinonimos").value.trim();
-  const formaFarmaceutica = document.getElementById("formaFarmaceutica")?.value || null;
 
-  // Autoasignar tipo
-  if (tipo === "termino") tipo = "Término";
-  if (tipo === "forma") tipo = "Forma farmacéutica";
-  if (tipo === "instrumento") tipo = "Instrumento";
+  let tipo = tipoSeleccionado;
+  if (tipoSeleccionado === "forma") tipo = "forma farmacéutica";
+  if (tipoSeleccionado === "instrumento") tipo = "instrumento";
 
-  if (!termino || !tipo) {
+  if (!termino || !tipoSeleccionado) {
     mostrarMensaje("❌ Faltan campos obligatorios");
     loader.style.display = "none";
     return;
   }
 
+  // Validar si ya existe
   const { data: existentes, error: errorExistencia } = await supabase
     .from('base_datos')
     .select('Término')
@@ -103,13 +111,11 @@ async function guardarTermino(e) {
     Categoría: categoria || null,
     Definición: definicion || null,
     Sinónimos: sinonimos || null,
-    Forma: formaFarmaceutica || null,
+    formaFarmaceutica: formaFarmaceutica || null,
     fecha_agregado: new Date().toISOString()
   };
 
-  const { error } = await supabase
-    .from('base_datos')
-    .insert([nuevoTermino]);
+  const { error } = await supabase.from('base_datos').insert([nuevoTermino]);
 
   loader.style.display = "none";
 
@@ -123,6 +129,7 @@ async function guardarTermino(e) {
   }
 }
 
+// ✅ Mostrar mensaje superior
 function mostrarMensaje(texto) {
   const popup = document.getElementById("popupMsg");
   popup.textContent = texto;

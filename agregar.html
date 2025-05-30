@@ -31,30 +31,31 @@
         <option value="abreviatura">Abreviatura</option>
         <option value="termino">Término</option>
         <option value="forma">Forma farmacéutica</option>
+        <option value="instrumento">Instrumento</option>
       </select>
-
+    
       <input type="text" id="termino" placeholder="Agregar palabra" required>
       <input type="text" id="traduccion" placeholder="Traducción" style="display:none">
       <input type="text" id="pronunciacion" placeholder="Pronunciación" style="display:none">
       <input type="text" id="categoria" placeholder="Categoría" style="display:none">
-
-        <select id="formaFarmaceutica" style="display:none">
+    
+      <select id="formaFarmaceutica" style="display:none">
         <option value="">Selecciona tipo de forma</option>
         <option value="Sólida">Sólida</option>
         <option value="Líquida">Líquida</option>
         <option value="Semisólida">Semisólida</option>
         <option value="Gaseosas o Inhalables">Gaseosas o Inhalables</option>
         <option value="Vías específicas">Vías específicas</option>
-        </select>
-
+      </select>
+    
       <textarea id="definicion" placeholder="Definición" style="display:none"></textarea>
       <input type="text" id="sinonimos" placeholder="Sinónimos (separados por coma)" style="display:none">
-
+    
       <div id="loader"><span></span><span></span><span></span></div>
-
+    
       <button type="submit"><i class="fas fa-save"></i> Guardar</button>
       <button type="button" onclick="window.location.href='index.html'"><i class="fas fa-times"></i> Cancelar</button>
-    </form>
+    </form>    
 
     <p id="mensaje" style="text-align:center; margin-top:10px;"></p>
   </div>
