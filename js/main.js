@@ -190,7 +190,7 @@ function buscar() {
 
     if (sugerencias.length > 0) {
       const sugerenciaHTML = sugerencias.slice(0, 3).map(s => {
-        const original = glosario[s]["traduccion"] || s;
+        const original = glosario[s].traduccion || s;
         return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
       }).join(" ");
       resultado.innerHTML += `<br><br><em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
@@ -201,34 +201,26 @@ function buscar() {
 let html = `<div class="resultado-flex">`;
 
 html += `<div class="bloque-texto">`;
-html += `<div class="titulo-resultado">${entrada["Término"] || entrada["termino"] || terminoReal}</div>`;
+html += `<div class="titulo-resultado">${entrada.termino || terminoReal}</div>`;
 
-if ((entrada["Tipo"] || '').toLowerCase() === "abreviatura") {
-  html += `<strong>Traducción:</strong><br><span class="italic">${entrada["traduccion"] || "-"}</span>`;
+if ((entrada.tipo_termino || '').toLowerCase() === "abreviatura") {
+  html += `<p><strong>Traducción:</strong><br><span class="italic">${entrada.traduccion || "-"}</span></p>`;
 } else {
-  html += `<strong>Traducción:</strong> <span class="italic">${entrada["Traducción"] || "-"}</span><br>`;
-  if (entrada.pronunciacion || entrada["Pronunciación"]) {
-    html += `<strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion || entrada["Pronunciación"]}</span><br>`;
-  }
-  
-  if (entrada.categoria || entrada["Categoría"]) {
-    html += `<strong>Categoría:</strong> ${entrada.categoria || entrada["Categoría"]}<br>`;
-  }
-  
-  if (entrada.definicion || entrada["Definición"]) {
-    html += `<strong>Definición:</strong><br>${entrada.definicion || entrada["Definición"]}<br>`;
-  }
-  
+  if (entrada.traduccion) html += `<p><strong>Traducción:</strong> <span class="italic">${entrada.traduccion}</span></p>`;
+  if (entrada.pronunciacion) html += `<p><strong>Pronunciación:</strong> <span class="italic">${entrada.pronunciacion}</span></p>`;
+  if (entrada.categoria) html += `<p><strong>Categoría:</strong> ${entrada.categoria}</p>`;
+  if (entrada.definicion) html += `<p><strong>Definición:</strong><br>${entrada.definicion}</p>`;
   if (entrada.sinonimos) {
-    const sin = entrada.sinonimos.split(",").map(s => `<span>${s.trim()}</span>`).join(" ");
-    html += `<strong>Sinónimos:</strong><br><div class="sinonimos italic">${sin}</div>`;
-  }  
+    const sin = entrada.sinonimos.split(",").map(s => `<span class="etiqueta">${s.trim()}</span>`).join(" ");
+    html += `<p><strong>Sinónimos:</strong><br><div class="sinonimos">${sin}</div></p>`;
+  }
 }
+
 html += `</div>`; // .bloque-texto
 
 // Mostrar imagen a la derecha
-const tipo = (entrada.tipo_termino || entrada["tipo_termino"] || "").toLowerCase();
-const imagen = entrada.imagen || entrada["imagen"];
+const tipo = (entrada.tipo_termino || "").toLowerCase();
+const imagen = entrada.imagen;
 
 if (tipo === "instrumento" && imagen) {
   const nombreArchivo = imagen.trim();
@@ -315,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const sugerencias = Object.keys(glosario).filter(key => {
         const claveNorm = normalizarTexto(key);
-        const tradNorm = normalizarTexto(glosario[key]["Traducción"] || "");
+        const tradNorm = normalizarTexto(glosario[key].traduccion || "");
         const inputNorm = normalizarTexto(termino);
         return claveNorm.includes(inputNorm) || tradNorm.includes(inputNorm);
       });
