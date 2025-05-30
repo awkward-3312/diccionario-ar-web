@@ -394,8 +394,8 @@ body.light-mode
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  width: 60px; /* Ancho reducido */
+  height: 60px; /* Alto reducido */
   background: radial-gradient(circle at center, #1effb1, #0ef09a);
   border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.2);
