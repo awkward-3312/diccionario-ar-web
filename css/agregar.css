@@ -3,7 +3,10 @@
   src: url('../fonts/Middle-of-April.ttf') format('truetype');
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -14,10 +17,11 @@ body {
   background-attachment: fixed;
   height: 100vh;
   margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   color: white;
   animation: parallax 60s linear infinite, fadeIn 0.5s ease-in-out;
 }
@@ -99,16 +103,22 @@ h2 {
   margin-bottom: 20px;
 }
 
-select, input, textarea, button {
+select,
+input[type="text"],
+textarea,
+button {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
+  font-size: 16px;
   border-radius: 8px;
   border: none;
-  font-size: 16px;
+  box-sizing: border-box;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   background-color: #2a2a2a;
   color: white;
 }
@@ -126,17 +136,13 @@ button {
   font-weight: bold;
   cursor: pointer;
   border-radius: 8px;
-  font-size: 16px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px 16px;
-  border: none;
 }
 
 button:hover,
 button:focus-visible {
   background-color: #3ae374;
-  color: black;
   transform: scale(1.05);
 }
 
@@ -166,53 +172,44 @@ button:focus-visible {
   to { transform: translateY(-10px); }
 }
 
+.barra-inferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+}
+
+.barra-inferior button {
+  flex: 1;
+  margin: 0 10px;
+  background-color: #444;
+  color: white;
+}
+
+body.light-mode .barra-inferior {
+  background: rgba(255,255,255,0.7);
+}
+
+body.light-mode .barra-inferior button {
+  background-color: #ddd;
+  color: #000;
+}
+
+#popupMsg {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
 @media (max-width: 600px) {
   body { padding: 20px; }
   .formulario { padding: 20px; border-radius: 15px; }
   h2 { font-size: 2rem; }
   select, input, textarea, button { font-size: 14px; padding: 8px; }
-}
-
-/* === ESTILO PARA ÍCONOS DE FONT AWESOME EN BOTONES === */
-button i {
-  margin-right: 8px;
-  font-size: 16px;
-  vertical-align: middle;
-  color: inherit;
-  transition: color 0.3s ease;
-}
-
-/* Ícono del botón de modo claro/oscuro */
-#toggle-modo i {
-  font-size: 16px;
-  color: #fff;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-body.light-mode #toggle-modo i {
-  color: #111;
-}
-
-select,
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fff;
-  box-sizing: border-box;
-}
-
-body.light-mode select {
-  background-color: #f9f9f9;
-  color: #000;
-}
-
-body:not(.light-mode) select {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #666;
 }
