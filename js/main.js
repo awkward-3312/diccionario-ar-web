@@ -168,7 +168,7 @@ function buscar() {
   
   // Mostrar nombre visible en campo de búsqueda
   if (entrada) {
-    const nombreVisible = entrada["termino"] || terminoReal;
+    const nombreVisible = entrada.termino || terminoReal;
     document.getElementById("termino").value = nombreVisible;
   }  
 
@@ -181,7 +181,7 @@ function buscar() {
     const inputNormalizado = normalizarTexto(terminoInput.value.trim());
     const sugerencias = Object.keys(glosario).filter(key => {
       const claveNorm = normalizarTexto(key);
-      const tradNorm = normalizarTexto(glosario[key]["Traducción"] || "");
+      const tradNorm = normalizarTexto(glosario[key].traduccion || "");
       return (
         claveNorm.includes(inputNormalizado) ||
         tradNorm.includes(inputNormalizado)
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (sugerencias.length > 0) {
         const sugerenciaHTML = sugerencias.slice(0, 5).map(s => {
-          const original = glosario[s]["Término"] || glosario[s]["Traducción"] || s;
+          const original = glosario[s].traduccion || glosario[s].termino || s;
           return `<button onclick="document.getElementById('termino').value='${s}';buscar();">${original}</button>`;
         }).join(" ");
         resultado.innerHTML = `<em>¿Quisiste decir?:</em><br><div class='sugerencias'>${sugerenciaHTML}</div>`;
