@@ -160,7 +160,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const { error } = await supabase
-      .from('diccionario_ar') // ⬅️ Cambia por tu tabla real
+      .from('base_datos') // ⬅️ Cambia por tu tabla real
       .insert([registro]);
 
     toggleLoader(false);
