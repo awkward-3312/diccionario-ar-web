@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // ✅ Verificar que la librería esté cargada
-  if (!window.supabase || typeof window.supabase.createClient !== 'function') {
-    console.error('❌ Supabase no está cargado correctamente.');
+  // ✅ Verifica que Supabase esté cargado correctamente
+  if (typeof window.supabase === 'undefined') {
+    console.error('❌ Supabase no está disponible. Asegúrate que el script se cargue antes.');
     return;
   }
 
@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+  // === FUNCIONES ===
 
   function mostrarCampos() {
     const tipo = document.getElementById('tipo').value;
@@ -52,6 +54,8 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => popup.style.display = 'none', 3000);
   }
 
+  // === EVENTOS ===
+
   document.getElementById('tipo').addEventListener('change', mostrarCampos);
 
   document.getElementById('formulario').addEventListener('submit', async (e) => {
@@ -70,10 +74,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const registro = {
       "Término": termino,
       "Traducción": traduccion || null,
-      "Tipo de Termino": tipo === 'termino' ? 'Término'
-                          : tipo === 'abreviatura' ? 'Abreviatura'
-                          : tipo === 'forma' ? 'Forma farmacéutica'
-                          : 'Instrumento',
+      "Tipo de Termino":
+        tipo === 'termino' ? 'Término' :
+        tipo === 'abreviatura' ? 'Abreviatura' :
+        tipo === 'forma' ? 'Forma farmacéutica' :
+        'Instrumento',
       "Fecha agregado": new Date().toISOString()
     };
 
@@ -89,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const { error } = await supabase
-      .from('base_datos') // ⬅️ Cambia por el nombre exacto de tu tabla en Supabase
+      .from('base_datos') // ⬅️ Cambia este nombre si tu tabla se llama diferente
       .insert([registro]);
 
     toggleLoader(false);
@@ -100,7 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
       mostrarPopup('✅ Término agregado correctamente');
       e.target.reset();
-      mostrarCampos(); // limpia campos dinámicos
+      mostrarCampos();
     }
   });
 });
