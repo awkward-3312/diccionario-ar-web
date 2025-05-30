@@ -74,6 +74,21 @@
     </main>
   </div>
 
+  <!-- Ventana emergente para sugerencias -->
+<div id="form-sugerencia" class="ventana-sugerencia oculto">
+  <h3>📝 Sugerir mejora</h3>
+  <textarea id="inputSugerencia" placeholder="Escribe tu sugerencia..."></textarea>
+  <input type="text" id="inputAutor" placeholder="Tu nombre o correo (opcional)" />
+  <input type="text" id="inputTerminoRelacionado" placeholder="Término relacionado" />
+  <div class="botones-form">
+    <button onclick="enviarSugerencia()">Enviar</button>
+    <button onclick="cerrarFormularioSugerencia()">Cancelar</button>
+  </div>
+</div>
+
+<!-- Botón flotante -->
+<button id="btn-sugerir" title="Sugerir una mejora" onclick="abrirFormularioSugerencia()">📝</button>
+
   <div id="sparkie-boton" title="Habla con Sparkie">
     <img src="img/sparkie.png" alt="Sparkie" />
     <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
@@ -92,6 +107,7 @@
     </p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js" defer></script>
   <script src="js/eventosFestivos.js" defer></script>
   <script>

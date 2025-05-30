@@ -1,4 +1,6 @@
-const URL = 'https://script.google.com/macros/s/AKfycbys4Dq4jSXyKlERG8AwgpDAsT05sttX_73r0a9IgoXtMNMCzwT3QNMaZ6PVZpieIMEi/exec';
+const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 let glosario = {};
 let db;
 let glosarioCargado = false;
@@ -65,16 +67,24 @@ function cargarDesdeIndexedDB() {
   };
 }
 
-function cargarGlosario(guardarLocal = false) {
-  fetch(URL).then(res => res.json()).then(data => {
-    glosario = {};
-    for (let nombre in data) {
-      const clave = normalizarTexto(nombre);
-      glosario[clave] = data[nombre];
-    }
-    if (guardarLocal && db) guardarEnIndexedDB(glosario);
-    actualizarContador();
-  }).catch(err => console.error("Error al cargar glosario:", err));
+async function cargarGlosario(guardarLocal = false) {
+  const { data, error } = await supabase
+    .from('base_datos') // nombre exacto de la tabla en Supabase
+    .select('*');
+
+  if (error) {
+    console.error("❌ Error al cargar desde Supabase:", error);
+    return;
+  }
+
+  glosario = {};
+  data.forEach(item => {
+    const clave = normalizarTexto(item["Término"] || item["termino"]);
+    glosario[clave] = item;
+  });
+
+  if (guardarLocal && db) guardarEnIndexedDB(glosario);
+  actualizarContador();
 }
 
 function mostrarNotificacion(mensaje) {
