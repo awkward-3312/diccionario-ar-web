@@ -552,3 +552,13 @@ button i {
 body.light-mode #toggle-modo i {
   color: #111;
 }
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
