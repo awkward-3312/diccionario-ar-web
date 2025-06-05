@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollAbajo();
   }
 
-  // Alias compatible con otras implementaciones
   function agregarBurbuja(texto, clase) {
     agregarMensaje(texto, clase);
   }
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   textarea.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      form.dispatchEvent(new Event('submit'));
+      form.requestSubmit(); // ✅ método moderno que evita warning
     }
   });
 
@@ -110,7 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarPensando();
 
     try {
-      const endpoint = `${BASE_URL}/api/traducir`;
+      let proveedor = proveedorSelect.value.trim().toLowerCase();
+      if (!['deepl', 'traducir'].includes(proveedor)) proveedor = 'traducir';
+      const endpoint = `${BASE_URL}/api/${proveedor}`;
+
       let data;
       if (USE_MOCK) {
         await new Promise(r => setTimeout(r, 300));
@@ -128,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         data = await res.json();
       }
+
       eliminarPensando();
       if (data.traduccion) {
         agregarBurbuja(data.traduccion, 'sparkie');
@@ -142,3 +145,5 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminarPensando();
       agregarBurbuja('Error de conexión.', 'sparkie');
     }
+  });
+});
