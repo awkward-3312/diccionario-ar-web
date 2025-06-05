@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   textarea.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      form.requestSubmit(); // ✅ método moderno que evita warning
+      form.requestSubmit(); // ✅ evita el warning
     }
   });
 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (proveedor.includes('deepl')) {
         proveedor = 'deepl';
       } else {
-        proveedor = 'traducir'; // cualquier otro valor será Microsoft
+        proveedor = 'traducir';
       }
 
       const endpoint = `${BASE_URL}/api/${proveedor}`;
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: texto, idiomaDestino: idioma.value })
+          body: JSON.stringify({ texto: texto, idiomaDestino: idioma.value }) // ✅ CORREGIDO
         });
         if (!res.ok) {
           eliminarPensando();
