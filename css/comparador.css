@@ -42,7 +42,6 @@ body {
   margin-bottom: 20px;
 }
 
-.selectors input,
 .selectors button {
   padding: 8px 12px;
   border-radius: 8px;
@@ -76,6 +75,8 @@ body {
 }
 .resultados > :nth-child(even) {
   padding-left: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .campo {
