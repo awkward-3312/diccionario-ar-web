@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('chatForm');
   const textarea = document.getElementById('entradaTexto');
   const idioma = document.getElementById('idioma');
+  const proveedorSelect = document.getElementById('proveedor');
   const btnTema = document.getElementById('toggle-tema');
   const btnSonido = document.getElementById('toggle-sonido');
   const btnRegresar = document.getElementById('btn-regresar');
@@ -104,7 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarPensando();
 
     try {
-      const res = await fetch('https://traductor-backend.vercel.app/traducir', {
+      const proveedor = proveedorSelect.value;
+      const endpoint = proveedor === 'azure' ? '/api/traducir/azure' : '/api/traducir/deepl';
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ texto, idiomaDestino: idioma.value })
