@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Diccionario AR es una plataforma gratuita para consultar y agregar términos técnicos del área farmacéutica y regulatoria.">
+  <meta name="description" content="Diccionario AR es una plataforma gratuita para consultar y agregar términos técnicos del área farmacéutica y regulatoria." />
   <title>Sobre la Plataforma | Diccionario AR</title>
   
 <!-- Google tag (gtag.js) -->
@@ -17,7 +17,9 @@
 </script>
 
   <link rel="stylesheet" href="css/plataforma.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
@@ -33,19 +35,34 @@
     <div class="molecula"></div>
   </div>
   
-  <header class="encabezado" role="banner">
-    <img src="img/Logo AR.png" alt="Logo Diccionario AR" class="logo" />
-    <nav class="menu-principal" role="navigation" aria-label="Menú principal">
-      <a href="inicio.html">Inicio</a>
-      <a href="index.html">Diccionario</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <a href="admin.html" class="btn-login" role="button">Iniciar sesión</a>
+  <header class="header" role="banner">
+    <div class="container">
+      <a href="index.html" class="logo"><img src="img/logo.png" alt="Diccionario AR" /></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="plataforma.html">Plataforma</a>
+        <a href="index.html">Diccionario</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <a href="admin.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+    </div>
   </header>
 
   <main role="main">
-    <section class="seccion-plataforma">
-      <h2>Sobre la Plataforma</h2>
+    <section class="hero" id="sobre">
+      <div class="container hero-grid">
+        <div class="hero-text" data-aos="fade-right">
+          <h1>Conoce la Plataforma</h1>
+          <p>Un proyecto colaborativo para compartir terminología farmacéutica y regulatoria.</p>
+          <a href="index.html" class="btn-primary" onclick="transicionar('index.html'); return false;"><i class="fas fa-book-open"></i> Ir al Diccionario</a>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+          <img src="img/sparkie.png" alt="Sparkie" />
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion-plataforma container" aria-labelledby="titulo-plataforma">
+      <h2 id="titulo-plataforma">Sobre la Plataforma</h2>
       <p>
         Durante la revisión de documentos técnicos en el ámbito farmacéutico, se identificó una dificultad común:
         muchos términos clave no están explicados adecuadamente en ningún recurso accesible, especialmente cuando
@@ -78,9 +95,18 @@
     </section>
   </main>
 
-  <footer role="contentinfo">
-    © 2025 Diccionario AR · Hecho con 💚 para el área regulatoria
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>&copy; 2025 Diccionario AR</p>
+      <nav aria-label="Enlaces legales">
+        <a href="terminos.html">Términos</a>
+        <a href="condiciones-uso.html">Condiciones de Uso</a>
+        <a href="politica-privacidad.html">Privacidad</a>
+      </nav>
+    </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/plataforma.js" defer></script>
 </body>
 </html>

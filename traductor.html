@@ -2,73 +2,49 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Traductor AR</title>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-REW5RZ32MX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-REW5RZ32MX');
-</script>
-
   <link rel="stylesheet" href="css/traductor.css" />
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984"
-     crossorigin="anonymous"></script>
 </head>
 <body>
-
-  <a href="index.html" id="btn-volver"><i class="fas fa-arrow-left"></i> Regresar al Diccionario</a>
-
-  <div id="sparkie-top">
-    <img src="img/sparkie.png" alt="Sparkie, tu asistente" />
-    <p id="frase-sparkie">✨ ¡Estoy listo para ayudarte!</p>
-  </div>
-
   <div class="chat-container" role="main">
-    <div class="chat-header">
-      <h1><span>Traductor AR</span></h1>
-      <p class="subtitulo">Traduce texto fácilmente con Microsoft Translate</p>
-    </div>
+    <header class="chat-header">
+      <button id="btn-regresar" aria-label="Volver al diccionario">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <span class="titulo">Traductor AR</span>
+      <div class="header-buttons">
+        <button id="toggle-sonido" aria-label="Activar sonido">
+          <i class="fas fa-volume-high"></i>
+        </button>
+        <button id="toggle-tema" aria-label="Cambiar tema">
+          <i class="fas fa-circle-half-stroke"></i>
+        </button>
+      </div>
+    </header>
 
-    <div class="chat-box" id="chatBox" aria-live="polite"></div>
+    <main id="chatBox" class="chat-body" role="log" aria-live="polite"></main>
 
-    <form id="chatForm" aria-label="Formulario de traducción">
-      <label for="idioma">Idioma destino:</label>
-      <select id="idioma" aria-required="true">
-        <option value="en">Inglés 🇺🇸</option>
-        <option value="es">Español 🇪🇸</option>
-        <option value="fr">Francés 🇫🇷</option>
-        <option value="de">Alemán 🇩🇪</option>
-        <option value="it">Italiano 🇮🇹</option>
-        <option value="pt">Portugués 🇧🇷</option>
-        <option value="ja">Japonés 🇯🇵</option>
-        <option value="zh-Hans">Chino 🇨🇳</option>
+    <form id="chatForm" class="chat-form" action="javascript:void(0)" aria-label="Formulario de traducción">
+      <select id="idioma" aria-label="Idioma destino">
+        <option value="en">Inglés</option>
+        <option value="es">Español</option>
+        <option value="fr">Francés</option>
+        <option value="de">Alemán</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Portugués</option>
+        <option value="ja">Japonés</option>
+        <option value="zh-Hans">Chino</option>
       </select>
-    
-      <label for="proveedor">Proveedor de traducción:</label>
-      <select id="proveedor" aria-required="true">
-        <option value="microsoft" selected>Microsoft</option>
-        <option value="deepl">DeepL</option>
-      </select>
-    
-      <textarea id="entradaTexto" placeholder="Escribe aquí para traducir..." aria-required="true" aria-label="Texto a traducir"></textarea>
-      <button type="submit" id="btnTraducir"><i class="fas fa-language"></i> Traducir</button>
-    </form>    
-
-    <div id="loader">
-      <img src="img/sparkie.gif" alt="Cargando traducción..." />
-    </div>
+      <textarea id="entradaTexto" placeholder="Escribe aquí..." required aria-label="Texto a traducir"></textarea>
+      <button type="submit" aria-label="Enviar traducción">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </form>
   </div>
 
+  <audio id="notificacion" src="audio/notify.mp3" preload="auto"></audio>
   <script src="js/traductor.js"></script>
 </body>
 </html>
