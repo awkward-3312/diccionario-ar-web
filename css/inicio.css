@@ -4,7 +4,7 @@
   --color-primario: #1877f2;
   --color-secundario: #ff5c39;
   --color-texto: #ffffff;
-  --color-subtexto: #cccccc;
+  --color-subtexto: #dddddd;
 }
 
 * {
@@ -23,6 +23,8 @@ body {
   flex-direction: column;
 }
 
+html { scroll-behavior: smooth; }
+
 body.fade-in {
   animation: fadeInBody 0.6s forwards;
 }
@@ -31,6 +33,7 @@ body.fade-out {
 }
 @keyframes fadeInBody { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fadeOutBody { from { opacity: 1; } to { opacity: 0; } }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
 
 .container {
   width: 90%;
@@ -67,16 +70,26 @@ body.fade-out {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  min-height: 48px;
 }
 .nav a:hover { color: var(--color-primario); }
 .btn-login {
   background: var(--color-primario);
   color: #fff;
-  padding: 8px 16px;
+  padding: 0 16px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  gap: 0.25rem;
 }
 .btn-login:hover { background: var(--color-secundario); }
 
@@ -106,23 +119,37 @@ body.fade-out {
 .hero-image img {
   width: 100%;
   max-width: 380px;
+  animation: float 3s ease-in-out infinite;
 }
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background: var(--color-secundario);
   color: #fff;
-  padding: 12px 24px;
+  padding: 0 24px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s;
+  min-height: 48px;
 }
 .btn-primary:hover { background: #e44827; }
+
+.cta {
+  font-size: 1rem;
+}
 
 /* Cards */
 .cards {
   padding: 60px 0;
   text-align: center;
+}
+
+section {
+  padding: 60px 0;
+  scroll-margin-top: 80px;
 }
 .card-grid {
   display: flex;
@@ -171,10 +198,34 @@ body.fade-out {
 }
 .site-footer nav a:hover { color: var(--color-primario); }
 
+/* Back to top */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  background: var(--color-primario);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header .container { flex-wrap: wrap; }
-  .nav { margin-top: 10px; }
+  .nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-image { order: -1; }
   .logo img { width: 120px; }
