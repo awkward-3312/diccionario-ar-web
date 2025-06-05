@@ -9,6 +9,16 @@ let paginaActual = 1;
 const filasPorPagina = 15;
 let tbody;
 
+function agregarBotonInicio() {
+  if (document.getElementById("btnInicio")) return;
+  const btnInicio = document.createElement("button");
+  btnInicio.id = "btnInicio";
+  btnInicio.innerHTML = '<i class="fas fa-home"></i> Inicio';
+  btnInicio.classList.add("btn-secundario");
+  btnInicio.onclick = () => (window.location.href = "inicio.html");
+  document.querySelector(".acciones")?.prepend(btnInicio);
+}
+
 // === LOADER ===
 function mostrarLoader() {
   document.getElementById("loader").style.display = "block";
@@ -25,11 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   tbody = document.querySelector("#tablaTerminos tbody");
   if (localStorage.getItem("adminAutenticado") === "true") {
     mostrarPanel();
-  const btnInicio = document.createElement("button");
-        btnInicio.innerHTML = '<i class="fas fa-home"></i> Inicio';
-        btnInicio.classList.add("btn-secundario");
-        btnInicio.onclick = () => window.location.href = "inicio.html";
-        document.querySelector(".acciones")?.prepend(btnInicio);
+    agregarBotonInicio();
   }
 
   const form = document.getElementById("formLogin");
@@ -59,18 +65,14 @@ async function verificarClave() {
   });
 
   if (error || !data.session) {
-    alert("❌ Usuario o contraseña incorrectos.");
+    alert("Usuario o contraseña incorrectos.");
     document.getElementById("clave").value = "";
     return;
   }
 
   localStorage.setItem("adminAutenticado", "true");
   mostrarPanel();
-  const btnInicio = document.createElement("button");
-        btnInicio.innerHTML = '<i class="fas fa-home"></i> Inicio';
-        btnInicio.classList.add("btn-secundario");
-        btnInicio.onclick = () => window.location.href = "inicio.html";
-        document.querySelector(".acciones")?.prepend(btnInicio);
+  agregarBotonInicio();
 }
 
 async function cerrarSesion() {
@@ -85,6 +87,7 @@ function mostrarPanel() {
   document.getElementById("btnSugerencias").style.display = "block";
   const btnCerrar = document.getElementById("btnCerrarSesion");
   if (btnCerrar) btnCerrar.style.display = "inline-block";
+  agregarBotonInicio();
   cargarDatos();
 }
 
@@ -99,7 +102,7 @@ async function cargarDatos() {
 
   if (error) {
     console.error("Error al cargar los términos:", error);
-    if (tbody) tbody.innerHTML = `<tr><td colspan='13'>❌ Error al cargar los términos.</td></tr>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan='13'><i class='fas fa-times-circle'></i> Error al cargar los términos.</td></tr>`;
     return;
   }
 
@@ -202,7 +205,7 @@ async function editarFila(id) {
   }
 
   if (!hayCambios) {
-    mostrarPopup("⚠️ No se realizaron cambios.", false);
+    mostrarPopup("<i class='fas fa-exclamation-circle'></i> No se realizaron cambios.", false);
     return;
   }
 
@@ -218,10 +221,10 @@ async function editarFila(id) {
   ocultarLoader();
 
   if (error) {
-    mostrarPopup("❌ Error al editar", false);
+    mostrarPopup("<i class='fas fa-times-circle'></i> Error al editar", false);
     console.error(error);
   } else {
-    mostrarPopup("✅ Término actualizado exitosamente.");
+    mostrarPopup("<i class='fas fa-check-circle'></i> Término actualizado exitosamente.");
     await cargarDatos();
     mostrarPagina(paginaActual);
   }
@@ -239,10 +242,10 @@ async function eliminarFila(id) {
   ocultarLoader();
 
   if (error) {
-    mostrarPopup("❌ Error al eliminar", false);
+    mostrarPopup("<i class='fas fa-times-circle'></i> Error al eliminar", false);
     console.error(error);
   } else {
-    mostrarPopup("🗑️ Término eliminado correctamente.");
+    mostrarPopup("<i class='fas fa-trash'></i> Término eliminado correctamente.");
     await cargarDatos();
     mostrarPagina(paginaActual);
   }
@@ -261,7 +264,7 @@ function filtrarTabla() {
 // === ALERTA EMERGENTE COMO EN agregar.js ===
 function mostrarPopup(mensaje, exito = true) {
   const popup = document.createElement("div");
-  popup.textContent = mensaje;
+  popup.innerHTML = mensaje;
   popup.style.position = "fixed";
   popup.style.top = "20px";
   popup.style.right = "20px";
