@@ -114,6 +114,7 @@ button {
   border-radius: 8px;
   border: none;
   box-sizing: border-box;
+  min-height: 44px; /* ✅ tamaño táctil */
 }
 
 input,
@@ -189,6 +190,7 @@ button:focus-visible {
   margin: 0 10px;
   background-color: #444;
   color: white;
+  min-height: 44px;
 }
 
 body.light-mode .barra-inferior {

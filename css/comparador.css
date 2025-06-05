@@ -50,6 +50,7 @@ body {
   background: #222;
   color: #fff;
   font-size: 1rem;
+  min-height: 44px; /* ✅ tamaño táctil */
 }
 
 .selectors select {
