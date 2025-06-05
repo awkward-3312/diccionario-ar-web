@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const sonido = document.getElementById('notificacion');
 
   const USE_MOCK = new URLSearchParams(location.search).get('mock') === '1';
+  const BASE_URL = location.hostname === 'localhost'
+    ? 'http://localhost:3000'
+    : 'https://traductor-backend.vercel.app';
 
   let sonidoActivo = localStorage.getItem('traductor_sonido') !== '0';
   let darkMode = localStorage.getItem('traductor_tema');
@@ -107,11 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarPensando();
 
     try {
-      const proveedor = proveedorSelect.value;
-      const base = location.protocol !== 'file:' && location.origin
-        ? location.origin
-        : 'https://sparkie-backend.vercel.app';
-      const endpoint = `${base}/api/traducir/${proveedor}`;
+      const endpoint = `${BASE_URL}/api/traducir/deepl`;
       let data;
       if (USE_MOCK) {
         await new Promise(r => setTimeout(r, 300));
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ texto, idiomaDestino: idioma.value })
+          body: JSON.stringify({ text: texto })
         });
         if (!res.ok) {
           eliminarPensando();
