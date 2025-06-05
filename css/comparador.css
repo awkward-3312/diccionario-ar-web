@@ -42,6 +42,7 @@ body {
   margin-bottom: 20px;
 }
 
+.selectors select,
 .selectors button {
   padding: 8px 12px;
   border-radius: 8px;
@@ -51,7 +52,7 @@ body {
   font-size: 1rem;
 }
 
-.selectors input {
+.selectors select {
   min-width: 160px;
 }
 

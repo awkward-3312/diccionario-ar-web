@@ -11,31 +11,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
   glosario = data;
-  poblarLista();
-
   poblarSelects();
+
   document.getElementById('comparar').addEventListener('click', comparar);
   document.getElementById('btn-volver')?.addEventListener('click', () => {
     window.location.href = 'index.html';
   });
 });
 
-function poblarLista() {
-  const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
-  const lista = document.getElementById('lista-terminos');
-  lista.innerHTML = '';
-  ordenados.forEach(item => {
-    const opt = document.createElement('option');
-    opt.value = item.termino;
-    lista.appendChild(opt);
-
 function poblarSelects() {
   const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
   const sel1 = document.getElementById('termino1');
   const sel2 = document.getElementById('termino2');
+  
+  sel1.innerHTML = '<option value="">Selecciona término 1</option>';
+  sel2.innerHTML = '<option value="">Selecciona término 2</option>';
+
   ordenados.forEach(item => {
-    const opt1 = new Option(item.termino, item.termino);
-    const opt2 = new Option(item.termino, item.termino);
+    const opt1 = document.createElement('option');
+    const opt2 = document.createElement('option');
+    opt1.value = opt1.textContent = item.termino;
+    opt2.value = opt2.textContent = item.termino;
     sel1.appendChild(opt1);
     sel2.appendChild(opt2);
   });
@@ -48,12 +44,12 @@ function obtener(nombre) {
 function comparar() {
   const nombre1 = document.getElementById('termino1').value.trim();
   const nombre2 = document.getElementById('termino2').value.trim();
-  const nombre1 = document.getElementById('termino1').value;
-  const nombre2 = document.getElementById('termino2').value;
+
   if (!nombre1 || !nombre2 || nombre1 === nombre2) {
     alert('Selecciona dos términos distintos');
     return;
   }
+
   const t1 = obtener(nombre1);
   const t2 = obtener(nombre2);
   mostrarComparacion(t1, t2);
