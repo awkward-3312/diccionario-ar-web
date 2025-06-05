@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #0f1115, #1a1c22);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  flex-grow: 1;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.header button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.selectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.selectors input,
+.selectors button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.selectors input {
+  min-width: 160px;
+}
+
+.selectors button {
+  background: #1877f2;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.resultados {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 16px;
+}
+
+.resultados > :nth-child(odd) {
+  border-right: 2px solid #333;
+  padding-right: 16px;
+}
+.resultados > :nth-child(even) {
+  padding-left: 16px;
+}
+
+.campo {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.campo.diferente {
+  background: rgba(255, 92, 57, 0.3);
+}
+
+.campo img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 6px;
+}
+
+.sinonimos span {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 4px 10px;
+  border-radius: 16px;
+  background-color: #444;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .resultados {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+}
