@@ -142,5 +142,3 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminarPensando();
       agregarBurbuja('Error de conexión.', 'sparkie');
     }
-  });
-});
