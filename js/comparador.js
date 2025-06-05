@@ -23,8 +23,10 @@ function poblarSelects() {
   const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
   const sel1 = document.getElementById('termino1');
   const sel2 = document.getElementById('termino2');
+  
   sel1.innerHTML = '<option value="">Selecciona término 1</option>';
   sel2.innerHTML = '<option value="">Selecciona término 2</option>';
+
   ordenados.forEach(item => {
     const opt1 = document.createElement('option');
     const opt2 = document.createElement('option');
@@ -42,10 +44,12 @@ function obtener(nombre) {
 function comparar() {
   const nombre1 = document.getElementById('termino1').value.trim();
   const nombre2 = document.getElementById('termino2').value.trim();
+
   if (!nombre1 || !nombre2 || nombre1 === nombre2) {
     alert('Selecciona dos términos distintos');
     return;
   }
+
   const t1 = obtener(nombre1);
   const t2 = obtener(nombre2);
   mostrarComparacion(t1, t2);

@@ -76,6 +76,8 @@ body {
 }
 .resultados > :nth-child(even) {
   padding-left: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .campo {
