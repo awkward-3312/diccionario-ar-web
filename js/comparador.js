@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   glosario = data;
   poblarLista();
-  poblarSelects();
 
+  poblarSelects();
   document.getElementById('comparar').addEventListener('click', comparar);
   document.getElementById('btn-volver')?.addEventListener('click', () => {
     window.location.href = 'index.html';
@@ -28,6 +28,7 @@ function poblarLista() {
     const opt = document.createElement('option');
     opt.value = item.termino;
     lista.appendChild(opt);
+
 function poblarSelects() {
   const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
   const sel1 = document.getElementById('termino1');

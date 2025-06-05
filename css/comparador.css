@@ -42,8 +42,6 @@ body {
   margin-bottom: 20px;
 }
 
-.selectors select,
-.selectors input,
 .selectors button {
   padding: 8px 12px;
   border-radius: 8px;
@@ -53,11 +51,9 @@ body {
   font-size: 1rem;
 }
 
-
 .selectors input {
   min-width: 160px;
 }
-
 
 .selectors button {
   background: #1877f2;
@@ -68,6 +64,17 @@ body {
 
 .resultados {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 16px;
+}
+
+.resultados > :nth-child(odd) {
+  border-right: 2px solid #333;
+  padding-right: 16px;
+}
+.resultados > :nth-child(even) {
+  padding-left: 16px;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
@@ -101,5 +108,6 @@ body {
 @media (max-width: 700px) {
   .resultados {
     grid-template-columns: 1fr;
+    column-gap: 0;
   }
 }
