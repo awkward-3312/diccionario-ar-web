@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarPensando();
 
     try {
-      const endpoint = `${BASE_URL}/api/traducir/deepl`;
+      const endpoint = `${BASE_URL}/api/traducir`;
       let data;
       if (USE_MOCK) {
         await new Promise(r => setTimeout(r, 300));
@@ -142,5 +142,3 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminarPensando();
       agregarBurbuja('Error de conexión.', 'sparkie');
     }
-  });
-});
