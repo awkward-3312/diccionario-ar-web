@@ -21,7 +21,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984" crossorigin="anonymous"></script>
 </head>
 <body>
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro">
+  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro" aria-label="Cambiar modo claro u oscuro">
     <i class="fas fa-moon" id="icono-modo"></i>
   </button>
 
@@ -38,7 +38,7 @@
     <img src="img/mol/mol-10.png" class="molecula" style="top: 80%; left: 20%;" alt="mol-10" />
   </div>
 
-  <nav class="nav-flotante">
+  <nav class="nav-flotante" role="navigation" aria-label="Navegación principal">
     <button onclick="window.location.href='agregar.html'" class="btn-agregar">Agregar Término</button>
     <button onclick="window.location.href='sugerencias.html'" class="btn-sugerencias">Sugerencias</button>
     <button onclick="window.location.href='traductor.html'" class="btn-traductor">Traductor</button>
@@ -47,7 +47,7 @@
   </nav>
 
   <div class="contenedor-principal">
-    <main class="ventana">
+    <main class="ventana" role="main">
       <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
       <div class="busqueda">
@@ -76,10 +76,12 @@
   </div>
 
   <!-- Botón único para sugerencia -->
-  <button id="btn-sugerir" title="Sugerir algo para este término">💡</button>
+  <button id="btn-sugerir" title="Sugerir algo para este término" aria-label="Sugerir término">
+    <i class="fas fa-lightbulb"></i>
+  </button>
 
   <!-- Ventana emergente flotante para sugerencias -->
-  <div id="ventana-sugerencia" class="ventana-sugerencia oculto">
+  <div id="ventana-sugerencia" class="ventana-sugerencia oculto" role="dialog" aria-modal="true">
     <h3>Sugerencia sobre este término</h3>
     <textarea id="sugerencia-input" placeholder="Escribe tu sugerencia..."></textarea>
     <input id="apodo-input" placeholder="Tu apodo (opcional)" />
@@ -97,7 +99,7 @@
   </div>
 
   <!-- Popup -->
-  <div id="notificacion" class="popup-exito oculto">
+  <div id="notificacion" class="popup-exito oculto" role="alert">
     <i class="fas fa-check-circle"></i> Glosario actualizado con éxito.
   </div>
 
