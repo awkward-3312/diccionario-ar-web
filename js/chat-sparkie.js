@@ -1,5 +1,5 @@
 // === chat-sparkie.js ===
-document.addEventListener("DOMContentLoaded", () => {
+function initSparkieChat() {
   const chat = document.getElementById("chat");
   const form = document.getElementById("formulario");
   const input = document.getElementById("pregunta");
@@ -125,6 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnRegresar.addEventListener("click", () => {
-    window.location.href = "index.html";
+    if (window.closeSparkieModal) {
+      window.closeSparkieModal();
+    } else {
+      window.location.href = "index.html";
+    }
   });
-});
+}
+
+if (document.readyState !== "loading") {
+  initSparkieChat();
+} else {
+  document.addEventListener("DOMContentLoaded", initSparkieChat);
+}

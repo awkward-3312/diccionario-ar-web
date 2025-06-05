@@ -99,7 +99,7 @@ function actualizarGlosario() {
     document.getElementById("ultima-actualizacion").textContent = "Última actualización: " + ahora;
     mostrarNotificacion("Glosario actualizado con éxito.");
   } else {
-    mostrarNotificacion("⚠️ No hay conexión o base de datos disponible.");
+    mostrarNotificacion("No hay conexión o base de datos disponible.");
   }
 }
 
@@ -141,27 +141,19 @@ function buscar() {
   spinner.style.display = "block";
   setTimeout(() => spinner.style.display = "none", 500);
 
-  let entrada = null;
-  let terminoReal = null;
-
-  for (const key in glosario) {
-    const item = glosario[key];
-    const normalizadoTermino = normalizarTexto(item.termino || "");
-    const normalizadoTraduccion = normalizarTexto(item.traduccion || "");
-
-    if (normalizadoTermino === termino || normalizadoTraduccion === termino) {
-      entrada = item;
-      terminoReal = item.termino;
-      break;
-    }
-  }
+  const entrada = Object.values(glosario).find(item => {
+    const t = normalizarTexto(item.termino || "");
+    const tr = normalizarTexto(item.traduccion || "");
+    return t === termino || tr === termino;
+  });
+  const terminoReal = entrada?.termino || null;
 
   resultado.classList.remove("animado");
   void resultado.offsetWidth;
   resultado.classList.add("animado");
 
   if (!entrada) {
-    resultado.innerHTML = "⚠️ Término no encontrado.";
+    resultado.innerHTML = "<i class='fas fa-exclamation-circle'></i> Término no encontrado.";
 
     const sugerencias = Object.values(glosario).filter(e => {
       const t = normalizarTexto(e.termino || "");
@@ -223,7 +215,7 @@ async function enviarSugerenciaTermino() {
   const apodo = document.getElementById("apodo-input").value.trim();
   const mensaje = document.getElementById("mensaje-sugerencia");
   if (!texto || !ultimaBusqueda) {
-    mensaje.innerHTML = "<div class='error'>⚠️ Escribe una sugerencia válida.</div>";
+    mensaje.innerHTML = "<div class='error'><i class='fas fa-exclamation-triangle'></i> Escribe una sugerencia válida.</div>";
     return;
   }
   const fecha = new Date().toISOString();
@@ -236,9 +228,9 @@ async function enviarSugerenciaTermino() {
   }]);
   if (error) {
     console.error(error);
-    mensaje.innerHTML = "<div class='error'>❌ Error al enviar sugerencia.</div>";
+    mensaje.innerHTML = "<div class='error'><i class='fas fa-times-circle'></i> Error al enviar sugerencia.</div>";
   } else {
-    mensaje.innerHTML = "<div class='mensaje'>✅ ¡Gracias por tu sugerencia!</div>";
+    mensaje.innerHTML = "<div class='mensaje'><i class='fas fa-check-circle'></i> ¡Gracias por tu sugerencia!</div>";
     document.getElementById("sugerencia-input").value = "";
     document.getElementById("apodo-input").value = "";
     setTimeout(() => {
@@ -254,6 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("termino")?.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(buscar, 200);
+  });
+  document.getElementById("termino")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      buscar();
+    }
   });
   document.getElementById("btnLimpiar")?.addEventListener("click", () => {
     document.getElementById("termino").value = "";
@@ -271,6 +269,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("ventana-sugerencia").classList.add("oculto");
   });
   document.getElementById("enviar-sugerencia")?.addEventListener("click", enviarSugerenciaTermino);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      document.getElementById("ventana-sugerencia")?.classList.add("oculto");
+    }
+  });
 });
 
 if ('serviceWorker' in navigator) {
@@ -286,33 +290,6 @@ window.actualizarGlosario = actualizarGlosario;
 
 
 
-
-
-function mostrarResultado(nombre) {
-  const entrada = glosario[normalizarTexto(nombre)];
-  if (!entrada) return;
-
-  const resultadoDiv = document.getElementById("resultado");
-  const sugerenciaDiv = document.getElementById("sugerencias");
-
-  const { traduccion, pronunciacion, categoria, definicion, sinonimos, tipo_termino, instrumentos } = entrada;
-
-  ultimaBusqueda = nombre;
-
-  resultadoDiv.innerHTML = `
-    <div class="titulo-resultado">${nombre}</div>
-    ${traduccion ? `<p class="traduccion"><strong>Traducción:</strong> ${traduccion}</p>` : ""}
-    ${pronunciacion ? `<p class="pronunciacion"><strong>Pronunciación:</strong> ${pronunciacion}</p>` : ""}
-    ${categoria ? `<p class="categoria"><strong>Categoría:</strong> ${categoria}</p>` : ""}
-    ${definicion ? `<p class="definicion"><strong>Definición:</strong> ${definicion}</p>` : ""}
-    ${sinonimos ? `<div class="sinonimos"><strong>Sinónimos:</strong> ${sinonimos}</div>` : ""}
-    ${tipo_termino ? `<p class="tipo"><strong>Tipo:</strong> ${tipo_termino}</p>` : ""}
-    ${instrumentos ? `<img src="img/instrumentos/${instrumentos}.png" alt="${instrumentos}" class="imagen-instrumento">` : ""}
-  `;
-
-  if (sugerenciaDiv) sugerenciaDiv.innerHTML = "";
-}
-    
 
 
 function mostrarResultado(nombre) {
