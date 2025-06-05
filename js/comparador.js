@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
   glosario = data;
+  poblarLista();
   poblarSelects();
 
   document.getElementById('comparar').addEventListener('click', comparar);
@@ -19,6 +20,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 });
 
+function poblarLista() {
+  const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
+  const lista = document.getElementById('lista-terminos');
+  lista.innerHTML = '';
+  ordenados.forEach(item => {
+    const opt = document.createElement('option');
+    opt.value = item.termino;
+    lista.appendChild(opt);
 function poblarSelects() {
   const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
   const sel1 = document.getElementById('termino1');
@@ -36,6 +45,8 @@ function obtener(nombre) {
 }
 
 function comparar() {
+  const nombre1 = document.getElementById('termino1').value.trim();
+  const nombre2 = document.getElementById('termino2').value.trim();
   const nombre1 = document.getElementById('termino1').value;
   const nombre2 = document.getElementById('termino2').value;
   if (!nombre1 || !nombre2 || nombre1 === nombre2) {

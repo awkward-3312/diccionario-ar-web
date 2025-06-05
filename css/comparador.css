@@ -43,6 +43,7 @@ body {
 }
 
 .selectors select,
+.selectors input,
 .selectors button {
   padding: 8px 12px;
   border-radius: 8px;
@@ -51,6 +52,12 @@ body {
   color: #fff;
   font-size: 1rem;
 }
+
+
+.selectors input {
+  min-width: 160px;
+}
+
 
 .selectors button {
   background: #1877f2;
