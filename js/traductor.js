@@ -110,7 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       let proveedor = proveedorSelect.value.trim().toLowerCase();
-      if (!['deepl', 'traducir'].includes(proveedor)) proveedor = 'traducir';
+      if (proveedor.includes('deepl')) {
+        proveedor = 'deepl';
+      } else {
+        proveedor = 'traducir'; // cualquier otro valor será Microsoft
+      }
+
       const endpoint = `${BASE_URL}/api/${proveedor}`;
 
       let data;
@@ -121,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: texto })
+          body: JSON.stringify({ text: texto, idiomaDestino: idioma.value })
         });
         if (!res.ok) {
           eliminarPensando();
