@@ -116,6 +116,7 @@ main p {
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s;
+  min-height: 44px; /* ✅ tamaño táctil */
 }
 
 .btn-enviar:hover {
@@ -161,4 +162,20 @@ footer {
 
 .seccion-traduccion a:hover {
   text-decoration: underline;
+}
+
+/* === AJUSTES RESPONSIVOS === */
+@media (max-width: 768px) {
+  header.encabezado {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+  .menu-principal {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  main.contenedor-contacto {
+    margin: 60px auto 40px;
+  }
 }
