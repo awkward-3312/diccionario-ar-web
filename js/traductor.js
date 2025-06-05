@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRegresar = document.getElementById('btn-regresar');
   const sonido = document.getElementById('notificacion');
 
+  const USE_MOCK = new URLSearchParams(location.search).get('mock') === '1';
+
   let sonidoActivo = localStorage.getItem('traductor_sonido') !== '0';
   let darkMode = localStorage.getItem('traductor_tema');
   if (!darkMode) {
@@ -106,19 +108,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const proveedor = proveedorSelect.value;
-      const endpoint = proveedor === 'azure' ? '/api/traducir/azure' : '/api/traducir/deepl';
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ texto, idiomaDestino: idioma.value })
-      });
-
-      eliminarPensando();
-      if (!res.ok) {
-        agregarBurbuja('Error al traducir.', 'sparkie');
-        return;
+      const base = location.protocol !== 'file:' && location.origin
+        ? location.origin
+        : 'https://sparkie-backend.vercel.app';
+      const endpoint = `${base}/api/traducir/${proveedor}`;
+      let data;
+      if (USE_MOCK) {
+        await new Promise(r => setTimeout(r, 300));
+        data = { traduccion: `[${idioma.value}] ${texto}` };
+      } else {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ texto, idiomaDestino: idioma.value })
+        });
+        if (!res.ok) {
+          eliminarPensando();
+          agregarBurbuja('Error al traducir.', 'sparkie');
+          return;
+        }
+        data = await res.json();
       }
-      const data = await res.json();
+      eliminarPensando();
       if (data.traduccion) {
         agregarBurbuja(data.traduccion, 'sparkie');
         if (sonidoActivo) {
