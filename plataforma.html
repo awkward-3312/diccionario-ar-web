@@ -47,53 +47,77 @@
     </div>
   </header>
 
-  <main role="main">
-    <section class="hero" id="sobre">
-      <div class="container hero-grid">
-        <div class="hero-text" data-aos="fade-right">
-          <h1>Conoce la Plataforma</h1>
-          <p>Un proyecto colaborativo para compartir terminología farmacéutica y regulatoria.</p>
-          <a href="index.html" class="btn-primary" onclick="transicionar('index.html'); return false;"><i class="fas fa-book-open"></i> Ir al Diccionario</a>
+  <main id="main-content" role="main">
+    <section id="intro" class="intro" aria-labelledby="titulo-intro">
+      <div class="container">
+        <h1 id="titulo-intro">Diccionario AR</h1>
+        <p>Plataforma colaborativa de terminología farmacéutica y regulatoria.</p>
+        <div class="cta-buttons">
+          <a href="index.html" class="btn-primary"><i class="fas fa-book-open"></i> Diccionario</a>
+          <a href="admin.html" class="btn-secondary"><i class="fas fa-user-cog"></i> Admin</a>
         </div>
-        <div class="hero-image" data-aos="fade-left">
-          <img src="img/sparkie.png" alt="Sparkie" />
+      </div>
+      <img src="assets/sparkie.png" id="sparkie" alt="Mascot Sparkie" aria-describedby="sparkie-tip" />
+      <span id="sparkie-tip" role="tooltip">¡Hola! Soy Sparkie.</span>
+    </section>
+
+    <section id="features" aria-labelledby="titulo-features">
+      <div class="container">
+        <h2 id="titulo-features">Características principales</h2>
+        <div class="feature-grid">
+          <article class="card">
+            <i class="fas fa-book"></i>
+            <h3>Glosario</h3>
+            <ul>
+              <li>Búsqueda por palabra clave</li>
+              <li>Traducciones precisas</li>
+            </ul>
+          </article>
+          <article class="card">
+            <i class="fas fa-users"></i>
+            <h3>Comunidad</h3>
+            <ul>
+              <li>Aporte de nuevos términos</li>
+              <li>Sugerencias de mejoras</li>
+            </ul>
+          </article>
+          <article class="card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Acceso libre</h3>
+            <ul>
+              <li>Uso gratuito</li>
+              <li>Disponible 24/7</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="seccion-plataforma container" aria-labelledby="titulo-plataforma">
-      <h2 id="titulo-plataforma">Sobre la Plataforma</h2>
-      <p>
-        Durante la revisión de documentos técnicos en el ámbito farmacéutico, se identificó una dificultad común:
-        muchos términos clave no están explicados adecuadamente en ningún recurso accesible, especialmente cuando
-        se requiere traducirlos del inglés al español...
-      </p>
-      <p>
-        Ante esta necesidad, surge la idea de crear <strong>Diccionario AR (Asuntos Regulatorios)</strong>,
-        una plataforma digital orientada a cubrir todo el espectro de vocabulario técnico...
-      </p>
-      <p>
-        El sitio está dedicado especialmente a personas que participan activamente en procesos técnicos...
-      </p>
-      <p>
-        <strong>Diccionario AR</strong> fue construido con tecnologías web modernas y con el compromiso de
-        mantenerse siempre gratuito...
-      </p>
-      <p>
-        En la sección <strong>Diccionario</strong> encontrarás un buscador de definiciones...
-      </p>
-      <p>
-        La sección <strong>Agregar término</strong> está pensada para enriquecer continuamente la base...
-      </p>
-      <p>
-        En <strong>Sugerencias</strong> podrás aportar ideas, funcionalidades o mejoras...
-      </p>
-      <p>
-        Gracias a quienes ya forman parte y a quienes se unan en adelante. Esperamos que esta herramienta
-        sea verdaderamente útil para ti...
-      </p>
+    <section id="admin-panel" aria-labelledby="titulo-admin">
+      <div class="container">
+        <h2 id="titulo-admin">Panel de administración</h2>
+        <p>Controla el contenido y gestiona la comunidad:</p>
+        <ul>
+          <li>Revisión de definiciones</li>
+          <li>Moderación de sugerencias</li>
+          <li>Gestión de usuarios</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="storage" aria-labelledby="titulo-storage">
+      <div class="container">
+        <h2 id="titulo-storage">Tecnología y almacenamiento</h2>
+        <ul>
+          <li>Base de datos SQLite</li>
+          <li>Interfaz web responsiva</li>
+          <li>Actualizaciones continuas</li>
+        </ul>
+      </div>
     </section>
   </main>
+
+  <button id="btn-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
   <footer class="site-footer" role="contentinfo">
     <div class="container">
