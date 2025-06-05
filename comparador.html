@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparador de Términos - Diccionario AR</title>
+  <link rel="stylesheet" href="css/comparador.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="contenedor">
+    <header class="header">
+      <button id="btn-volver" title="Volver al diccionario" aria-label="Volver al diccionario">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1>Comparador de Términos</h1>
+    </header>
+
+    <div class="selectors">
+      <select id="termino1" aria-label="Término 1"></select>
+      <select id="termino2" aria-label="Término 2"></select>
+      <button id="comparar" class="btn-comparar">Comparar</button>
+    </div>
+
+    <div id="resultados" class="resultados"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/comparador.js"></script>
+</body>
+</html>
