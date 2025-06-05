@@ -27,16 +27,20 @@
     <main id="chatBox" class="chat-body" role="log" aria-live="polite"></main>
 
     <form id="chatForm" class="chat-form" action="javascript:void(0)" aria-label="Formulario de traducción">
-      <select id="idioma" aria-label="Idioma destino">
-        <option value="en">Inglés</option>
-        <option value="es">Español</option>
-        <option value="fr">Francés</option>
-        <option value="de">Alemán</option>
-        <option value="it">Italiano</option>
-        <option value="pt">Portugués</option>
-        <option value="ja">Japonés</option>
-        <option value="zh-Hans">Chino</option>
-      </select>
+        <select id="idioma" aria-label="Idioma destino">
+          <option value="en">Inglés</option>
+          <option value="es">Español</option>
+          <option value="fr">Francés</option>
+          <option value="de">Alemán</option>
+          <option value="it">Italiano</option>
+          <option value="pt">Portugués</option>
+          <option value="ja">Japonés</option>
+          <option value="zh-Hans">Chino</option>
+        </select>
+        <select id="proveedor" aria-label="Proveedor de traducción">
+          <option value="deepl">DeepL</option>
+          <option value="azure">Microsoft Azure</option>
+        </select>
       <textarea id="entradaTexto" placeholder="Escribe aquí..." required aria-label="Texto a traducir"></textarea>
       <button type="submit" aria-label="Enviar traducción">
         <i class="fas fa-paper-plane"></i>
