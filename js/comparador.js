@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   glosario = data;
   poblarLista();
+  poblarSelects();
 
   document.getElementById('comparar').addEventListener('click', comparar);
   document.getElementById('btn-volver')?.addEventListener('click', () => {
@@ -27,6 +28,15 @@ function poblarLista() {
     const opt = document.createElement('option');
     opt.value = item.termino;
     lista.appendChild(opt);
+function poblarSelects() {
+  const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
+  const sel1 = document.getElementById('termino1');
+  const sel2 = document.getElementById('termino2');
+  ordenados.forEach(item => {
+    const opt1 = new Option(item.termino, item.termino);
+    const opt2 = new Option(item.termino, item.termino);
+    sel1.appendChild(opt1);
+    sel2.appendChild(opt2);
   });
 }
 
@@ -37,6 +47,8 @@ function obtener(nombre) {
 function comparar() {
   const nombre1 = document.getElementById('termino1').value.trim();
   const nombre2 = document.getElementById('termino2').value.trim();
+  const nombre1 = document.getElementById('termino1').value;
+  const nombre2 = document.getElementById('termino2').value;
   if (!nombre1 || !nombre2 || nombre1 === nombre2) {
     alert('Selecciona dos términos distintos');
     return;
