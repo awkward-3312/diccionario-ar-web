@@ -17,6 +17,7 @@
   <link rel="icon" type="image/png" href="favicon-ar.png" />
   <link rel="shortcut icon" href="favicon-ar.ico" type="image/x-icon" />
   <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="css/chat-modal.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6850323121677984" crossorigin="anonymous"></script>
 </head>
@@ -98,6 +99,25 @@
     <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
   </div>
 
+  <div id="sparkie-modal" class="oculto" role="dialog" aria-modal="true" aria-label="Chat con Sparkie">
+    <div class="chat-container">
+      <header class="chat-header">
+        <button id="btn-regresar" class="cerrar-chat" title="Cerrar">&times;</button>
+        <span> Chat con <strong>Sparkie AI</strong></span>
+        <div class="botones-header">
+          <button id="toggle-sonido" title="Sonido activado"><i class="fas fa-volume-up"></i></button>
+          <button id="toggle-tema" title="Cambiar tema"><i class="fas fa-circle-half-stroke"></i></button>
+        </div>
+      </header>
+      <main id="chat" class="chat-body"></main>
+      <form id="formulario" class="chat-form" action="javascript:void(0)">
+        <textarea id="pregunta" placeholder="Pregunta lo que quieras" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <audio id="sparkie-sound" src="audio/notify.mp3" preload="auto"></audio>
+    </div>
+  </div>
+
   <!-- Popup -->
   <div id="notificacion" class="popup-exito oculto" role="alert">
     <i class="fas fa-check-circle"></i> Glosario actualizado con éxito.
@@ -117,6 +137,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js" defer></script>
   <script src="js/eventosFestivos.js" defer></script>
+  <script src="js/sparkieModal.js" defer></script>
   <script>
     function toggleModo() {
       const body = document.body;
