@@ -60,6 +60,7 @@ body.light-mode {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  min-height: 44px; /* ✅ tamaño táctil adecuado */
 }
 .boton:hover {
   background-color: #3ae374;
@@ -316,8 +317,8 @@ body.light-mode #toggle-modo::before {
   z-index: 1001;
 }
 .nav-flotante button {
-  height: 38px;
-  padding: 6px 16px;
+  min-height: 44px;
+  padding: 8px 16px;
   font-weight: 600;
   font-size: 0.9rem;
   border: none;
@@ -331,6 +332,7 @@ body.light-mode #toggle-modo::before {
 .btn-sugerencias{ background-color: #ff69b4; }
 .btn-traductor  { background-color: #03a9f4; }
 .btn-inicio     { background-color: #8bc34a; }
+.btn-comparador { background-color: #9c27b0; }
 .btn-admin      { background-color: #3f51b5; }
 .nav-flotante button:hover {
   opacity: 0.9;
@@ -609,4 +611,21 @@ body {
 }
 #btn-sugerir:hover {
   background-color: #e14b2f;
+}
+
+/* === AJUSTES RESPONSIVOS === */
+@media (max-width: 768px) {
+  .ventana {
+    padding: 20px;
+  }
+  .nav-flotante {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-flotante button {
+    flex: 1 1 45%;
+  }
+  .resultado-flex {
+    flex-direction: column;
+  }
 }

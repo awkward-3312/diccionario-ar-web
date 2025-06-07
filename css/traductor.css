@@ -62,6 +62,7 @@ body.dark-mode .chat-container {
   margin-left: 0.5rem;
   color: var(--text-color);
   transition: color 0.3s ease, transform 0.3s ease;
+  min-height: 44px; /* ✅ tamaño táctil */
 }
 
 .chat-header button:hover {
@@ -131,6 +132,7 @@ body.dark-mode .chat-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px; /* ✅ tamaño táctil */
 }
 .chat-form button:hover { background: #e44827; }
 
@@ -175,3 +177,12 @@ body.dark-mode .chat-container {
 
 @keyframes puntos { 0%{content:' .';}33%{content:' ..';}66%{content:' ...';}100%{content:' .';} }
 @keyframes fadeIn { from {opacity:0; transform:translateY(6px);} to {opacity:1; transform:translateY(0);} }
+
+/* === AJUSTES RESPONSIVOS === */
+@media (max-width: 768px) {
+  .chat-container {
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+  }
+}

@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('light-mode');
   }
   if (window.AOS) AOS.init({ once: true });
+
+  const backBtn = document.getElementById('back-to-top');
+  if (backBtn) {
+    window.addEventListener('scroll', () => {
+      backBtn.classList.toggle('show', window.scrollY > 300);
+    });
+  }
 });
 
 window.transicionar = transicionar;

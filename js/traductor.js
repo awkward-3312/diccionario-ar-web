@@ -3,10 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('chatForm');
   const textarea = document.getElementById('entradaTexto');
   const idioma = document.getElementById('idioma');
+  const proveedorSelect = document.getElementById('proveedor');
   const btnTema = document.getElementById('toggle-tema');
   const btnSonido = document.getElementById('toggle-sonido');
   const btnRegresar = document.getElementById('btn-regresar');
   const sonido = document.getElementById('notificacion');
+
+  const USE_MOCK = new URLSearchParams(location.search).get('mock') === '1';
+  const BASE_URL = location.hostname === 'localhost'
+    ? 'http://localhost:3000'
+    : 'https://traductor-backend.vercel.app';
 
   let sonidoActivo = localStorage.getItem('traductor_sonido') !== '0';
   let darkMode = localStorage.getItem('traductor_tema');
@@ -40,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     mensaje.append(avatar, burbuja);
     chat.appendChild(mensaje);
     scrollAbajo();
+  }
+
+  function agregarBurbuja(texto, clase) {
+    agregarMensaje(texto, clase);
   }
 
   function mostrarPensando() {
@@ -79,13 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnRegresar.addEventListener('click', () => {
-    window.location.href = 'index.html';
+    window.history.back();
   });
 
   textarea.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      form.dispatchEvent(new Event('submit'));
+      form.requestSubmit(); // ✅ evita el warning
     }
   });
 
@@ -94,35 +104,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const texto = textarea.value.trim();
     if (!texto) return;
 
-    agregarMensaje(texto, 'usuario');
+    agregarBurbuja(texto, 'usuario');
     textarea.value = '';
     mostrarPensando();
 
     try {
-      const res = await fetch('https://traductor-backend.vercel.app/traducir', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ texto, idiomaDestino: idioma.value })
-      });
+      let proveedor = proveedorSelect.value.trim().toLowerCase();
+      if (proveedor.includes('deepl')) {
+        proveedor = 'deepl';
+      } else {
+        proveedor = 'traducir';
+      }
+
+      const endpoint = `${BASE_URL}/api/${proveedor}`;
+
+      let data;
+      if (USE_MOCK) {
+        await new Promise(r => setTimeout(r, 300));
+        data = { traduccion: `[${idioma.value}] ${texto}` };
+      } else {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ texto: texto, idiomaDestino: idioma.value }) // ✅ CORREGIDO
+        });
+        if (!res.ok) {
+          eliminarPensando();
+          agregarBurbuja('Error al traducir.', 'sparkie');
+          return;
+        }
+        data = await res.json();
+      }
 
       eliminarPensando();
-      if (!res.ok) {
-        agregarMensaje('Error al traducir.', 'sparkie');
-        return;
-      }
-      const data = await res.json();
       if (data.traduccion) {
-        agregarMensaje(data.traduccion, 'sparkie');
+        agregarBurbuja(data.traduccion, 'sparkie');
         if (sonidoActivo) {
           sonido.currentTime = 0;
           sonido.play();
         }
       } else {
-        agregarMensaje('No se recibió una traducción válida.', 'sparkie');
+        agregarBurbuja('No se recibió una traducción válida.', 'sparkie');
       }
     } catch (err) {
       eliminarPensando();
-      agregarMensaje('Error de conexión.', 'sparkie');
+      agregarBurbuja('Error de conexión.', 'sparkie');
     }
   });
 });

@@ -13,55 +13,35 @@
   <header class="header" role="banner">
     <div class="container">
       <a href="index.html" class="logo"><img src="img/logo.png" alt="Diccionario AR"></a>
-      <nav class="nav" aria-label="Principal">
-        <a href="plataforma.html">Plataforma</a>
-        <a href="index.html">Diccionario</a>
-        <a href="contacto.html">Contacto</a>
+      <nav class="nav" id="menu-principal" role="navigation" aria-label="Principal">
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#publico">Público</a>
+        <a href="#acceso">Acceso</a>
       </nav>
-      <a href="admin.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+      <a href="admin.html" class="btn-login"><i class="fas fa-user" aria-hidden="true"></i> Login</a>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="inicio">
+    <section class="hero" id="que-es">
       <div class="container hero-grid">
         <div class="hero-text" data-aos="fade-right">
           <h1>Tu puerta a la terminología farmacéutica</h1>
           <p>Diccionario bilingüe con definiciones claras, pronunciación y sinónimos para profesionales y estudiantes.</p>
-          <a href="index.html" class="btn-primary" onclick="transicionar('index.html'); return false;"><i class="fas fa-book-open"></i> Explorar Diccionario</a>
+          <a href="index.html" class="btn-primary cta" onclick="transicionar('index.html'); return false;">
+            <i class="fas fa-book-open" aria-hidden="true"></i> Probar Diccionario
+          </a>
         </div>
         <div class="hero-image" data-aos="fade-left">
-          <img src="img/sparkie.png" alt="Sparkie" />
+          <img src="img/sparkie.png" alt="Mascota Sparkie" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <section class="usuarios cards" aria-labelledby="titulo-usuarios">
+    <section class="caracteristicas cards" id="como-funciona" aria-labelledby="titulo-caracteristicas">
       <div class="container">
-        <h2 id="titulo-usuarios" data-aos="fade-up">Pensado para...</h2>
-        <div class="card-grid">
-          <article class="card" data-aos="fade-up">
-            <i class="fas fa-user-graduate fa-2x" aria-hidden="true"></i>
-            <h3>Estudiantes</h3>
-            <p>Aprende los términos correctos y mejora tu pronunciación.</p>
-          </article>
-          <article class="card" data-aos="fade-up" data-aos-delay="100">
-            <i class="fas fa-pills fa-2x" aria-hidden="true"></i>
-            <h3>Farmacéuticos</h3>
-            <p>Consulta rápidamente traducciones y equivalentes.</p>
-          </article>
-          <article class="card" data-aos="fade-up" data-aos-delay="200">
-            <i class="fas fa-language fa-2x" aria-hidden="true"></i>
-            <h3>Traductores</h3>
-            <p>Accede a definiciones fiables con ejemplos claros.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="caracteristicas cards" aria-labelledby="titulo-caracteristicas">
-      <div class="container">
-        <h2 id="titulo-caracteristicas" data-aos="fade-up">Funciones clave</h2>
+        <h2 id="titulo-caracteristicas" data-aos="fade-up">¿Cómo funciona?</h2>
         <div class="card-grid">
           <article class="card" data-aos="fade-up">
             <i class="fas fa-search fa-2x" aria-hidden="true"></i>
@@ -86,7 +66,44 @@
         </div>
       </div>
     </section>
+
+    <section class="usuarios cards" id="publico" aria-labelledby="titulo-usuarios">
+      <div class="container">
+        <h2 id="titulo-usuarios" data-aos="fade-up">Pensado para...</h2>
+        <div class="card-grid">
+          <article class="card" data-aos="fade-up">
+            <i class="fas fa-user-graduate fa-2x" aria-hidden="true"></i>
+            <h3>Estudiantes</h3>
+            <p>Aprende los términos correctos y mejora tu pronunciación.</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-pills fa-2x" aria-hidden="true"></i>
+            <h3>Farmacéuticos</h3>
+            <p>Consulta rápidamente traducciones y equivalentes.</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-language fa-2x" aria-hidden="true"></i>
+            <h3>Traductores</h3>
+            <p>Accede a definiciones fiables con ejemplos claros.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="acceso cards" id="acceso" aria-labelledby="titulo-acceso">
+      <div class="container">
+        <h2 id="titulo-acceso" data-aos="fade-up">Accede ahora</h2>
+        <p data-aos="fade-up" data-aos-delay="100">Explora más funciones en la plataforma completa.</p>
+        <a href="plataforma.html" class="btn-primary cta" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-arrow-right" aria-hidden="true"></i> Ir a la plataforma
+        </a>
+      </div>
+    </section>
   </main>
+
+  <a href="#que-es" id="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </a>
 
   <footer class="site-footer" role="contentinfo">
     <div class="container">
@@ -99,7 +116,7 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js" defer></script>
   <script src="js/inicio.js" defer></script>
 </body>
 </html>
