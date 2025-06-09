@@ -108,18 +108,30 @@
    * @param {Object} evento
    */
   function mostrarDecoracion(evento) {
-    const contenedor = document.createElement('div');
-    contenedor.className = 'decoracion-festiva';
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay-festivo';
+
+    const popup = document.createElement('div');
+    popup.className = 'popup-festivo';
+
+    const cerrar = document.createElement('button');
+    cerrar.className = 'cerrar-festivo';
+    cerrar.innerHTML = '&times;';
+    cerrar.addEventListener('click', () => overlay.remove());
+    popup.appendChild(cerrar);
 
     const icono = document.createElement('i');
     icono.className = `fa-solid ${evento.icono}`;
-    contenedor.appendChild(icono);
+    popup.appendChild(icono);
 
     const texto = document.createElement('span');
     texto.textContent = evento.mensaje;
-    contenedor.appendChild(texto);
+    popup.appendChild(texto);
 
-    document.body.appendChild(contenedor);
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+
+    setTimeout(() => overlay.remove(), 5000);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
