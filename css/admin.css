@@ -147,7 +147,7 @@ button {
   margin-top: 10px;
   transition: background-color 0.3s, transform 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  min-height: 44px;
+  min-height: 48px;
 }
 
 button:hover,
@@ -266,7 +266,7 @@ body.light-mode #tablaTerminos tr:hover {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  min-height: 44px;
+  min-height: 48px;
 }
 
 #paginacion button:disabled {

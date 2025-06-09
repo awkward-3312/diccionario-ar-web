@@ -85,6 +85,8 @@ body.light-mode #toggle-modo::before {
   border-radius: 20px;
   width: 100%;
   max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -109,7 +111,7 @@ select, input, textarea, button {
   border-radius: 8px;
   border: none;
   font-size: 16px;
-  min-height: 44px; /* ✅ tamaño táctil */
+  min-height: 48px; /* ✅ tamaño táctil */
 }
 
 input, textarea, select {
@@ -135,7 +137,7 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px 16px;
   border: none;
-  min-height: 44px;
+  min-height: 48px;
 }
 
 button:hover,
