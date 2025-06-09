@@ -564,3 +564,8 @@ body.light-mode #toggle-modo i {
   margin: 0 auto 20px;
   box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
 }
+@media (display-mode: standalone) {
+  body {
+    padding: calc(env(safe-area-inset-top) + 20px) calc(env(safe-area-inset-right) + 20px) calc(env(safe-area-inset-bottom) + 20px) calc(env(safe-area-inset-left) + 20px);
+  }
+}
