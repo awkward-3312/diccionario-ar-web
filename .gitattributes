@@ -1,3 +1,21 @@
-*.png filter=lfs diff=lfs merge=lfs -text
-*.ico filter=lfs diff=lfs merge=lfs -text
-*.mp3 filter=lfs diff=lfs merge=lfs -text
+# Marca los archivos de texto para auto-normalización de saltos de línea
+*.html text
+*.css text
+*.js text
+*.json text
+*.md text
+*.yml text
+*.txt text
+
+# Archivos binarios comunes (se tratan como binarios, pero sin usar Git LFS)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.mp3 binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.otf binary
+*.svg binary
+*.webp binary
