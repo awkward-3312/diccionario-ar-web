@@ -33,7 +33,9 @@ body.dark-mode {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 900px;
-  height: 90vh;
+  height: calc(90vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin-top: env(safe-area-inset-top);
+  margin-bottom: env(safe-area-inset-bottom);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -74,7 +76,7 @@ body.dark-mode {
 @media (max-width: 600px) {
   #sparkie-modal .chat-container {
     width: 95vw;
-    height: 90vh;
+    height: calc(90vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     border-radius: 12px;
   }
 }

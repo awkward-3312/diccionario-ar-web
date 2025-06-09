@@ -27,6 +27,7 @@
   <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro" aria-label="Cambiar modo claro u oscuro">
     <i class="fas fa-moon" id="icono-modo"></i>
   </button>
+  <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
 
   <div class="zona-moleculas">
     <img src="img/mol/mol-1.png" class="molecula" style="top: 5%; left: 5%;" alt="mol-1" />
@@ -59,9 +60,9 @@
       </div>
 
       <div class="botones-busqueda">
-        <button id="btnBuscar" class="boton" title="Buscar"><i class="fas fa-search"></i></button>
-        <button id="btnLimpiar" class="boton" title="Limpiar búsqueda"><i class="fas fa-eraser"></i></button>
-        <button id="btnActualizar" class="boton" title="Actualizar glosario"><i class="fas fa-rotate"></i></button>
+        <button id="btnBuscar" class="boton" aria-label="Buscar" title="Buscar"><i class="fas fa-search"></i></button>
+        <button id="btnLimpiar" class="boton" aria-label="Limpiar" title="Limpiar búsqueda"><i class="fas fa-eraser"></i></button>
+        <button id="btnActualizar" class="boton" aria-label="Actualizar" title="Actualizar glosario"><i class="fas fa-rotate"></i></button>
       </div>      
 
       <div id="estadoConexion" class="estado-conexion"></div>
@@ -97,7 +98,7 @@
   </div>
 
   <!-- Sparkie -->
-  <div id="sparkie-boton" title="Habla con Sparkie">
+  <div id="sparkie-boton" role="button" aria-label="Hablar con Sparkie" title="Habla con Sparkie">
     <img src="img/sparkie.png" alt="Sparkie" />
     <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
   </div>
@@ -108,8 +109,8 @@
         <button id="btn-regresar" class="cerrar-chat" title="Cerrar">&times;</button>
         <span> Chat con <strong>Sparkie AI</strong></span>
         <div class="botones-header">
-          <button id="toggle-sonido" title="Sonido activado"><i class="fas fa-volume-up"></i></button>
-          <button id="toggle-tema" title="Cambiar tema"><i class="fas fa-circle-half-stroke"></i></button>
+          <button id="toggle-sonido" aria-label="Activar o desactivar sonido" title="Sonido activado"><i class="fas fa-volume-up"></i></button>
+          <button id="toggle-tema" aria-label="Cambiar tema" title="Cambiar tema"><i class="fas fa-circle-half-stroke"></i></button>
         </div>
       </header>
       <main id="chat" class="chat-body"></main>
@@ -148,6 +149,16 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("menu-toggle");
+      const nav = document.querySelector(".nav-flotante");
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("abierto");
+        menuToggle.setAttribute("aria-expanded", nav.classList.contains("abierto"));
+      });
+      nav.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+        nav.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded","false");
+      }));
       if (localStorage.getItem("modoClaro") === "1") {
         document.body.classList.add("light-mode");
         document.getElementById("icono-modo").className = "fas fa-sun";
