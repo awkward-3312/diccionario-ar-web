@@ -1,4 +1,4 @@
-const CACHE_NAME = 'diccionario-ar-v4';
+const CACHE_NAME = 'diccionario-ar-v5';
 
 const STATIC_ASSETS = [
   '/',
