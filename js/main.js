@@ -279,8 +279,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/serviceWorker.js')
-    .then(reg => console.log('✅ Service Worker registrado', reg))
+    .then(reg => {
+      console.log('✅ Service Worker registrado', reg);
+      monitorServiceWorker(reg);
+    })
     .catch(err => console.error('❌ Error al registrar SW', err));
+}
+
+function monitorServiceWorker(reg) {
+  if (!reg) return;
+
+  function showUpdateBanner() {
+    if (document.getElementById('update-banner')) return;
+    const banner = document.createElement('div');
+    banner.id = 'update-banner';
+    banner.style.position = 'fixed';
+    banner.style.bottom = '0';
+    banner.style.left = '0';
+    banner.style.right = '0';
+    banner.style.background = '#333';
+    banner.style.color = '#fff';
+    banner.style.padding = '10px';
+    banner.style.display = 'flex';
+    banner.style.justifyContent = 'center';
+    banner.style.alignItems = 'center';
+    banner.style.zIndex = '1000';
+
+    const texto = document.createElement('span');
+    texto.textContent = 'A new version is available.';
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Click to update';
+    btn.style.marginLeft = '10px';
+    btn.addEventListener('click', () => {
+      banner.remove();
+      if (reg.waiting) {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+        reg.waiting.addEventListener('statechange', e => {
+          if (e.target.state === 'activated') {
+            window.location.reload();
+          }
+        });
+      }
+    });
+
+    banner.appendChild(texto);
+    banner.appendChild(btn);
+    document.body.appendChild(banner);
+  }
+
+  if (reg.waiting) {
+    showUpdateBanner();
+  }
+
+  reg.addEventListener('updatefound', () => {
+    const newWorker = reg.installing;
+    if (newWorker) {
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          showUpdateBanner();
+        }
+      });
+    }
+  });
+
+  reg.update();
 }
 
 window.buscar = buscar;
