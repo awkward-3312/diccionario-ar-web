@@ -60,7 +60,7 @@ body.light-mode {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  min-height: 44px; /* ✅ tamaño táctil adecuado */
+  min-height: 48px; /* ✅ tamaño táctil adecuado */
 }
 .boton:hover {
   background-color: #3ae374;
@@ -129,6 +129,7 @@ h1 span {
   color: #111;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
+  min-height: 48px;
 }
 body.light-mode .busqueda input {
   background-color: #f3f3f3;
@@ -167,6 +168,7 @@ body.light-mode .ventana {
   border-radius: 10px;
   color: white;
   text-align: left;
+  overflow-wrap: anywhere;
   white-space: normal;
   font-size: 15px;
   line-height: 1.6;
@@ -317,7 +319,7 @@ body.light-mode #toggle-modo::before {
   z-index: 1001;
 }
 .nav-flotante button {
-  min-height: 44px;
+  min-height: 48px;
   padding: 8px 16px;
   font-weight: 600;
   font-size: 0.9rem;
@@ -580,12 +582,14 @@ body {
   z-index: 1001;
   max-width: 400px;
   width: 90%;
+  overflow-wrap: anywhere;
 }
 .ventana-sugerencia textarea,
 .ventana-sugerencia input {
   width: 100%;
   margin-bottom: 10px;
   padding: 8px;
+  min-height: 48px;
 }
 .ventana-sugerencia .botones-form {
   display: flex;
@@ -627,5 +631,11 @@ body {
   }
   .resultado-flex {
     flex-direction: column;
+  }
+
+  .ventana-sugerencia {
+    top: 10%;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 }

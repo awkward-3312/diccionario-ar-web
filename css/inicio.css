@@ -163,6 +163,8 @@ section {
   border-radius: 12px;
   padding: 20px;
   width: 260px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   backdrop-filter: blur(5px);
 }
 .card i {
@@ -229,4 +231,5 @@ section {
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-image { order: -1; }
   .logo img { width: 120px; }
+  .card { width: 100%; }
 }
