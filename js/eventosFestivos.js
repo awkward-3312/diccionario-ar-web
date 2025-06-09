@@ -1,81 +1,131 @@
-// eventosFestivos.js — Manejo de decoraciones según la fecha
-document.addEventListener("DOMContentLoaded", () => {
-  const hoy = new Date();
-  const mes = hoy.getMonth() + 1;
-  const dia = hoy.getDate();
-  const diaSemana = hoy.getDay();
-  const h1 = document.querySelector("h1");
+// eventosFestivos.js - Muestra decoraciones festivas según la fecha actual
 
-  function setTituloClase(clase) {
-    if (h1) h1.className = clase;
-  }
+(function() {
+  'use strict';
 
-  function efectoNieve() {
-    for (let i = 0; i < 40; i++) {
-      const copo = document.createElement("div");
-      copo.className = "nieve-copo";
-      copo.style.left = Math.random() * 100 + "vw";
-      copo.style.animationDuration = 6 + Math.random() * 5 + "s";
-      copo.style.animationDelay = Math.random() * 5 + "s";
-      document.body.appendChild(copo);
+  /**
+   * Listado de eventos festivos. Cada evento contiene:
+   * - nombre: identificador
+   * - dia: día de inicio del evento
+   * - mes: mes del evento (1-12)
+   * - hastaDia: día de finalización opcional para rangos
+   * - icono: clase Font Awesome para mostrar
+   * - mensaje: texto a mostrar
+   */
+  const eventos = [
+    {
+      nombre: 'ar-test-day',
+      dia: 9,
+      mes: 6,
+      icono: 'fa-flask',
+      mensaje: '✨ AR Test Day Active!'
+    },
+    {
+      nombre: 'ano-nuevo',
+      dia: 1,
+      mes: 1,
+      icono: 'fa-champagne-glasses',
+      mensaje: '¡Feliz Año Nuevo!'
+    },
+    {
+      nombre: 'san-valentin',
+      dia: 14,
+      mes: 2,
+      icono: 'fa-heart',
+      mensaje: '¡Feliz Día de San Valentín!'
+    },
+    {
+      nombre: 'dia-mujer',
+      dia: 8,
+      mes: 3,
+      icono: 'fa-venus',
+      mensaje: '¡Feliz Día Internacional de la Mujer!'
+    },
+    {
+      nombre: 'dia-trabajo',
+      dia: 1,
+      mes: 5,
+      icono: 'fa-briefcase',
+      mensaje: '¡Feliz Día del Trabajo!'
+    },
+    {
+      nombre: 'independencia-hn',
+      dia: 15,
+      mes: 9,
+      icono: 'fa-flag',
+      mensaje: '¡Feliz Independencia de Honduras!'
+    },
+    {
+      nombre: 'dia-farmaceutico',
+      dia: 25,
+      mes: 9,
+      icono: 'fa-pills',
+      mensaje: '¡Feliz Día del Farmacéutico!'
+    },
+    {
+      nombre: 'halloween',
+      dia: 31,
+      mes: 10,
+      icono: 'fa-ghost',
+      mensaje: '¡Feliz Halloween!'
+    },
+    {
+      nombre: 'thanksgiving',
+      dia: 28,
+      mes: 11,
+      icono: 'fa-wheat-awn',
+      mensaje: '¡Feliz Día de Acción de Gracias!'
+    },
+    {
+      nombre: 'navidad',
+      dia: 1,
+      mes: 12,
+      hastaDia: 31,
+      icono: 'fa-tree',
+      mensaje: '¡Feliz Navidad!'
     }
-  }
+  ];
 
-  function efectoHojas() {
-    for (let i = 0; i < 20; i++) {
-      const hoja = document.createElement("div");
-      hoja.className = "hoja-otoño";
-      hoja.style.left = Math.random() * 100 + "vw";
-      hoja.style.animationDuration = 8 + Math.random() * 5 + "s";
-      hoja.style.animationDelay = Math.random() * 5 + "s";
-      document.body.appendChild(hoja);
-    }
-  }
-
-  function efectoFlores() {
-    for (let i = 0; i < 20; i++) {
-      const flor = document.createElement("div");
-      flor.className = "flor";
-      flor.style.left = Math.random() * 100 + "vw";
-      flor.style.animationDuration = 7 + Math.random() * 4 + "s";
-      flor.style.animationDelay = Math.random() * 3 + "s";
-      document.body.appendChild(flor);
-    }
-  }
-
-  function efectoVelas() {
-    for (let i = 0; i < 10; i++) {
-      const vela = document.createElement("div");
-      vela.className = "vela";
-      vela.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(vela);
-    }
-  }
-
-  function esSegundoDomingoDeMayo(fecha) {
+  /**
+   * Busca un evento que coincida con la fecha proporcionada.
+   * @param {Date} fecha
+   * @returns {Object|undefined}
+   */
+  function obtenerEventoParaFecha(fecha) {
     const dia = fecha.getDate();
-    const diaSemana = fecha.getDay();
-    return fecha.getMonth() === 4 && diaSemana === 0 && dia >= 8 && dia <= 14;
+    const mes = fecha.getMonth() + 1;
+    return eventos.find(evt => {
+      if (evt.mes !== mes) return false;
+      if (evt.hastaDia) {
+        return dia >= evt.dia && dia <= evt.hastaDia;
+      }
+      return dia === evt.dia;
+    });
   }
 
-  // === Eventos ===
-  if (mes === 12) {
-    setTituloClase("titulo-navidad");
-    efectoNieve();
-  } else if (mes === 9 && dia === 10) {
-    setTituloClase("titulo-dia-nino");
-  } else if (mes === 9 && dia === 15) {
-    setTituloClase("titulo-independencia");
-  } else if (mes === 10 && dia === 31) {
-    setTituloClase("titulo-halloween");
-  } else if (mes === 11 && diaSemana === 4 && dia + 7 > 30) {
-    setTituloClase("titulo-thanksgiving");
-    efectoHojas();
-  } else if (esSegundoDomingoDeMayo(hoy)) {
-    setTituloClase("titulo-madre");
-    efectoFlores();
-  } else if (mes === 11 && dia === 2) {
-    setTituloClase("titulo-muertos");
-    efectoVelas();
+  /**
+   * Genera y muestra la decoración festiva en pantalla.
+   * @param {Object} evento
+   */
+  function mostrarDecoracion(evento) {
+    const contenedor = document.createElement('div');
+    contenedor.className = 'decoracion-festiva';
+
+    const icono = document.createElement('i');
+    icono.className = `fa-solid ${evento.icono}`;
+    contenedor.appendChild(icono);
+
+    const texto = document.createElement('span');
+    texto.textContent = evento.mensaje;
+    contenedor.appendChild(texto);
+
+    document.body.appendChild(contenedor);
   }
-});
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const eventoHoy = obtenerEventoParaFecha(new Date());
+    if (eventoHoy) {
+      mostrarDecoracion(eventoHoy);
+    }
+  });
+})();
