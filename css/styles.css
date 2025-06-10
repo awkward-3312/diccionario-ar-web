@@ -159,3 +159,104 @@ body.light-mode th {
     padding-left: calc(env(safe-area-inset-left) + 20px);
   }
 }
+
+/* Dashboard Styles */
+body.dashboard {
+  background: #f8f9fa;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
+  display: block;
+}
+
+.dashboard-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dashboard-nav .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.dashboard-main {
+  max-width: 1200px;
+  margin: 80px auto 20px;
+  padding: 0 20px;
+}
+
+.dashboard-main h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.table-responsive table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-responsive tbody tr {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.table-responsive tbody td,
+.table-responsive thead th {
+  padding: 12px;
+}
+
+.table-responsive thead th {
+  background: #007acc;
+  color: #fff;
+}
+
+.table-responsive tbody tr:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+  .table-responsive thead {
+    display: none;
+  }
+  .table-responsive tbody tr {
+    display: block;
+  }
+  .table-responsive tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .table-responsive tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #007acc;
+  }
+}
