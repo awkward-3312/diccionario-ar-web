@@ -3,55 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Certificados</title>
+  <title>Panel Certificados</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
-  <button id="toggle-modo" onclick="toggleModo()" title="Cambiar modo claro/oscuro" aria-label="Cambiar modo claro u oscuro">
-    <i class="fas fa-moon" id="icono-modo"></i>
-  </button>
+<body class="dashboard">
+  <nav class="dashboard-nav">
+    <div class="logo">Certificados</div>
+    <button id="cerrar-sesion" class="logout-btn">Cerrar sesión</button>
+  </nav>
 
-  <div class="container">
-    <h1>Certificados</h1>
-    <button id="cerrar-sesion">Cerrar sesión</button>
-    <div class="loader" id="loader" style="display:none;"><span></span><span></span><span></span></div>
-    <table id="tablaCertificados">
-      <thead>
-        <tr>
-          <th>Laboratorio</th>
-          <th>Dirección</th>
-          <th>País</th>
-          <th>Tipo Producto</th>
-          <th>Forma Farmacéutica</th>
-          <th>Tipo Certificado</th>
-          <th>Fecha Emisión</th>
-          <th>Fecha Vencimiento</th>
-          <th>Activo</th>
-          <th>PDF</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <div id="error" class="error"></div>
-  </div>
+  <main class="dashboard-main">
+    <h1>Panel de Certificados Regulatorios</h1>
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Buscar..." />
+      <select id="filterPais"></select>
+      <select id="filterTipoProducto"></select>
+      <select id="filterTipoCertificado"></select>
+    </div>
+    <div class="table-responsive">
+      <table id="tablaCertificados">
+        <thead>
+          <tr>
+            <th>Laboratorio</th>
+            <th>País</th>
+            <th>Tipo Producto</th>
+            <th>Forma Farmacéutica</th>
+            <th>Tipo Certificado</th>
+            <th>Fecha Emisión</th>
+            <th>Fecha Vencimiento</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="loader" id="loader" style="display:none;"><span></span><span></span><span></span></div>
+      <div id="error" class="error"></div>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/certificados.js"></script>
-  <script>
-    function toggleModo() {
-      const body = document.body;
-      const icono = document.getElementById('icono-modo');
-      const esClaro = body.classList.toggle('light-mode');
-      icono.className = esClaro ? 'fas fa-sun' : 'fas fa-moon';
-      localStorage.setItem('modoClaro', esClaro ? '1' : '0');
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('modoClaro') === '1') {
-        document.body.classList.add('light-mode');
-        document.getElementById('icono-modo').className = 'fas fa-sun';
-      }
-    });
-  </script>
 </body>
 </html>
