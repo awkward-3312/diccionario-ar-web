@@ -365,6 +365,7 @@ body.light-mode #toggle-modo::before {
 .btn-traductor  { background-color: #03a9f4; }
 .btn-inicio     { background-color: #8bc34a; }
 .btn-comparador { background-color: #9c27b0; }
+.btn-certificados { background-color: #ff5722; }
 .btn-admin      { background-color: #3f51b5; }
 .nav-flotante button:hover {
   opacity: 0.9;
