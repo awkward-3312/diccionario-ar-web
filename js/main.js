@@ -260,7 +260,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btnActualizar")?.addEventListener("click", actualizarGlosario);
   document.getElementById("btn-sugerir")?.addEventListener("click", () => {
     if (!ultimaBusqueda) {
-      alert("Busca un término antes de sugerir.");
+      Swal.fire({
+        icon: 'info',
+        text: 'Busca un término antes de sugerir.'
+      });
       return;
     }
     document.getElementById("ventana-sugerencia").classList.remove("oculto");
