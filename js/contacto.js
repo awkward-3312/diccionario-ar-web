@@ -11,12 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const mensaje = document.getElementById("mensaje").value.trim();
   
       if (!nombre || !email || !mensaje) {
-        alert("Por favor, completa todos los campos.");
+        Swal.fire({
+          icon: 'warning',
+          text: 'Por favor, completa todos los campos.'
+        });
         return;
       }
   
       // Simular envío con mensaje de confirmación
-      alert("✅ ¡Gracias por tu mensaje! Nos pondremos en contacto pronto.");
+      Swal.fire({
+        icon: 'success',
+        text: '✅ ¡Gracias por tu mensaje! Nos pondremos en contacto pronto.'
+      });
   
       // Opcional: limpiar formulario
       formulario.reset();

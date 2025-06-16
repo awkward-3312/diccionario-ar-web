@@ -65,7 +65,10 @@ async function verificarClave() {
   });
 
   if (error || !data.session) {
-    alert("Usuario o contraseña incorrectos.");
+    await Swal.fire({
+      icon: 'error',
+      text: 'Usuario o contraseña incorrectos.'
+    });
     document.getElementById("clave").value = "";
     return;
   }
@@ -178,7 +181,13 @@ function mostrarPagina(nro) {
 // === EDITAR ===
 async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
-  if (!fila) return alert("ID no encontrado");
+  if (!fila) {
+    await Swal.fire({
+      icon: 'error',
+      text: 'ID no encontrado'
+    });
+    return;
+  }
 
   const actualizado = {
     termino: prompt("Término:", fila.termino) ?? fila.termino,

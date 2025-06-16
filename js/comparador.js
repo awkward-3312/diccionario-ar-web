@@ -46,7 +46,10 @@ function comparar() {
   const nombre2 = document.getElementById('termino2').value.trim();
 
   if (!nombre1 || !nombre2 || nombre1 === nombre2) {
-    alert('Selecciona dos términos distintos');
+    Swal.fire({
+      icon: 'warning',
+      text: 'Selecciona dos términos distintos'
+    });
     return;
   }
 
