@@ -222,6 +222,7 @@ body.light-mode .btn-fijo-sugerencias:hover {
   color: black;
 }
 
+/* 🔸 Admin Table Styles */
 #tablaTerminos {
   width: 100%;
   border-collapse: collapse;
@@ -274,6 +275,7 @@ body.light-mode #tablaTerminos tr:hover {
   cursor: not-allowed;
 }
 
+/* ⚙️  Responsive Tweaks */
 @media (max-width: 768px) {
   table, thead, tbody, th, td, tr {
     display: block;
@@ -417,6 +419,7 @@ body.light-mode
 }
 
 /* === BOTONES DE REGRESO EN COLUMNA === */
+/* 🔹 Button Styles: Login/Back */
 .botones-regreso {
   display: flex;
   flex-direction: column;

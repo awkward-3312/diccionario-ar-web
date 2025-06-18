@@ -1,5 +1,6 @@
 const SUGERENCIAS_URL = 'https://script.google.com/macros/s/AKfycbxZj7zbD0onrR8VNRj90WkOb5c_zZn_1TJfOWw74Dkr_alVru65XgLj08mT3AjHZPao/exec';
 
+// Obtiene y muestra la lista de sugerencias enviadas
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tbody.appendChild(tr);
       }
     })
-    .catch(err => {
+    .catch(err => { // 🔸 Error al consultar sugerencias
       document.querySelector('#tablaSugerencias tbody').innerHTML =
         '<tr><td colspan="3" style="text-align:center;">❌ Error al cargar sugerencias.</td></tr>';
       console.error('Error al obtener sugerencias:', err);

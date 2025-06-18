@@ -1,5 +1,6 @@
 const URL_SUGERENCIAS = "https://script.google.com/macros/s/AKfycbxZj7zbD0onrR8VNRj90WkOb5c_zZn_1TJfOWw74Dkr_alVru65XgLj08mT3AjHZPao/exec";
 
+// Envía la sugerencia desde el formulario simple
 function enviarSugerencia() {
   const texto = document.getElementById("sugerencia").value.trim();
   const mensaje = document.getElementById("mensaje");
@@ -30,6 +31,7 @@ function enviarSugerencia() {
   });
 }
 
+// Aplica modo claro si el usuario lo tenía activado
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("modoClaro") === "1") {
     document.body.classList.add("light-mode");
