@@ -1,6 +1,6 @@
 // eventosFestivos.js - Muestra decoraciones festivas según la fecha actual
 
-(function() {
+(function() { // IIFE para evitar variables globales
   'use strict';
 
   /**
@@ -91,6 +91,7 @@
    * @param {Date} fecha
    * @returns {Object|undefined}
    */
+  // Devuelve un evento activo para la fecha dada
   function obtenerEventoParaFecha(fecha) {
     const dia = fecha.getDate();
     const mes = fecha.getMonth() + 1;
@@ -107,6 +108,7 @@
    * Genera y muestra la decoración festiva en pantalla.
    * @param {Object} evento
    */
+  // Crea elementos en DOM para mostrar el mensaje festivo
   function mostrarDecoracion(evento) {
     const overlay = document.createElement('div');
     overlay.className = 'overlay-festivo';
@@ -134,6 +136,7 @@
     setTimeout(() => overlay.remove(), 5000);
   }
 
+  // Verifica si hoy coincide con un evento festivo
   document.addEventListener('DOMContentLoaded', () => {
     const eventoHoy = obtenerEventoParaFecha(new Date());
     if (eventoHoy) {

@@ -8,14 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+  <!-- 🔹 Contenedor principal -->
   <div class="contenedor">
     <header class="header">
       <button id="btn-volver" title="Volver al diccionario" aria-label="Volver al diccionario">
         <i class="fas fa-arrow-left"></i>
-      </button>
+      </button> <!-- 🔹 Volver -->
       <h1>Comparador de Términos</h1>
     </header>
 
+ <!-- 🔸 Selectores de términos -->
  <div class="selectors">
   <select id="termino1" aria-label="Término 1">
     <option value="">Selecciona término 1</option>
@@ -23,7 +25,7 @@
   <select id="termino2" aria-label="Término 2">
     <option value="">Selecciona término 2</option>
   </select>
-  <button id="comparar" class="btn-comparar">Comparar</button>
+  <button id="comparar" class="btn-comparar">Comparar</button> <!-- 🔹 Ejecutar comparación -->
 </div>
 
     <div id="resultados" class="resultados"></div>

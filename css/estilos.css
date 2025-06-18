@@ -52,6 +52,7 @@ body.light-mode {
   color: #111;
 }
 
+/* 🔹 Button Styles: General, Delete, Edit, Scroll-to-top */
 /* === CLASE BOTÓN PERSONALIZADA === */
 .boton {
   background-color: #007bff;
@@ -649,6 +650,7 @@ body {
   background-color: #e14b2f;
 }
 
+/* ⚙️  Responsive Tweaks */
 /* === AJUSTES RESPONSIVOS === */
 @media (max-width: 768px) {
   .menu-toggle { display: block; }

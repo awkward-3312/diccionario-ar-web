@@ -1,3 +1,4 @@
+// Configuración de Supabase para obtener los datos del glosario
 const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
@@ -8,15 +9,19 @@ let glosarioCargado = false;
 let debounceTimer;
 let ultimaBusqueda = null;
 
+// Cambia entre modo claro y oscuro y almacena la preferencia
+
 function toggleModo() {
   const isClaro = document.body.classList.toggle("light-mode");
   localStorage.setItem("modoClaro", isClaro ? "1" : "0");
 }
 
+// Elimina tildes y pasa a mayúsculas para búsquedas consistentes
 function normalizarTexto(texto) {
   return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
 }
 
+// Abre la base local IndexedDB y crea el almacén si no existe
 function abrirBaseDatos() {
   const request = indexedDB.open("DiccionarioAR", 1);
   request.onerror = () => {
@@ -34,6 +39,7 @@ function abrirBaseDatos() {
   };
 }
 
+// Guarda los registros descargados dentro de IndexedDB
 function guardarEnIndexedDB(datos) {
   const tx = db.transaction("terminos", "readwrite");
   const store = tx.objectStore("terminos");
@@ -48,6 +54,7 @@ function guardarEnIndexedDB(datos) {
   };
 }
 
+// Carga los términos almacenados localmente si existen
 function cargarDesdeIndexedDB() {
   const tx = db.transaction("terminos", "readonly");
   const store = tx.objectStore("terminos");
@@ -66,6 +73,7 @@ function cargarDesdeIndexedDB() {
   };
 }
 
+// Descarga todo el glosario desde Supabase (y opcionalmente lo guarda localmente)
 async function cargarGlosario(guardarLocal = false) {
   const { data, error } = await supabase.from('base_datos').select('*');
   if (error) {
@@ -81,6 +89,7 @@ async function cargarGlosario(guardarLocal = false) {
   actualizarContador();
 }
 
+// Muestra un pequeño popup temporal con el mensaje dado
 function mostrarNotificacion(mensaje) {
   const popup = document.getElementById("popupNotificacion");
   const texto = document.getElementById("popupTexto");
@@ -91,6 +100,7 @@ function mostrarNotificacion(mensaje) {
   }
 }
 
+// Fuerza la descarga y actualización del glosario desde el servidor
 function actualizarGlosario() {
   if (navigator.onLine && db) {
     cargarGlosario(true);
@@ -103,6 +113,7 @@ function actualizarGlosario() {
   }
 }
 
+// Muestra el total de términos y cuántos se han añadido recientemente
 function actualizarContador() {
   const total = Object.keys(glosario).length;
   const contenedor = document.getElementById("contadorTerminos");
@@ -125,6 +136,7 @@ function actualizarContador() {
 }
 
 
+// Realiza la búsqueda del término y genera las sugerencias en pantalla
 function buscar() {
   if (!glosarioCargado) return;
   const terminoInput = document.getElementById("termino");
@@ -210,6 +222,7 @@ function buscar() {
   resultado.innerHTML = html;
 }
 
+// Envía la sugerencia del usuario al backend
 async function enviarSugerenciaTermino() {
   const texto = document.getElementById("sugerencia-input").value.trim();
   const apodo = document.getElementById("apodo-input").value.trim();
@@ -240,9 +253,10 @@ async function enviarSugerenciaTermino() {
   }
 }
 
+// Configura eventos al cargar la página y enlaza los botones de búsqueda
 document.addEventListener("DOMContentLoaded", () => {
   abrirBaseDatos();
-  document.getElementById("btnBuscar")?.addEventListener("click", buscar);
+  document.getElementById("btnBuscar")?.addEventListener("click", buscar); // 🔹 Buscar botón
   document.getElementById("termino")?.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(buscar, 200);
@@ -253,12 +267,12 @@ document.addEventListener("DOMContentLoaded", () => {
       buscar();
     }
   });
-  document.getElementById("btnLimpiar")?.addEventListener("click", () => {
+  document.getElementById("btnLimpiar")?.addEventListener("click", () => { // 🔹 Limpiar campo
     document.getElementById("termino").value = "";
     document.getElementById("resultado").innerText = "Resultado aquí...";
   });
-  document.getElementById("btnActualizar")?.addEventListener("click", actualizarGlosario);
-  document.getElementById("btn-sugerir")?.addEventListener("click", () => {
+  document.getElementById("btnActualizar")?.addEventListener("click", actualizarGlosario); // 🔹 Botón de actualizar glosario
+  document.getElementById("btn-sugerir")?.addEventListener("click", () => { // 🔹 Abrir ventana de sugerencias
     if (!ultimaBusqueda) {
       Swal.fire({
         icon: 'info',
@@ -268,11 +282,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     document.getElementById("ventana-sugerencia").classList.remove("oculto");
   });
-  document.getElementById("cerrar-sugerencia")?.addEventListener("click", () => {
+  document.getElementById("cerrar-sugerencia")?.addEventListener("click", () => { // 🔹 Cancelar sugerencia
     document.getElementById("ventana-sugerencia").classList.add("oculto");
   });
-  document.getElementById("enviar-sugerencia")?.addEventListener("click", enviarSugerenciaTermino);
+  document.getElementById("enviar-sugerencia")?.addEventListener("click", enviarSugerenciaTermino); // 🔹 Enviar sugerencia
 
+  // Cierra la ventana de sugerencia con Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       document.getElementById("ventana-sugerencia")?.classList.add("oculto");
@@ -280,6 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Registro del Service Worker para habilitar PWA
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/serviceWorker.js')
     .then(reg => {
@@ -289,9 +305,11 @@ if ('serviceWorker' in navigator) {
     .catch(err => console.error('❌ Error al registrar SW', err));
 }
 
+// Controla actualizaciones del Service Worker y muestra banner si hay nueva versión
 function monitorServiceWorker(reg) {
   if (!reg) return;
 
+  // Muestra aviso para recargar cuando hay una versión nueva
   function showUpdateBanner() {
     if (document.getElementById('update-banner')) return;
     const banner = document.createElement('div');
@@ -356,6 +374,7 @@ window.actualizarGlosario = actualizarGlosario;
 
 
 
+// Pinta en pantalla el resultado seleccionado y limpia sugerencias
 function mostrarResultado(nombre) {
   const entrada = glosario[normalizarTexto(nombre)];
   if (!entrada) return;

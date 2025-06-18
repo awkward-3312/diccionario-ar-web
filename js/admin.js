@@ -9,6 +9,7 @@ let paginaActual = 1;
 const filasPorPagina = 15;
 let tbody;
 
+// Crea el botón que regresa a la página de inicio
 function agregarBotonInicio() {
   if (document.getElementById("btnInicio")) return;
   const btnInicio = document.createElement("button");
@@ -20,9 +21,11 @@ function agregarBotonInicio() {
 }
 
 // === LOADER ===
+// Muestra el indicador de carga mientras se consultan datos
 function mostrarLoader() {
   document.getElementById("loader").style.display = "block";
 }
+// Oculta el indicador de carga
 function ocultarLoader() {
   document.getElementById("loader").style.display = "none";
 }
@@ -39,13 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const form = document.getElementById("formLogin");
-  form?.addEventListener("submit", function (e) {
+  form?.addEventListener("submit", function (e) { // 🔹 Botón de login
     e.preventDefault();
     verificarClave();
   });
 });
 
 // === MOSTRAR CONTRASEÑA ===
+// Alterna la visibilidad de la contraseña en el formulario
 function toggleMostrar() {
   const input = document.getElementById("clave");
   const boton = document.querySelector(".mostrar-toggle");
@@ -55,6 +59,7 @@ function toggleMostrar() {
 }
 
 // === AUTENTICACIÓN ===
+// Valida las credenciales del administrador en Supabase
 async function verificarClave() {
   const correo = document.getElementById("correo").value.trim();
   const clave = document.getElementById("clave").value;
@@ -78,12 +83,14 @@ async function verificarClave() {
   agregarBotonInicio();
 }
 
+// Cierra la sesión actual del administrador
 async function cerrarSesion() {
   await client.auth.signOut();
   localStorage.removeItem("adminAutenticado");
   location.reload();
 }
 
+// Muestra la tabla de administración una vez autenticado
 function mostrarPanel() {
   document.getElementById("loginPanel").style.display = "none";
   document.getElementById("adminPanel").style.display = "block";
@@ -95,6 +102,7 @@ function mostrarPanel() {
 }
 
 // === CARGAR TERMINOS ===
+// Obtiene los registros del glosario desde Supabase y llena la tabla
 async function cargarDatos() {
   mostrarLoader();
   const { data, error } = await client
@@ -138,6 +146,7 @@ async function cargarDatos() {
 }
 
 // === PAGINACIÓN ===
+// Muestra la página indicada de la tabla de términos
 function mostrarPagina(nro) {
   paginaActual = nro;
 
@@ -179,6 +188,7 @@ function mostrarPagina(nro) {
 }
 
 // === EDITAR ===
+// Muestra prompts para actualizar un término existente
 async function editarFila(id) {
   const fila = datosCrudos.find(d => d.id === id);
   if (!fila) {
@@ -240,6 +250,7 @@ async function editarFila(id) {
 }
 
 // === ELIMINAR ===
+// Borra de la base de datos el término seleccionado
 async function eliminarFila(id) {
   if (!confirm("¿Seguro que deseas eliminar este término?")) return;
 
@@ -261,6 +272,7 @@ async function eliminarFila(id) {
 }
 
 // === FILTRAR ===
+// Aplica un filtro de texto a las filas mostradas
 function filtrarTabla() {
   const filtro = document.getElementById("buscador").value.toLowerCase();
   const filasFiltradas = todasLasFilas.filter(fila =>
@@ -271,6 +283,7 @@ function filtrarTabla() {
 }
 
 // === ALERTA EMERGENTE COMO EN agregar.js ===
+// Muestra un mensaje flotante para informar al usuario
 function mostrarPopup(mensaje, exito = true) {
   const popup = document.createElement("div");
   popup.innerHTML = mensaje;

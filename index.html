@@ -43,28 +43,30 @@
     <img src="img/mol/mol-10.png" class="molecula" style="top: 80%; left: 20%;" alt="mol-10" />
   </div>
 
+  <!-- 🔹 Navegación principal -->
   <nav class="nav-flotante" role="navigation" aria-label="Navegación principal">
-    <button onclick="window.location.href='agregar.html'" class="btn-agregar">Agregar Término</button>
-    <button onclick="window.location.href='sugerencias.html'" class="btn-sugerencias">Sugerencias</button>
-    <button onclick="window.location.href='traductor.html'" class="btn-traductor">Traductor</button>
-    <button onclick="window.location.href='comparador.html'" class="btn-comparador">Comparar Términos</button>
-    <button onclick="window.location.href='certificados-login.html'" class="btn-certificados">Certificados</button>
-    <button onclick="window.location.href='inicio.html'" class="btn-inicio">Inicio</button>
-    <button onclick="window.location.href='admin.html'" class="btn-admin">Admin</button>
+    <button onclick="window.location.href='agregar.html'" class="btn-agregar">Agregar Término</button> <!-- 🔹 Ir a agregar -->
+    <button onclick="window.location.href='sugerencias.html'" class="btn-sugerencias">Sugerencias</button> <!-- 🔹 Ver sugerencias -->
+    <button onclick="window.location.href='traductor.html'" class="btn-traductor">Traductor</button> <!-- 🔹 Traductor -->
+    <button onclick="window.location.href='comparador.html'" class="btn-comparador">Comparar Términos</button> <!-- 🔹 Comparador -->
+    <button onclick="window.location.href='certificados-login.html'" class="btn-certificados">Certificados</button> <!-- 🔹 Certificados -->
+    <button onclick="window.location.href='inicio.html'" class="btn-inicio">Inicio</button> <!-- 🔹 Página principal -->
+    <button onclick="window.location.href='admin.html'" class="btn-admin">Admin</button> <!-- 🔹 Panel admin -->
   </nav>
 
   <div class="contenedor-principal">
     <main class="ventana" role="main">
       <h1><span class="azul">Diccionario</span><span class="rojo"> - AR</span></h1>
 
+      <!-- 🔹 Filters Section -->
       <div class="busqueda">
         <input type="text" id="termino" placeholder="Escribe una palabra o abreviatura..." autocomplete="off" aria-label="Buscar término" />
       </div>
 
       <div class="botones-busqueda">
-        <button id="btnBuscar" class="boton" aria-label="Buscar" title="Buscar"><i class="fas fa-search"></i></button>
-        <button id="btnLimpiar" class="boton" aria-label="Limpiar" title="Limpiar búsqueda"><i class="fas fa-eraser"></i></button>
-        <button id="btnActualizar" class="boton" aria-label="Actualizar" title="Actualizar glosario"><i class="fas fa-rotate"></i></button>
+        <button id="btnBuscar" class="boton" aria-label="Buscar" title="Buscar"><i class="fas fa-search"></i></button> <!-- 🔹 Search button -->
+        <button id="btnLimpiar" class="boton" aria-label="Limpiar" title="Limpiar búsqueda"><i class="fas fa-eraser"></i></button> <!-- 🔹 Clear button -->
+        <button id="btnActualizar" class="boton" aria-label="Actualizar" title="Actualizar glosario"><i class="fas fa-rotate"></i></button> <!-- 🔹 Refresh glossary -->
       </div>      
 
       <div id="estadoConexion" class="estado-conexion"></div>
@@ -85,34 +87,36 @@
   <!-- Botón único para sugerencia -->
   <button id="btn-sugerir" title="Sugerir algo para este término" aria-label="Sugerir término">
     <i class="fas fa-lightbulb"></i>
-  </button>
+  </button> <!-- 🔹 Abrir ventana de sugerencia -->
 
-  <!-- Ventana emergente flotante para sugerencias -->
+  <!-- 🔸 Ventana emergente de sugerencias -->
   <div id="ventana-sugerencia" class="ventana-sugerencia oculto" role="dialog" aria-modal="true">
     <h3>Sugerencia sobre este término</h3>
     <textarea id="sugerencia-input" placeholder="Escribe tu sugerencia..."></textarea>
     <input id="apodo-input" placeholder="Tu apodo (opcional)" />
     <div class="botones-form">
-      <button id="enviar-sugerencia">Enviar</button>
-      <button id="cerrar-sugerencia">Cancelar</button>
+      <button id="enviar-sugerencia">Enviar</button> <!-- 🔹 Enviar sugerencia -->
+      <button id="cerrar-sugerencia">Cancelar</button> <!-- 🔹 Cancelar sugerencia -->
     </div>
     <div id="mensaje-sugerencia"></div>
   </div>
 
   <!-- Sparkie -->
+  <!-- ⚙️ Scroll-to-Top Button / Sparkie -->
   <div id="sparkie-boton" role="button" aria-label="Hablar con Sparkie" title="Habla con Sparkie">
     <img src="img/sparkie.png" alt="Sparkie" />
     <div id="sparkie-burbuja" class="oculto">¿Tienes dudas? ¡Habla con Sparkie!</div>
   </div>
 
+  <!-- 🔸 Modal de chat con Sparkie -->
   <div id="sparkie-modal" class="oculto" role="dialog" aria-modal="true" aria-label="Chat con Sparkie">
     <div class="chat-container">
       <header class="chat-header">
-        <button id="btn-regresar" class="cerrar-chat" title="Cerrar">&times;</button>
+        <button id="btn-regresar" class="cerrar-chat" title="Cerrar">&times;</button> <!-- 🔹 Cerrar chat -->
         <span> Chat con <strong>Sparkie AI</strong></span>
         <div class="botones-header">
-          <button id="toggle-sonido" aria-label="Activar o desactivar sonido" title="Sonido activado"><i class="fas fa-volume-up"></i></button>
-          <button id="toggle-tema" aria-label="Cambiar tema" title="Cambiar tema"><i class="fas fa-circle-half-stroke"></i></button>
+          <button id="toggle-sonido" aria-label="Activar o desactivar sonido" title="Sonido activado"><i class="fas fa-volume-up"></i></button> <!-- 🔹 Sonido -->
+          <button id="toggle-tema" aria-label="Cambiar tema" title="Cambiar tema"><i class="fas fa-circle-half-stroke"></i></button> <!-- 🔹 Tema oscuro/claro -->
         </div>
       </header>
       <main id="chat" class="chat-body"></main>

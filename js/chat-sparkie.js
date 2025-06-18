@@ -1,4 +1,5 @@
 // === chat-sparkie.js ===
+// Inicializa todo el flujo del chat con Sparkie
 function initSparkieChat() {
   const chat = document.getElementById("chat");
   const form = document.getElementById("formulario");
@@ -15,6 +16,7 @@ function initSparkieChat() {
   document.body.classList.toggle("dark-mode", temaOscuro);
   btnSonido.textContent = sonidoActivado ? "🔊" : "🔇";
 
+  // Añade un mensaje al historial de chat
   function agregarMensaje(texto, clase) {
     const mensaje = document.createElement("div");
     mensaje.className = `mensaje ${clase}`;
@@ -33,6 +35,7 @@ function initSparkieChat() {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  // Inserta burbuja "pensando" mientras se espera respuesta
   function mostrarPensando() {
     const mensaje = document.createElement("div");
     mensaje.className = "mensaje sparkie";
@@ -52,12 +55,13 @@ function initSparkieChat() {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  // Quita la burbuja de "pensando"
   function eliminarPensando() {
     const pensando = document.getElementById("pensando");
     if (pensando) pensando.remove();
   }
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async (e) => { // 🔹 Enviar consulta
     e.preventDefault();
     const texto = input.value.trim();
     if (!texto) return;
@@ -107,24 +111,24 @@ function initSparkieChat() {
     }
   });
 
-  btnSonido.addEventListener("click", () => {
+  btnSonido.addEventListener("click", () => { // 🔹 Activar sonido
     sonidoActivado = !sonidoActivado;
     sessionStorage.setItem("sonidoActivado", sonidoActivado ? "1" : "0");
     btnSonido.textContent = sonidoActivado ? "🔊" : "🔇";
   });
 
-  btnTema.addEventListener("click", () => {
+  btnTema.addEventListener("click", () => { // 🔹 Cambiar tema
     document.body.classList.toggle("dark-mode");
   });
 
-  input.addEventListener("keydown", (e) => {
+  input.addEventListener("keydown", (e) => { // Permite enviar con Enter
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       form.dispatchEvent(new Event("submit"));
     }
   });
 
-  btnRegresar.addEventListener("click", () => {
+  btnRegresar.addEventListener("click", () => { // 🔹 Regresar
     if (window.closeSparkieModal) {
       window.closeSparkieModal();
     } else {

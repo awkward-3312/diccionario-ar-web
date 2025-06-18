@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
   const client = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+  // Muestra u oculta campos según el tipo de término
   function mostrarCampos() {
     const tipo = document.getElementById('tipo').value;
     const campos = {
@@ -39,11 +40,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Activa o desactiva el pequeño loader del formulario
   function toggleLoader(mostrar) {
     document.getElementById('loader').style.display = mostrar ? 'block' : 'none';
     document.querySelectorAll('#formulario button').forEach(btn => btn.disabled = mostrar);
   }
 
+  // Popup simple para informar el resultado de la operación
   function mostrarPopup(texto, exito = true) {
     const popup = document.getElementById('popupMsg');
     popup.style.backgroundColor = exito ? '#3ae374' : '#ff5e57';
@@ -52,9 +55,9 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => popup.style.display = 'none', 3000);
   }
 
-  document.getElementById('tipo').addEventListener('change', mostrarCampos);
+  document.getElementById('tipo').addEventListener('change', mostrarCampos); // 🔹 Selector de tipo
 
-  document.getElementById('formulario').addEventListener('submit', async (e) => {
+  document.getElementById('formulario').addEventListener('submit', async (e) => { // 🔹 Botón guardar
     e.preventDefault();
     toggleLoader(true);
 

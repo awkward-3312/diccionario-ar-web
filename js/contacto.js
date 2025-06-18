@@ -1,9 +1,10 @@
 // contacto.js
 
+// Manejo del formulario de contacto
 document.addEventListener("DOMContentLoaded", () => {
     const formulario = document.querySelector(".formulario-contacto");
   
-    formulario.addEventListener("submit", (e) => {
+    formulario.addEventListener("submit", (e) => { // 🔹 Enviar mensaje
       e.preventDefault();
   
       const nombre = document.getElementById("nombre").value.trim();
@@ -27,4 +28,3 @@ document.addEventListener("DOMContentLoaded", () => {
       // Opcional: limpiar formulario
       formulario.reset();
     });
-  });

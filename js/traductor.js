@@ -1,3 +1,4 @@
+// Configura el traductor y sus eventos al cargar
 document.addEventListener('DOMContentLoaded', () => {
   const chat = document.getElementById('chatBox');
   const form = document.getElementById('chatForm');
@@ -22,14 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.toggle('dark-mode', darkMode === 'dark');
   actualizarIconos();
 
+  // Actualiza el ícono de sonido según su estado
   function actualizarIconos() {
     btnSonido.innerHTML = sonidoActivo ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
   }
 
+  // Hace scroll al final del chat
   function scrollAbajo() {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  // Genera una burbuja de chat genérica
   function agregarMensaje(texto, clase) {
     const mensaje = document.createElement('div');
     mensaje.className = `mensaje ${clase}`;
@@ -48,10 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollAbajo();
   }
 
+  // Alias para agregarMensaje
   function agregarBurbuja(texto, clase) {
     agregarMensaje(texto, clase);
   }
 
+  // Inserta un mensaje indicando que se está traduciendo
   function mostrarPensando() {
     const mensaje = document.createElement('div');
     mensaje.className = 'mensaje sparkie';
@@ -71,24 +77,25 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollAbajo();
   }
 
+  // Elimina el mensaje "pensando" actual
   function eliminarPensando() {
     const pensando = document.getElementById('pensando');
     if (pensando) pensando.remove();
   }
 
-  btnTema.addEventListener('click', () => {
+  btnTema.addEventListener('click', () => { // 🔹 Cambiar tema
     document.body.classList.toggle('dark-mode');
     const tema = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
     localStorage.setItem('traductor_tema', tema);
   });
 
-  btnSonido.addEventListener('click', () => {
+  btnSonido.addEventListener('click', () => { // 🔹 Activar sonido
     sonidoActivo = !sonidoActivo;
     localStorage.setItem('traductor_sonido', sonidoActivo ? '1' : '0');
     actualizarIconos();
   });
 
-  btnRegresar.addEventListener('click', () => {
+  btnRegresar.addEventListener('click', () => { // 🔹 Volver atrás
     window.history.back();
   });
 
@@ -99,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  form.addEventListener('submit', async e => {
+  form.addEventListener('submit', async e => { // 🔹 Enviar texto a traducir
     e.preventDefault();
     const texto = textarea.value.trim();
     if (!texto) return;

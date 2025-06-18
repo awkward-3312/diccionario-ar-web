@@ -1,7 +1,9 @@
 let sparkieLoaded = false;
+// Cierra el modal al presionar Escape
 function escSparkie(e){
   if(e.key === 'Escape') closeSparkieModal();
 }
+// Carga el script del chat si es necesario y muestra el modal
 function openSparkieModal(){
   const modal = document.getElementById('sparkie-modal');
   const show = () => {
@@ -19,6 +21,7 @@ function openSparkieModal(){
     show();
   }
 }
+// Oculta el modal de chat y limpia eventos
 function closeSparkieModal(){
   const modal=document.getElementById('sparkie-modal');
   modal.classList.remove('fade-in');
@@ -28,6 +31,6 @@ function closeSparkieModal(){
 }
 window.closeSparkieModal = closeSparkieModal;
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('sparkie-boton')?.addEventListener('click', openSparkieModal);
-  document.getElementById('btn-regresar')?.addEventListener('click', closeSparkieModal);
+  document.getElementById('sparkie-boton')?.addEventListener('click', openSparkieModal); // 🔹 Abrir chat
+  document.getElementById('btn-regresar')?.addEventListener('click', closeSparkieModal); // 🔹 Cerrar chat
 });

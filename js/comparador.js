@@ -4,6 +4,7 @@ const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let glosario = [];
 
+// Carga el glosario y prepara los selectores de términos
 document.addEventListener('DOMContentLoaded', async () => {
   const { data, error } = await supabase.from('base_datos').select('*');
   if (error) {
@@ -13,12 +14,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   glosario = data;
   poblarSelects();
 
-  document.getElementById('comparar').addEventListener('click', comparar);
-  document.getElementById('btn-volver')?.addEventListener('click', () => {
+  document.getElementById('comparar').addEventListener('click', comparar); // 🔹 Botón comparar
+  document.getElementById('btn-volver')?.addEventListener('click', () => { // 🔹 Volver al diccionario
     window.location.href = 'index.html';
   });
 });
 
+// Rellena los elementos <select> con todos los términos ordenados
 function poblarSelects() {
   const ordenados = [...glosario].sort((a, b) => a.termino.localeCompare(b.termino));
   const sel1 = document.getElementById('termino1');
@@ -37,10 +39,12 @@ function poblarSelects() {
   });
 }
 
+// Devuelve el objeto término por su nombre
 function obtener(nombre) {
   return glosario.find(t => t.termino === nombre) || {};
 }
 
+// Ejecuta la comparación de dos términos seleccionados
 function comparar() {
   const nombre1 = document.getElementById('termino1').value.trim();
   const nombre2 = document.getElementById('termino2').value.trim();
@@ -58,6 +62,7 @@ function comparar() {
   mostrarComparacion(t1, t2);
 }
 
+// Construye la vista comparativa con los campos destacados
 function mostrarComparacion(a, b) {
   const campos = [
     ['termino', 'Nombre'],
@@ -90,6 +95,7 @@ function mostrarComparacion(a, b) {
   });
 }
 
+// Devuelve el HTML de cada fila comparada, incluyendo imágenes
 function generarHTML(label, valor, clave) {
   if (clave === 'imagen' && valor) {
     const url = valor.startsWith('http') ? valor :
@@ -103,6 +109,7 @@ function generarHTML(label, valor, clave) {
   return `<strong>${label}:</strong> ${valor || '-'}`;
 }
 
+// Normaliza valores para comparaciones sin mayúsculas
 function normalizar(t) {
   return (t || '').toString().trim().toLowerCase();
 }
