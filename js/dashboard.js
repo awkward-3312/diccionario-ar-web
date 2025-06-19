@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
-const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
+  const supabaseUrl = 'https://gapivzjnehrkbbnjtvam.supabase.co';
+  const supabaseKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcGl2empuZWhya2Jibmp0dmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0NjkwMzYsImV4cCI6MjA2NDA0NTAzNn0.g7MXXPDzBqssewgHUreA_jNbRl7A_gTvaTv2xXEwHTk';
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
   const loader = document.getElementById('loader');
 
   const views = document.querySelectorAll('.dashboard-view');
   const buttons = document.querySelectorAll('.menu-btn');
 
+  // Activar sección y botón al hacer clic
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const view = btn.dataset.view;
@@ -14,6 +16,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
       btn.classList.add('active');
       views.forEach(v => v.classList.remove('active'));
       document.getElementById(view).classList.add('active');
+      console.log(`Vista activa: ${view}`);
     });
   });
 
@@ -27,14 +30,16 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
   let data = [];
   loader.style.display = 'block';
+
   try {
     const res = await supabase.from('base_datos').select('*');
     loader.style.display = 'none';
     if (res.error) throw res.error;
     data = Array.isArray(res.data) ? res.data : [];
+    console.log("✅ Datos recibidos:", data);
   } catch (err) {
     loader.style.display = 'none';
-    console.error('Error al cargar los términos:', err);
+    console.error('❌ Error al cargar los términos:', err);
     mostrarError();
     return;
   }
@@ -56,13 +61,12 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
     return 'término completo';
   }
 
-  // Totales por tipo
   const total = data.length;
   const porTipo = {
     abreviatura: 0,
     'forma farmacéutica': 0,
     'término completo': 0,
-    instrumento: 0,
+    instrumento: 0
   };
 
   data.forEach(t => {
@@ -70,14 +74,12 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
     if (porTipo[clave] !== undefined) porTipo[clave]++;
   });
 
-  // Mostrar en tarjetas resumen
   document.getElementById('totalTerminos').querySelector('.count').textContent = total;
   document.getElementById('totalAbreviaturas').querySelector('.count').textContent = porTipo.abreviatura;
   document.getElementById('totalFormas').querySelector('.count').textContent = porTipo['forma farmacéutica'];
   document.getElementById('totalTerminosCompletos').querySelector('.count').textContent = porTipo['término completo'];
   document.getElementById('totalInstrumentos').querySelector('.count').textContent = porTipo.instrumento;
 
-  // Renderizar tablas
   renderizarTabla(
     'abreviaturas',
     ['termino', 'traduccion', 'tipo_termino'],
@@ -101,16 +103,25 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
   function renderizarTabla(id, campos, filas) {
     const tbody = document.querySelector(`#${id} tbody`);
+    if (!tbody) {
+      console.warn(`⚠️ No se encontró tbody para ${id}`);
+      return;
+    }
     tbody.innerHTML = '';
-    filas.forEach(f => {
-      const tr = document.createElement('tr');
-      campos.forEach(campo => {
-        const td = document.createElement('td');
-        td.textContent = f[campo] || '';
-        tr.appendChild(td);
+    if (filas.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="${campos.length}" style="text-align:center;">Sin resultados</td></tr>`;
+    } else {
+      filas.forEach(f => {
+        const tr = document.createElement('tr');
+        campos.forEach(campo => {
+          const td = document.createElement('td');
+          td.textContent = f[campo] || '';
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
       });
-      tbody.appendChild(tr);
-    });
+    }
+    console.log(`✅ Tabla ${id} renderizada con ${filas.length} filas`);
   }
 
   function mostrarError() {
