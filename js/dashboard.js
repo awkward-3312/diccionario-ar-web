@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const supabaseUrl = 'https://gpnrtcvtwxsoasrnmhof.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwbnJ0Y3Z0d3hzb2Fzcm5taG9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzNDI3MTIsImV4cCI6MjA2NTkxODcxMn0.s7e9BAFcsfUbiWAETf44sUxSGSoQ6xvZF9gPTebcMWc';
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+  const loader = document.getElementById('loader');
 
   const views = document.querySelectorAll('.dashboard-view');
   const buttons = document.querySelectorAll('.menu-btn');
@@ -20,7 +21,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector('.sidebar').classList.toggle('collapsed');
   });
 
+  document.getElementById('btn-volver')?.addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+
   const { data, error } = await supabase.from('base_datos').select('*');
+  loader.style.display = 'none';
   if (error) {
     console.error('Error al cargar los términos:', error);
     return;
