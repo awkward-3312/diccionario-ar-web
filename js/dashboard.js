@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const supabaseUrl = 'https://gpnrtcvtwxsoasrnmhof.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwbnJ0Y3Z0d3hzb2Fzcm5taG9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzNDI3MTIsImV4cCI6MjA2NTkxODcxMn0.s7e9BAFcsfUbiWAETf44sUxSGSoQ6xvZF9gPTebcMWc';
+  const supabaseKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwbnJ0Y3Z0d3hzb2Fzcm5taG9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzNDI3MTIsImV4cCI6MjA2NTkxODcxMn0.s7e9BAFcsfUbiWAETf44sUxSGSoQ6xvZF9gPTebcMWc';
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
   const loader = document.getElementById('loader');
 
@@ -25,10 +26,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html';
   });
 
-  const { data, error } = await supabase.from('base_datos').select('*');
-  loader.style.display = 'none';
-  if (error) {
-    console.error('Error al cargar los términos:', error);
+  let data = [];
+  loader.style.display = 'block';
+  try {
+    const res = await supabase.from('base_datos').select('*');
+    loader.style.display = 'none';
+    if (res.error) throw res.error;
+    data = Array.isArray(res.data) ? res.data : [];
+  } catch (err) {
+    loader.style.display = 'none';
+    console.error('Error al cargar los términos:', err);
+    mostrarError();
     return;
   }
 
@@ -54,10 +62,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('totalInstrumentos').querySelector('.count').textContent = porTipo.instrumento;
 
   // Renderizar tablas
-  renderizarTabla('abreviaturas', ['termino', 'traduccion', 'tipo_termino'], data.filter(d => d.tipo_termino === 'abreviatura'));
-  renderizarTabla('formas', ['termino', 'traduccion', 'tipo_termino', 'forma_farmaceutica'], data.filter(d => d.tipo_termino === 'forma farmacéutica'));
-  renderizarTabla('terminos', ['termino', 'traduccion', 'pronunciacion', 'categoria', 'definicion', 'sinonimos', 'tipo_termino'], data.filter(d => d.tipo_termino === 'término completo'));
-  renderizarTabla('instrumentos', ['termino', 'traduccion', 'pronunciacion', 'categoria', 'definicion', 'sinonimos', 'tipo_termino'], data.filter(d => d.tipo_termino === 'instrumento'));
+  renderizarTabla(
+    'abreviaturas',
+    ['termino', 'traduccion', 'tipo_termino'],
+    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'abreviatura')
+  );
+  renderizarTabla(
+    'formas',
+    ['termino', 'traduccion', 'tipo_termino', 'forma_farmaceutica'],
+    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'forma farmacéutica')
+  );
+  renderizarTabla(
+    'terminos',
+    ['termino', 'traduccion', 'pronunciacion', 'categoria', 'definicion', 'sinonimos', 'tipo_termino'],
+    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'término completo')
+  );
+  renderizarTabla(
+    'instrumentos',
+    ['termino', 'traduccion', 'pronunciacion', 'categoria', 'definicion', 'sinonimos', 'tipo_termino'],
+    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'instrumento')
+  );
 
   function renderizarTabla(id, campos, filas) {
     const tbody = document.querySelector(`#${id} tbody`);
@@ -70,6 +94,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         tr.appendChild(td);
       });
       tbody.appendChild(tr);
+    });
+  }
+
+  function mostrarError() {
+    const counts = document.querySelectorAll('#resumen .count');
+    counts.forEach(c => (c.textContent = '-'));
+    ['abreviaturas', 'formas', 'terminos', 'instrumentos'].forEach(id => {
+      const tbody = document.querySelector(`#${id} tbody`);
+      if (tbody)
+        tbody.innerHTML =
+          "<tr><td colspan='10' style='text-align:center;'>❌ Error al cargar.</td></tr>";
     });
   }
 });
