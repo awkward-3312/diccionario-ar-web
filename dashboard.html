@@ -6,8 +6,10 @@
   <title>Dashboard - Diccionario AR</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+  <div id="loader" class="loader">Cargando...</div>
   <div class="dashboard-container">
     <aside class="sidebar">
       <div class="logo">Diccionario AR</div>
@@ -22,8 +24,9 @@
 
     <main class="main-panel">
       <header>
-        <button id="hamburger"><i class="fas fa-bars"></i></button>
+        <button id="hamburger" title="Menú"><i class="fas fa-bars"></i></button>
         <h1>Panel de Términos</h1>
+        <button id="btn-volver" title="Volver al inicio"><i class="fas fa-home"></i></button>
       </header>
 
       <section id="resumen" class="dashboard-view active">
