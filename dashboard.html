@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Diccionario AR</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="logo">Diccionario AR</div>
+      <nav class="menu">
+        <button class="menu-btn" data-view="resumen"><i class="fas fa-chart-pie"></i> Resumen</button>
+        <button class="menu-btn" data-view="abreviaturas"><i class="fas fa-font"></i> Abreviaturas</button>
+        <button class="menu-btn" data-view="formas"><i class="fas fa-capsules"></i> Formas farmacéuticas</button>
+        <button class="menu-btn" data-view="terminos"><i class="fas fa-book"></i> Términos completos</button>
+        <button class="menu-btn" data-view="instrumentos"><i class="fas fa-tools"></i> Instrumentos</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header>
+        <button id="hamburger"><i class="fas fa-bars"></i></button>
+        <h1>Panel de Términos</h1>
+      </header>
+
+      <section id="resumen" class="dashboard-view active">
+        <div class="cards">
+          <div class="card" id="totalTerminos">
+            <h3>Total de Términos</h3>
+            <p class="count">...</p>
+          </div>
+          <div class="card" id="totalAbreviaturas">
+            <h3>Abreviaturas</h3>
+            <p class="count">...</p>
+          </div>
+          <div class="card" id="totalFormas">
+            <h3>Formas farmacéuticas</h3>
+            <p class="count">...</p>
+          </div>
+          <div class="card" id="totalTerminosCompletos">
+            <h3>Términos completos</h3>
+            <p class="count">...</p>
+          </div>
+          <div class="card" id="totalInstrumentos">
+            <h3>Instrumentos</h3>
+            <p class="count">...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="abreviaturas" class="dashboard-view">
+        <table class="data-table">
+          <thead>
+            <tr><th>Término</th><th>Traducción</th><th>Tipo</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="formas" class="dashboard-view">
+        <table class="data-table">
+          <thead>
+            <tr><th>Término</th><th>Traducción</th><th>Tipo</th><th>Forma</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="terminos" class="dashboard-view">
+        <table class="data-table">
+          <thead>
+            <tr><th>Término</th><th>Traducción</th><th>Pronunciación</th><th>Categoría</th><th>Definición</th><th>Sinónimos</th><th>Tipo</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="instrumentos" class="dashboard-view">
+        <table class="data-table">
+          <thead>
+            <tr><th>Término</th><th>Traducción</th><th>Pronunciación</th><th>Categoría</th><th>Definición</th><th>Sinónimos</th><th>Tipo</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
