@@ -39,18 +39,35 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
     return;
   }
 
+  function normalizarTipo(texto) {
+    return (texto || '')
+      .toString()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+  }
+
+  function obtenerClaveTipo(tipo) {
+    const t = normalizarTipo(tipo);
+    if (t.startsWith('abrevi')) return 'abreviatura';
+    if (t.includes('forma') && t.includes('farm')) return 'forma farmacéutica';
+    if (t.includes('instrument')) return 'instrumento';
+    return 'término completo';
+  }
+
   // Totales por tipo
   const total = data.length;
   const porTipo = {
     abreviatura: 0,
     'forma farmacéutica': 0,
     'término completo': 0,
-    instrumento: 0
+    instrumento: 0,
   };
 
   data.forEach(t => {
-    const tipo = t.tipo_termino?.toLowerCase();
-    if (porTipo[tipo] !== undefined) porTipo[tipo]++;
+    const clave = obtenerClaveTipo(t.tipo_termino);
+    if (porTipo[clave] !== undefined) porTipo[clave]++;
   });
 
   // Mostrar en tarjetas resumen
@@ -64,22 +81,22 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
   renderizarTabla(
     'abreviaturas',
     ['termino', 'traduccion', 'tipo_termino'],
-    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'abreviatura')
+    data.filter(d => obtenerClaveTipo(d.tipo_termino) === 'abreviatura')
   );
   renderizarTabla(
     'formas',
     ['termino', 'traduccion', 'tipo_termino', 'forma_farmaceutica'],
-    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'forma farmacéutica')
+    data.filter(d => obtenerClaveTipo(d.tipo_termino) === 'forma farmacéutica')
   );
   renderizarTabla(
     'terminos',
     ['termino', 'traduccion', 'pronunciacion', 'categoria', 'definicion', 'sinonimos', 'tipo_termino'],
-    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'término completo')
+    data.filter(d => obtenerClaveTipo(d.tipo_termino) === 'término completo')
   );
   renderizarTabla(
     'instrumentos',
     ['termino', 'traduccion', 'pronunciacion', 'categoria', 'definicion', 'sinonimos', 'tipo_termino'],
-    data.filter(d => (d.tipo_termino || '').toLowerCase() === 'instrumento')
+    data.filter(d => obtenerClaveTipo(d.tipo_termino) === 'instrumento')
   );
 
   function renderizarTabla(id, campos, filas) {
