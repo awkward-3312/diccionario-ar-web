@@ -127,6 +127,7 @@ header {
 .dashboard-view {
   display: none;
   animation: fadeIn 0.3s ease-in;
+  overflow-x: auto; /* keep tables visible on wider screens */
 }
 
 .dashboard-view.active {
@@ -170,7 +171,8 @@ header {
   margin-top: 1rem;
   background: var(--blanco);
   border-radius: 12px;
-  overflow: hidden;
+  /* allow horizontal scrolling without hiding rows */
+  overflow-x: auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
