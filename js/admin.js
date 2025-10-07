@@ -16,7 +16,7 @@ function agregarBotonInicio() {
   btnInicio.id = "btnInicio";
   btnInicio.innerHTML = '<i class="fas fa-home"></i> Inicio';
   btnInicio.classList.add("btn-secundario");
-  btnInicio.onclick = () => (window.location.href = "inicio.html");
+  btnInicio.onclick = () => (window.location.href = "index.html");
   document.querySelector(".acciones")?.prepend(btnInicio);
 }
 
